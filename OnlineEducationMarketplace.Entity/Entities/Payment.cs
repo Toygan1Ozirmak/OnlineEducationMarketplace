@@ -17,5 +17,9 @@ namespace OnlineEducationMarketplace.Entity.Entities
         public DateTime TransactionDate { get; set; }
         public int Amount { get; set; }
         public bool PaymentStatus { get; set; }
+
+        ICollection<User> Users { get; set; }
+        ICollection<Course> Courses { get; set; }
+
     }
 }

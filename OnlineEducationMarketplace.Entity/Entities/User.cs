@@ -18,6 +18,10 @@ namespace OnlineEducationMarketplace.Entity.Entities
         public int RoleId { get; set; }
 
         public string UserBio { get; set; }
+        
+        ICollection<Course> Courses { get; set; }
+
+        ICollection<Review> Reviews { get; set; }
 
     }
 }

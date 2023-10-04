@@ -15,5 +15,9 @@ namespace OnlineEducationMarketplace.Entity.Entities
         public User User { get; set; }
         public string Comment { get; set; }
         public int Point { get; set; }
+
+        ICollection<User> Users { get; set;}
+        ICollection<Course> Courses { get; set;}
+        ICollection<Session> Sessions { get; set;}
     }
 }

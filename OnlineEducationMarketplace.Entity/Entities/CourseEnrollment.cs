@@ -14,7 +14,9 @@ namespace OnlineEducationMarketplace.Entity.Entities
         public Course Course { get; set; }
         public DateTime EnrollmentDate { get; set; }
 
-
+        ICollection<User> Users { get; set; }
+        ICollection<Course> Courses { get; set; }
+        ICollection<Session> Sessions { get; set; }
 
     }
 }

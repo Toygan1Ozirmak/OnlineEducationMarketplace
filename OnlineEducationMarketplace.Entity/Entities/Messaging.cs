@@ -14,5 +14,7 @@ namespace OnlineEducationMarketplace.Entity.Entities
         public string Sender { get; set; }
         public string MessageText { get; set; }
         public DateTime MessageDate { get; set; }
+        
+        ICollection<User> Users { get; set; }
     }
 }

@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace OnlineEducationMarketplace.Entity.Entities
 {
-    public class Instructor
+    public class Session
     {
-        public Guid Id { get; set; }
-        public string InstructorName { get; set; }
-
-        
+       public Guid SessionId { get; set; }
     }
 }

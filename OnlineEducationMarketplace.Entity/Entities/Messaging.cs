@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineEducationMarketplace.Entity.Entities
 {
-    internal class Messaging
+    public class Messaging
     {
     }
 }

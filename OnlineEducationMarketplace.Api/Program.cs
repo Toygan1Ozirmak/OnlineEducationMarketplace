@@ -1,9 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using OnlineEducationMarketplace.Data.NewFolder;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
+
+builder.Services.AddDbContext<RepositoryContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("sqlConnection")));
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

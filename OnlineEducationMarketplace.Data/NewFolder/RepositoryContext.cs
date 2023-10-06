@@ -14,16 +14,14 @@ namespace OnlineEducationMarketplace.Data.NewFolder
             base(options)
         { 
         }
-        public DbSet<Courses> Courses { get; set; }// course olarak değişmesi lazım entitiy
-        public DbSet<Users> Users { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Messaging> Messagings { get; set; }
         public DbSet<Payment> Payments { get; set; }
-        //dbyle farklı entitiyler onların düzeltilmesi laızm
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.ApplyConfiguration(new Courses);
-        //}
-
+        public DbSet<Review> Reviews { get; set; }
+        public DbSet<Session> Sessions { get; set; }
+        public DbSet<CourseEnrollment> CourseEnrollments { get; set; }
+        //dbye yarın karar verelim
 
 
     }

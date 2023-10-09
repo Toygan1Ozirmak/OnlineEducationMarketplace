@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineEducationMarketplace.Data.Repositories
+namespace OnlineEducationMarketplace.Data.Contracts
 {
     public interface IRepositoryBase<T>
     {//CRUD

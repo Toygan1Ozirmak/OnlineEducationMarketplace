@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using OnlineEducationMarketplace.Data.Repositories;
 using OnlineEducationMarketplace.Entity.Entities;
 using System;
 using System.Collections.Generic;
@@ -22,11 +23,12 @@ namespace OnlineEducationMarketplace.Data.NewFolder
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Session> Sessions { get; set; }
         public DbSet<CourseEnrollment> CourseEnrollments { get; set; }
-        //dbye yarın karar verelim
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseSqlServer(Configuration.GetConnectionString("sqlConnection"));
-        //}
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new UserConfig());
+        }
 
 
     }

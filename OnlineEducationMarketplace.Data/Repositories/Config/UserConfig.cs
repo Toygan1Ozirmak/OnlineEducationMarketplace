@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineEducationMarketplace.Data.Repositories
+namespace OnlineEducationMarketplace.Data.Repositories.Config
 {
     public class UserConfig : IEntityTypeConfiguration<User>
     {

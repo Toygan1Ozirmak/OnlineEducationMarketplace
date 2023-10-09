@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using OnlineEducationMarketplace.Data.Repositories;
+using OnlineEducationMarketplace.Data.Repositories.Config;
 using OnlineEducationMarketplace.Entity.Entities;
 using System;
 using System.Collections.Generic;

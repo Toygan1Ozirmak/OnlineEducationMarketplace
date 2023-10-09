@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineEducationMarketplace.Entity.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,13 @@ using System.Threading.Tasks;
 
 namespace OnlineEducationMarketplace.Data.Contracts
 {
-    internal interface IUserRepository
+    public interface IUserRepository : IRepositoryBase<User>
     {
+        IQueryable<User> GetAllUsers(bool trackChanges);
+        IQueryable<User> GetOneUserById(int id,bool trackChanges);
+        void CreateUser(User user);
+        void UpdateUser(User user);
+        void DeleteUser(User user);
+        
     }
 }

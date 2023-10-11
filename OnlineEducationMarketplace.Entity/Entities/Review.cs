@@ -11,7 +11,7 @@ namespace OnlineEducationMarketplace.Entity.Entities
         public Guid ReviewId { get; set; }
         public int CourseId { get; set; }
         public Course Course { get; set; }
-        public int Userİd { get; set; }
+        public int UserId { get; set; }
         public User User { get; set; }
         public string Comment { get; set; }
         public int Point { get; set; }

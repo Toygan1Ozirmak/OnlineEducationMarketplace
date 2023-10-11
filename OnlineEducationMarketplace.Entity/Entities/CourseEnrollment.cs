@@ -8,6 +8,8 @@ namespace OnlineEducationMarketplace.Entity.Entities
 {
     public class CourseEnrollment
     {
+
+        public Guid CourseEnrollmentId { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
         public Course CourseId { get; set; }

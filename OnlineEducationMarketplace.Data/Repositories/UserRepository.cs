@@ -15,16 +15,18 @@ namespace OnlineEducationMarketplace.Data.Repositories
         {
         }
 
-        public void CreateUser(User user) => Create(user);
-
-        public void DeleteUser(User user) => Delete(user);
-
+        
         public IQueryable<User> GetAllUsers(bool trackChanges) => 
             FindAll(trackChanges).OrderBy(x => x.UserId);
 
-        public IQueryable<User> GetOneUserById(int id, bool trackChanges) =>
-            FindByCondition( x => x.UserId.Equals(id),(trackChanges));
+        public IQueryable<User> GetOneUserById(int userId, bool trackChanges) =>
+            FindByCondition( x => x.UserId.Equals(userId),(trackChanges));
+
+        public void CreateUser(User user) => Create(user);
 
         public void UpdateUser(User user) => Update(user);
+
+        public void DeleteUser(User user) => Delete(user);
+
     }
 }

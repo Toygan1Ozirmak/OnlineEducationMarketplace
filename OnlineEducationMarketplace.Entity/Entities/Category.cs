@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace OnlineEducationMarketplace.Entity.Entities
 {
-    public class ProgressTracking
+    public class Category
     {
+        public int CategoryId { get; set; }
+        public int CategoryName { get; set; }
         
     }
 }

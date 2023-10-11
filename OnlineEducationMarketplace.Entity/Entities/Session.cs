@@ -10,7 +10,6 @@ namespace OnlineEducationMarketplace.Entity.Entities
     {
         public Guid SessionId { get; set; }
 
-        ICollection<User> Users { get; set; }
-        ICollection<CourseEnrollment> CourseEnrollments { get; set; }
+       
     }
 }

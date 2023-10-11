@@ -19,9 +19,7 @@ namespace OnlineEducationMarketplace.Entity.Entities
 
         public string UserBio { get; set; }
         
-        ICollection<Course> Courses { get; set; }
-
-        ICollection<Review> Reviews { get; set; }
+        
 
     }
 }

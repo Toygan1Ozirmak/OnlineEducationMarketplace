@@ -23,9 +23,7 @@ namespace OnlineEducationMarketplace.Entity.Entities
         public int UserId { get; set; }
         public User User { get; set; }
 
-        ICollection<User> Users { get; set; }
-        ICollection<Review> Reviews { get; set; }
-        ICollection<CourseEnrollment> CourseEnrollments { get; set; }
+        
 
 
     }

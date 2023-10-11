@@ -29,6 +29,8 @@ namespace OnlineEducationMarketplace.Data.NewFolder
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfig());
+            modelBuilder.ApplyConfiguration(new ReviewConfig());
+            modelBuilder.ApplyConfiguration(new CourseConfig());
         }
 
 

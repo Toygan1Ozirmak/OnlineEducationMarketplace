@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OnlineEducationMarketplace.Data.Repositories
 {
-    public class ReviewRepository : RepositoryBase<Review>, IReviewRepository
+    public class ReviewRepository : RepositoryBase<Review>, IReviewRepository//BURDA YAPILACAKLAR VAR
     {
         public ReviewRepository(RepositoryContext context) : base(context)
         {

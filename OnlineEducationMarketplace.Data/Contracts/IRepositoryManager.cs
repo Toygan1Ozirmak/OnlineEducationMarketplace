@@ -11,6 +11,13 @@ namespace OnlineEducationMarketplace.Data.Contracts
         IUserRepository User { get; }
         ICourseRepository Course { get; }
         IReviewRepository Review { get; }
+
+        ICategoryRepository Category { get; }
+
+        ICourseEnrollmentRepository CourseEnrollment { get; }
+
+        IPaymentRepository Payment { get; }
+
         void Save();
     }
 }

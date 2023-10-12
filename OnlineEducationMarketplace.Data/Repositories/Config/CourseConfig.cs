@@ -14,8 +14,12 @@ namespace OnlineEducationMarketplace.Data.Repositories.Config
         public void Configure(EntityTypeBuilder<Course> builder)
         {
             builder.HasKey(k => k.CourseId);
-            
-            //DATABASE İLİŞKİLERİNİ BAĞLAYIP SENARYO OLUŞTURMAMIZ GEREK
+
+            builder.HasOne(c => c.Category)
+                .WithMany(c => c.Courses)
+                .HasForeignKey(c => c.CategoryId)
+                .OnDelete(DeleteBehavior.Cascade);
+            //bire çok
         }
     }
 }

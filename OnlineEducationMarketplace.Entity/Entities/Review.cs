@@ -8,14 +8,17 @@ namespace OnlineEducationMarketplace.Entity.Entities
 {
     public class Review
     {
-        public Guid ReviewId { get; set; }
-        public int CourseId { get; set; }
-        public Course Course { get; set; }
+        public int ReviewId { get; set; }
+        
+        
         public int UserId { get; set; }
-        public User User { get; set; }
+        
         public string Comment { get; set; }
         public int Point { get; set; }
 
-       
+        //fk
+        public int CourseId { get; set; }
+        //snp
+        public Course Course { get; set;}
     }
 }

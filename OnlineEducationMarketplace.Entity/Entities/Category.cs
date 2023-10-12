@@ -9,7 +9,9 @@ namespace OnlineEducationMarketplace.Entity.Entities
     public class Category
     {
         public int CategoryId { get; set; }
-        public int CategoryName { get; set; }
-        
+        public string CategoryName { get; set; }
+        public string CategoryDescription { get; set; }
+        //cnp
+        public ICollection<Course> Courses { get; set;}
     }
 }

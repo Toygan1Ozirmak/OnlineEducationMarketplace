@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using OnlineEducationMarketplace.Entity.Entities;
 using System;
@@ -9,13 +10,12 @@ using System.Threading.Tasks;
 
 namespace OnlineEducationMarketplace.Data.Repositories.Config
 {
-    public class CourseConfig : IEntityTypeConfiguration<Course>
+    public class CategoryConfig : IEntityTypeConfiguration<Category>
     {
-        public void Configure(EntityTypeBuilder<Course> builder)
+        public void Configure(EntityTypeBuilder<Category> builder)
         {
-            builder.HasKey(k => k.CourseId);
-            
-            //DATABASE İLİŞKİLERİNİ BAĞLAYIP SENARYO OLUŞTURMAMIZ GEREK
+            throw new NotImplementedException();
+            //hasdata
         }
     }
 }

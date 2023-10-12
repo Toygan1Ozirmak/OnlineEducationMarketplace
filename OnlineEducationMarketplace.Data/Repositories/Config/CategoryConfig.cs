@@ -14,8 +14,10 @@ namespace OnlineEducationMarketplace.Data.Repositories.Config
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
-            throw new NotImplementedException();
-            //hasdata
+            builder.HasKey(c => c.CategoryId);
+            builder.HasData(
+                new Category { CategoryName = "mühendislik", CategoryId = 1, CategoryDescription ="mühendsilik alanı" }
+                );
         }
     }
 }

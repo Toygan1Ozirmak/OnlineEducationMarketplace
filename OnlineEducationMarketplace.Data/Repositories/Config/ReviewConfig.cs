@@ -14,7 +14,12 @@ namespace OnlineEducationMarketplace.Data.Repositories.Config
         public void Configure(EntityTypeBuilder<Review> builder)
         {
             builder.HasKey(k => k.ReviewId);
-            
+
+            builder.HasOne(c => c.Course)
+                .WithMany(c => c.Reviews)
+                .HasForeignKey(c => c.CourseId)
+                .OnDelete(DeleteBehavior.Cascade);
+
 
         }
     }

@@ -9,22 +9,23 @@ namespace OnlineEducationMarketplace.Entity.Entities
 {
     public class Course
     {
-        public Guid CourseId { get; set; }
+        public int CourseId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
 
         public TimeSpan CourseLength { get; set; }
-
-        public int CategoryId { get; set; }
-
+        public DateTime CreatedDate { get; set; }
         public string Image { get; set; }
         public bool CourseStatus { get; set; }
 
         public int UserId { get; set; }
-        
+        //fk
+        public int? CategoryId { get; set; }
+        //snp
+        public Category Category { get; set; }
 
-        
-
+        //cnp
+        public ICollection<Review> Reviews { get; set; }
 
     }
 }

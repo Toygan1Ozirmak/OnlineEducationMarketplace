@@ -21,7 +21,7 @@ namespace OnlineEducationMarketplace.Entity.Entities
         public bool CourseStatus { get; set; }
 
         public int UserId { get; set; }
-        public User User { get; set; }
+        
 
         
 

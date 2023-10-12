@@ -32,5 +32,15 @@ namespace OnlineEducationMarketplace.Data.Repositories
         public void DeleteCourseEnrollment(CourseEnrollment courseEnrollment) => Delete(courseEnrollment);
 
         public void UpdateCourseEnrollment(CourseEnrollment courseEnrollment) => Update(courseEnrollment);
+
+        public IQueryable<CourseEnrollment> GetAllCourseEnrollmentByUserId(int userId, bool trackChanges)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<CourseEnrollment> GetAllCourseEnrollmentByCourseId(int courseId, bool trackChanges)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

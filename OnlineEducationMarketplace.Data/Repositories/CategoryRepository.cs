@@ -20,9 +20,15 @@ namespace OnlineEducationMarketplace.Data.Repositories
             throw new NotImplementedException();
         }
 
+        public IQueryable<Category> GetCategoryByCategoryName(int CategoryName, bool trackChanges)
+        {
+            throw new NotImplementedException();
+        }
+
         public IQueryable<Category> GetCoursesByCategoryName(int CategoryName, bool trackChanges)
         {
             throw new NotImplementedException();
         }
+
     }
 }

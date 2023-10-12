@@ -14,6 +14,7 @@ namespace OnlineEducationMarketplace.Data.Repositories.Config
         public void Configure(EntityTypeBuilder<Review> builder)
         {
             builder.HasKey(k => k.ReviewId);
+            
 
         }
     }

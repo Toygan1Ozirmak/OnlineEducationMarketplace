@@ -11,6 +11,7 @@ namespace OnlineEducationMarketplace.Data.Contracts
     {
         IQueryable<Category> GetAllCategories(bool trackChanges);
         IQueryable<Category> GetCoursesByCategoryName(int CategoryName, bool trackChanges);
+        IQueryable<Category> GetCategoryByCategoryName(int CategoryName, bool trackChanges);
 
         
 

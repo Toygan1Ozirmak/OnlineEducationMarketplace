@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineEducationMarketplace.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineEducationMarketplace.Core", "OnlineEducationMarketplace.Core\OnlineEducationMarketplace.Core.csproj", "{9D7CB345-4125-4278-8809-AB62E7D4CC17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OEMAP.Api", "OEMAP.Api\OEMAP.Api.csproj", "{E8792732-486C-460C-91E5-71528AE32CB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OEMAP.Api", "OEMAP.Api\OEMAP.Api.csproj", "{E8792732-486C-460C-91E5-71528AE32CB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineEducationMarketplace.Services", "OnlineEducationMarketplace.Services\OnlineEducationMarketplace.Services.csproj", "{CDAD8FE8-4D5D-45AF-B2D1-253F17091C51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{E8792732-486C-460C-91E5-71528AE32CB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8792732-486C-460C-91E5-71528AE32CB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8792732-486C-460C-91E5-71528AE32CB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDAD8FE8-4D5D-45AF-B2D1-253F17091C51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDAD8FE8-4D5D-45AF-B2D1-253F17091C51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDAD8FE8-4D5D-45AF-B2D1-253F17091C51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDAD8FE8-4D5D-45AF-B2D1-253F17091C51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

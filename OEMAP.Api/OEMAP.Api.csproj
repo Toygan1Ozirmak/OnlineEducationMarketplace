@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OnlineEducationMarketplace.Data\OnlineEducationMarketplace.Data.csproj" />
+    <ProjectReference Include="..\OnlineEducationMarketplace.Services\OnlineEducationMarketplace.Services.csproj" />
   </ItemGroup>
 
 </Project>

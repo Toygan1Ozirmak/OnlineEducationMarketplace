@@ -18,8 +18,10 @@ namespace OnlineEducationMarketplace.Entity.Entities
         public string Image { get; set; }
         public bool CourseStatus { get; set; }
 
-        public int UserId { get; set; }
+
         //fk
+
+        public int UserId { get; set; }
         public int? CategoryId { get; set; }
         //snp
         public Category Category { get; set; }

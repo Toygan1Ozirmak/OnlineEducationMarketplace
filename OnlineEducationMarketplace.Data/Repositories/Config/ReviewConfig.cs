@@ -20,6 +20,11 @@ namespace OnlineEducationMarketplace.Data.Repositories.Config
                 .HasForeignKey(c => c.CourseId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            builder.HasOne(c => c.User)
+                .WithMany(c => c.Reviews)
+                .HasForeignKey(c => c.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
 
         }
     }

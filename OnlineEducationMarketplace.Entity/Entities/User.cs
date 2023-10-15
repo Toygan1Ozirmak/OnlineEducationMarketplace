@@ -8,7 +8,7 @@ namespace OnlineEducationMarketplace.Entity.Entities
 {
     public class User
     {
-        public Guid UserId { get; set; }
+        public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -18,8 +18,11 @@ namespace OnlineEducationMarketplace.Entity.Entities
         public int RoleId { get; set; }
 
         public string UserBio { get; set; }
-        
-        
+
+        public int CourseId { get; set; }
+        //cnp
+        public ICollection<Review> Reviews { get; set; }
+
 
     }
 }

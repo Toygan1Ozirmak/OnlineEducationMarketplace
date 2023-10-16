@@ -15,20 +15,11 @@ namespace OnlineEducationMarketplace.Data.Repositories
         {
         }
 
-        public IQueryable<Category> GetAllCategories(bool trackChanges)
-        {
-            throw new NotImplementedException();
-        }
+        public IQueryable<Category> GetAllCategories(bool trackChanges) =>
+            FindAll(trackChanges).OrderBy(x => x.CategoryId);
 
-        public IQueryable<Category> GetCategoryByCategoryName(int CategoryName, bool trackChanges)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<Category> GetCoursesByCategoryName(int CategoryName, bool trackChanges)
-        {
-            throw new NotImplementedException();
-        }
+        public IQueryable<Category> GetCategoryByCategoryId(int categoryId, bool trackChanges) =>
+            FindByCondition(x => x.CategoryId.Equals(categoryId), trackChanges);
 
     }
 }

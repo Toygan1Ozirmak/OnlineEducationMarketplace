@@ -9,5 +9,16 @@ namespace OnlineEducationMarketplace.Services.Contracts
     public interface IServiceManager
     {
         ICourseService CourseService { get; }
+
+        IUserService UserService { get; }
+
+        IReviewService ReviewService { get; }
+
+        ICourseEnrollmentService CourseEnrollmentService { get; }
+
+        ICategoryService CategoryService { get; }
+
+        IPaymentService PaymentService { get; }
+        
     }
 }

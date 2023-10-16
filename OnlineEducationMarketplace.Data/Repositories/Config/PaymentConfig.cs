@@ -13,7 +13,14 @@ namespace OnlineEducationMarketplace.Data.Repositories.Config
     {
         public void Configure(EntityTypeBuilder<Payment> builder)
         {
-            builder.HasKey(c => c.TransactionId);
+            builder.HasKey(c => c.PaymentId);
+            builder.Property(c => c.Amount).IsRequired();
+            builder.Property(c => c.CardDate).IsRequired();
+            builder.Property(c => c.CardNumber).IsRequired();
+            builder.Property(c => c.CVC).IsRequired();
+            builder.Property(c => c.PaymentDate)
+                .HasDefaultValueSql("GETDATE()");
+
         }
     }
 }

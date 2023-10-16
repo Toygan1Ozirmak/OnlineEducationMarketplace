@@ -8,15 +8,17 @@ namespace OnlineEducationMarketplace.Entity.Entities
 {
     public class Payment
     {
-        public Guid TransactionId { get; set; }
-
-        public int UserId { get; set; }
-        public User User { get; set; }
-        public int CourseId { get; set; }
-        public Course Course { get; set; }
-        public DateTime TransactionDate { get; set; }
+        public int PaymentId { get; set; }
         public int Amount { get; set; }
-        public bool PaymentStatus { get; set; }
+        public int CardNumber { get; set; }
+        public int CVC { get; set; }
+        public DateTime CardDate { get; set; }
+        public DateTime PaymentDate { get; set; }
+
+        //fk
+        public int UserId { get; set; }
+        //snp
+        public User User { get; set; }
 
         
 

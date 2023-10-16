@@ -22,6 +22,7 @@ namespace OnlineEducationMarketplace.Entity.Entities
         
         //cnp
         public ICollection<Review> Reviews { get; set; }
+        public ICollection<Payment> Payments { get; set; }
         public ICollection<CourseEnrollment> CourseEnrollments { get; set; }
 
     }

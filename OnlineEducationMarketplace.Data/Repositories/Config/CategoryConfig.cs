@@ -16,7 +16,13 @@ namespace OnlineEducationMarketplace.Data.Repositories.Config
         {
             builder.HasKey(c => c.CategoryId);
             builder.HasData(
-                new Category { CategoryName = "mühendislik", CategoryId = 1, CategoryDescription ="mühendsilik alanı" }
+                new Category { CategoryName = "Psikolji", CategoryId = 1, CategoryDescription ="mühendsilik alanı" },
+                new Category { CategoryName = "Mühendislik", CategoryId = 2, CategoryDescription ="mühendsilik alanı" },
+                new Category { CategoryName = "Dil", CategoryId = 3, CategoryDescription ="mühendsilik alanı" },
+                new Category { CategoryName = "Güzel Sanatlar", CategoryId = 4, CategoryDescription ="mühendsilik alanı" },
+                new Category { CategoryName = "Finans", CategoryId = 5, CategoryDescription ="mühendsilik alanı" },
+                new Category { CategoryName = "Bilim", CategoryId = 6, CategoryDescription ="mühendsilik alanı" }
+                
                 );
         }
     }

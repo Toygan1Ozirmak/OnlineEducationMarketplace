@@ -19,10 +19,10 @@ namespace OnlineEducationMarketplace.Entity.Entities
 
         public string UserBio { get; set; }
 
-        public int CourseId { get; set; }
+        
         //cnp
         public ICollection<Review> Reviews { get; set; }
-
+        public ICollection<CourseEnrollment> CourseEnrollments { get; set; }
 
     }
 }

@@ -20,6 +20,13 @@ namespace OnlineEducationMarketplace.Data.Repositories.Config
                 .HasForeignKey(c => c.CategoryId)
                 .OnDelete(DeleteBehavior.Cascade);
             //bire çok
+
+
+
+            builder.Property(c => c.Category).IsRequired();
+            builder.Property(c => c.Title).IsRequired();
+            builder.Property(c => c.Description).IsRequired();
+
         }
     }
 }

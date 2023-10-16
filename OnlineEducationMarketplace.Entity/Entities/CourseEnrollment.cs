@@ -9,12 +9,19 @@ namespace OnlineEducationMarketplace.Entity.Entities
     public class CourseEnrollment
     {
 
-        public Guid CourseEnrollmentId { get; set; }
-        public int UserId { get; set; }
-        public User User { get; set; }
-        public Course CourseId { get; set; }
-        public Course Course { get; set; }
+        public int CourseEnrollmentId { get; set; }
+        
         public DateTime EnrollmentDate { get; set; }
+
+
+        //fk
+        public int UserId { get; set; }
+        public int CourseId { get; set; }
+
+        //snp
+        public Course Course { get; set; }
+        public User User { get; set; }
+        
 
        
 

@@ -21,13 +21,14 @@ namespace OnlineEducationMarketplace.Entity.Entities
 
         //fk
 
-        public int UserId { get; set; }
+        
         public int? CategoryId { get; set; }
         //snp
         public Category Category { get; set; }
 
         //cnp
         public ICollection<Review> Reviews { get; set; }
+        public ICollection<CourseEnrollment> CourseEnrollments { get; set; }
 
     }
 }

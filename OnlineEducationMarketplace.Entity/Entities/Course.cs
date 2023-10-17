@@ -22,7 +22,7 @@ namespace OnlineEducationMarketplace.Entity.Entities
         //fk
 
         
-        public int? CategoryId { get; set; }
+        public int CategoryId { get; set; }
         //snp
         public Category Category { get; set; }
 

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using OnlineEducationMarketplace.Data.Contracts;
+using OnlineEducationMarketplace.Entity.Entities;
+using OnlineEducationMarketplace.Services.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +13,7 @@ namespace OnlineEducationMarketplace.Services
     {
         private readonly IRepositoryManager _manager;
 
-        public CourseManager(IRepositoryManager manager)
+        public UserManager(IRepositoryManager manager)
         {
             _manager = manager;
         }
@@ -24,23 +27,24 @@ namespace OnlineEducationMarketplace.Services
 
         public void DeleteUser(int userId, bool trackChanges)
         {
-            _manager.User.DeleteUser(courseId, trackChanges);
+            _manager.User.GetUserByUserId(userId, trackChanges);
             _manager.Save();
         }
 
-        public User GetUserByUserId(int userId)
+        public User GetUserByUserId(int userId, bool trackChanges)
         {
             return _manager.User.GetUserByUserId(userId, trackChanges);
         }
 
-        public IEnumerable<User> GetUser(bool trackChanges)
+        public IEnumerable<User> GetAllUsers(bool trackChanges)
         {
-            return _manager.User.GetUser(trackChanges);
+            return _manager.User.GetAllUsers(trackChanges);
         }
 
-        public void UpdateUser(int userId, Course course)
+        public void UpdateUser(int userId, User user, bool trackChanges)
         {
-            _manager.User.Update(userId, course);
+            _manager.User.GetUserByUserId(userId, trackChanges);
+            _manager.User.UpdateUser(user);
             _manager.Save();
         }
     }

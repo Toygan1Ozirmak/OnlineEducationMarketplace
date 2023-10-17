@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineEducationMarketplace.Entity.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,14 +9,14 @@ namespace OnlineEducationMarketplace.Services.Contracts
 {
     public interface IUserService
     {
-        IEnumerable<User>GetUsers(bool trackChanges);
+        IEnumerable<User>GetAllUsers(bool trackChanges);
         
         User GetUserByUserId(int userId,bool trackChanges);
 
         User CreateUser(User user);
 
-        void UpdateUser(int courseId, Course course);
+        void UpdateUser(int userId, User user, bool trackChanges);
 
-        void DeleteUser(int courseId, bool trackChanges);
+        void DeleteUser(int userId, bool trackChanges);
     }
 }

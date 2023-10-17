@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineEducationMarketplace.Entity.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,9 @@ namespace OnlineEducationMarketplace.Services.Contracts
     {
         IEnumerable<CourseEnrollment> GetAllCourseEnrollments(bool trackChanges);
 
-        CourseEnrollment GetCourseEnrollmentsByCourseId(int courseId, bool trackChanges);
+        CourseEnrollment GetCourseEnrollmentByCourseId(int courseId, bool trackChanges);
 
-        CourseEnrollment GetCourseEnrollmentsByUserId(int userId, bool trackChanges);
+        CourseEnrollment GetCourseEnrollmentByUserId(int userId, bool trackChanges);
 
         CourseEnrollment CreateCourseEnrollment(CourseEnrollment courseEnrollment);
 

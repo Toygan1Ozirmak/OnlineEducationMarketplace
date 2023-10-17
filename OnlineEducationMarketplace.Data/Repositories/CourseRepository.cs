@@ -19,8 +19,9 @@ namespace OnlineEducationMarketplace.Data.Repositories
         public IQueryable<Course> GetAllCourses(bool trackChanges) =>
             FindAll(trackChanges).OrderBy(x => x.CourseId);
 
-        public IQueryable<Course> GetCourseByCourseId(int courseId, bool trackChanges) =>
-            FindByCondition(x => x.CourseId.Equals(courseId), trackChanges);
+        public Course GetCourseByCourseId(int courseId, bool trackChanges) =>
+            FindByCondition(x => x.CourseId.Equals(courseId), trackChanges)
+                .SingleOrDefault();
 
         
 

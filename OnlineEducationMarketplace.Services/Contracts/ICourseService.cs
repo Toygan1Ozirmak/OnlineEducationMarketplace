@@ -9,13 +9,13 @@ namespace OnlineEducationMarketplace.Services.Contracts
 {
     public interface ICourseService
     {
-        IEnumerable<Course> GetCourses(bool trackChanges);
+        IEnumerable<Course> GetAllCourses(bool trackChanges);
 
         Course GetCourseByCourseId(int courseId, bool trackChanges);
 
         Course CreateCourse(Course course);
 
-        void UpdateCourse(int courseId, Course course);
+        void UpdateCourse(int courseId, Course course, bool trackChanges);
 
         void DeleteCourse(int courseId, bool trackChanges);
 

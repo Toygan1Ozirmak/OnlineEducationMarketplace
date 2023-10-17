@@ -28,16 +28,17 @@ namespace OnlineEducationMarketplace.Data.Repositories
             _paymentRepository = new Lazy<IPaymentRepository>(() => new PaymentRepository(_context));
 
         }
-        public IUserRepository User => new UserRepository(_context);
-        public ICourseRepository Course => new CourseRepository(_context);
+        public IUserRepository User => _userRepository.Value;
 
-        public IReviewRepository Review => new ReviewRepository(_context);
+        public ICourseRepository Course => _courseRepository.Value;
 
-        public ICategoryRepository Category => new CategoryRepository(_context);
+        public IReviewRepository Review => _reviewRepository.Value;
 
-        public ICourseEnrollmentRepository CourseEnrollment=> new CourseEnrollmentRepository(_context);
+        public ICategoryRepository Category => _categoryRepository.Value;
 
-        public IPaymentRepository Payment => new PaymentRepository(_context);
+        public ICourseEnrollmentRepository CourseEnrollment=> _courseEnrollmentRepository.Value;
+
+        public IPaymentRepository Payment => _paymentRepository.Value;
 
         public void Save()
         {

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using OnlineEducationMarketplace.Data.Contracts;
+using OnlineEducationMarketplace.Entity.Entities;
+using OnlineEducationMarketplace.Services.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

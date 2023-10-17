@@ -18,6 +18,8 @@ namespace OnlineEducationMarketplace.Data.NewFolder
         { 
         }
         public DbSet<Course> Courses { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Messaging> Messagings { get; set; }
         public DbSet<Payment> Payments { get; set; }
@@ -31,6 +33,10 @@ namespace OnlineEducationMarketplace.Data.NewFolder
             modelBuilder.ApplyConfiguration(new UserConfig());
             modelBuilder.ApplyConfiguration(new ReviewConfig());
             modelBuilder.ApplyConfiguration(new CourseConfig());
+            modelBuilder.ApplyConfiguration(new CourseEnrollmentConfig());
+            modelBuilder.ApplyConfiguration(new CategoryConfig());
+            modelBuilder.ApplyConfiguration(new PaymentConfig());
+
         }
 
 

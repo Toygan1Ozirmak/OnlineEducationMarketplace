@@ -22,7 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OnlineEducationMarketplace.Core\OnlineEducationMarketplace.Core.csproj" />
     <ProjectReference Include="..\OnlineEducationMarketplace.Data\OnlineEducationMarketplace.Data.csproj" />
+    <ProjectReference Include="..\OnlineEducationMarketplace.Entity\OnlineEducationMarketplace.Entity.csproj" />
     <ProjectReference Include="..\OnlineEducationMarketplace.Services\OnlineEducationMarketplace.Services.csproj" />
   </ItemGroup>
 

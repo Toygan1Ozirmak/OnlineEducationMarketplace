@@ -25,6 +25,6 @@ namespace OnlineEducationMarketplace.Data.Contracts
         void CreateCourseEnrollment(CourseEnrollment courseEnrollment);
         void UpdateCourseEnrollment(CourseEnrollment courseEnrollment);
         void DeleteCourseEnrollment(CourseEnrollment courseEnrollment);
-
+        CourseEnrollment GetCourseEnrollmentByUserId(int userId, object trackChanges);
     }
 }

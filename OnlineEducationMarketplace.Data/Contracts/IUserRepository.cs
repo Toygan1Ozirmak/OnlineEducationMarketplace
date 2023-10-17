@@ -10,7 +10,7 @@ namespace OnlineEducationMarketplace.Data.Contracts
     public interface IUserRepository : IRepositoryBase<User>
     {
         IQueryable<User> GetAllUsers(bool trackChanges);
-        IQueryable<User> GetOneUserById(int userId,bool trackChanges);
+        User GetUserByUserId(int userId,bool trackChanges);
         void CreateUser(User user);
         void UpdateUser(User user);
         void DeleteUser(User user);

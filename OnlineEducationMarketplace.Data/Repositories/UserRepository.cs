@@ -19,8 +19,9 @@ namespace OnlineEducationMarketplace.Data.Repositories
         public IQueryable<User> GetAllUsers(bool trackChanges) => 
             FindAll(trackChanges).OrderBy(x => x.UserId);
 
-        public IQueryable<User> GetOneUserById(int userId, bool trackChanges) =>
-            FindByCondition( x => x.UserId.Equals(userId),(trackChanges));
+        public User GetUserByUserId(int userId, bool trackChanges) =>
+            FindByCondition(x => x.UserId.Equals(userId), (trackChanges))
+                .SingleOrDefault();
 
         public void CreateUser(User user) => Create(user);
 

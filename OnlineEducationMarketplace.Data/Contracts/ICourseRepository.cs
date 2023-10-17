@@ -11,7 +11,7 @@ namespace OnlineEducationMarketplace.Data.Contracts
     public interface ICourseRepository : IRepositoryBase<Course>
     {
         IQueryable<Course> GetAllCourses(bool trackChanges);
-        IQueryable<Course> GetCourseByCourseId(int courseId, bool trackChanges);
+        Course GetCourseByCourseId(int courseId, bool trackChanges);
 
         //getcoursebycategoryıd
         void CreateCourse(Course course);

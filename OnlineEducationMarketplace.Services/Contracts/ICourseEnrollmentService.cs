@@ -11,9 +11,11 @@ namespace OnlineEducationMarketplace.Services.Contracts
     {
         IEnumerable<CourseEnrollment> GetAllCourseEnrollments(bool trackChanges);
 
-        CourseEnrollment GetCourseEnrollmentByCourseId(int courseId, bool trackChanges);
+        IQueryable<CourseEnrollment> GetCourseEnrollmentsByCourseId(int courseId, bool trackChanges);
 
-        CourseEnrollment GetCourseEnrollmentByUserId(int userId, bool trackChanges);
+        IQueryable<CourseEnrollment> GetCourseEnrollmentsByUserId(int userId, bool trackChanges);
+
+        CourseEnrollment GetCourseEnrollmentByCourseEnrollmentId(int courseEnrollmentId, bool trackChanges);
 
         CourseEnrollment CreateCourseEnrollment(CourseEnrollment courseEnrollment);
 

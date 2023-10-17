@@ -13,9 +13,9 @@ namespace OnlineEducationMarketplace.Data.Contracts
         IQueryable<Course> GetAllCourses(bool trackChanges);
         Course GetCourseByCourseId(int courseId, bool trackChanges);
 
-        Course GetCourseByCategoryId(int categoryId, bool trackChanges);
+        IQueryable<Course> GetCoursesByCategoryId(int categoryId, bool trackChanges);
 
-        //getcoursebycategoryıd
+        
         void CreateCourse(Course course);
         void UpdateCourse(Course course);
         void DeleteCourse(Course course);

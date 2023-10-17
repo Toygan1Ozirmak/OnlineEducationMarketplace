@@ -24,14 +24,19 @@ namespace OnlineEducationMarketplace.Services
         }
 
         
-        public CourseEnrollment GetCourseEnrollmentByUserId(int userId, bool trackChanges)
+        public IQueryable<CourseEnrollment> GetCourseEnrollmentsByUserId(int userId, bool trackChanges)
         {
-            return _manager.CourseEnrollment.GetCourseEnrollmentByUserId(userId, trackChanges);
+            return _manager.CourseEnrollment.GetCourseEnrollmentsByUserId(userId, trackChanges);
         }
 
-        public CourseEnrollment GetCourseEnrollmentByCourseId(int courseId, bool trackChanges)
+        public IQueryable<CourseEnrollment> GetCourseEnrollmentsByCourseId(int courseId, bool trackChanges)
         {
-            return _manager.CourseEnrollment.GetCourseEnrollmentByCourseId(courseId, trackChanges);
+            return _manager.CourseEnrollment.GetCourseEnrollmentsByCourseId(courseId, trackChanges);
+        }
+
+        public CourseEnrollment GetCourseEnrollmentsByCourseEnrollmentId(int courseEnrollmentId, bool trackChanges)
+        {
+            return _manager.CourseEnrollment.GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, trackChanges);
         }
 
         public CourseEnrollment CreateCourseEnrollment(CourseEnrollment courseEnrollment)
@@ -43,13 +48,13 @@ namespace OnlineEducationMarketplace.Services
 
         public void DeleteCourseEnrollment(int courseEnrollmentId, bool trackChanges)
         {
-            _manager.CourseEnrollment.GetCourseEnrollmentByUserId(courseEnrollmentId, trackChanges);
+            _manager.CourseEnrollment.GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, trackChanges);
             _manager.Save();
         }
 
         public void UpdateCourseEnrollment(int courseEnrollmentId, CourseEnrollment courseEnrollment, bool trackChanges)
         {
-            _manager.CourseEnrollment.GetCourseEnrollmentByCourseId(courseEnrollmentId, trackChanges);
+            _manager.CourseEnrollment.GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, trackChanges);
             _manager.CourseEnrollment.UpdateCourseEnrollment(courseEnrollment);
             _manager.Save();
         }

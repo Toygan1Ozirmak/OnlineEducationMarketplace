@@ -23,9 +23,9 @@ namespace OnlineEducationMarketplace.Data.Repositories
             FindByCondition(x => x.CourseId.Equals(courseId), trackChanges)
                 .SingleOrDefault();
 
-        public Course GetCourseByCategoryId(int categoryId, bool trackChanges) =>
-            FindByCondition(x => x.CategoryId.Equals(categoryId), trackChanges)
-                .SingleOrDefault();
+        public IQueryable<Course> GetCoursesByCategoryId(int categoryId, bool trackChanges) =>
+            FindByCondition(x => x.CategoryId.Equals(categoryId), trackChanges);
+                
 
 
 

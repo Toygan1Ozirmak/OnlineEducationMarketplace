@@ -11,8 +11,10 @@ namespace OnlineEducationMarketplace.Services.Contracts
     {
         IEnumerable<Review> GetAllReviews(bool trackChanges);
 
-        
-        Review GetReviewByCourseId(int courseId, bool trackChanges);
+
+        IEnumerable<Review> GetReviewsByCourseId(int courseId, bool trackChanges);
+
+        Review GetReviewByReviewId(int reviewId, bool trackChanges);
 
         Review CreateReview(Review review);
 

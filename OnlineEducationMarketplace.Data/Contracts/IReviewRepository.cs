@@ -12,8 +12,10 @@ namespace OnlineEducationMarketplace.Data.Contracts
         
         IQueryable<Review> GetAllReviews(bool trackChanges);
 
-        
-        Review GetReviewByCourseId(int courseId, bool trackChanges);
+
+        IQueryable<Review> GetReviewsByCourseId(int courseId, bool trackChanges);
+
+        Review GetReviewByReviewId(int reviewId, bool trackChanges);
 
 
 

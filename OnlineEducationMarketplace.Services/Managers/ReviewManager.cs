@@ -27,14 +27,20 @@ namespace OnlineEducationMarketplace.Services.Contracts
 
         public void DeleteReview(int reviewId, bool trackChanges)
         {
-            _manager.Review.GetReviewByCourseId(reviewId, trackChanges);
+            _manager.Review.GetReviewByReviewId(reviewId, trackChanges);
             _manager.Save();
         }
 
-        
-        public Review GetReviewByCourseId(int courseId, bool trackChanges)
+        public Review GetReviewByReviewId(int reviewId, bool trackChanges)
         {
-            return _manager.Review.GetReviewByCourseId(courseId, trackChanges);
+            return _manager.Review.GetReviewByReviewId(reviewId, trackChanges);
+            
+        }
+
+
+        public IEnumerable<Review> GetReviewsByCourseId(int courseId, bool trackChanges)
+        {
+            return _manager.Review.GetReviewsByCourseId(courseId, trackChanges);
         }
 
         public IEnumerable<Review> GetAllReviews(bool trackChanges)
@@ -44,7 +50,7 @@ namespace OnlineEducationMarketplace.Services.Contracts
 
         public void UpdateReview(int reviewId, Review review, bool trackChanges)
         {
-            _manager.Review.GetReviewByCourseId(reviewId, trackChanges);
+            _manager.Review.GetReviewByReviewId(reviewId, trackChanges);
             _manager.Review.UpdateReview(review);
             _manager.Save();
         }

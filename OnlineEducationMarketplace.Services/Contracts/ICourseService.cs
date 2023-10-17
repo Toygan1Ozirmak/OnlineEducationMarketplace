@@ -13,7 +13,7 @@ namespace OnlineEducationMarketplace.Services.Contracts
 
         Course GetCourseByCourseId(int courseId, bool trackChanges);
 
-        Course GetCourseByCategoryId(int categoryId, bool trackChanges);
+        IEnumerable<Course> GetCoursesByCategoryId(int categoryId, bool trackChanges);
 
         Course CreateCourse(Course course);
 

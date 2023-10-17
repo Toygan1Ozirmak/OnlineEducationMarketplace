@@ -1,4 +1,7 @@
-﻿using System;
+﻿using OnlineEducationMarketplace.Data.Contracts;
+using OnlineEducationMarketplace.Entity.Entities;
+using OnlineEducationMarketplace.Services.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,28 +27,25 @@ namespace OnlineEducationMarketplace.Services.Contracts
 
         public void DeleteReview(int reviewId, bool trackChanges)
         {
-            _manager.Review.DeleteReview(reviewId, trackChanges);
+            _manager.Review.GetReviewByCourseId(reviewId, trackChanges);
             _manager.Save();
         }
 
-        public Review GetReviewByUserId(int userId)
-        {
-            return _manager.Review.GetReviewByUserId(userId, trackChanges);
-        }
-
-        public Review GetReviewByCourseId(int courseId)
+        
+        public Review GetReviewByCourseId(int courseId, bool trackChanges)
         {
             return _manager.Review.GetReviewByCourseId(courseId, trackChanges);
         }
 
-        public IEnumerable<Review> GetReviews(bool trackChanges)
+        public IEnumerable<Review> GetAllReviews(bool trackChanges)
         {
-            return _manager.Review.GetReviews(trackChanges);
+            return _manager.Review.GetAllReviews(trackChanges);
         }
 
-        public void UpdateReview(int reviewId, Review review)
+        public void UpdateReview(int reviewId, Review review, bool trackChanges)
         {
-            _manager.Review.Update(reviewId, review);
+            _manager.Review.GetReviewByCourseId(reviewId, trackChanges);
+            _manager.Review.UpdateReview(review);
             _manager.Save();
         }
     }

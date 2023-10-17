@@ -12,19 +12,16 @@ namespace OnlineEducationMarketplace.Data.Contracts
         //bütün kurs katılımlarını görüntüler
         IQueryable<CourseEnrollment> GetAllCourseEnrollments(bool trackChanges);
 
-        //bir kullanıcının tüm katılımlarını görüntüler
-        IQueryable<CourseEnrollment> GetAllCourseEnrollmentByUserId(int userId, bool trackChanges);
+        //kullanıcının kendi kurs kayıtlarını görüntülemesi için
+        CourseEnrollment GetCourseEnrollmentByUserId(int userId, bool trackChanges);
 
-        //bir kursun bütün katılımlarını görüntüler
-        IQueryable<CourseEnrollment> GetAllCourseEnrollmentByCourseId(int courseId, bool trackChanges);
-
-        //kurs ve idye göre belirli bir kursu veya belirli bir katılımcıyı görüntüler
-        IQueryable<CourseEnrollment> GetCourseEnrollmentByUserIdAndCourseId(int userId, int courseId, bool trackChanges);
+        //bir kursa katılanların görüntülenmesi için
+        CourseEnrollment GetCourseEnrollmentByCourseId(int courseId, bool trackChanges);
 
         
         void CreateCourseEnrollment(CourseEnrollment courseEnrollment);
         void UpdateCourseEnrollment(CourseEnrollment courseEnrollment);
         void DeleteCourseEnrollment(CourseEnrollment courseEnrollment);
-        CourseEnrollment GetCourseEnrollmentByUserId(int userId, object trackChanges);
+        
     }
 }

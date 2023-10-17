@@ -18,19 +18,12 @@ namespace OnlineEducationMarketplace.Services
             _manager = manager;
         }
 
-        public CourseEnrollment CreateCourseEnrollment(CourseEnrollment courseEnrollment)
+        public IEnumerable<CourseEnrollment> GetAllCourseEnrollments(bool trackChanges)
         {
-            _manager.CourseEnrollment.CreateCourseEnrollment(courseEnrollment);
-            _manager.Save();
-            return courseEnrollment;
+            return _manager.CourseEnrollment.GetAllCourseEnrollments(trackChanges);
         }
 
-        public void DeleteCourseEnrollment(int courseEnrollmentId, bool trackChanges)
-        {
-            _manager.CourseEnrollment.DeleteCourseEnrollment(courseEnrollmentId, trackChanges);
-            _manager.Save();
-        }
-
+        
         public CourseEnrollment GetCourseEnrollmentByUserId(int userId, bool trackChanges)
         {
             return _manager.CourseEnrollment.GetCourseEnrollmentByUserId(userId, trackChanges);
@@ -41,14 +34,23 @@ namespace OnlineEducationMarketplace.Services
             return _manager.CourseEnrollment.GetCourseEnrollmentByCourseId(courseId, trackChanges);
         }
 
-        public IEnumerable<CourseEnrollment> GetAllCourseEnrollments(bool trackChanges)
+        public CourseEnrollment CreateCourseEnrollment(CourseEnrollment courseEnrollment)
         {
-            return _manager.CourseEnrollment.GetAllCourseEnrollments(trackChanges);
+            _manager.CourseEnrollment.CreateCourseEnrollment(courseEnrollment);
+            _manager.Save();
+            return courseEnrollment;
         }
 
-        public void UpdateCourseEnrollment(int courseEnrollmentId, CourseEnrollment courseEnrollment)
+        public void DeleteCourseEnrollment(int courseEnrollmentId, bool trackChanges)
         {
-            _manager.CourseEnrollment.UpdateCourseEnrollment(courseEnrollmentId, courseEnrollment);
+            _manager.CourseEnrollment.GetCourseEnrollmentByUserId(courseEnrollmentId, trackChanges);
+            _manager.Save();
+        }
+
+        public void UpdateCourseEnrollment(int courseEnrollmentId, CourseEnrollment courseEnrollment, bool trackChanges)
+        {
+            _manager.CourseEnrollment.GetCourseEnrollmentByCourseId(courseEnrollmentId, trackChanges);
+            _manager.CourseEnrollment.UpdateCourseEnrollment(courseEnrollment);
             _manager.Save();
         }
     }

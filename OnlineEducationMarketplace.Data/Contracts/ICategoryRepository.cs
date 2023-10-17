@@ -10,8 +10,15 @@ namespace OnlineEducationMarketplace.Data.Contracts
     public interface ICategoryRepository : IRepositoryBase<Category>
     {
         IQueryable<Category> GetAllCategories(bool trackChanges);
-        IQueryable<Category> GetCategoryByCategoryId(int categoryId, bool trackChanges);
-        
+
+        Category GetCategoryByCategoryId(int categoryId, bool trackChanges);
+
+        void CreateCategory(Category category);
+        void UpdateCategory(Category category);
+        void DeleteCategory(Category category);
+
+
+
 
     }
 }

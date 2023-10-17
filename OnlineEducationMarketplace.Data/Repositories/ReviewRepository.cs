@@ -18,11 +18,9 @@ namespace OnlineEducationMarketplace.Data.Repositories
         public IQueryable<Review> GetAllReviews(bool trackChanges) =>
             FindAll(trackChanges).OrderBy(x => x.ReviewId);
 
-        public IQueryable<Review> GetReviewByCourseId(int courseId, bool trackChanges) =>
-            FindByCondition(x => x.CourseId.Equals(courseId), trackChanges);
-
-        public IQueryable<Review> GetReviewByUserId(int userId, bool trackChanges) =>
-            FindByCondition(x => x.UserId.Equals(userId), trackChanges);
+        public Review GetReviewByCourseId(int courseId, bool trackChanges) =>
+            FindByCondition(x => x.CourseId.Equals(courseId), trackChanges)
+                .SingleOrDefault();
 
         
         public void CreateReview(Review review) => Create(review);

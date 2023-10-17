@@ -17,7 +17,7 @@ namespace OnlineEducationMarketplace.Services.Contracts
 
         CourseEnrollment CreateCourseEnrollment(CourseEnrollment courseEnrollment);
 
-        void UpdateCourseEnrollment(int courseEnrollmentId, CourseEnrollment courseEnrollment);
+        void UpdateCourseEnrollment(int courseEnrollmentId, CourseEnrollment courseEnrollment, bool trackChanges);
 
         void DeleteCourseEnrollment(int courseEnrollmentId, bool trackChanges);
     }

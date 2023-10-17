@@ -19,6 +19,7 @@ namespace OnlineEducationMarketplace.Services.Contracts
         ICategoryService CategoryService { get; }
 
         IPaymentService PaymentService { get; }
+
         
     }
 }

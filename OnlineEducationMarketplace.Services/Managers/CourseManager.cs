@@ -36,6 +36,11 @@ namespace OnlineEducationMarketplace.Services
             return _manager.Course.GetCourseByCourseId(courseId, trackChanges);
         }
 
+        public Course GetCourseByCategoryId(int courseId, bool trackChanges)
+        {
+            return _manager.Course.GetCourseByCourseId(courseId, trackChanges);
+        }
+
         public IEnumerable<Course> GetAllCourses(bool trackChanges)
         {
             return _manager.Course.GetAllCourses(trackChanges);

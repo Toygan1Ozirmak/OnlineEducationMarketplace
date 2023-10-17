@@ -18,8 +18,14 @@ namespace OnlineEducationMarketplace.Data.Repositories
         public IQueryable<Category> GetAllCategories(bool trackChanges) =>
             FindAll(trackChanges).OrderBy(x => x.CategoryId);
 
-        public IQueryable<Category> GetCategoryByCategoryId(int categoryId, bool trackChanges) =>
-            FindByCondition(x => x.CategoryId.Equals(categoryId), trackChanges);
+        public Category GetCategoryByCategoryId(int categoryId, bool trackChanges) =>
+            FindByCondition(x => x.CategoryId.Equals(categoryId), trackChanges)
+                .SingleOrDefault();
 
+        public void CreateCategory(Category category) => Create(category);
+
+        public void UpdateCategory(Category category) => Update(category);
+
+        public void DeleteCategory(Category category) => Delete(category);
     }
 }

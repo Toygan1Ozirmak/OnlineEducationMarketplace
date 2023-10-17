@@ -9,6 +9,7 @@ namespace OnlineEducationMarketplace.Data.Contracts
     public interface IRepositoryManager
     {
         IUserRepository User { get; }
+
         ICourseRepository Course { get; }
         IReviewRepository Review { get; }
 

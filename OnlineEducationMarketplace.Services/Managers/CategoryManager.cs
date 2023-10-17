@@ -27,24 +27,25 @@ namespace OnlineEducationMarketplace.Services
 
         public void DeleteCategory(int categoryId, bool trackChanges)
         {
-            _manager.Category.DeleteCategory(categoryId, trackChanges);
+            _manager.Category.GetCategoryByCategoryId(categoryId, trackChanges);
             _manager.Save();
         }
 
-        public Review GetCategoryByCategoryId(int categoryId)
+        public Category GetCategoryByCategoryId(int categoryId, bool trackChanges)
         {
             return _manager.Category.GetCategoryByCategoryId(categoryId, trackChanges);
         }
 
         
-        public IEnumerable<Category> GetCategories(bool trackChanges)
+        public IEnumerable<Category> GetAllCategories(bool trackChanges)
         {
-            return _manager.Category.GetCategories(trackChanges);
+            return _manager.Category.GetAllCategories(trackChanges);
         }
 
-        public void UpdateCategory(int categoryId, Category category)
+        public void UpdateCategory(int categoryId, Category category, bool trackChanges)
         {
-            _manager.Category.Update(categoryId, category);
+            _manager.Category.GetCategoryByCategoryId(categoryId, trackChanges);
+            _manager.Category.UpdateCategory(category);
             _manager.Save();
         }
     }

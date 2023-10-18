@@ -2,6 +2,7 @@
 using OnlineEducationMarketplace.Entity.Entities;
 using Microsoft.EntityFrameworkCore;
 using OnlineEducationMarketplace.Services.Contracts;
+using OnlineEducationMarketplace.Services.Managers;
 
 namespace OEMAP.Api.Extensions
 {
@@ -13,6 +14,13 @@ namespace OEMAP.Api.Extensions
 
         public static void ConfigureServiceManager(this IServiceCollection services) =>
             services.AddScoped<IServiceManager, IServiceManager>();
+
+
+
+        //log
+        public static void ConfigureLoggerService(this IServiceCollection services) =>
+            services.AddSingleton<ILoggerService, LoggerManager>();
+
         }
     }
 

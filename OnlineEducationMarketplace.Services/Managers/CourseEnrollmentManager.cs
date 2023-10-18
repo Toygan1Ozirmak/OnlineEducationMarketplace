@@ -58,5 +58,10 @@ namespace OnlineEducationMarketplace.Services
             _manager.CourseEnrollment.UpdateCourseEnrollment(courseEnrollment);
             _manager.Save();
         }
+
+        public CourseEnrollment GetCourseEnrollmentByCourseEnrollmentId(int courseEnrollmentId, bool trackChanges)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

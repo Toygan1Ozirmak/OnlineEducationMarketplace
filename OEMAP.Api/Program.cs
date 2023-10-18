@@ -1,10 +1,13 @@
 using Microsoft.EntityFrameworkCore;
+using NLog;
 using OEMAP.Api.Extensions;
 using OnlineEducationMarketplace.Data.NewFolder;
 using OnlineEducationMarketplace.Data.Repositories;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(),"/nlog.config"));
 
 // Add services to the container.
 
@@ -14,7 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.ConfigureServiceManager();
-
+builder.Services.ConfigureLoggerService();
 
 
 var app = builder.Build();

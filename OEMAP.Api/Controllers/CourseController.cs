@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using OnlineEducationMarketplace.Entity.Entities;
 using OnlineEducationMarketplace.Services.Contracts;
@@ -162,7 +163,7 @@ namespace OEMAP.Api.Controllers
 
         [HttpPatch("{courseId:int")]
         public IActionResult PartiallyUpdateCourse([FromRoute(Name = "courseId")] int courseId,
-            [FromBody] JSonPatchDocument<Course> coursePatch)
+            [FromBody] JsonPatchDocument<Course> coursePatch)
         {
             try
             {

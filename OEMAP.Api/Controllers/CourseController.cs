@@ -147,7 +147,7 @@ namespace OEMAP.Api.Controllers
                     return NotFound(new
                     {
                         statusCode = 404,
-                        message = $"Book with courseId:{courseId} could not found"
+                        message = $"Course with courseId:{courseId} could not found"
                     }); //404
 
                 _manager.CourseService.DeleteCourse(courseId, false);

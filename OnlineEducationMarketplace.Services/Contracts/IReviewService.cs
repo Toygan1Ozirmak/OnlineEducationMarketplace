@@ -9,9 +9,6 @@ namespace OnlineEducationMarketplace.Services.Contracts
 {
     public interface IReviewService
     {
-        IEnumerable<Review> GetAllReviews(bool trackChanges);
-
-
         IEnumerable<Review> GetReviewsByCourseId(int courseId, bool trackChanges);
 
         Review GetReviewByReviewId(int reviewId, bool trackChanges);

@@ -10,9 +10,7 @@ namespace OnlineEducationMarketplace.Data.Contracts
     public interface IReviewRepository : IRepositoryBase<Review>
     {
         
-        IQueryable<Review> GetAllReviews(bool trackChanges);
-
-
+       
         IQueryable<Review> GetReviewsByCourseId(int courseId, bool trackChanges);
 
         Review GetReviewByReviewId(int reviewId, bool trackChanges);

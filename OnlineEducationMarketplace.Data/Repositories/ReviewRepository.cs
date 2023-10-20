@@ -9,15 +9,13 @@ using System.Threading.Tasks;
 
 namespace OnlineEducationMarketplace.Data.Repositories
 {
-    public class ReviewRepository : RepositoryBase<Review>, IReviewRepository//BURDA YAPILACAKLAR VAR
+    public class ReviewRepository : RepositoryBase<Review>, IReviewRepository
     {
         public ReviewRepository(RepositoryContext context) : base(context)
         {
         }
 
-        public IQueryable<Review> GetAllReviews(bool trackChanges) =>
-            FindAll(trackChanges).OrderBy(x => x.ReviewId);
-
+        
         public IQueryable<Review> GetReviewsByCourseId(int courseId, bool trackChanges) =>
             FindByCondition(x => x.CourseId.Equals(courseId), trackChanges);
 

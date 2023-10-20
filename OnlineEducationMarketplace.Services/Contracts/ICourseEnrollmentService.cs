@@ -9,8 +9,7 @@ namespace OnlineEducationMarketplace.Services.Contracts
 {
     public interface ICourseEnrollmentService
     {
-        IEnumerable<CourseEnrollment> GetAllCourseEnrollments(bool trackChanges);
-
+        
         IQueryable<CourseEnrollment> GetCourseEnrollmentsByCourseId(int courseId, bool trackChanges);
 
         IQueryable<CourseEnrollment> GetCourseEnrollmentsByUserId(int userId, bool trackChanges);

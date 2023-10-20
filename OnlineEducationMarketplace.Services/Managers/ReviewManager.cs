@@ -43,11 +43,7 @@ namespace OnlineEducationMarketplace.Services.Contracts
             return _manager.Review.GetReviewsByCourseId(courseId, trackChanges);
         }
 
-        public IEnumerable<Review> GetAllReviews(bool trackChanges)
-        {
-            return _manager.Review.GetAllReviews(trackChanges);
-        }
-
+       
         public void UpdateReview(int reviewId, Review review, bool trackChanges)
         {
             _manager.Review.GetReviewByReviewId(reviewId, trackChanges);

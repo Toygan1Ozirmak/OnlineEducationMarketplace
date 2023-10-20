@@ -9,9 +9,7 @@ namespace OnlineEducationMarketplace.Data.Contracts
 {
     public interface ICourseEnrollmentRepository : IRepositoryBase<CourseEnrollment>
     {
-        //bütün kurs katılımlarını görüntüler
-        IQueryable<CourseEnrollment> GetAllCourseEnrollments(bool trackChanges);
-
+        
         //kullanıcının kendi kurs kayıtlarını görüntülemesi için
         IQueryable<CourseEnrollment> GetCourseEnrollmentsByUserId(int userId, bool trackChanges);
 

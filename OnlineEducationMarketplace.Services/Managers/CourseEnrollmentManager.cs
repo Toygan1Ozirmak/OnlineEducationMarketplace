@@ -18,11 +18,6 @@ namespace OnlineEducationMarketplace.Services
             _manager = manager;
         }
 
-        public IEnumerable<CourseEnrollment> GetAllCourseEnrollments(bool trackChanges)
-        {
-            return _manager.CourseEnrollment.GetAllCourseEnrollments(trackChanges);
-        }
-
         
         public IQueryable<CourseEnrollment> GetCourseEnrollmentsByUserId(int userId, bool trackChanges)
         {

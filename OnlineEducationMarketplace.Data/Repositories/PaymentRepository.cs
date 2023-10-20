@@ -16,16 +16,14 @@ namespace OnlineEducationMarketplace.Data.Repositories
         }
 
         public IQueryable<Payment> GetAllPayments(bool trackChanges) =>
-            FindAll(trackChanges).OrderBy(x => x.TransactionId);
+            FindAll(trackChanges).OrderBy(x => x.PaymentId);
 
-        public IQueryable<Payment> GetPaymentByCourseId(int courseId, bool trackChanges) =>
-            FindByCondition(x => x.CourseId.Equals(courseId), trackChanges);
+       
 
         public IQueryable<Payment> GetPaymentByUserId(int userId, bool trackChanges) =>
             FindByCondition(x => x.UserId.Equals(userId), trackChanges);
 
-        public IQueryable<Payment> GetPaymentByTransactionDate(DateTime transactionDate, bool trackChanges) =>
-            FindByCondition(x => x.TransactionDate.Equals(transactionDate), trackChanges);
+        
 
 
         public void CreatePayment(Payment payment) => Create(payment);
@@ -33,5 +31,7 @@ namespace OnlineEducationMarketplace.Data.Repositories
         public void DeletePayment(Payment payment) => Delete(payment);
 
         public void UpdatePayment(Payment payment) => Update(payment);
+
+       
     }
 }

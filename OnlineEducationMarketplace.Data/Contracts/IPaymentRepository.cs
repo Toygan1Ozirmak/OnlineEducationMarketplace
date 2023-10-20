@@ -13,7 +13,7 @@ namespace OnlineEducationMarketplace.Data.Contracts
         IQueryable<Payment> GetAllPayments(bool trackChanges);
 
 
-        Payment GetPaymentByUserId(int userId, bool trackChanges);
+        
 
        
        

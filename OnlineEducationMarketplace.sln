@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineEducationMarketplace.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OEMAP.Api", "OEMAP.Api\OEMAP.Api.csproj", "{E8792732-486C-460C-91E5-71528AE32CB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineEducationMarketplace.Services", "OnlineEducationMarketplace.Services\OnlineEducationMarketplace.Services.csproj", "{CDAD8FE8-4D5D-45AF-B2D1-253F17091C51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineEducationMarketplace.Services", "OnlineEducationMarketplace.Services\OnlineEducationMarketplace.Services.csproj", "{CDAD8FE8-4D5D-45AF-B2D1-253F17091C51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

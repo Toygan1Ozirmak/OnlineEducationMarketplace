@@ -23,7 +23,7 @@ namespace OnlineEducationMarketplace.Data.Repositories.Config
 
 
 
-            builder.Property(c => c.Category).IsRequired();
+            
             builder.Property(c => c.Title).IsRequired();
             builder.Property(c => c.Description).IsRequired();
 

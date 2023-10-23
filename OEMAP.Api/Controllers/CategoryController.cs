@@ -21,24 +21,18 @@ namespace OEMAP.Api.Controllers
         [HttpGet]
         public IActionResult GetAllCategories()
         {
-            try
-            {
+            
                 var categories = _manager.CategoryService.GetAllCategories(false);
                 return Ok(categories);
-            }
+           
 
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
 
         }
 
         [HttpGet("{categoryId:int}")]
         public IActionResult GetCategoryByCategoryId([FromRoute(Name = "categoryId")] int categoryId)
         {
-            try
-            {
+            
                 var category = _manager
                 .CategoryService
                 .GetCategoryByCategoryId(categoryId, false);
@@ -47,12 +41,7 @@ namespace OEMAP.Api.Controllers
                     return NotFound(); //404
 
                 return Ok(category);
-            }
-
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            
 
         }
 
@@ -61,8 +50,7 @@ namespace OEMAP.Api.Controllers
         [HttpPost()]
         public IActionResult CreateCategory([FromBody] Category category)
         {
-            try
-            {
+            
 
                 if (category is null)
                     return BadRequest(); //400
@@ -70,21 +58,14 @@ namespace OEMAP.Api.Controllers
                 _manager.CategoryService.CreateCategory(category);
 
                 return StatusCode(201, category);
-            }
-
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-
+            
         }
 
         [HttpPut("{categoryId:int")]
         public IActionResult UpdateCategory([FromRoute(Name = "categoryId")] int categoryId,
             [FromBody] Category category)
         {
-            try
-            {
+            
 
                 if (category is null)
                     return BadRequest(); //400
@@ -107,19 +88,13 @@ namespace OEMAP.Api.Controllers
                 _manager.CategoryService.UpdateCategory(categoryId, category, true);
                 return NoContent(); //204
 
-            }
-
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            
         }
 
         [HttpDelete("{categoryId:int")]
         public IActionResult DeleteCategory([FromRoute(Name = "categoryId")] int categoryId)
         {
-            try
-            {
+            
                 var entity = _manager
                     .CategoryService
                     .GetCategoryByCategoryId(categoryId, false);
@@ -133,20 +108,14 @@ namespace OEMAP.Api.Controllers
                 _manager.CategoryService.DeleteCategory(categoryId, false);
                 return NoContent();
 
-            }
-
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            
         }
 
         [HttpPatch("{categoryId:int")]
         public IActionResult PartiallyUpdateCategory([FromRoute(Name = "categoryId")] int categoryId,
             [FromBody] JsonPatchDocument<Category> categoryPatch)
         {
-            try
-            {
+            
                 //check entity
 
                 var entity = _manager
@@ -160,12 +129,8 @@ namespace OEMAP.Api.Controllers
                 _manager.CategoryService.UpdateCategory(categoryId, entity, true);
 
                 return NoContent(); //204
-            }
+            
 
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
         }
 
     }

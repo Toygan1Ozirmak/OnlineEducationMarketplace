@@ -23,8 +23,7 @@ namespace OEMAP.Api.Controllers
         [HttpGet("{courseId:int}")]
         public IActionResult GetCourseEnrollmentsByCourseId([FromRoute(Name = "courseId")] int courseId)
         {
-            try
-            {
+           
                 var courseEnrollments = _manager
                 .CourseEnrollmentService
                 .GetCourseEnrollmentsByCourseId(courseId, false);
@@ -33,20 +32,14 @@ namespace OEMAP.Api.Controllers
                     return NotFound(); //404
 
                 return Ok(courseEnrollments);
-            }
-
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-
+            
+           
         }
 
         [HttpGet("{userId:int}")]
         public IActionResult GetCourseEnrollmentsByUserId([FromRoute(Name = "userId")] int userId)
         {
-            try
-            {
+            
                 var courseEnrollments = _manager
                 .CourseEnrollmentService
                 .GetCourseEnrollmentsByUserId(userId, false);
@@ -55,20 +48,14 @@ namespace OEMAP.Api.Controllers
                     return NotFound(); //404
 
                 return Ok(courseEnrollments);
-            }
-
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            
 
         }
 
         [HttpGet("{courseEnrollmentId:int}")]
         public IActionResult GetCourseEnrollmentByCourseEnrollmentId([FromRoute(Name = "courseEnrollmentId")] int courseEnrollmentId)
         {
-            try
-            {
+            
                 var courseEnrollment = _manager
                 .CourseEnrollmentService
                 .GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, false);
@@ -77,20 +64,15 @@ namespace OEMAP.Api.Controllers
                     return NotFound(); //404
 
                 return Ok(courseEnrollment);
-            }
+           
 
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
 
         }
 
         [HttpPost()]
         public IActionResult CreateCourseEnrollment([FromBody] CourseEnrollment courseEnrollment)
         {
-            try
-            {
+           
 
                 if (courseEnrollment is null)
                     return BadRequest(); //400
@@ -98,21 +80,14 @@ namespace OEMAP.Api.Controllers
                 _manager.CourseEnrollmentService.CreateCourseEnrollment(courseEnrollment);
 
                 return StatusCode(201, courseEnrollment);
-            }
-
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-
+            
         }
 
         [HttpPut("{courseEnrollmentId:int")]
         public IActionResult UpdateCourseEnrollment([FromRoute(Name = "courseEnrollmentId")] int courseEnrollmentId,
             [FromBody] CourseEnrollment courseEnrollment)
         {
-            try
-            {
+            
 
                 if (courseEnrollment is null)
                     return BadRequest(); //400
@@ -135,19 +110,14 @@ namespace OEMAP.Api.Controllers
                 _manager.CourseEnrollmentService.UpdateCourseEnrollment(courseEnrollmentId, courseEnrollment, true);
                 return NoContent(); //204
 
-            }
-
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            
+            
         }
 
         [HttpDelete("{courseEnrollmentId:int")]
         public IActionResult DeleteCourseEnrollment([FromRoute(Name = "courseEnrollmentId")] int courseEnrollmentId)
         {
-            try
-            {
+            
                 var entity = _manager
                     .CourseEnrollmentService
                     .GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, false);
@@ -161,20 +131,14 @@ namespace OEMAP.Api.Controllers
                 _manager.CourseEnrollmentService.DeleteCourseEnrollment(courseEnrollmentId, false);
                 return NoContent();
 
-            }
-
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            
         }
 
         [HttpPatch("{courseEnrollmentId:int")]
         public IActionResult PartiallyUpdateCourseEnrollment([FromRoute(Name = "courseEnrollmentId")] int courseEnrollmentId,
             [FromBody] JsonPatchDocument<CourseEnrollment> courseEnrollmentPatch)
         {
-            try
-            {
+            
                 //check entity
 
                 var entity = _manager
@@ -188,12 +152,7 @@ namespace OEMAP.Api.Controllers
                 _manager.CourseEnrollmentService.UpdateCourseEnrollment(courseEnrollmentId, entity, true);
 
                 return NoContent(); //204
-            }
-
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            
         }
 
     }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using OnlineEducationMarketplace.Entity.Entities;
+using OnlineEducationMarketplace.Entity.Exceptions;
 using OnlineEducationMarketplace.Services.Contracts;
 using System.Diagnostics.Eventing.Reader;
 
@@ -21,38 +22,28 @@ namespace OEMAP.Api.Controllers
         [HttpGet]
         public IActionResult GetAllUsers()
         {
-            try
-            {
+           
                 var users = _manager.UserService.GetAllUsers(false);
                 return Ok(users);
-            }
+            
 
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
 
         }
 
         [HttpGet("{userId:int}")]
         public IActionResult GetUserByUserId([FromRoute(Name = "userId")] int userId)
         {
-            try
-            {
+            
                 var user = _manager
                 .UserService
                 .GetUserByUserId(userId, false);
 
                 if (user is null)
-                    return NotFound(); //404
+                    throw new UserNotFoundException(userId);
 
-                return Ok(user);
-            }
+            return Ok(user);
+            
 
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
 
         }
 
@@ -60,8 +51,7 @@ namespace OEMAP.Api.Controllers
         [HttpPost()]
         public IActionResult CreateUser([FromBody] User user)
         {
-            try
-            {
+            
 
                 if (user is null)
                     return BadRequest(); //400
@@ -69,21 +59,15 @@ namespace OEMAP.Api.Controllers
                 _manager.UserService.CreateUser(user);
 
                 return StatusCode(201, user);
-            }
-
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            
 
         }
 
         [HttpPut("{userId:int")]
-        public IActionResult UpdateCourse([FromRoute(Name = "userId")] int userId,
+        public IActionResult UpdateUser([FromRoute(Name = "userId")] int userId,
             [FromBody] User user)
         {
-            try
-            {
+            
 
                 if (user is null)
                     return BadRequest(); //400
@@ -106,19 +90,13 @@ namespace OEMAP.Api.Controllers
                 _manager.UserService.UpdateUser(userId, user, true);
                 return NoContent(); //204
 
-            }
-
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+           
         }
 
         [HttpDelete("{userId:int")]
         public IActionResult DeleteUser([FromRoute(Name = "userId")] int userId)
         {
-            try
-            {
+           
                 var entity = _manager
                     .UserService
                     .GetUserByUserId(userId, false);
@@ -132,20 +110,14 @@ namespace OEMAP.Api.Controllers
                 _manager.UserService.DeleteUser(userId, false);
                 return NoContent();
 
-            }
-
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+           
         }
 
         [HttpPatch("{userId:int")]
         public IActionResult PartiallyUpdateUser([FromRoute(Name = "userId")] int userId,
             [FromBody] JsonPatchDocument<User> userPatch)
         {
-            try
-            {
+            
                 //check entity
 
                 var entity = _manager
@@ -159,12 +131,8 @@ namespace OEMAP.Api.Controllers
                 _manager.UserService.UpdateUser(userId, entity, true);
 
                 return NoContent(); //204
-            }
+            
 
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
         }
 
     }

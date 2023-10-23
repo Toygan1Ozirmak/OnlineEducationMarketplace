@@ -22,8 +22,7 @@ namespace OEMAP.Api.Controllers
         [HttpGet("{reviewId:int}")]
         public IActionResult GetReviewsByCourseId([FromRoute(Name = "courseId")] int courseId)
         {
-            try
-            {
+           
                 var review = _manager
                 .ReviewService
                 .GetReviewsByCourseId(courseId, false);
@@ -32,20 +31,14 @@ namespace OEMAP.Api.Controllers
                     return NotFound(); //404
 
                 return Ok(review);
-            }
-
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            
 
         }
 
         [HttpGet("{reviewId:int}")]
         public IActionResult GetReviewByReviewId([FromRoute(Name = "reviewId")] int reviewId)
         {
-            try
-            {
+            
                 var review = _manager
                 .ReviewService
                 .GetReviewByReviewId(reviewId, false);
@@ -54,20 +47,14 @@ namespace OEMAP.Api.Controllers
                     return NotFound(); //404
 
                 return Ok(review);
-            }
-
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            
 
         }
 
         [HttpPost()]
         public IActionResult CreateReview([FromBody] Review review)
         {
-            try
-            {
+            
 
                 if (review is null)
                     return BadRequest(); //400
@@ -75,12 +62,7 @@ namespace OEMAP.Api.Controllers
                 _manager.ReviewService.CreateReview(review);
 
                 return StatusCode(201, review);
-            }
-
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            
 
         }
 
@@ -88,8 +70,7 @@ namespace OEMAP.Api.Controllers
         public IActionResult UpdateReview([FromRoute(Name = "reviewId")] int reviewId,
             [FromBody] Review review)
         {
-            try
-            {
+            
 
                 if (review is null)
                     return BadRequest(); //400
@@ -112,19 +93,14 @@ namespace OEMAP.Api.Controllers
                 _manager.ReviewService.UpdateReview(reviewId, review, true);
                 return NoContent(); //204
 
-            }
-
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            
+           
         }
 
         [HttpDelete("{reviewId:int")]
         public IActionResult DeleteReview([FromRoute(Name = "reviewId")] int reviewId)
         {
-            try
-            {
+            
                 var entity = _manager
                     .ReviewService
                     .GetReviewByReviewId(reviewId, false);
@@ -138,20 +114,14 @@ namespace OEMAP.Api.Controllers
                 _manager.ReviewService.DeleteReview(reviewId, false);
                 return NoContent();
 
-            }
-
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            
         }
 
         [HttpPatch("{reviewId:int")]
         public IActionResult PartiallyUpdateReview([FromRoute(Name = "reviewId")] int reviewId,
             [FromBody] JsonPatchDocument<Review> reviewPatch)
         {
-            try
-            {
+            
                 //check entity
 
                 var entity = _manager
@@ -165,12 +135,8 @@ namespace OEMAP.Api.Controllers
                 _manager.ReviewService.UpdateReview(reviewId, entity, true);
 
                 return NoContent(); //204
-            }
+            
 
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
         }
 
     }

@@ -37,10 +37,8 @@ namespace OEMAP.Api.Controllers
                 .CourseService
                 .GetCourseByCourseId(courseId, false);
 
-            if (course is null)
-                throw new CourseNotFoundException(courseId);
-
-                return Ok(course);
+            
+            return Ok(course);
            
 
         }
@@ -81,23 +79,9 @@ namespace OEMAP.Api.Controllers
         public IActionResult UpdateCourse([FromRoute(Name = "courseId")] int courseId,
             [FromBody] Course course) 
         {
-               
             if (course is null)
                 return BadRequest(); //400
-
-            //check course
-
-            var entity = _manager
-                    .CourseService
-                    .GetCourseByCourseId(courseId, true);
-
-                if (entity is null)
-                    throw new CourseNotFoundException(courseId);
-
-            //check id
-
-            if (courseId != course.CourseId)
-                throw new CourseNotFoundException(courseId);
+               
 
 
             _manager.CourseService.UpdateCourse(courseId, course, true);
@@ -110,11 +94,6 @@ namespace OEMAP.Api.Controllers
         public IActionResult DeleteCourse([FromRoute(Name = "courseId")] int courseId)
         {
             
-                var entity = _manager
-                    .CourseService
-                    .GetCourseByCourseId(courseId, false);
-                if (entity is null)
-                    throw new CourseNotFoundException(courseId);
 
             _manager.CourseService.DeleteCourse(courseId, false);
             return NoContent();

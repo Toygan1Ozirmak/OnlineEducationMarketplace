@@ -1,5 +1,6 @@
 ﻿using OnlineEducationMarketplace.Data.Contracts;
 using OnlineEducationMarketplace.Entity.Entities;
+using OnlineEducationMarketplace.Entity.Exceptions;
 using OnlineEducationMarketplace.Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -27,13 +28,26 @@ namespace OnlineEducationMarketplace.Services
 
         public void DeleteCourse(int courseId, bool trackChanges)
         {
-            _manager.Course.GetCourseByCourseId(courseId, trackChanges);
+            //check entity
+
+            var entity = _manager.Course.GetCourseByCourseId(courseId, trackChanges);
+            if(entity is null)
+            {
+                throw new CourseNotFoundException(courseId);
+            }
+            _manager.Course.DeleteCourse(entity);
             _manager.Save();
         }
 
         public Course GetCourseByCourseId(int courseId, bool trackChanges)
         {
-            return _manager.Course.GetCourseByCourseId(courseId, trackChanges);
+            var course = _manager.Course.GetCourseByCourseId(courseId, trackChanges);
+            if (course is null)
+            {
+                throw new CourseNotFoundException(courseId);
+            }
+
+            return course;
         }
 
         public IEnumerable<Course> GetCoursesByCategoryId(int courseId, bool trackChanges)
@@ -48,8 +62,20 @@ namespace OnlineEducationMarketplace.Services
 
         public void UpdateCourse(int courseId, Course course, bool trackChanges)
         {
-            _manager.Course.GetCourseByCourseId(courseId, trackChanges);
-            _manager.Course.UpdateCourse(course);
+            //check entity
+            var entity = _manager.Course.GetCourseByCourseId(courseId, trackChanges);
+            if(entity is null )
+            {
+                throw new CourseNotFoundException(courseId);
+            }
+            
+            ///BURASI DÜZENLENECEK
+            entity.Title = course.Title;
+            entity.Description = course.Description;
+            entity.Category = course.Category;
+
+
+            _manager.Course.UpdateCourse(entity);
             _manager.Save();
         }
     }

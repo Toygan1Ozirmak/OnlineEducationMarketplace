@@ -4,6 +4,7 @@ using NLog;
 using OEMAP.Api.Extensions;
 using OnlineEducationMarketplace.Data.NewFolder;
 using OnlineEducationMarketplace.Data.Repositories;
+using OnlineEducationMarketplace.Services.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 

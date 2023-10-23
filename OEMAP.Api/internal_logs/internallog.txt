@@ -2,3 +2,25 @@
 2023-10-20 09:18:15.0585 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
 2023-10-20 09:18:15.0679 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\GOD\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
 2023-10-20 09:18:15.0792 Info Configuration initialized.
+2023-10-23 07:44:41.5831 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-10-23 07:44:41.6189 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-10-23 07:44:41.6265 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\GOD\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2023-10-23 07:44:41.6265 Info Configuration initialized.
+2023-10-23 07:44:42.2021 Info AppDomain Shutting down. LogFactory closing...
+2023-10-23 07:44:42.2021 Info LogFactory has been closed.
+2023-10-23 07:46:05.1567 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-10-23 07:46:05.1567 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-10-23 07:46:05.1729 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\GOD\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2023-10-23 07:46:05.1729 Info Configuration initialized.
+2023-10-23 07:46:05.7158 Info AppDomain Shutting down. LogFactory closing...
+2023-10-23 07:46:05.7215 Info LogFactory has been closed.
+2023-10-23 08:04:28.0538 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-10-23 08:04:28.0696 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-10-23 08:04:28.0772 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\GOD\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2023-10-23 08:04:28.0772 Info Configuration initialized.
+2023-10-23 08:04:28.7077 Info AppDomain Shutting down. LogFactory closing...
+2023-10-23 08:04:28.7077 Info LogFactory has been closed.
+2023-10-23 08:05:29.5231 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-10-23 08:05:29.5840 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-10-23 08:05:29.5940 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\GOD\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2023-10-23 08:05:29.5940 Info Configuration initialized.

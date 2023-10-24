@@ -75,7 +75,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpPut("{courseId:int")]
+        [HttpPut("{courseId:int}")]
         public IActionResult UpdateCourse([FromRoute(Name = "courseId")] int courseId,
             [FromBody] Course course) 
         {
@@ -90,7 +90,7 @@ namespace OEMAP.Api.Controllers
             
         }
 
-        [HttpDelete("{courseId:int")]
+        [HttpDelete("{courseId:int}")]
         public IActionResult DeleteCourse([FromRoute(Name = "courseId")] int courseId)
         {
             
@@ -101,7 +101,7 @@ namespace OEMAP.Api.Controllers
             
         }
 
-        [HttpPatch("{courseId:int")]
+        [HttpPatch("{courseId:int}")]
         public IActionResult PartiallyUpdateCourse([FromRoute(Name = "courseId")] int courseId,
             [FromBody] JsonPatchDocument<Course> coursePatch)
         {

@@ -63,7 +63,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpPut("{userId:int")]
+        [HttpPut("{userId:int}")]
         public IActionResult UpdateUser([FromRoute(Name = "userId")] int userId,
             [FromBody] User user)
         {
@@ -93,7 +93,7 @@ namespace OEMAP.Api.Controllers
            
         }
 
-        [HttpDelete("{userId:int")]
+        [HttpDelete("{userId:int}")]
         public IActionResult DeleteUser([FromRoute(Name = "userId")] int userId)
         {
            
@@ -113,7 +113,7 @@ namespace OEMAP.Api.Controllers
            
         }
 
-        [HttpPatch("{userId:int")]
+        [HttpPatch("{userId:int}")]
         public IActionResult PartiallyUpdateUser([FromRoute(Name = "userId")] int userId,
             [FromBody] JsonPatchDocument<User> userPatch)
         {

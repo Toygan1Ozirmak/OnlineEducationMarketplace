@@ -35,7 +35,7 @@ namespace OnlineEducationMarketplace.Data.NewFolder
             modelBuilder.ApplyConfiguration(new CourseConfig());
             modelBuilder.ApplyConfiguration(new CourseEnrollmentConfig());
             modelBuilder.ApplyConfiguration(new CategoryConfig());
-            modelBuilder.ApplyConfiguration(new PaymentConfig());
+            
 
         }
 

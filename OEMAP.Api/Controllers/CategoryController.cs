@@ -61,7 +61,7 @@ namespace OEMAP.Api.Controllers
             
         }
 
-        [HttpPut("{categoryId:int")]
+        [HttpPut("{categoryId:int}")]
         public IActionResult UpdateCategory([FromRoute(Name = "categoryId")] int categoryId,
             [FromBody] Category category)
         {
@@ -91,7 +91,7 @@ namespace OEMAP.Api.Controllers
             
         }
 
-        [HttpDelete("{categoryId:int")]
+        [HttpDelete("{categoryId:int}")]
         public IActionResult DeleteCategory([FromRoute(Name = "categoryId")] int categoryId)
         {
             
@@ -111,7 +111,7 @@ namespace OEMAP.Api.Controllers
             
         }
 
-        [HttpPatch("{categoryId:int")]
+        [HttpPatch("{categoryId:int}")]
         public IActionResult PartiallyUpdateCategory([FromRoute(Name = "categoryId")] int categoryId,
             [FromBody] JsonPatchDocument<Category> categoryPatch)
         {

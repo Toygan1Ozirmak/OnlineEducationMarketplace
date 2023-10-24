@@ -16,7 +16,7 @@ namespace OnlineEducationMarketplace.Services
         private readonly Lazy<IReviewService> _reviewService;
         private readonly Lazy<ICourseEnrollmentService> _courseEnrollmentService;
         private readonly Lazy<ICategoryService> _categoryService;
-        private readonly Lazy<IPaymentService> _paymentService;
+        
         public ServiceManager(IRepositoryManager repositoryManager) 
         {
             _courseService = new Lazy<ICourseService>(()=> new CourseManager(repositoryManager));
@@ -24,7 +24,7 @@ namespace OnlineEducationMarketplace.Services
             _reviewService = new Lazy<IReviewService>(() => new ReviewManager(repositoryManager));
             _courseEnrollmentService = new Lazy<ICourseEnrollmentService>(() => new CourseEnrollmentManager(repositoryManager));
             _categoryService = new Lazy<ICategoryService>(() => new CategoryManager(repositoryManager));
-            _paymentService = new Lazy<IPaymentService>(() => new PaymentManager(repositoryManager));
+            
 
         }
         public ICourseService CourseService => _courseService.Value;
@@ -35,7 +35,7 @@ namespace OnlineEducationMarketplace.Services
         public ICourseEnrollmentService CourseEnrollmentService => _courseEnrollmentService.Value;
 
         public ICategoryService CategoryService => _categoryService.Value;
-        public IPaymentService PaymentService => _paymentService.Value;
+        
     }
 
     

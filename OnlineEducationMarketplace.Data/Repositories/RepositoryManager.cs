@@ -16,7 +16,7 @@ namespace OnlineEducationMarketplace.Data.Repositories
         private readonly Lazy<IReviewRepository> _reviewRepository;
         private readonly Lazy<ICategoryRepository> _categoryRepository;
         private readonly Lazy<ICourseEnrollmentRepository> _courseEnrollmentRepository;
-        private readonly Lazy<IPaymentRepository> _paymentRepository;
+        
         public RepositoryManager(RepositoryContext context)
         {
             _context = context;
@@ -25,7 +25,7 @@ namespace OnlineEducationMarketplace.Data.Repositories
             _reviewRepository = new Lazy<IReviewRepository>(() => new ReviewRepository(_context));
             _categoryRepository = new Lazy<ICategoryRepository>(() => new CategoryRepository(_context));
             _courseEnrollmentRepository = new Lazy<ICourseEnrollmentRepository>(() => new CourseEnrollmentRepository(_context));
-            _paymentRepository = new Lazy<IPaymentRepository>(() => new PaymentRepository(_context));
+            
 
         }
         public IUserRepository User => _userRepository.Value;
@@ -38,7 +38,7 @@ namespace OnlineEducationMarketplace.Data.Repositories
 
         public ICourseEnrollmentRepository CourseEnrollment=> _courseEnrollmentRepository.Value;
 
-        public IPaymentRepository Payment => _paymentRepository.Value;
+        
 
         public void Save()
         {

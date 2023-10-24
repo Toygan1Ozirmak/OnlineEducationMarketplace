@@ -69,11 +69,17 @@ namespace OnlineEducationMarketplace.Services
                 throw new CourseNotFoundException(courseId);
             }
             
-            ///BURASI DÜZENLENECEK
+            
             entity.Title = course.Title;
             entity.Description = course.Description;
+            entity.CourseLength = course.CourseLength;
+            entity.CreatedDate = course.CreatedDate;
+            entity.Image = course.Image;
+            entity.CourseStatus = course.CourseStatus;
+            entity.CategoryId = course.CategoryId;
             entity.Category = course.Category;
-
+            entity.Reviews = course.Reviews;
+            entity.CourseEnrollments = course.CourseEnrollments;
 
             _manager.Course.UpdateCourse(entity);
             _manager.Save();

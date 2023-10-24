@@ -1,5 +1,6 @@
 ﻿using OnlineEducationMarketplace.Data.Contracts;
 using OnlineEducationMarketplace.Entity.Entities;
+using OnlineEducationMarketplace.Entity.Exceptions;
 using OnlineEducationMarketplace.Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -27,14 +28,24 @@ namespace OnlineEducationMarketplace.Services.Contracts
 
         public void DeleteReview(int reviewId, bool trackChanges)
         {
-            _manager.Review.GetReviewByReviewId(reviewId, trackChanges);
+            //check entity
+
+            var entity = _manager.Review.GetReviewByReviewId(reviewId, trackChanges);
+            if (entity != null)
+            {
+                throw new ReviewNotFoundException(reviewId);
+            }
+            _manager.Review.DeleteReview(entity);
             _manager.Save();
         }
 
         public Review GetReviewByReviewId(int reviewId, bool trackChanges)
         {
-            return _manager.Review.GetReviewByReviewId(reviewId, trackChanges);
-            
+            var review = _manager.Review.GetReviewByReviewId(reviewId, trackChanges);
+            if(review != null)
+                throw new ReviewNotFoundException(reviewId);
+
+            return review;
         }
 
 
@@ -46,7 +57,19 @@ namespace OnlineEducationMarketplace.Services.Contracts
        
         public void UpdateReview(int reviewId, Review review, bool trackChanges)
         {
-            _manager.Review.GetReviewByReviewId(reviewId, trackChanges);
+            //check entity
+
+            var entity = _manager.Review.GetReviewByReviewId(reviewId, trackChanges);
+            if(entity is null)
+                throw new ReviewNotFoundException(reviewId);
+
+            entity.Comment = review.Comment;
+            entity.Point = review.Point;
+            entity.UserId = review.UserId;
+            entity.CourseId = review.CourseId;
+            entity.Course = review.Course;
+            entity.User = review.User;
+
             _manager.Review.UpdateReview(review);
             _manager.Save();
         }

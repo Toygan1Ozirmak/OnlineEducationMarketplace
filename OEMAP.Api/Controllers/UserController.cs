@@ -38,8 +38,7 @@ namespace OEMAP.Api.Controllers
                 .UserService
                 .GetUserByUserId(userId, false);
 
-                if (user is null)
-                    throw new UserNotFoundException(userId);
+                
 
             return Ok(user);
             
@@ -72,21 +71,7 @@ namespace OEMAP.Api.Controllers
                 if (user is null)
                     return BadRequest(); //400
 
-                //check user
-
-                var entity = _manager
-                    .UserService
-                    .GetUserByUserId(userId, true);
-
-                if (entity is null)
-                    return NotFound(); //404
-
-                //check id
-
-                if (userId != user.UserId)
-                    return BadRequest(); //400
-
-
+                
                 _manager.UserService.UpdateUser(userId, user, true);
                 return NoContent(); //204
 
@@ -97,16 +82,7 @@ namespace OEMAP.Api.Controllers
         public IActionResult DeleteUser([FromRoute(Name = "userId")] int userId)
         {
            
-                var entity = _manager
-                    .UserService
-                    .GetUserByUserId(userId, false);
-                if (entity is null)
-                    return NotFound(new
-                    {
-                        statusCode = 404,
-                        message = $"User with userId:{userId} could not found"
-                    }); //404
-
+                
                 _manager.UserService.DeleteUser(userId, false);
                 return NoContent();
 
@@ -123,9 +99,6 @@ namespace OEMAP.Api.Controllers
                 var entity = _manager
                     .UserService
                     .GetUserByUserId(userId, true);
-
-                if (entity is null)
-                    return NotFound(); //404
 
                 userPatch.ApplyTo(entity);
                 _manager.UserService.UpdateUser(userId, entity, true);

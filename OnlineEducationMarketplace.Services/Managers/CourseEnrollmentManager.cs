@@ -1,5 +1,6 @@
 ﻿using OnlineEducationMarketplace.Data.Contracts;
 using OnlineEducationMarketplace.Entity.Entities;
+using OnlineEducationMarketplace.Entity.Exceptions;
 using OnlineEducationMarketplace.Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -29,9 +30,15 @@ namespace OnlineEducationMarketplace.Services
             return _manager.CourseEnrollment.GetCourseEnrollmentsByCourseId(courseId, trackChanges);
         }
 
-        public CourseEnrollment GetCourseEnrollmentsByCourseEnrollmentId(int courseEnrollmentId, bool trackChanges)
+        public CourseEnrollment GetCourseEnrollmentByCourseEnrollmentId(int courseEnrollmentId, bool trackChanges)
         {
-            return _manager.CourseEnrollment.GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, trackChanges);
+            var courseEnrollment = _manager.CourseEnrollment.GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, trackChanges);
+            if (courseEnrollment == null)
+            {
+                throw new CourseEnrollmentNotFoundException(courseEnrollmentId);
+            }
+
+            return courseEnrollment;
         }
 
         public CourseEnrollment CreateCourseEnrollment(CourseEnrollment courseEnrollment)
@@ -43,20 +50,36 @@ namespace OnlineEducationMarketplace.Services
 
         public void DeleteCourseEnrollment(int courseEnrollmentId, bool trackChanges)
         {
-            _manager.CourseEnrollment.GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, trackChanges);
+            //check entity
+            var entity = _manager.CourseEnrollment.GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, trackChanges);
+            if (entity != null)
+            {
+                throw new CourseEnrollmentNotFoundException(courseEnrollmentId);
+            }
+            _manager.CourseEnrollment.DeleteCourseEnrollment(entity);
             _manager.Save();
         }
 
         public void UpdateCourseEnrollment(int courseEnrollmentId, CourseEnrollment courseEnrollment, bool trackChanges)
         {
-            _manager.CourseEnrollment.GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, trackChanges);
+            //check entity
+
+            var entity = _manager.CourseEnrollment.GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, trackChanges);
+            if(entity != null)
+            {
+                throw new CourseEnrollmentNotFoundException(courseEnrollmentId);
+            }
+
+            entity.EnrollmentDate = courseEnrollment.EnrollmentDate;
+            entity.UserId = courseEnrollment.UserId;
+            entity.CourseId = courseEnrollment.CourseId;
+            entity.Course = courseEnrollment.Course;
+            entity.User = courseEnrollment.User;
+
             _manager.CourseEnrollment.UpdateCourseEnrollment(courseEnrollment);
             _manager.Save();
         }
 
-        public CourseEnrollment GetCourseEnrollmentByCourseEnrollmentId(int courseEnrollmentId, bool trackChanges)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

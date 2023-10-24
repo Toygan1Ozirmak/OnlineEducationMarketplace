@@ -60,8 +60,7 @@ namespace OEMAP.Api.Controllers
                 .CourseEnrollmentService
                 .GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, false);
 
-                if (courseEnrollment is null)
-                    return NotFound(); //404
+                
 
                 return Ok(courseEnrollment);
            
@@ -92,21 +91,7 @@ namespace OEMAP.Api.Controllers
                 if (courseEnrollment is null)
                     return BadRequest(); //400
 
-                //check course enrollment
-
-                var entity = _manager
-                    .CourseEnrollmentService
-                    .GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, true);
-
-                if (entity is null)
-                    return NotFound(); //404
-
-                //check id
-
-                if (courseEnrollmentId != courseEnrollment.CourseEnrollmentId)
-                    return BadRequest(); //400
-
-
+                
                 _manager.CourseEnrollmentService.UpdateCourseEnrollment(courseEnrollmentId, courseEnrollment, true);
                 return NoContent(); //204
 
@@ -118,15 +103,6 @@ namespace OEMAP.Api.Controllers
         public IActionResult DeleteCourseEnrollment([FromRoute(Name = "courseEnrollmentId")] int courseEnrollmentId)
         {
             
-                var entity = _manager
-                    .CourseEnrollmentService
-                    .GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, false);
-                if (entity is null)
-                    return NotFound(new
-                    {
-                        statusCode = 404,
-                        message = $"Course Enrollment with courseEnrollmentId:{courseEnrollmentId} could not found"
-                    }); //404
 
                 _manager.CourseEnrollmentService.DeleteCourseEnrollment(courseEnrollmentId, false);
                 return NoContent();
@@ -145,8 +121,6 @@ namespace OEMAP.Api.Controllers
                     .CourseEnrollmentService
                     .GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, true);
 
-                if (entity is null)
-                    return NotFound(); //404
 
                 courseEnrollmentPatch.ApplyTo(entity);
                 _manager.CourseEnrollmentService.UpdateCourseEnrollment(courseEnrollmentId, entity, true);

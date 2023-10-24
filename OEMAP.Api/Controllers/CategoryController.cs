@@ -37,8 +37,7 @@ namespace OEMAP.Api.Controllers
                 .CategoryService
                 .GetCategoryByCategoryId(categoryId, false);
 
-                if (category is null)
-                    return NotFound(); //404
+                
 
                 return Ok(category);
             
@@ -70,20 +69,7 @@ namespace OEMAP.Api.Controllers
                 if (category is null)
                     return BadRequest(); //400
 
-                //check category
-
-                var entity = _manager
-                    .CategoryService
-                    .GetCategoryByCategoryId(categoryId, true);
-
-                if (entity is null)
-                    return NotFound(); //404
-
-                //check id
-
-                if (categoryId != category.CategoryId)
-                    return BadRequest(); //400
-
+                
 
                 _manager.CategoryService.UpdateCategory(categoryId, category, true);
                 return NoContent(); //204
@@ -95,16 +81,7 @@ namespace OEMAP.Api.Controllers
         public IActionResult DeleteCategory([FromRoute(Name = "categoryId")] int categoryId)
         {
             
-                var entity = _manager
-                    .CategoryService
-                    .GetCategoryByCategoryId(categoryId, false);
-                if (entity is null)
-                    return NotFound(new
-                    {
-                        statusCode = 404,
-                        message = $"Category with categoryId:{categoryId} could not found"
-                    }); //404
-
+               
                 _manager.CategoryService.DeleteCategory(categoryId, false);
                 return NoContent();
 
@@ -122,8 +99,6 @@ namespace OEMAP.Api.Controllers
                     .CategoryService
                     .GetCategoryByCategoryId(categoryId, true);
 
-                if (entity is null)
-                    return NotFound(); //404
 
                 categoryPatch.ApplyTo(entity);
                 _manager.CategoryService.UpdateCategory(categoryId, entity, true);

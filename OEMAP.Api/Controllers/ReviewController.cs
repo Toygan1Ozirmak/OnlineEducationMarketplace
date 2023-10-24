@@ -27,9 +27,7 @@ namespace OEMAP.Api.Controllers
                 .ReviewService
                 .GetReviewsByCourseId(courseId, false);
 
-                if (review is null)
-                    return NotFound(); //404
-
+                
                 return Ok(review);
             
 
@@ -43,8 +41,7 @@ namespace OEMAP.Api.Controllers
                 .ReviewService
                 .GetReviewByReviewId(reviewId, false);
 
-                if (review is null)
-                    return NotFound(); //404
+                
 
                 return Ok(review);
             
@@ -75,20 +72,7 @@ namespace OEMAP.Api.Controllers
                 if (review is null)
                     return BadRequest(); //400
 
-                //check review
-
-                var entity = _manager
-                    .ReviewService
-                    .GetReviewByReviewId(reviewId, true);
-
-                if (entity is null)
-                    return NotFound(); //404
-
-                //check id
-
-                if (reviewId != review.CourseId)
-                    return BadRequest(); //400
-
+                
 
                 _manager.ReviewService.UpdateReview(reviewId, review, true);
                 return NoContent(); //204
@@ -101,15 +85,7 @@ namespace OEMAP.Api.Controllers
         public IActionResult DeleteReview([FromRoute(Name = "reviewId")] int reviewId)
         {
             
-                var entity = _manager
-                    .ReviewService
-                    .GetReviewByReviewId(reviewId, false);
-                if (entity is null)
-                    return NotFound(new
-                    {
-                        statusCode = 404,
-                        message = $"Review with reviewId:{reviewId} could not found"
-                    }); //404
+               
 
                 _manager.ReviewService.DeleteReview(reviewId, false);
                 return NoContent();
@@ -128,8 +104,6 @@ namespace OEMAP.Api.Controllers
                     .ReviewService
                     .GetReviewByReviewId(reviewId, true);
 
-                if (entity is null)
-                    return NotFound(); //404
 
                 reviewPatch.ApplyTo(entity);
                 _manager.ReviewService.UpdateReview(reviewId, entity, true);

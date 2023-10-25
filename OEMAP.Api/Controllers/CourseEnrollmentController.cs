@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using OnlineEducationMarketplace.Entity.Entities;
 using OnlineEducationMarketplace.Services.Contracts;
 using System.Diagnostics.Eventing.Reader;
+using static OnlineEducationMarketplace.Entity.Exceptions.BadHttpRequestException;
+using static OnlineEducationMarketplace.Entity.Exceptions.NotFoundException;
 
 namespace OEMAP.Api.Controllers
 {
@@ -28,9 +30,7 @@ namespace OEMAP.Api.Controllers
                 .CourseEnrollmentService
                 .GetCourseEnrollmentsByCourseId(courseId, false);
 
-                if (courseEnrollments is null)
-                    return NotFound(); //404
-
+                
                 return Ok(courseEnrollments);
             
            
@@ -44,9 +44,7 @@ namespace OEMAP.Api.Controllers
                 .CourseEnrollmentService
                 .GetCourseEnrollmentsByUserId(userId, false);
 
-                if (courseEnrollments is null)
-                    return NotFound(); //404
-
+                
                 return Ok(courseEnrollments);
             
 
@@ -60,9 +58,8 @@ namespace OEMAP.Api.Controllers
                 .CourseEnrollmentService
                 .GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, false);
 
-                
-
-                return Ok(courseEnrollment);
+               
+            return Ok(courseEnrollment);
            
 
 
@@ -74,7 +71,7 @@ namespace OEMAP.Api.Controllers
            
 
                 if (courseEnrollment is null)
-                    return BadRequest(); //400
+                    throw new CreateCourseEnrollmentBadHttpRequestException(courseEnrollment); //400
 
                 _manager.CourseEnrollmentService.CreateCourseEnrollment(courseEnrollment);
 
@@ -89,7 +86,7 @@ namespace OEMAP.Api.Controllers
             
 
                 if (courseEnrollment is null)
-                    return BadRequest(); //400
+                    throw new CourseEnrollmentBadHttpRequestException(courseEnrollmentId); //400
 
                 
                 _manager.CourseEnrollmentService.UpdateCourseEnrollment(courseEnrollmentId, courseEnrollment, true);

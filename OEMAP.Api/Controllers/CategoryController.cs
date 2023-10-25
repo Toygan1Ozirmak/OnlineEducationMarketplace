@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using OnlineEducationMarketplace.Entity.Entities;
 using OnlineEducationMarketplace.Services.Contracts;
 using System.Diagnostics.Eventing.Reader;
+using static OnlineEducationMarketplace.Entity.Exceptions.BadHttpRequestException;
 
 namespace OEMAP.Api.Controllers
 {
@@ -52,7 +53,7 @@ namespace OEMAP.Api.Controllers
             
 
                 if (category is null)
-                    return BadRequest(); //400
+                    throw new CreateCategoryBadHttpRequestException(category); //400
 
                 _manager.CategoryService.CreateCategory(category);
 
@@ -67,7 +68,7 @@ namespace OEMAP.Api.Controllers
             
 
                 if (category is null)
-                    return BadRequest(); //400
+                    throw new CategoryBadHttpRequestException(categoryId); //400
 
                 
 

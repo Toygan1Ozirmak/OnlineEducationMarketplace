@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static OnlineEducationMarketplace.Entity.Exceptions.NotFoundException;
 
 namespace OnlineEducationMarketplace.Services
 {
@@ -32,7 +33,7 @@ namespace OnlineEducationMarketplace.Services
             var entity = _manager.User.GetUserByUserId(userId, trackChanges);
             if (entity is null)
             {
-                throw new CourseNotFoundException(userId);
+                throw new UserNotFoundException(userId);
             }
             _manager.User.DeleteUser(entity);
             _manager.Save();
@@ -43,7 +44,7 @@ namespace OnlineEducationMarketplace.Services
             var user  = _manager.User.GetUserByUserId(userId, trackChanges);
             if (user is null)
             {
-                throw new CourseNotFoundException(userId);
+                throw new UserNotFoundException(userId);
             }
             return user;
         }
@@ -70,7 +71,7 @@ namespace OnlineEducationMarketplace.Services
             entity.Reviews = user.Reviews;
             entity.CourseEnrollments = user.CourseEnrollments;
 
-            _manager.User.UpdateUser(user);
+            _manager.User.UpdateUser(entity);
             _manager.Save();
         }
     }

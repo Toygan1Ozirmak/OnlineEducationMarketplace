@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static OnlineEducationMarketplace.Entity.Exceptions.NotFoundException;
 
 namespace OnlineEducationMarketplace.Services
 {
@@ -66,7 +67,7 @@ namespace OnlineEducationMarketplace.Services
             entity.CategoryDescription = category.CategoryDescription;
             entity.Courses = category.Courses;
 
-            _manager.Category.UpdateCategory(category);
+            _manager.Category.UpdateCategory(entity);
             _manager.Save();
         }
     }

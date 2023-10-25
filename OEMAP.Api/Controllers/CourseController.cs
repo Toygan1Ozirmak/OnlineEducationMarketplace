@@ -5,6 +5,7 @@ using OnlineEducationMarketplace.Entity.Entities;
 using OnlineEducationMarketplace.Entity.Exceptions;
 using OnlineEducationMarketplace.Services.Contracts;
 using System.Diagnostics.Eventing.Reader;
+using static OnlineEducationMarketplace.Entity.Exceptions.BadHttpRequestException;
 
 namespace OEMAP.Api.Controllers
 {
@@ -43,7 +44,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpGet("{categoryId:int}")]
+        [HttpGet("category/{categoryId:int}")]
         public IActionResult GetCoursesByCategoryId([FromRoute(Name = "categoryId")] int categoryId)
         {
             
@@ -51,9 +52,7 @@ namespace OEMAP.Api.Controllers
                 .CourseService
                 .GetCoursesByCategoryId(categoryId, false);
 
-                if (courses is null)
-                    return NotFound(); //404
-
+                
                 return Ok(courses);
             
 
@@ -62,10 +61,10 @@ namespace OEMAP.Api.Controllers
         [HttpPost()]
         public IActionResult CreateCourse([FromBody] Course course)
         {
-           
-                
-                if (course is null)
-                    return BadRequest(); //400
+
+
+            if (course is null)
+                throw new CreateCourseBadHttpRequestException(course); //400
 
                 _manager.CourseService.CreateCourse(course);
 
@@ -80,7 +79,7 @@ namespace OEMAP.Api.Controllers
             [FromBody] Course course) 
         {
             if (course is null)
-                return BadRequest(); //400
+                throw new CourseBadHttpRequestException(courseId); //400
                
 
 

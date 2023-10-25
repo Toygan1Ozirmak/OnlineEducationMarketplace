@@ -5,6 +5,7 @@ using OnlineEducationMarketplace.Entity.Entities;
 using OnlineEducationMarketplace.Entity.Exceptions;
 using OnlineEducationMarketplace.Services.Contracts;
 using System.Diagnostics.Eventing.Reader;
+using static OnlineEducationMarketplace.Entity.Exceptions.BadHttpRequestException;
 
 namespace OEMAP.Api.Controllers
 {
@@ -50,10 +51,10 @@ namespace OEMAP.Api.Controllers
         [HttpPost()]
         public IActionResult CreateUser([FromBody] User user)
         {
-            
 
-                if (user is null)
-                    return BadRequest(); //400
+
+            if (user is null)
+                throw new CreateUserBadHttpRequestException(user); //400
 
                 _manager.UserService.CreateUser(user);
 
@@ -69,7 +70,7 @@ namespace OEMAP.Api.Controllers
             
 
                 if (user is null)
-                    return BadRequest(); //400
+                    throw new UserBadHttpRequestException(userId); //400
 
                 
                 _manager.UserService.UpdateUser(userId, user, true);

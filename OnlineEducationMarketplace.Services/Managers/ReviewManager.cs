@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static OnlineEducationMarketplace.Entity.Exceptions.NotFoundException;
 
 namespace OnlineEducationMarketplace.Services.Contracts
 {
@@ -31,9 +32,9 @@ namespace OnlineEducationMarketplace.Services.Contracts
             //check entity
 
             var entity = _manager.Review.GetReviewByReviewId(reviewId, trackChanges);
-            if (entity != null)
+            if (entity is null)
             {
-                throw new ReviewNotFoundException(reviewId);
+                throw new ReviewNotFoundByReviewIdException(reviewId);
             }
             _manager.Review.DeleteReview(entity);
             _manager.Save();
@@ -42,8 +43,8 @@ namespace OnlineEducationMarketplace.Services.Contracts
         public Review GetReviewByReviewId(int reviewId, bool trackChanges)
         {
             var review = _manager.Review.GetReviewByReviewId(reviewId, trackChanges);
-            if(review != null)
-                throw new ReviewNotFoundException(reviewId);
+            if(review is null)
+                throw new ReviewNotFoundByReviewIdException(reviewId);
 
             return review;
         }
@@ -51,7 +52,11 @@ namespace OnlineEducationMarketplace.Services.Contracts
 
         public IEnumerable<Review> GetReviewsByCourseId(int courseId, bool trackChanges)
         {
-            return _manager.Review.GetReviewsByCourseId(courseId, trackChanges);
+            var reviews = _manager.Review.GetReviewsByCourseId(courseId, trackChanges);
+            if(reviews is null)
+                throw new ReviewsNotFoundByCourseIdException(courseId);
+
+            return reviews;
         }
 
        
@@ -61,7 +66,7 @@ namespace OnlineEducationMarketplace.Services.Contracts
 
             var entity = _manager.Review.GetReviewByReviewId(reviewId, trackChanges);
             if(entity is null)
-                throw new ReviewNotFoundException(reviewId);
+                throw new ReviewNotFoundByReviewIdException(reviewId);
 
             entity.Comment = review.Comment;
             entity.Point = review.Point;
@@ -70,7 +75,7 @@ namespace OnlineEducationMarketplace.Services.Contracts
             entity.Course = review.Course;
             entity.User = review.User;
 
-            _manager.Review.UpdateReview(review);
+            _manager.Review.UpdateReview(entity);
             _manager.Save();
         }
     }

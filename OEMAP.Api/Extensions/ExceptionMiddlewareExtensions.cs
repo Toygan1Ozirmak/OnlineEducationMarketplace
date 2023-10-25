@@ -3,6 +3,7 @@ using OnlineEducationMarketplace.Entity.ErrorModel;
 using OnlineEducationMarketplace.Entity.Exceptions;
 using OnlineEducationMarketplace.Services.Contracts;
 using System.Net;
+using BadHttpRequestException = Microsoft.AspNetCore.Http.BadHttpRequestException;
 
 namespace OEMAP.Api.Extensions
 {
@@ -23,6 +24,7 @@ namespace OEMAP.Api.Extensions
                         context.Response.StatusCode = contextFeature.Error switch
                         {
                             NotFoundException => StatusCodes.Status404NotFound,
+                            BadHttpRequestException => StatusCodes.Status400BadRequest,
                             _=> StatusCodes.Status500InternalServerError 
                         };
                         

@@ -4,6 +4,7 @@ using NLog;
 using OEMAP.Api.Extensions;
 using OnlineEducationMarketplace.Data.NewFolder;
 using OnlineEducationMarketplace.Data.Repositories;
+using OnlineEducationMarketplace.Services.Contracts;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 
@@ -34,6 +35,8 @@ builder.Services.ConfigureLoggerService();
 
 var app = builder.Build();
 
+var logger = app.Services.GetRequiredService<ILoggerService>();
+app.ConfigureExceptionHandler(logger);
 
 
 // Configure the HTTP request pipeline.

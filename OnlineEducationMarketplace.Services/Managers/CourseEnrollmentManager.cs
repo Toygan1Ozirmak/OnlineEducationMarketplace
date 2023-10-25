@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static OnlineEducationMarketplace.Entity.Exceptions.NotFoundException;
 
 namespace OnlineEducationMarketplace.Services
 {
@@ -22,21 +23,26 @@ namespace OnlineEducationMarketplace.Services
         
         public IQueryable<CourseEnrollment> GetCourseEnrollmentsByUserId(int userId, bool trackChanges)
         {
-            return _manager.CourseEnrollment.GetCourseEnrollmentsByUserId(userId, trackChanges);
+            var courseEnrollments = _manager.CourseEnrollment.GetCourseEnrollmentsByUserId(userId, trackChanges);
+            if (courseEnrollments is null)
+                throw new CourseEnrollmentByUserIdNotFoundException(userId); //404
+            return courseEnrollments;
+
         }
 
         public IQueryable<CourseEnrollment> GetCourseEnrollmentsByCourseId(int courseId, bool trackChanges)
         {
-            return _manager.CourseEnrollment.GetCourseEnrollmentsByCourseId(courseId, trackChanges);
+            var courseEnrollments = _manager.CourseEnrollment.GetCourseEnrollmentsByCourseId(courseId, trackChanges);
+            if (courseEnrollments is null)
+                throw new CourseEnrollmentByCourseIdNotFoundException(courseId); //404
+            return courseEnrollments;
         }
 
         public CourseEnrollment GetCourseEnrollmentByCourseEnrollmentId(int courseEnrollmentId, bool trackChanges)
         {
             var courseEnrollment = _manager.CourseEnrollment.GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, trackChanges);
-            if (courseEnrollment == null)
-            {
-                throw new CourseEnrollmentNotFoundException(courseEnrollmentId);
-            }
+            if (courseEnrollment is null)
+                throw new CourseEnrollmentByCourseEnrollmentIdNotFoundException(courseEnrollmentId);
 
             return courseEnrollment;
         }
@@ -54,7 +60,7 @@ namespace OnlineEducationMarketplace.Services
             var entity = _manager.CourseEnrollment.GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, trackChanges);
             if (entity != null)
             {
-                throw new CourseEnrollmentNotFoundException(courseEnrollmentId);
+                throw new CourseEnrollmentByCourseEnrollmentIdNotFoundException(courseEnrollmentId);
             }
             _manager.CourseEnrollment.DeleteCourseEnrollment(entity);
             _manager.Save();
@@ -67,7 +73,7 @@ namespace OnlineEducationMarketplace.Services
             var entity = _manager.CourseEnrollment.GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, trackChanges);
             if(entity != null)
             {
-                throw new CourseEnrollmentNotFoundException(courseEnrollmentId);
+                throw new CourseEnrollmentByCourseEnrollmentIdNotFoundException(courseEnrollmentId);
             }
 
             entity.EnrollmentDate = courseEnrollment.EnrollmentDate;
@@ -76,7 +82,7 @@ namespace OnlineEducationMarketplace.Services
             entity.Course = courseEnrollment.Course;
             entity.User = courseEnrollment.User;
 
-            _manager.CourseEnrollment.UpdateCourseEnrollment(courseEnrollment);
+            _manager.CourseEnrollment.UpdateCourseEnrollment(entity);
             _manager.Save();
         }
 

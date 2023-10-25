@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using OnlineEducationMarketplace.Entity.Entities;
 using OnlineEducationMarketplace.Services.Contracts;
 using System.Diagnostics.Eventing.Reader;
+using static OnlineEducationMarketplace.Entity.Exceptions.BadHttpRequestException;
 
 namespace OEMAP.Api.Controllers
 {
@@ -19,7 +20,7 @@ namespace OEMAP.Api.Controllers
         }
 
         
-        [HttpGet("{reviewId:int}")]
+        [HttpGet("course/{courseId:int}")]
         public IActionResult GetReviewsByCourseId([FromRoute(Name = "courseId")] int courseId)
         {
            
@@ -54,7 +55,7 @@ namespace OEMAP.Api.Controllers
             
 
                 if (review is null)
-                    return BadRequest(); //400
+                    throw new CreateReviewBadHttpRequestException(review);
 
                 _manager.ReviewService.CreateReview(review);
 
@@ -67,10 +68,10 @@ namespace OEMAP.Api.Controllers
         public IActionResult UpdateReview([FromRoute(Name = "reviewId")] int reviewId,
             [FromBody] Review review)
         {
-            
 
-                if (review is null)
-                    return BadRequest(); //400
+
+            if (review is null)
+                throw new ReviewBadHttpRequestException(reviewId); //400
 
                 
 

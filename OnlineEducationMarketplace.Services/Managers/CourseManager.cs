@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static OnlineEducationMarketplace.Entity.Exceptions.NotFoundException;
 
 namespace OnlineEducationMarketplace.Services
 {
@@ -33,7 +34,7 @@ namespace OnlineEducationMarketplace.Services
             var entity = _manager.Course.GetCourseByCourseId(courseId, trackChanges);
             if(entity is null)
             {
-                throw new CourseNotFoundException(courseId);
+                throw new CourseNotFoundByCourseIdException(courseId);
             }
             _manager.Course.DeleteCourse(entity);
             _manager.Save();
@@ -44,15 +45,20 @@ namespace OnlineEducationMarketplace.Services
             var course = _manager.Course.GetCourseByCourseId(courseId, trackChanges);
             if (course is null)
             {
-                throw new CourseNotFoundException(courseId);
+                throw new CourseNotFoundByCourseIdException(courseId);
             }
 
             return course;
         }
 
-        public IEnumerable<Course> GetCoursesByCategoryId(int courseId, bool trackChanges)
+        public IEnumerable<Course> GetCoursesByCategoryId(int categoryId, bool trackChanges)
         {
-            return _manager.Course.GetCoursesByCategoryId(courseId, trackChanges);
+            var courses = _manager.Course.GetCoursesByCategoryId(categoryId, trackChanges);
+            if(courses is null)
+            {
+                throw new CourseNotFoundByCategoryIdException(categoryId);
+            }
+            return courses;
         }
 
         public IEnumerable<Course> GetAllCourses(bool trackChanges)
@@ -66,7 +72,7 @@ namespace OnlineEducationMarketplace.Services
             var entity = _manager.Course.GetCourseByCourseId(courseId, trackChanges);
             if(entity is null )
             {
-                throw new CourseNotFoundException(courseId);
+                throw new CourseNotFoundByCourseIdException(courseId);
             }
             
             

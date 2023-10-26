@@ -1,4 +1,5 @@
-﻿using OnlineEducationMarketplace.Entity.Entities;
+﻿using OnlineEducationMarketplace.Entity.DTOs;
+using OnlineEducationMarketplace.Entity.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace OnlineEducationMarketplace.Services.Contracts
 
         Course CreateCourse(Course course);
 
-        void UpdateCourse(int courseId, Course course, bool trackChanges);
+        void UpdateCourse(int courseId, CourseDtoForUpdate courseDto, bool trackChanges);
 
         void DeleteCourse(int courseId, bool trackChanges);
 

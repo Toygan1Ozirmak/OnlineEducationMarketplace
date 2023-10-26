@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using OnlineEducationMarketplace.Entity.DTOs;
 using OnlineEducationMarketplace.Entity.Entities;
 using OnlineEducationMarketplace.Entity.Exceptions;
 using OnlineEducationMarketplace.Services.Contracts;
@@ -76,14 +77,14 @@ namespace OEMAP.Api.Controllers
 
         [HttpPut("{courseId:int}")]
         public IActionResult UpdateCourse([FromRoute(Name = "courseId")] int courseId,
-            [FromBody] Course course) 
+            [FromBody] CourseDtoForUpdate courseDto) 
         {
-            if (course is null)
+            if (courseDto is null)
                 throw new CourseBadHttpRequestException(courseId); //400
                
 
 
-            _manager.CourseService.UpdateCourse(courseId, course, true);
+            _manager.CourseService.UpdateCourse(courseId, courseDto, true);
             return NoContent(); //204
                       
             
@@ -113,7 +114,7 @@ namespace OEMAP.Api.Controllers
                     .GetCourseByCourseId(courseId, true);
 
                 coursePatch.ApplyTo(entity);
-                _manager.CourseService.UpdateCourse(courseId, entity, true);
+                _manager.CourseService.UpdateCourse(courseId, new CourseDtoForUpdate(entity.CourseId,entity.CategoryId,entity.Description,entity.CourseLength,entity), true);
 
                 return NoContent(); //204
             

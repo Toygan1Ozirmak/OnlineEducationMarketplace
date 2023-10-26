@@ -23,7 +23,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<RepositoryContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("sqlConnection")));
 
-//options.UseSqlServer(connection, b => b.MigrationsAssembly("OnlineEducationMarketplace.Data"));
+
 
 
 
@@ -31,7 +31,7 @@ builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureLoggerService();
-
+builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 

@@ -1,4 +1,5 @@
-﻿using OnlineEducationMarketplace.Data.Contracts;
+﻿using AutoMapper;
+using OnlineEducationMarketplace.Data.Contracts;
 using OnlineEducationMarketplace.Entity.Entities;
 using OnlineEducationMarketplace.Services.Contracts;
 using System;
@@ -17,9 +18,9 @@ namespace OnlineEducationMarketplace.Services
         private readonly Lazy<ICourseEnrollmentService> _courseEnrollmentService;
         private readonly Lazy<ICategoryService> _categoryService;
         
-        public ServiceManager(IRepositoryManager repositoryManager) 
+        public ServiceManager(IRepositoryManager repositoryManager,IMapper mapper) 
         {
-            _courseService = new Lazy<ICourseService>(()=> new CourseManager(repositoryManager));
+            _courseService = new Lazy<ICourseService>(()=> new CourseManager(repositoryManager,mapper));
             _userService = new Lazy<IUserService>(() => new UserManager(repositoryManager));
             _reviewService = new Lazy<IReviewService>(() => new ReviewManager(repositoryManager));
             _courseEnrollmentService = new Lazy<ICourseEnrollmentService>(() => new CourseEnrollmentManager(repositoryManager));

@@ -1,4 +1,6 @@
-﻿using OnlineEducationMarketplace.Data.Contracts;
+﻿using AutoMapper;
+using OnlineEducationMarketplace.Data.Contracts;
+using OnlineEducationMarketplace.Entity.DTOs;
 using OnlineEducationMarketplace.Entity.Entities;
 using OnlineEducationMarketplace.Entity.Exceptions;
 using OnlineEducationMarketplace.Services.Contracts;
@@ -14,10 +16,12 @@ namespace OnlineEducationMarketplace.Services
     public class CourseManager : ICourseService
     {
         private readonly IRepositoryManager _manager;
+        private readonly IMapper _mapper;
 
-        public CourseManager(IRepositoryManager manager)
+        public CourseManager(IRepositoryManager manager, IMapper mapper)
         {
             _manager = manager;
+            _mapper = mapper;
         }
 
         public Course CreateCourse(Course course)
@@ -66,7 +70,7 @@ namespace OnlineEducationMarketplace.Services
             return _manager.Course.GetAllCourses(trackChanges);
         }
 
-        public void UpdateCourse(int courseId, Course course, bool trackChanges)
+        public void UpdateCourse(int courseId, CourseDtoForUpdate courseDto, bool trackChanges)
         {
             //check entity
             var entity = _manager.Course.GetCourseByCourseId(courseId, trackChanges);
@@ -74,18 +78,20 @@ namespace OnlineEducationMarketplace.Services
             {
                 throw new CourseNotFoundByCourseIdException(courseId);
             }
-            
-            
-            entity.Title = course.Title;
-            entity.Description = course.Description;
-            entity.CourseLength = course.CourseLength;
-            entity.CreatedDate = course.CreatedDate;
-            entity.Image = course.Image;
-            entity.CourseStatus = course.CourseStatus;
-            entity.CategoryId = course.CategoryId;
-            entity.Category = course.Category;
-            entity.Reviews = course.Reviews;
-            entity.CourseEnrollments = course.CourseEnrollments;
+
+
+            //entity.Title = course.Title;
+            //entity.Description = course.Description;
+            //entity.CourseLength = course.CourseLength;
+            //entity.CreatedDate = course.CreatedDate;
+            //entity.Image = course.Image;
+            //entity.CourseStatus = course.CourseStatus;
+            //entity.CategoryId = course.CategoryId;
+            //entity.Category = course.Category;
+            //entity.Reviews = course.Reviews;
+            //entity.CourseEnrollments = course.CourseEnrollments;
+
+            entity = _mapper.Map<Course>(courseDto);
 
             _manager.Course.UpdateCourse(entity);
             _manager.Save();

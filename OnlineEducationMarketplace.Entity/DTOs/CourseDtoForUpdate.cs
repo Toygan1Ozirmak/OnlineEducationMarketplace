@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace OnlineEducationMarketplace.Entity.DTOs
 {
-    public record CourseDtoForUpdate
+    public record CourseDtoForUpdate(int CourseId, String Title, string Description, TimeSpan CourseLength, string Image, bool CourseStatus, int CategoryId)
     {
-        public int CourseId { get; init; }
-        public string Title { get; init; }
-        public string Description { get; init; }
+        //public int CourseId { get; init; }
+        //public string Title { get; init; }
+        //public string Description { get; init; }
 
-        public TimeSpan CourseLength { get; init; }
-        public DateTime CreatedDate { get; init; }
-        public string Image { get; init; }
-        public bool CourseStatus { get; init; }
-
-
-        //fk
+        //public TimeSpan CourseLength { get; init; }
+        //public DateTime CreatedDate { get; init; }
+        //public string Image { get; init; }
+        //public bool CourseStatus { get; init; }
 
 
-        public int CategoryId { get; init; }
+        ////fk
+
+
+        //public int CategoryId { get; init; }
     }
 }

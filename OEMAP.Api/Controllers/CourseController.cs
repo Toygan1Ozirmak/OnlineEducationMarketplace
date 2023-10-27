@@ -114,7 +114,8 @@ namespace OEMAP.Api.Controllers
                     .GetCourseByCourseId(courseId, true);
 
                 coursePatch.ApplyTo(entity);
-                _manager.CourseService.UpdateCourse(courseId, new CourseDtoForUpdate(entity.CourseId,entity.CategoryId,entity.Description,entity.CourseLength,entity), true);
+                _manager.CourseService.UpdateCourse(courseId,
+                    new CourseDtoForUpdate(entity.CourseId,entity.Title,entity.Description,entity.CourseLength,entity.Image,entity.CourseStatus,entity.CategoryId), true);
 
                 return NoContent(); //204
             

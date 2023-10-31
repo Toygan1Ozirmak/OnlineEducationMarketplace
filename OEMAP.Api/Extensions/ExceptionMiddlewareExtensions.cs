@@ -15,7 +15,7 @@ namespace OEMAP.Api.Extensions
             {
                 appError.Run(async context =>
                 {
-                    
+
                     context.Response.ContentType = "application/json";
 
                     var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
@@ -25,9 +25,9 @@ namespace OEMAP.Api.Extensions
                         {
                             NotFoundException => StatusCodes.Status404NotFound,
                             BadHttpRequestException => StatusCodes.Status400BadRequest,
-                            _=> StatusCodes.Status500InternalServerError 
+                            _ => StatusCodes.Status500InternalServerError
                         };
-                        
+
                         logger.LogError($"Something get wrong: {contextFeature.Error}");
                         await context.Response.WriteAsync(new ErrorDetails()
                         {

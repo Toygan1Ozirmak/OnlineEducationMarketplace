@@ -23,10 +23,10 @@ namespace OEMAP.Api.Controllers
         [HttpGet]
         public IActionResult GetAllUsers()
         {
-           
-                var users = _manager.UserService.GetAllUsers(false);
-                return Ok(users);
-            
+
+            var users = _manager.UserService.GetAllUsers(false);
+            return Ok(users);
+
 
 
         }
@@ -34,15 +34,15 @@ namespace OEMAP.Api.Controllers
         [HttpGet("{userId:int}")]
         public IActionResult GetUserByUserId([FromRoute(Name = "userId")] int userId)
         {
-            
-                var user = _manager
-                .UserService
-                .GetUserByUserId(userId, false);
 
-                
+            var user = _manager
+            .UserService
+            .GetUserByUserId(userId, false);
+
+
 
             return Ok(user);
-            
+
 
 
         }
@@ -56,10 +56,10 @@ namespace OEMAP.Api.Controllers
             if (user is null)
                 throw new CreateUserBadHttpRequestException(user); //400
 
-                _manager.UserService.CreateUser(user);
+            _manager.UserService.CreateUser(user);
 
-                return StatusCode(201, user);
-            
+            return StatusCode(201, user);
+
 
         }
 
@@ -67,45 +67,45 @@ namespace OEMAP.Api.Controllers
         public IActionResult UpdateUser([FromRoute(Name = "userId")] int userId,
             [FromBody] User user)
         {
-            
 
-                if (user is null)
-                    throw new UserBadHttpRequestException(userId); //400
 
-                
-                _manager.UserService.UpdateUser(userId, user, true);
-                return NoContent(); //204
+            if (user is null)
+                throw new UserBadHttpRequestException(userId); //400
 
-           
+
+            _manager.UserService.UpdateUser(userId, user, true);
+            return NoContent(); //204
+
+
         }
 
         [HttpDelete("{userId:int}")]
         public IActionResult DeleteUser([FromRoute(Name = "userId")] int userId)
         {
-           
-                
-                _manager.UserService.DeleteUser(userId, false);
-                return NoContent();
 
-           
+
+            _manager.UserService.DeleteUser(userId, false);
+            return NoContent();
+
+
         }
 
         [HttpPatch("{userId:int}")]
         public IActionResult PartiallyUpdateUser([FromRoute(Name = "userId")] int userId,
             [FromBody] JsonPatchDocument<User> userPatch)
         {
-            
-                //check entity
 
-                var entity = _manager
-                    .UserService
-                    .GetUserByUserId(userId, true);
+            //check entity
 
-                userPatch.ApplyTo(entity);
-                _manager.UserService.UpdateUser(userId, entity, true);
+            var entity = _manager
+                .UserService
+                .GetUserByUserId(userId, true);
 
-                return NoContent(); //204
-            
+            userPatch.ApplyTo(entity);
+            _manager.UserService.UpdateUser(userId, entity, true);
+
+            return NoContent(); //204
+
 
         }
 

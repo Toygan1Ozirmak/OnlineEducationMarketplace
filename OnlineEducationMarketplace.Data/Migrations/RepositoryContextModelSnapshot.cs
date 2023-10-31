@@ -46,7 +46,7 @@ namespace OnlineEducationMarketplace.Data.Migrations
                         new
                         {
                             CategoryId = 1,
-                            CategoryDescription = "mühendsilik alanı",
+                            CategoryDescription = "psikoloji alanı",
                             CategoryName = "Psikolji"
                         },
                         new
@@ -58,25 +58,25 @@ namespace OnlineEducationMarketplace.Data.Migrations
                         new
                         {
                             CategoryId = 3,
-                            CategoryDescription = "mühendsilik alanı",
+                            CategoryDescription = "dil alanı",
                             CategoryName = "Dil"
                         },
                         new
                         {
                             CategoryId = 4,
-                            CategoryDescription = "mühendsilik alanı",
+                            CategoryDescription = "güzel sanatlar alanı",
                             CategoryName = "Güzel Sanatlar"
                         },
                         new
                         {
                             CategoryId = 5,
-                            CategoryDescription = "mühendsilik alanı",
+                            CategoryDescription = "finans alanı",
                             CategoryName = "Finans"
                         },
                         new
                         {
                             CategoryId = 6,
-                            CategoryDescription = "mühendsilik alanı",
+                            CategoryDescription = "bilim alanı",
                             CategoryName = "Bilim"
                         });
                 });

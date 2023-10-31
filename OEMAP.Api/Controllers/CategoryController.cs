@@ -22,10 +22,10 @@ namespace OEMAP.Api.Controllers
         [HttpGet]
         public IActionResult GetAllCategories()
         {
-            
-                var categories = _manager.CategoryService.GetAllCategories(false);
-                return Ok(categories);
-           
+
+            var categories = _manager.CategoryService.GetAllCategories(false);
+            return Ok(categories);
+
 
 
         }
@@ -33,79 +33,79 @@ namespace OEMAP.Api.Controllers
         [HttpGet("{categoryId:int}")]
         public IActionResult GetCategoryByCategoryId([FromRoute(Name = "categoryId")] int categoryId)
         {
-            
-                var category = _manager
-                .CategoryService
-                .GetCategoryByCategoryId(categoryId, false);
 
-                
+            var category = _manager
+            .CategoryService
+            .GetCategoryByCategoryId(categoryId, false);
 
-                return Ok(category);
-            
+
+
+            return Ok(category);
+
 
         }
 
-       
+
 
         [HttpPost()]
         public IActionResult CreateCategory([FromBody] Category category)
         {
-            
 
-                if (category is null)
-                    throw new CreateCategoryBadHttpRequestException(category); //400
 
-                _manager.CategoryService.CreateCategory(category);
+            if (category is null)
+                throw new CreateCategoryBadHttpRequestException(category); //400
 
-                return StatusCode(201, category);
-            
+            _manager.CategoryService.CreateCategory(category);
+
+            return StatusCode(201, category);
+
         }
 
         [HttpPut("{categoryId:int}")]
         public IActionResult UpdateCategory([FromRoute(Name = "categoryId")] int categoryId,
             [FromBody] Category category)
         {
-            
 
-                if (category is null)
-                    throw new CategoryBadHttpRequestException(categoryId); //400
 
-                
+            if (category is null)
+                throw new CategoryBadHttpRequestException(categoryId); //400
 
-                _manager.CategoryService.UpdateCategory(categoryId, category, true);
-                return NoContent(); //204
 
-            
+
+            _manager.CategoryService.UpdateCategory(categoryId, category, true);
+            return NoContent(); //204
+
+
         }
 
         [HttpDelete("{categoryId:int}")]
         public IActionResult DeleteCategory([FromRoute(Name = "categoryId")] int categoryId)
         {
-            
-               
-                _manager.CategoryService.DeleteCategory(categoryId, false);
-                return NoContent();
 
-            
+
+            _manager.CategoryService.DeleteCategory(categoryId, false);
+            return NoContent();
+
+
         }
 
         [HttpPatch("{categoryId:int}")]
         public IActionResult PartiallyUpdateCategory([FromRoute(Name = "categoryId")] int categoryId,
             [FromBody] JsonPatchDocument<Category> categoryPatch)
         {
-            
-                //check entity
 
-                var entity = _manager
-                    .CategoryService
-                    .GetCategoryByCategoryId(categoryId, true);
+            //check entity
+
+            var entity = _manager
+                .CategoryService
+                .GetCategoryByCategoryId(categoryId, true);
 
 
-                categoryPatch.ApplyTo(entity);
-                _manager.CategoryService.UpdateCategory(categoryId, entity, true);
+            categoryPatch.ApplyTo(entity);
+            _manager.CategoryService.UpdateCategory(categoryId, entity, true);
 
-                return NoContent(); //204
-            
+            return NoContent(); //204
+
 
         }
 

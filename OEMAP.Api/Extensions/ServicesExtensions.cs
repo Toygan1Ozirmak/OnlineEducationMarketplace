@@ -11,7 +11,7 @@ namespace OEMAP.Api.Extensions
 {
     public static class ServicesExtensions
     {
-        public static void ConfigureSqlContext(this IServiceCollection services, 
+        public static void ConfigureSqlContext(this IServiceCollection services,
             IConfiguration configuration) => services.AddDbContext<RepositoryContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("sqlConnection")));
 
@@ -27,6 +27,5 @@ namespace OEMAP.Api.Extensions
         public static void ConfigureLoggerService(this IServiceCollection services) =>
             services.AddSingleton<ILoggerService, LoggerManager>();
 
-        }
     }
-
+}

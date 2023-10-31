@@ -4,7 +4,7 @@ using OnlineEducationMarketplace.Entity.Entities;
 
 namespace OEMAP.Api.Utilities.AutoMapper
 {
-    public class MappingProfile:Profile
+    public class MappingProfile : Profile
     {
         public MappingProfile()
         {
@@ -12,7 +12,7 @@ namespace OEMAP.Api.Utilities.AutoMapper
             CreateMap<UserDtoForUpdate, User>();
             CreateMap<ReviewDtoForUpdate, Review>();
             CreateMap<CourseEnrollmentDtoForUpdate, CourseEnrollment>();
-                
+
         }
     }
 }

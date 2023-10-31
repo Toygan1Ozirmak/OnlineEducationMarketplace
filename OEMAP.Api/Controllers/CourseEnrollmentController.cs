@@ -20,47 +20,47 @@ namespace OEMAP.Api.Controllers
             _manager = manager;
         }
 
-        
+
 
         [HttpGet("{courseId:int}")]
         public IActionResult GetCourseEnrollmentsByCourseId([FromRoute(Name = "courseId")] int courseId)
         {
-           
-                var courseEnrollments = _manager
-                .CourseEnrollmentService
-                .GetCourseEnrollmentsByCourseId(courseId, false);
 
-                
-                return Ok(courseEnrollments);
-            
-           
+            var courseEnrollments = _manager
+            .CourseEnrollmentService
+            .GetCourseEnrollmentsByCourseId(courseId, false);
+
+
+            return Ok(courseEnrollments);
+
+
         }
 
         [HttpGet("{userId:int}")]
         public IActionResult GetCourseEnrollmentsByUserId([FromRoute(Name = "userId")] int userId)
         {
-            
-                var courseEnrollments = _manager
-                .CourseEnrollmentService
-                .GetCourseEnrollmentsByUserId(userId, false);
 
-                
-                return Ok(courseEnrollments);
-            
+            var courseEnrollments = _manager
+            .CourseEnrollmentService
+            .GetCourseEnrollmentsByUserId(userId, false);
+
+
+            return Ok(courseEnrollments);
+
 
         }
 
         [HttpGet("{courseEnrollmentId:int}")]
         public IActionResult GetCourseEnrollmentByCourseEnrollmentId([FromRoute(Name = "courseEnrollmentId")] int courseEnrollmentId)
         {
-            
-                var courseEnrollment = _manager
-                .CourseEnrollmentService
-                .GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, false);
 
-               
+            var courseEnrollment = _manager
+            .CourseEnrollmentService
+            .GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, false);
+
+
             return Ok(courseEnrollment);
-           
+
 
 
         }
@@ -68,62 +68,62 @@ namespace OEMAP.Api.Controllers
         [HttpPost()]
         public IActionResult CreateCourseEnrollment([FromBody] CourseEnrollment courseEnrollment)
         {
-           
 
-                if (courseEnrollment is null)
-                    throw new CreateCourseEnrollmentBadHttpRequestException(courseEnrollment); //400
 
-                _manager.CourseEnrollmentService.CreateCourseEnrollment(courseEnrollment);
+            if (courseEnrollment is null)
+                throw new CreateCourseEnrollmentBadHttpRequestException(courseEnrollment); //400
 
-                return StatusCode(201, courseEnrollment);
-            
+            _manager.CourseEnrollmentService.CreateCourseEnrollment(courseEnrollment);
+
+            return StatusCode(201, courseEnrollment);
+
         }
 
         [HttpPut("{courseEnrollmentId:int}")]
         public IActionResult UpdateCourseEnrollment([FromRoute(Name = "courseEnrollmentId")] int courseEnrollmentId,
             [FromBody] CourseEnrollment courseEnrollment)
         {
-            
 
-                if (courseEnrollment is null)
-                    throw new CourseEnrollmentBadHttpRequestException(courseEnrollmentId); //400
 
-                
-                _manager.CourseEnrollmentService.UpdateCourseEnrollment(courseEnrollmentId, courseEnrollment, true);
-                return NoContent(); //204
+            if (courseEnrollment is null)
+                throw new CourseEnrollmentBadHttpRequestException(courseEnrollmentId); //400
 
-            
-            
+
+            _manager.CourseEnrollmentService.UpdateCourseEnrollment(courseEnrollmentId, courseEnrollment, true);
+            return NoContent(); //204
+
+
+
         }
 
         [HttpDelete("{courseEnrollmentId:int}")]
         public IActionResult DeleteCourseEnrollment([FromRoute(Name = "courseEnrollmentId")] int courseEnrollmentId)
         {
-            
 
-                _manager.CourseEnrollmentService.DeleteCourseEnrollment(courseEnrollmentId, false);
-                return NoContent();
 
-            
+            _manager.CourseEnrollmentService.DeleteCourseEnrollment(courseEnrollmentId, false);
+            return NoContent();
+
+
         }
 
         [HttpPatch("{courseEnrollmentId:int}")]
         public IActionResult PartiallyUpdateCourseEnrollment([FromRoute(Name = "courseEnrollmentId")] int courseEnrollmentId,
             [FromBody] JsonPatchDocument<CourseEnrollment> courseEnrollmentPatch)
         {
-            
-                //check entity
 
-                var entity = _manager
-                    .CourseEnrollmentService
-                    .GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, true);
+            //check entity
+
+            var entity = _manager
+                .CourseEnrollmentService
+                .GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, true);
 
 
-                courseEnrollmentPatch.ApplyTo(entity);
-                _manager.CourseEnrollmentService.UpdateCourseEnrollment(courseEnrollmentId, entity, true);
+            courseEnrollmentPatch.ApplyTo(entity);
+            _manager.CourseEnrollmentService.UpdateCourseEnrollment(courseEnrollmentId, entity, true);
 
-                return NoContent(); //204
-            
+            return NoContent(); //204
+
         }
 
     }

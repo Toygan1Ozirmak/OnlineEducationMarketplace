@@ -3,24 +3,26 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineEducationMarketplace.Data.NewFolder;
 
 #nullable disable
 
-namespace OnlineEducationMarketplace.Data.Migrations
+namespace OEMAP.Api.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20231101063255_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.11")
+                .HasAnnotation("ProductVersion", "6.0.24")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("OnlineEducationMarketplace.Entity.Entities.Category", b =>
                 {
@@ -28,7 +30,7 @@ namespace OnlineEducationMarketplace.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"), 1L, 1);
 
                     b.Property<string>("CategoryDescription")
                         .IsRequired()
@@ -46,7 +48,7 @@ namespace OnlineEducationMarketplace.Data.Migrations
                         new
                         {
                             CategoryId = 1,
-                            CategoryDescription = "psikoloji alanı",
+                            CategoryDescription = "mühendsilik alanı",
                             CategoryName = "Psikolji"
                         },
                         new
@@ -58,25 +60,25 @@ namespace OnlineEducationMarketplace.Data.Migrations
                         new
                         {
                             CategoryId = 3,
-                            CategoryDescription = "dil alanı",
+                            CategoryDescription = "mühendsilik alanı",
                             CategoryName = "Dil"
                         },
                         new
                         {
                             CategoryId = 4,
-                            CategoryDescription = "güzel sanatlar alanı",
+                            CategoryDescription = "mühendsilik alanı",
                             CategoryName = "Güzel Sanatlar"
                         },
                         new
                         {
                             CategoryId = 5,
-                            CategoryDescription = "finans alanı",
+                            CategoryDescription = "mühendsilik alanı",
                             CategoryName = "Finans"
                         },
                         new
                         {
                             CategoryId = 6,
-                            CategoryDescription = "bilim alanı",
+                            CategoryDescription = "mühendsilik alanı",
                             CategoryName = "Bilim"
                         });
                 });
@@ -87,7 +89,7 @@ namespace OnlineEducationMarketplace.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CourseId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CourseId"), 1L, 1);
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -126,7 +128,7 @@ namespace OnlineEducationMarketplace.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CourseEnrollmentId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CourseEnrollmentId"), 1L, 1);
 
                     b.Property<int>("CourseId")
                         .HasColumnType("int");
@@ -177,7 +179,7 @@ namespace OnlineEducationMarketplace.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PaymentId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PaymentId"), 1L, 1);
 
                     b.Property<int>("Amount")
                         .HasColumnType("int");
@@ -192,9 +194,7 @@ namespace OnlineEducationMarketplace.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("PaymentDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -212,7 +212,7 @@ namespace OnlineEducationMarketplace.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReviewId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReviewId"), 1L, 1);
 
                     b.Property<string>("Comment")
                         .IsRequired()
@@ -253,7 +253,7 @@ namespace OnlineEducationMarketplace.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
 
                     b.Property<string>("Email")
                         .IsRequired()

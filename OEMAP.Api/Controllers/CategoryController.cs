@@ -19,7 +19,7 @@ namespace OEMAP.Api.Controllers
             _manager = manager;
         }
 
-        [HttpGet]
+        [HttpGet("GetAllCategories")]
         public IActionResult GetAllCategories()
         {
 
@@ -30,7 +30,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpGet("{categoryId:int}")]
+        [HttpGet("GetCategoryByCategoryId/{categoryId:int}")]
         public IActionResult GetCategoryByCategoryId([FromRoute(Name = "categoryId")] int categoryId)
         {
 
@@ -47,7 +47,7 @@ namespace OEMAP.Api.Controllers
 
 
 
-        [HttpPost()]
+        [HttpPost("Create")]
         public IActionResult CreateCategory([FromBody] Category category)
         {
 
@@ -61,7 +61,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpPut("{categoryId:int}")]
+        [HttpPut("Update/{categoryId:int}")]
         public IActionResult UpdateCategory([FromRoute(Name = "categoryId")] int categoryId,
             [FromBody] Category category)
         {
@@ -78,7 +78,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpDelete("{categoryId:int}")]
+        [HttpDelete("Delete/{categoryId:int}")]
         public IActionResult DeleteCategory([FromRoute(Name = "categoryId")] int categoryId)
         {
 
@@ -89,7 +89,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpPatch("{categoryId:int}")]
+        [HttpPatch("PartiallyUpdate/{categoryId:int}")]
         public IActionResult PartiallyUpdateCategory([FromRoute(Name = "categoryId")] int categoryId,
             [FromBody] JsonPatchDocument<Category> categoryPatch)
         {

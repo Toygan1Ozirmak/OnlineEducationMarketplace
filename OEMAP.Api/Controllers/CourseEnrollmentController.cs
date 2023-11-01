@@ -22,7 +22,7 @@ namespace OEMAP.Api.Controllers
 
 
 
-        [HttpGet("{courseId:int}")]
+        [HttpGet("GetCourseEnrollmentsByCourseId/{courseId:int}")]
         public IActionResult GetCourseEnrollmentsByCourseId([FromRoute(Name = "courseId")] int courseId)
         {
 
@@ -36,7 +36,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpGet("{userId:int}")]
+        [HttpGet("GetCourseEnrollmentsByUserId/{userId:int}")]
         public IActionResult GetCourseEnrollmentsByUserId([FromRoute(Name = "userId")] int userId)
         {
 
@@ -50,7 +50,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpGet("{courseEnrollmentId:int}")]
+        [HttpGet("GetCourseEnrollmentByCourseEnrollmentId/{courseEnrollmentId:int}")]
         public IActionResult GetCourseEnrollmentByCourseEnrollmentId([FromRoute(Name = "courseEnrollmentId")] int courseEnrollmentId)
         {
 
@@ -65,7 +65,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpPost()]
+        [HttpPost("Create")]
         public IActionResult CreateCourseEnrollment([FromBody] CourseEnrollment courseEnrollment)
         {
 
@@ -79,7 +79,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpPut("{courseEnrollmentId:int}")]
+        [HttpPut("Update/{courseEnrollmentId:int}")]
         public IActionResult UpdateCourseEnrollment([FromRoute(Name = "courseEnrollmentId")] int courseEnrollmentId,
             [FromBody] CourseEnrollment courseEnrollment)
         {
@@ -96,7 +96,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpDelete("{courseEnrollmentId:int}")]
+        [HttpDelete("Delete/{courseEnrollmentId:int}")]
         public IActionResult DeleteCourseEnrollment([FromRoute(Name = "courseEnrollmentId")] int courseEnrollmentId)
         {
 
@@ -107,7 +107,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpPatch("{courseEnrollmentId:int}")]
+        [HttpPatch("PartiallyUpdate/{courseEnrollmentId:int}")]
         public IActionResult PartiallyUpdateCourseEnrollment([FromRoute(Name = "courseEnrollmentId")] int courseEnrollmentId,
             [FromBody] JsonPatchDocument<CourseEnrollment> courseEnrollmentPatch)
         {

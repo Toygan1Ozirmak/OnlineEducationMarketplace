@@ -20,7 +20,7 @@ namespace OEMAP.Api.Controllers
         }
 
 
-        [HttpGet("course/{courseId:int}")]
+        [HttpGet("GetReviewsByCourseId/{courseId:int}")]
         public IActionResult GetReviewsByCourseId([FromRoute(Name = "courseId")] int courseId)
         {
 
@@ -34,7 +34,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpGet("{reviewId:int}")]
+        [HttpGet("GetReviewByReviewId/{reviewId:int}")]
         public IActionResult GetReviewByReviewId([FromRoute(Name = "reviewId")] int reviewId)
         {
 
@@ -49,7 +49,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpPost()]
+        [HttpPost("Create")]
         public IActionResult CreateReview([FromBody] Review review)
         {
 
@@ -64,7 +64,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpPut("{reviewId:int}")]
+        [HttpPut("Update/{reviewId:int}")]
         public IActionResult UpdateReview([FromRoute(Name = "reviewId")] int reviewId,
             [FromBody] Review review)
         {
@@ -82,7 +82,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpDelete("{reviewId:int}")]
+        [HttpDelete("Delete/{reviewId:int}")]
         public IActionResult DeleteReview([FromRoute(Name = "reviewId")] int reviewId)
         {
 
@@ -94,7 +94,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpPatch("{reviewId:int}")]
+        [HttpPatch("PartiallyUpdate/{reviewId:int}")]
         public IActionResult PartiallyUpdateReview([FromRoute(Name = "reviewId")] int reviewId,
             [FromBody] JsonPatchDocument<Review> reviewPatch)
         {

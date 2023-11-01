@@ -20,7 +20,7 @@ namespace OEMAP.Api.Controllers
             _manager = manager;
         }
 
-        [HttpGet]
+        [HttpGet("GetAllUsers")]
         public IActionResult GetAllUsers()
         {
 
@@ -31,7 +31,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpGet("{userId:int}")]
+        [HttpGet("GetUserByUserId/{userId:int}")]
         public IActionResult GetUserByUserId([FromRoute(Name = "userId")] int userId)
         {
 
@@ -48,7 +48,7 @@ namespace OEMAP.Api.Controllers
         }
 
 
-        [HttpPost()]
+        [HttpPost("Create")]
         public IActionResult CreateUser([FromBody] User user)
         {
 
@@ -63,7 +63,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpPut("{userId:int}")]
+        [HttpPut("Update/{userId:int}")]
         public IActionResult UpdateUser([FromRoute(Name = "userId")] int userId,
             [FromBody] User user)
         {
@@ -79,7 +79,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpDelete("{userId:int}")]
+        [HttpDelete("Delete/{userId:int}")]
         public IActionResult DeleteUser([FromRoute(Name = "userId")] int userId)
         {
 
@@ -90,7 +90,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpPatch("{userId:int}")]
+        [HttpPatch("PartiallyUpdate/{userId:int}")]
         public IActionResult PartiallyUpdateUser([FromRoute(Name = "userId")] int userId,
             [FromBody] JsonPatchDocument<User> userPatch)
         {

@@ -21,7 +21,7 @@ namespace OEMAP.Api.Controllers
             _manager = manager;
         }
 
-        [HttpGet]
+        [HttpGet("GetAllCourses")]
         public IActionResult GetAllCourses()
         {
 
@@ -31,7 +31,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpGet("{courseId:int}")]
+        [HttpGet("GetCourseByCourseId/{courseId:int}")]
         public IActionResult GetCourseByCourseId([FromRoute(Name = "courseId")] int courseId)
         {
 
@@ -45,7 +45,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpGet("category/{categoryId:int}")]
+        [HttpGet("GetCoursesByCategoryId/category/{categoryId:int}")]
         public IActionResult GetCoursesByCategoryId([FromRoute(Name = "categoryId")] int categoryId)
         {
 
@@ -59,7 +59,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpPost()]
+        [HttpPost("Create")]
         public IActionResult CreateCourse([FromBody] Course course)
         {
 
@@ -75,7 +75,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpPut("{courseId:int}")]
+        [HttpPut("Update/{courseId:int}")]
         public IActionResult UpdateCourse([FromRoute(Name = "courseId")] int courseId,
             [FromBody] CourseDtoForUpdate courseDto)
         {
@@ -90,7 +90,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpDelete("{courseId:int}")]
+        [HttpDelete("Delete/{courseId:int}")]
         public IActionResult DeleteCourse([FromRoute(Name = "courseId")] int courseId)
         {
 
@@ -101,7 +101,7 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [HttpPatch("{courseId:int}")]
+        [HttpPatch("PartiallyUpdate/{courseId:int}")]
         public IActionResult PartiallyUpdateCourse([FromRoute(Name = "courseId")] int courseId,
             [FromBody] JsonPatchDocument<Course> coursePatch)
         {

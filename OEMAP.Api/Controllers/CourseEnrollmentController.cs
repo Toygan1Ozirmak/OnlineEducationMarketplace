@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using OnlineEducationMarketplace.Entity.DTOs;
 using OnlineEducationMarketplace.Entity.Entities;
 using OnlineEducationMarketplace.Services.Contracts;
 using System.Diagnostics.Eventing.Reader;
@@ -81,15 +82,15 @@ namespace OEMAP.Api.Controllers
 
         [HttpPut("Update/{courseEnrollmentId:int}")]
         public IActionResult UpdateCourseEnrollment([FromRoute(Name = "courseEnrollmentId")] int courseEnrollmentId,
-            [FromBody] CourseEnrollment courseEnrollment)
+            [FromBody] CourseEnrollmentDtoForUpdate courseEnrollmentDto)
         {
 
 
-            if (courseEnrollment is null)
+            if (courseEnrollmentDto is null)
                 throw new CourseEnrollmentBadHttpRequestException(courseEnrollmentId); //400
 
 
-            _manager.CourseEnrollmentService.UpdateCourseEnrollment(courseEnrollmentId, courseEnrollment, true);
+            _manager.CourseEnrollmentService.UpdateCourseEnrollment(courseEnrollmentId, courseEnrollmentDto, true);
             return NoContent(); //204
 
 
@@ -120,7 +121,7 @@ namespace OEMAP.Api.Controllers
 
 
             courseEnrollmentPatch.ApplyTo(entity);
-            _manager.CourseEnrollmentService.UpdateCourseEnrollment(courseEnrollmentId, entity, true);
+            _manager.CourseEnrollmentService.UpdateCourseEnrollment(courseEnrollmentId, new CourseEnrollmentDtoForUpdate(entity.CourseEnrollmentId, entity.EnrollmentDate, entity.UserId, entity.CourseId), true);
 
             return NoContent(); //204
 

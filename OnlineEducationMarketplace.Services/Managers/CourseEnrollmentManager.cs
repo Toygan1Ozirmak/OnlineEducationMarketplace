@@ -1,4 +1,6 @@
-﻿using OnlineEducationMarketplace.Data.Contracts;
+﻿using AutoMapper;
+using OnlineEducationMarketplace.Data.Contracts;
+using OnlineEducationMarketplace.Entity.DTOs;
 using OnlineEducationMarketplace.Entity.Entities;
 using OnlineEducationMarketplace.Entity.Exceptions;
 using OnlineEducationMarketplace.Services.Contracts;
@@ -14,13 +16,15 @@ namespace OnlineEducationMarketplace.Services
     public class CourseEnrollmentManager : ICourseEnrollmentService
     {
         private readonly IRepositoryManager _manager;
+        private readonly IMapper _mapper;
 
-        public CourseEnrollmentManager(IRepositoryManager manager)
+        public CourseEnrollmentManager(IRepositoryManager manager, IMapper mapper)
         {
             _manager = manager;
+            _mapper = mapper;
         }
 
-        
+
         public IQueryable<CourseEnrollment> GetCourseEnrollmentsByUserId(int userId, bool trackChanges)
         {
             var courseEnrollments = _manager.CourseEnrollment.GetCourseEnrollmentsByUserId(userId, trackChanges);
@@ -66,7 +70,7 @@ namespace OnlineEducationMarketplace.Services
             _manager.Save();
         }
 
-        public void UpdateCourseEnrollment(int courseEnrollmentId, CourseEnrollment courseEnrollment, bool trackChanges)
+        public void UpdateCourseEnrollment(int courseEnrollmentId, CourseEnrollmentDtoForUpdate courseEnrollmentDto, bool trackChanges)
         {
             //check entity
 
@@ -76,11 +80,12 @@ namespace OnlineEducationMarketplace.Services
                 throw new CourseEnrollmentByCourseEnrollmentIdNotFoundException(courseEnrollmentId);
             }
 
-            entity.EnrollmentDate = courseEnrollment.EnrollmentDate;
-            entity.UserId = courseEnrollment.UserId;
-            entity.CourseId = courseEnrollment.CourseId;
-            entity.Course = courseEnrollment.Course;
-            entity.User = courseEnrollment.User;
+            //entity.EnrollmentDate = courseEnrollment.EnrollmentDate;
+            //entity.UserId = courseEnrollment.UserId;
+            //entity.CourseId = courseEnrollment.CourseId;
+            //entity.Course = courseEnrollment.Course;
+            //entity.User = courseEnrollment.User;
+            entity = _mapper.Map<CourseEnrollment>(courseEnrollmentDto);
 
             _manager.CourseEnrollment.UpdateCourseEnrollment(entity);
             _manager.Save();

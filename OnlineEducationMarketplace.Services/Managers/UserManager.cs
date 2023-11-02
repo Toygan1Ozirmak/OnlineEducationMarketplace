@@ -1,4 +1,6 @@
-﻿using OnlineEducationMarketplace.Data.Contracts;
+﻿using AutoMapper;
+using OnlineEducationMarketplace.Data.Contracts;
+using OnlineEducationMarketplace.Entity.DTOs;
 using OnlineEducationMarketplace.Entity.Entities;
 using OnlineEducationMarketplace.Entity.Exceptions;
 using OnlineEducationMarketplace.Services.Contracts;
@@ -14,10 +16,12 @@ namespace OnlineEducationMarketplace.Services
     public class UserManager : IUserService 
     {
         private readonly IRepositoryManager _manager;
+        private readonly IMapper _mapper;
 
-        public UserManager(IRepositoryManager manager)
+        public UserManager(IRepositoryManager manager, IMapper mapper)
         {
             _manager = manager;
+            _mapper = mapper;
         }
 
         public User CreateUser(User user)
@@ -54,23 +58,23 @@ namespace OnlineEducationMarketplace.Services
             return _manager.User.GetAllUsers(trackChanges);
         }
 
-        public void UpdateUser(int userId, User user, bool trackChanges)
+        public void UpdateUser(int userId, UserDtoForUpdate userDto, bool trackChanges)
         {
             //check entity
             var entity = _manager.User.GetUserByUserId(userId, trackChanges);
             if(entity is null)
                 throw new UserNotFoundException(userId);
 
-            entity.FirstName = user.FirstName;
-            entity.LastName = user.LastName;
-            entity.Email = user.Email;
-            entity.Password = user.Password;
-            entity.UserName = user.UserName;
-            entity.RoleId = user.RoleId;
-            entity.UserBio = user.UserBio;
-            entity.Reviews = user.Reviews;
-            entity.CourseEnrollments = user.CourseEnrollments;
-
+            //entity.FirstName = user.FirstName;
+            //entity.LastName = user.LastName;
+            //entity.Email = user.Email;
+            //entity.Password = user.Password;
+            //entity.UserName = user.UserName;
+            //entity.RoleId = user.RoleId;
+            //entity.UserBio = user.UserBio;
+            //entity.Reviews = user.Reviews;
+            //entity.CourseEnrollments = user.CourseEnrollments;
+            entity = _mapper.Map<User>(userDto);
             _manager.User.UpdateUser(entity);
             _manager.Save();
         }

@@ -1,4 +1,5 @@
-﻿using OnlineEducationMarketplace.Entity.Entities;
+﻿using OnlineEducationMarketplace.Entity.DTOs;
+using OnlineEducationMarketplace.Entity.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace OnlineEducationMarketplace.Services.Contracts
 
         Review CreateReview(Review review);
 
-        void UpdateReview(int reviewId, Review review, bool trackChanges);
+        void UpdateReview(int reviewId, ReviewDtoForUpdate reviewDto, bool trackChanges);
 
         void DeleteReview(int reviewId, bool trackChanges);
     }

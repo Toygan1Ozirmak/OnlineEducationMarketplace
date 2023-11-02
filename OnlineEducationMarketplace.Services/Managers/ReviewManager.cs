@@ -1,4 +1,6 @@
-﻿using OnlineEducationMarketplace.Data.Contracts;
+﻿using AutoMapper;
+using OnlineEducationMarketplace.Data.Contracts;
+using OnlineEducationMarketplace.Entity.DTOs;
 using OnlineEducationMarketplace.Entity.Entities;
 using OnlineEducationMarketplace.Entity.Exceptions;
 using OnlineEducationMarketplace.Services.Contracts;
@@ -14,10 +16,12 @@ namespace OnlineEducationMarketplace.Services.Contracts
     public class ReviewManager : IReviewService
     {
         private readonly IRepositoryManager _manager;
+        private readonly IMapper _mapper;
 
-        public ReviewManager(IRepositoryManager manager)
+        public ReviewManager(IRepositoryManager manager, IMapper mapper)
         {
             _manager = manager;
+            _mapper = mapper;
         }
 
         public Review CreateReview(Review review)
@@ -60,7 +64,7 @@ namespace OnlineEducationMarketplace.Services.Contracts
         }
 
        
-        public void UpdateReview(int reviewId, Review review, bool trackChanges)
+        public void UpdateReview(int reviewId, ReviewDtoForUpdate reviewDto, bool trackChanges)
         {
             //check entity
 
@@ -68,12 +72,13 @@ namespace OnlineEducationMarketplace.Services.Contracts
             if(entity is null)
                 throw new ReviewNotFoundByReviewIdException(reviewId);
 
-            entity.Comment = review.Comment;
-            entity.Point = review.Point;
-            entity.UserId = review.UserId;
-            entity.CourseId = review.CourseId;
-            entity.Course = review.Course;
-            entity.User = review.User;
+            //entity.Comment = review.Comment;
+            //entity.Point = review.Point;
+            //entity.UserId = review.UserId;
+            //entity.CourseId = review.CourseId;
+            //entity.Course = review.Course;
+            //entity.User = review.User;
+            entity = _mapper.Map<Review>(reviewDto);
 
             _manager.Review.UpdateReview(entity);
             _manager.Save();

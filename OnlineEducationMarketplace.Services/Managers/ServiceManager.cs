@@ -21,9 +21,9 @@ namespace OnlineEducationMarketplace.Services
         public ServiceManager(IRepositoryManager repositoryManager,IMapper mapper) 
         {
             _courseService = new Lazy<ICourseService>(()=> new CourseManager(repositoryManager,mapper));
-            _userService = new Lazy<IUserService>(() => new UserManager(repositoryManager));
-            _reviewService = new Lazy<IReviewService>(() => new ReviewManager(repositoryManager));
-            _courseEnrollmentService = new Lazy<ICourseEnrollmentService>(() => new CourseEnrollmentManager(repositoryManager));
+            _userService = new Lazy<IUserService>(() => new UserManager(repositoryManager, mapper));
+            _reviewService = new Lazy<IReviewService>(() => new ReviewManager(repositoryManager, mapper));
+            _courseEnrollmentService = new Lazy<ICourseEnrollmentService>(() => new CourseEnrollmentManager(repositoryManager, mapper));
             _categoryService = new Lazy<ICategoryService>(() => new CategoryManager(repositoryManager));
             
 

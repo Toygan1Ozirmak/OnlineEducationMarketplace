@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using OnlineEducationMarketplace.Entity.DTOs;
 using OnlineEducationMarketplace.Entity.Entities;
 using OnlineEducationMarketplace.Services.Contracts;
 using System.Diagnostics.Eventing.Reader;
+using System.Drawing;
 using static OnlineEducationMarketplace.Entity.Exceptions.BadHttpRequestException;
 
 namespace OEMAP.Api.Controllers
@@ -66,16 +68,16 @@ namespace OEMAP.Api.Controllers
 
         [HttpPut("Update/{reviewId:int}")]
         public IActionResult UpdateReview([FromRoute(Name = "reviewId")] int reviewId,
-            [FromBody] Review review)
+            [FromBody] ReviewDtoForUpdate reviewDto)
         {
 
 
-            if (review is null)
+            if (reviewDto is null)
                 throw new ReviewBadHttpRequestException(reviewId); //400
 
 
 
-            _manager.ReviewService.UpdateReview(reviewId, review, true);
+            _manager.ReviewService.UpdateReview(reviewId, reviewDto, true);
             return NoContent(); //204
 
 
@@ -107,7 +109,7 @@ namespace OEMAP.Api.Controllers
 
 
             reviewPatch.ApplyTo(entity);
-            _manager.ReviewService.UpdateReview(reviewId, entity, true);
+            _manager.ReviewService.UpdateReview(reviewId, new ReviewDtoForUpdate(entity.ReviewId, entity.Comment, entity.Point, entity.UserId, entity.CourseId), true);
 
             return NoContent(); //204
 

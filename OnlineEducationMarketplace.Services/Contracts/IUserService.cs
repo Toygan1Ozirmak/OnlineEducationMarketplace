@@ -1,4 +1,5 @@
-﻿using OnlineEducationMarketplace.Entity.Entities;
+﻿using OnlineEducationMarketplace.Entity.DTOs;
+using OnlineEducationMarketplace.Entity.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace OnlineEducationMarketplace.Services.Contracts
 
         User CreateUser(User user);
 
-        void UpdateUser(int userId, User user, bool trackChanges);
+        void UpdateUser(int userId, UserDtoForUpdate userDto, bool trackChanges);
 
         void DeleteUser(int userId, bool trackChanges);
     }

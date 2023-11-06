@@ -10,7 +10,7 @@ namespace OnlineEducationMarketplace.Services.Contracts
 {
     public interface IUserService
     {
-        IEnumerable<User>GetAllUsers(bool trackChanges);
+        IEnumerable<UserDto>GetAllUsers(bool trackChanges);
         
         User GetUserByUserId(int userId,bool trackChanges);
 

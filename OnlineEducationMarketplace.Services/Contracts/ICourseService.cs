@@ -10,7 +10,7 @@ namespace OnlineEducationMarketplace.Services.Contracts
 {
     public interface ICourseService
     {
-        IEnumerable<Course> GetAllCourses(bool trackChanges);
+        IEnumerable<CourseDto> GetAllCourses(bool trackChanges);
 
         Course GetCourseByCourseId(int courseId, bool trackChanges);
 

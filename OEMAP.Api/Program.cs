@@ -1,3 +1,4 @@
+using DocumentFormat.OpenXml.Presentation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using NLog;
@@ -15,11 +16,15 @@ LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nl
 
 // Add services to the container.
 
-builder.Services.AddControllers()
-    .AddJsonOptions(options =>
-    {
-        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
-    });
+builder.Services.AddControllers(config =>
+{
+    config.RespectBrowserAcceptHeader = true;
+    config.ReturnHttpNotAcceptable = true;
+})
+    
+    .AddXmlDataContractSerializerFormatters()
+    .AddNewtonsoftJson();
+    
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -65,9 +65,10 @@ namespace OnlineEducationMarketplace.Services
             return courses;
         }
 
-        public IEnumerable<Course> GetAllCourses(bool trackChanges)
+        public IEnumerable<CourseDto> GetAllCourses(bool trackChanges)
         {
-            return _manager.Course.GetAllCourses(trackChanges);
+            var courses = _manager.Course.GetAllCourses(trackChanges);
+            return _mapper.Map<IEnumerable<CourseDto>>(courses);
         }
 
         public void UpdateCourse(int courseId, CourseDtoForUpdate courseDto, bool trackChanges)

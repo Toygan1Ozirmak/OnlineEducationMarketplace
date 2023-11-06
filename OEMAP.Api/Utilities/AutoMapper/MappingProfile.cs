@@ -12,6 +12,10 @@ namespace OEMAP.Api.Utilities.AutoMapper
             CreateMap<UserDtoForUpdate, User>();
             CreateMap<ReviewDtoForUpdate, Review>();
             CreateMap<CourseEnrollmentDtoForUpdate, CourseEnrollment>();
+            CreateMap<Course, CourseDto>();
+            CreateMap<User, UserDto>();
+            CreateMap<Review, ReviewDto>();
+            CreateMap<CourseEnrollment, CourseEnrollmentDto>();
 
         }
     }

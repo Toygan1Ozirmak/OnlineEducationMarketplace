@@ -54,13 +54,13 @@ namespace OnlineEducationMarketplace.Services.Contracts
         }
 
 
-        public IEnumerable<Review> GetReviewsByCourseId(int courseId, bool trackChanges)
+        public IEnumerable<ReviewDto> GetReviewsByCourseId(int courseId, bool trackChanges)
         {
             var reviews = _manager.Review.GetReviewsByCourseId(courseId, trackChanges);
             if(reviews is null)
                 throw new ReviewsNotFoundByCourseIdException(courseId);
 
-            return reviews;
+            return _mapper.Map<IEnumerable<ReviewDto>>(reviews);
         }
 
        

@@ -53,12 +53,14 @@ namespace OnlineEducationMarketplace.Services
             return user;
         }
 
-        public IEnumerable<User> GetAllUsers(bool trackChanges)
+        public IEnumerable<UserDto> GetAllUsers(bool trackChanges)
         {
-            return _manager.User.GetAllUsers(trackChanges);
+            var users = _manager.User.GetAllUsers(trackChanges);
+            return _mapper.Map<IEnumerable<UserDto>>(users);
+
         }
 
-        public void UpdateUser(int userId, UserDtoForUpdate userDto, bool trackChanges)
+            public void UpdateUser(int userId, UserDtoForUpdate userDto, bool trackChanges)
         {
             //check entity
             var entity = _manager.User.GetUserByUserId(userId, trackChanges);

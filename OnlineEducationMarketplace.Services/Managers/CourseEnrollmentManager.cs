@@ -25,21 +25,21 @@ namespace OnlineEducationMarketplace.Services
         }
 
 
-        public IQueryable<CourseEnrollment> GetCourseEnrollmentsByUserId(int userId, bool trackChanges)
+        public IQueryable<CourseEnrollmentDto> GetCourseEnrollmentsByUserId(int userId, bool trackChanges)
         {
             var courseEnrollments = _manager.CourseEnrollment.GetCourseEnrollmentsByUserId(userId, trackChanges);
             if (courseEnrollments is null)
                 throw new CourseEnrollmentByUserIdNotFoundException(userId); //404
-            return courseEnrollments;
+            return _mapper.Map<IQueryable<CourseEnrollmentDto>>(courseEnrollments); ;
 
         }
 
-        public IQueryable<CourseEnrollment> GetCourseEnrollmentsByCourseId(int courseId, bool trackChanges)
+        public IQueryable<CourseEnrollmentDto> GetCourseEnrollmentsByCourseId(int courseId, bool trackChanges)
         {
             var courseEnrollments = _manager.CourseEnrollment.GetCourseEnrollmentsByCourseId(courseId, trackChanges);
             if (courseEnrollments is null)
                 throw new CourseEnrollmentByCourseIdNotFoundException(courseId); //404
-            return courseEnrollments;
+            return _mapper.Map<IQueryable<CourseEnrollmentDto>>(courseEnrollments); ;
         }
 
         public CourseEnrollment GetCourseEnrollmentByCourseEnrollmentId(int courseEnrollmentId, bool trackChanges)

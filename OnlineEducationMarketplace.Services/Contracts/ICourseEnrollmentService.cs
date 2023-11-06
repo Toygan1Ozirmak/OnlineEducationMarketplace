@@ -11,9 +11,9 @@ namespace OnlineEducationMarketplace.Services.Contracts
     public interface ICourseEnrollmentService
     {
         
-        IQueryable<CourseEnrollment> GetCourseEnrollmentsByCourseId(int courseId, bool trackChanges);
+        IQueryable<CourseEnrollmentDto> GetCourseEnrollmentsByCourseId(int courseId, bool trackChanges);
 
-        IQueryable<CourseEnrollment> GetCourseEnrollmentsByUserId(int userId, bool trackChanges);
+        IQueryable<CourseEnrollmentDto> GetCourseEnrollmentsByUserId(int userId, bool trackChanges);
 
         CourseEnrollment GetCourseEnrollmentByCourseEnrollmentId(int courseEnrollmentId, bool trackChanges);
 

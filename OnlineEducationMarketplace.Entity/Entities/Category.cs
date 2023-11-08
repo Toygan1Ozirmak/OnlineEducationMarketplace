@@ -11,7 +11,6 @@ namespace OnlineEducationMarketplace.Entity.Entities
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public string CategoryDescription { get; set; }
-        //cnp
-        public ICollection<Course> Courses { get; set;}
+       
     }
 }

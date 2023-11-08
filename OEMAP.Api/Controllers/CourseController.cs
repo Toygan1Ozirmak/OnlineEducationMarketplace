@@ -82,8 +82,6 @@ namespace OEMAP.Api.Controllers
             if (courseDto is null)
                 throw new CourseBadHttpRequestException(courseId); //400
 
-
-
             _manager.CourseService.UpdateCourse(courseId, courseDto, true);
             return NoContent(); //204
 

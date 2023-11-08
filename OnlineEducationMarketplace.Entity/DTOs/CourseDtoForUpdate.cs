@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace OnlineEducationMarketplace.Entity.DTOs
 {
-    public record CourseDtoForUpdate(int CourseId, String Title, string Description, TimeSpan CourseLength, string Image, bool CourseStatus, int CategoryId)
+    public record CourseDtoForUpdate() : CourseDtoForManipulation
     {
-        //public int CourseId { get; init; }
+        [Required]
+        public int CourseId { get; init; }
         //public string Title { get; init; }
         //public string Description { get; init; }
 

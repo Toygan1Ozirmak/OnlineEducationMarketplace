@@ -15,8 +15,13 @@ namespace OnlineEducationMarketplace.Data.Repositories.Config
         {
             builder.HasKey(k => k.CourseId);
 
-           
-            
+            builder.HasOne(c => c.Category)
+                .WithMany(c => c.Courses)
+                .HasForeignKey(c => c.CategoryId)
+                .OnDelete(DeleteBehavior.Cascade);
+            //bire çok
+
+
             builder.Property(c => c.Title).IsRequired();
             builder.Property(c => c.Description).IsRequired();
 

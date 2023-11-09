@@ -15,7 +15,15 @@ namespace OnlineEducationMarketplace.Data.Repositories.Config
         {
             builder.HasKey(c => c.CourseEnrollmentId);
 
-           
+            builder.HasOne(ce => ce.Course)
+                .WithMany(c => c.CourseEnrollments)
+                .HasForeignKey(ce => ce.CourseId);
+
+            builder.HasOne(ce => ce.User)
+                .WithMany(c => c.CourseEnrollments)
+                .HasForeignKey(ce => ce.UserId);
+
+
         }
     }
 }

@@ -65,7 +65,8 @@ namespace OnlineEducationMarketplace.Services
 
             entity.CategoryName = category.CategoryName;
             entity.CategoryDescription = category.CategoryDescription;
-           
+            entity.Courses = category.Courses;
+
 
             _manager.Category.UpdateCategory(entity);
             _manager.Save();

@@ -24,11 +24,13 @@ namespace OnlineEducationMarketplace.Services.Contracts
             _mapper = mapper;
         }
 
-        public Review CreateReview(Review review)
+        public ReviewDto CreateReview(ReviewDtoForInsertion reviewDto)
         {
-            _manager.Review.CreateReview(review);
+            var entity = _mapper.Map<Review>(reviewDto);
+            _manager.Review.CreateReview(entity);
             _manager.Save();
-            return review;
+            return _mapper.Map<ReviewDto>(entity);
+            
         }
 
         public void DeleteReview(int reviewId, bool trackChanges)
@@ -44,13 +46,13 @@ namespace OnlineEducationMarketplace.Services.Contracts
             _manager.Save();
         }
 
-        public Review GetReviewByReviewId(int reviewId, bool trackChanges)
+        public ReviewDto GetReviewByReviewId(int reviewId, bool trackChanges)
         {
             var review = _manager.Review.GetReviewByReviewId(reviewId, trackChanges);
             if(review is null)
                 throw new ReviewNotFoundByReviewIdException(reviewId);
 
-            return review;
+            return _mapper.Map<ReviewDto>(review);
         }
 
 

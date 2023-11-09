@@ -98,5 +98,10 @@ namespace OnlineEducationMarketplace.Services
             _manager.Course.UpdateCourse(entity);
             _manager.Save();
         }
+
+        IEnumerable<CourseDto> ICourseService.GetCoursesByCategoryId(int categoryId, bool trackChanges)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

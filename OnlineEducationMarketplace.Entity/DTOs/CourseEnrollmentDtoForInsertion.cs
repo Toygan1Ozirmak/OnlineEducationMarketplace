@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineEducationMarketplace.Entity.DTOs
 {
-    internal class CourseEnrollmentDtoForInsertion
+    public record CourseEnrollmentDtoForInsertion : CourseDtoForManipulation
     {
     }
 }

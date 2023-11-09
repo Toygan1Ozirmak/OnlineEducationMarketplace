@@ -18,6 +18,6 @@ namespace OnlineEducationMarketplace.Entity.DTOs
 
         ////fk
         public int UserId { get; init; }
-        public int CourseId { get;  init; }
+        public int CourseId { get; init; }
     }
 }

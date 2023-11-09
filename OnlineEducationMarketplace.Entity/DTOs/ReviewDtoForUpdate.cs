@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace OnlineEducationMarketplace.Entity.DTOs
 {
-    public record ReviewDtoForUpdate(int ReviewId, String Comment, int Point, int UserId, int CourseId)
+    public record ReviewDtoForUpdate() : ReviewDtoForManipulation
     {
-        //public int ReviewId { get; init; }
+        public int ReviewId { get; set; }
 
 
 

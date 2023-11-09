@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 namespace OnlineEducationMarketplace.Entity.DTOs
 {
 
-    public partial record CourseDto()
+    public record CourseDto()
     {
-        public int CourseId { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
+        public int CourseId { get; init; }
+        public string Title { get; init; }
+        public string Description { get; init; }
 
-        public TimeSpan CourseLength { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public string Image { get; set; }
-        public bool CourseStatus { get; set; }
+        public TimeSpan CourseLength { get; init; }
+        public DateTime CreatedDate { get; init; }
+        public string Image { get; init; }
+        public bool CourseStatus { get; init; }
 
 
         ////fk

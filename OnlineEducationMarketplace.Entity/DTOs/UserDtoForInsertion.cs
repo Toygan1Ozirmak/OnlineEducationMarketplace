@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace OnlineEducationMarketplace.Entity.DTOs
 {
-    internal class UserDtoForInsertion
+    public record UserDtoForInsertion :UserDtoForManipulation
     {
+        public int UserId { get; set; }
     }
 }

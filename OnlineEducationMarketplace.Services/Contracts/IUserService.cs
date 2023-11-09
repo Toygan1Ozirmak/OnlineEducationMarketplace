@@ -11,10 +11,10 @@ namespace OnlineEducationMarketplace.Services.Contracts
     public interface IUserService
     {
         IEnumerable<UserDto>GetAllUsers(bool trackChanges);
-        
-        User GetUserByUserId(int userId,bool trackChanges);
 
-        User CreateUser(User user);
+        UserDto GetUserByUserId(int userId,bool trackChanges);
+
+        UserDto CreateUser(UserDtoForInsertion user);
 
         void UpdateUser(int userId, UserDtoForUpdate userDto, bool trackChanges);
 

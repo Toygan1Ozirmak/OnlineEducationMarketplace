@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineEducationMarketplace.Entity.DTOs
 {
-    public record ReviewDtoForInsertion
+    public record ReviewDtoForInsertion : ReviewDtoForManipulation
     {
     }
 }

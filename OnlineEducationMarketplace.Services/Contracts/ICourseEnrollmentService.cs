@@ -15,9 +15,9 @@ namespace OnlineEducationMarketplace.Services.Contracts
 
         IQueryable<CourseEnrollmentDto> GetCourseEnrollmentsByUserId(int userId, bool trackChanges);
 
-        CourseEnrollment GetCourseEnrollmentByCourseEnrollmentId(int courseEnrollmentId, bool trackChanges);
+        CourseEnrollmentDto GetCourseEnrollmentByCourseEnrollmentId(int courseEnrollmentId, bool trackChanges);
 
-        CourseEnrollment CreateCourseEnrollment(CourseEnrollment courseEnrollment);
+        CourseEnrollmentDto CreateCourseEnrollment(CourseEnrollmentDtoForInsertion courseEnrollment);
 
         void UpdateCourseEnrollment(int courseEnrollmentId, CourseEnrollmentDtoForUpdate courseEnrollmentDto, bool trackChanges);
 

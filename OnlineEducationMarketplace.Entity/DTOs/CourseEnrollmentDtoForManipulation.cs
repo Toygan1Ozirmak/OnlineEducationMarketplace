@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace OnlineEducationMarketplace.Entity.DTOs
 {
-    public record CourseEnrollmentDtoForManipulation
+    public abstract record CourseEnrollmentDtoForManipulation
     {
+        
+
+        public DateTime EnrollmentDate { get; init; }
+
+
+        //fk
+        public int UserId { get; init; }
+        public int CourseId { get; init; }
     }
 }

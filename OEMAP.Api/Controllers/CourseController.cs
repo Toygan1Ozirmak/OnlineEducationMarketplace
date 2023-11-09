@@ -60,16 +60,16 @@ namespace OEMAP.Api.Controllers
         }
 
         [HttpPost("Create")]
-        public IActionResult CreateCourse([FromBody] Course course)
+        public IActionResult CreateCourse([FromBody] CourseDtoForInsertion courseDto)
         {
 
 
-            if (course is null)
+            if (courseDto is null)
                 throw new CreateCourseBadHttpRequestException(course); //400
 
-            _manager.CourseService.CreateCourse(course);
+            var course =_manager.CourseService.CreateCourse(courseDto);
 
-            return StatusCode(201, course);
+            return StatusCode(201, courseDto);
 
 
 

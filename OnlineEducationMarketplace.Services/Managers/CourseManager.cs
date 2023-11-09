@@ -24,11 +24,12 @@ namespace OnlineEducationMarketplace.Services
             _mapper = mapper;
         }
 
-        public Course CreateCourse(Course course)
+        public CourseDto CreateCourse(CourseDtoForInsertion courseDto)
         {
-            _manager.Course.CreateCourse(course);
+            var entity = _mapper.Map<Course>(courseDto);
+            _manager.Course.CreateCourse(entity);
             _manager.Save();
-            return course;
+            return _mapper.Map<CourseDto>(entity);
         }
 
         public void DeleteCourse(int courseId, bool trackChanges)
@@ -44,7 +45,7 @@ namespace OnlineEducationMarketplace.Services
             _manager.Save();
         }
 
-        public Course GetCourseByCourseId(int courseId, bool trackChanges)
+        public CourseDto GetCourseByCourseId(int courseId, bool trackChanges)
         {
             var course = _manager.Course.GetCourseByCourseId(courseId, trackChanges);
             if (course is null)
@@ -52,7 +53,7 @@ namespace OnlineEducationMarketplace.Services
                 throw new CourseNotFoundByCourseIdException(courseId);
             }
 
-            return course;
+            return _mapper.Map<CourseDto>(course);
         }
 
         public IEnumerable<Course> GetCoursesByCategoryId(int categoryId, bool trackChanges)

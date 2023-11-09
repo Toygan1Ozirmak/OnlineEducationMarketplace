@@ -12,11 +12,11 @@ namespace OnlineEducationMarketplace.Services.Contracts
     {
         IEnumerable<CourseDto> GetAllCourses(bool trackChanges);
 
-        Course GetCourseByCourseId(int courseId, bool trackChanges);
+        CourseDto GetCourseByCourseId(int courseId, bool trackChanges);
 
-        IEnumerable<Course> GetCoursesByCategoryId(int categoryId, bool trackChanges);
+        IEnumerable<CourseDto> GetCoursesByCategoryId(int categoryId, bool trackChanges);
 
-        Course CreateCourse(Course course);
+        CourseDto CreateCourse(CourseDtoForInsertion course);
 
         void UpdateCourse(int courseId, CourseDtoForUpdate courseDto, bool trackChanges);
 

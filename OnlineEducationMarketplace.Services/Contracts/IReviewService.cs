@@ -12,9 +12,9 @@ namespace OnlineEducationMarketplace.Services.Contracts
     {
         IEnumerable<ReviewDto> GetReviewsByCourseId(int courseId, bool trackChanges);
 
-        Review GetReviewByReviewId(int reviewId, bool trackChanges);
+        ReviewDto GetReviewByReviewId(int reviewId, bool trackChanges);
 
-        Review CreateReview(Review review);
+        ReviewDto CreateReview(ReviewDtoForInsertion review);
 
         void UpdateReview(int reviewId, ReviewDtoForUpdate reviewDto, bool trackChanges);
 

@@ -8,14 +8,23 @@ namespace OEMAP.Api.Utilities.AutoMapper
     {
         public MappingProfile()
         {
-            CreateMap<CourseDtoForUpdate, Course>();
-            CreateMap<UserDtoForUpdate, User>();
-            CreateMap<ReviewDtoForUpdate, Review>();
-            CreateMap<CourseEnrollmentDtoForUpdate, CourseEnrollment>();
-            CreateMap<Course, CourseDto>();
-            CreateMap<User, UserDto>();
+            
             CreateMap<Review, ReviewDto>();
+            CreateMap<ReviewDtoForUpdate, Review>();
+            CreateMap<ReviewDtoForInsertion, Review>();
+
+            CreateMap<CourseEnrollmentDtoForUpdate, CourseEnrollment>();
+            CreateMap<CourseEnrollmentDtoForInsertion, CourseEnrollment>();
             CreateMap<CourseEnrollment, CourseEnrollmentDto>();
+
+            CreateMap<Course, CourseDto>();
+            CreateMap<CourseDtoForUpdate, Course>();
+            CreateMap<CourseDtoForInsertion, Course>();
+
+            
+            CreateMap<User, UserDto>();
+            CreateMap<UserDtoForUpdate, User>();
+            CreateMap<UserDtoForInsertion, User>();
 
         }
     }

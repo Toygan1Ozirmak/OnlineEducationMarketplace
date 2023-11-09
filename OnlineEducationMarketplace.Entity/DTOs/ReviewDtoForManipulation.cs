@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace OnlineEducationMarketplace.Entity.DTOs
 {
-    public record ReviewDtoForManipulation
+    public abstract record ReviewDtoForManipulation
     {
+        public string Comment { get; init; }
+        public int Point { get; init; }
+
+        //fk
+        public int UserId { get; init; }
+        public int CourseId { get; init; }
     }
 }

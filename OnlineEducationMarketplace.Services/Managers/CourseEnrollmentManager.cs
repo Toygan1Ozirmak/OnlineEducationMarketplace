@@ -42,20 +42,23 @@ namespace OnlineEducationMarketplace.Services
             return _mapper.Map<IQueryable<CourseEnrollmentDto>>(courseEnrollments); ;
         }
 
-        public CourseEnrollment GetCourseEnrollmentByCourseEnrollmentId(int courseEnrollmentId, bool trackChanges)
+        public CourseEnrollmentDto GetCourseEnrollmentByCourseEnrollmentId(int courseEnrollmentId, bool trackChanges)
         {
             var courseEnrollment = _manager.CourseEnrollment.GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, trackChanges);
             if (courseEnrollment is null)
                 throw new CourseEnrollmentByCourseEnrollmentIdNotFoundException(courseEnrollmentId);
 
-            return courseEnrollment;
+            return _mapper.Map<CourseEnrollmentDto>(courseEnrollment);
         }
+       
 
-        public CourseEnrollment CreateCourseEnrollment(CourseEnrollment courseEnrollment)
+            public CourseEnrollmentDto CreateCourseEnrollment(CourseEnrollmentDtoForInsertion courseEnrollmentDto)
         {
-            _manager.CourseEnrollment.CreateCourseEnrollment(courseEnrollment);
+            var entity = _mapper.Map<CourseEnrollment>(courseEnrollmentDto);
+            _manager.CourseEnrollment.CreateCourseEnrollment(entity);
             _manager.Save();
-            return courseEnrollment;
+            return _mapper.Map<CourseEnrollmentDto>(entity);
+            
         }
 
         public void DeleteCourseEnrollment(int courseEnrollmentId, bool trackChanges)

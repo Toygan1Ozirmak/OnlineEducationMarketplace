@@ -24,11 +24,13 @@ namespace OnlineEducationMarketplace.Services
             _mapper = mapper;
         }
 
-        public User CreateUser(User user)
+        public UserDto CreateUser(UserDtoForInsertion userDto)
         {
-            _manager.User.CreateUser(user);
+            var entity = _mapper.Map<User>(userDto);
+            _manager.User.CreateUser(entity);
             _manager.Save();
-            return user;
+            return _mapper.Map<UserDto>(entity);
+            
         }
 
         public void DeleteUser(int userId, bool trackChanges)
@@ -43,14 +45,15 @@ namespace OnlineEducationMarketplace.Services
             _manager.Save();
         }
 
-        public User GetUserByUserId(int userId, bool trackChanges)
+        public UserDto GetUserByUserId(int userId, bool trackChanges)
         {
             var user  = _manager.User.GetUserByUserId(userId, trackChanges);
             if (user is null)
             {
                 throw new UserNotFoundException(userId);
             }
-            return user;
+            return _mapper.Map<UserDto>(user);
+            
         }
 
         public IEnumerable<UserDto> GetAllUsers(bool trackChanges)
@@ -79,6 +82,7 @@ namespace OnlineEducationMarketplace.Services
             entity = _mapper.Map<User>(userDto);
             _manager.User.UpdateUser(entity);
             _manager.Save();
+
         }
     }
 }

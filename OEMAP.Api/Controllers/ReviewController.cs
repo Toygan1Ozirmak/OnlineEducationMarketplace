@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DocumentFormat.OpenXml.Vml.Office;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using OnlineEducationMarketplace.Entity.DTOs;
@@ -52,16 +53,16 @@ namespace OEMAP.Api.Controllers
         }
 
         [HttpPost("Create")]
-        public IActionResult CreateReview([FromBody] Review review)
+        public IActionResult CreateReview([FromBody] ReviewDtoForInsertion reviewDto)
         {
 
 
-            if (review is null)
-                throw new CreateReviewBadHttpRequestException(review);
+            if (reviewDto is null)
+                return BadRequest(); //400
 
-            _manager.ReviewService.CreateReview(review);
+            _manager.ReviewService.CreateReview(reviewDto);
 
-            return StatusCode(201, review);
+            return StatusCode(201, reviewDto);
 
 
         }
@@ -98,19 +99,26 @@ namespace OEMAP.Api.Controllers
 
         [HttpPatch("PartiallyUpdate/{reviewId:int}")]
         public IActionResult PartiallyUpdateReview([FromRoute(Name = "reviewId")] int reviewId,
-            [FromBody] JsonPatchDocument<Review> reviewPatch)
+            [FromBody] JsonPatchDocument<ReviewDto> reviewPatch)
         {
 
             //check entity
 
-            var entity = _manager
+            var reviewDto = _manager
                 .ReviewService
                 .GetReviewByReviewId(reviewId, true);
 
 
-            reviewPatch.ApplyTo(entity);
-            _manager.ReviewService.UpdateReview(reviewId, new ReviewDtoForUpdate(entity.ReviewId, entity.Comment, entity.Point, entity.UserId, entity.CourseId), true);
-
+            reviewPatch.ApplyTo(reviewDto);
+            _manager.ReviewService.UpdateReview(reviewId, 
+                new ReviewDtoForUpdate()
+                {
+                    ReviewId = reviewDto.ReviewId, 
+                    Comment = reviewDto.Comment, 
+                    Point = reviewDto.Point, 
+                    UserId = reviewDto.UserId, 
+                    CourseId = reviewDto.CourseId
+                }, true);
             return NoContent(); //204
 
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DocumentFormat.OpenXml.Vml.Office;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using OnlineEducationMarketplace.Entity.DTOs;
@@ -65,11 +66,11 @@ namespace OEMAP.Api.Controllers
 
 
             if (courseDto is null)
-                throw new CreateCourseBadHttpRequestException(course); //400
+                return BadRequest(); //400
 
             var course =_manager.CourseService.CreateCourse(courseDto);
 
-            return StatusCode(201, courseDto);
+            return StatusCode(201, courseDto); //CreatedAtRoute()
 
 
 
@@ -101,19 +102,28 @@ namespace OEMAP.Api.Controllers
 
         [HttpPatch("PartiallyUpdate/{courseId:int}")]
         public IActionResult PartiallyUpdateCourse([FromRoute(Name = "courseId")] int courseId,
-            [FromBody] JsonPatchDocument<Course> coursePatch)
+            [FromBody] JsonPatchDocument<CourseDto> coursePatch)
         {
 
 
             //check entity
 
-            var entity = _manager
+            var courseDto = _manager
                 .CourseService
                 .GetCourseByCourseId(courseId, true);
 
-            coursePatch.ApplyTo(entity);
+            coursePatch.ApplyTo(courseDto);
             _manager.CourseService.UpdateCourse(courseId,
-                new CourseDtoForUpdate(entity.CourseId, entity.Title, entity.Description, entity.CourseLength, entity.Image, entity.CourseStatus, entity.CategoryId), true);
+                new CourseDtoForUpdate()
+                {
+                    CourseId = courseDto.CourseId, 
+                    Title = courseDto.Title, 
+                    Description = courseDto.Description, 
+                    CourseLength = courseDto.CourseLength, 
+                    Image = courseDto.Image, 
+                    CourseStatus = courseDto.CourseStatus, 
+                    CategoryId = courseDto.CategoryId
+                }, true);
 
             return NoContent(); //204
 

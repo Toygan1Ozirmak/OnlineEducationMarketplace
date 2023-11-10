@@ -8,7 +8,7 @@ namespace OnlineEducationMarketplace.Entity.DTOs
 {
     public record ReviewDtoForUpdate() : ReviewDtoForManipulation
     {
-        public int ReviewId { get; set; }
+        public int ReviewId { get; init; }
 
 
 

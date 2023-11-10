@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DocumentFormat.OpenXml.Vml.Office;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using OnlineEducationMarketplace.Entity.DTOs;
@@ -50,16 +51,16 @@ namespace OEMAP.Api.Controllers
 
 
         [HttpPost("Create")]
-        public IActionResult CreateUser([FromBody] User user)
+        public IActionResult CreateUser([FromBody] UserDtoForInsertion userDto)
         {
 
 
-            if (user is null)
-                throw new CreateUserBadHttpRequestException(user); //400
+            if (userDto is null)
+                return BadRequest(); //400
 
-            _manager.UserService.CreateUser(user);
+            _manager.UserService.CreateUser(userDto);
 
-            return StatusCode(201, user);
+            return StatusCode(201, userDto);
 
 
         }
@@ -93,18 +94,28 @@ namespace OEMAP.Api.Controllers
 
         [HttpPatch("PartiallyUpdate/{userId:int}")]
         public IActionResult PartiallyUpdateUser([FromRoute(Name = "userId")] int userId,
-            [FromBody] JsonPatchDocument<User> userPatch)
+            [FromBody] JsonPatchDocument<UserDto> userPatch)
         {
 
             //check entity
 
-            var entity = _manager
+            var userDto = _manager
                 .UserService
                 .GetUserByUserId(userId, true);
 
-            userPatch.ApplyTo(entity);
-            _manager.UserService.UpdateUser(userId, new UserDtoForUpdate(entity.UserId, entity.FirstName, entity.LastName, entity.Email, entity.Password, entity.UserName, entity.RoleId, entity.UserBio), true);
-
+            userPatch.ApplyTo(userDto);
+            _manager.UserService.UpdateUser(userId, 
+                new UserDtoForUpdate()
+                {
+                    UserId = userDto.UserId, 
+                    FirstName = userDto.FirstName, 
+                    LastName = userDto.LastName, 
+                    Email = userDto.Email, 
+                    Password = userDto.Password, 
+                    UserName = userDto.UserName,    
+                    RoleId = userDto.RoleId, 
+                    UserBio = userDto.UserBio
+                }, true);
             return NoContent(); //204
 
 

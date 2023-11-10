@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DocumentFormat.OpenXml.Vml.Office;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using OnlineEducationMarketplace.Entity.DTOs;
@@ -67,16 +68,16 @@ namespace OEMAP.Api.Controllers
         }
 
         [HttpPost("Create")]
-        public IActionResult CreateCourseEnrollment([FromBody] CourseEnrollment courseEnrollment)
+        public IActionResult CreateCourseEnrollment([FromBody] CourseEnrollmentDtoForInsertion courseEnrollmentDto)
         {
 
 
-            if (courseEnrollment is null)
-                throw new CreateCourseEnrollmentBadHttpRequestException(courseEnrollment); //400
+            if (courseEnrollmentDto is null)
+                return BadRequest(); //400
 
-            _manager.CourseEnrollmentService.CreateCourseEnrollment(courseEnrollment);
+            _manager.CourseEnrollmentService.CreateCourseEnrollment(courseEnrollmentDto);
 
-            return StatusCode(201, courseEnrollment);
+            return StatusCode(201, courseEnrollmentDto);
 
         }
 
@@ -110,19 +111,25 @@ namespace OEMAP.Api.Controllers
 
         [HttpPatch("PartiallyUpdate/{courseEnrollmentId:int}")]
         public IActionResult PartiallyUpdateCourseEnrollment([FromRoute(Name = "courseEnrollmentId")] int courseEnrollmentId,
-            [FromBody] JsonPatchDocument<CourseEnrollment> courseEnrollmentPatch)
+            [FromBody] JsonPatchDocument<CourseEnrollmentDto> courseEnrollmentPatch)
         {
 
             //check entity
 
-            var entity = _manager
+            var courseEnrollmentDto = _manager
                 .CourseEnrollmentService
                 .GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, true);
 
 
-            courseEnrollmentPatch.ApplyTo(entity);
-            _manager.CourseEnrollmentService.UpdateCourseEnrollment(courseEnrollmentId, new CourseEnrollmentDtoForUpdate(entity.CourseEnrollmentId, entity.EnrollmentDate, entity.UserId, entity.CourseId), true);
-
+            courseEnrollmentPatch.ApplyTo(courseEnrollmentDto);
+            _manager.CourseEnrollmentService.UpdateCourseEnrollment(courseEnrollmentId, 
+                new CourseEnrollmentDtoForUpdate()
+                {
+                    CourseEnrollmentId = courseEnrollmentDto.CourseEnrollmentId, 
+                    EnrollmentDate = courseEnrollmentDto.EnrollmentDate, 
+                    UserId = courseEnrollmentDto.UserId, 
+                    CourseId = courseEnrollmentDto.CourseId
+                }, true);
             return NoContent(); //204
 
         }

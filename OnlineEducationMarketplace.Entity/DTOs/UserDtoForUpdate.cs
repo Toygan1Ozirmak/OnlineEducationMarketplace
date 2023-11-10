@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace OnlineEducationMarketplace.Entity.DTOs
 {
-    public record UserDtoForUpdate(int UserId, String FirstName, String LastName, String Email, String Password, String UserName, int RoleId, String UserBio)
+    public record UserDtoForUpdate() : UserDtoForManipulation
     {
-        //public int UserId { get; init; }
+        [Required]
+        public int UserId { get; init; }
         //public string FirstName { get; init; }
         //public string LastName { get; init; }
         //public string Email { get; init; }

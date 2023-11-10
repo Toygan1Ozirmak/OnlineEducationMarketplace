@@ -8,5 +8,6 @@ namespace OnlineEducationMarketplace.Entity.DTOs
 {
     public record CourseDtoForInsertion : CourseDtoForManipulation
     {
+
     }
 }

@@ -11,6 +11,7 @@ namespace OnlineEducationMarketplace.Entity.DTOs
 
         //constrainsler eklenecek
         //ıd yok
+
         public string Title { get; init; }
         public string Description { get; init; }
 

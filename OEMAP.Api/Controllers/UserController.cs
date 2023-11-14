@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using OEMAP.Api.ActionFilters;
 using OnlineEducationMarketplace.Entity.DTOs;
 using OnlineEducationMarketplace.Entity.Entities;
 using OnlineEducationMarketplace.Entity.Exceptions;
@@ -49,14 +50,14 @@ namespace OEMAP.Api.Controllers
 
         }
 
-
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPost("Create")]
         public IActionResult CreateUser([FromBody] UserDtoForInsertion userDto)
         {
 
 
-            if (userDto is null)
-                return BadRequest(); //400
+            //if (userDto is null)
+            //    return BadRequest(); //400
 
             _manager.UserService.CreateUser(userDto);
 
@@ -64,15 +65,15 @@ namespace OEMAP.Api.Controllers
 
 
         }
-
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPut("Update/{userId:int}")]
         public IActionResult UpdateUser([FromRoute(Name = "userId")] int userId,
             [FromBody] UserDtoForUpdate userDto)
         {
 
 
-            if (userDto is null)
-                throw new UserBadHttpRequestException(userId); //400
+            //if (userDto is null)
+            //    throw new UserBadHttpRequestException(userId); //400
 
 
             _manager.UserService.UpdateUser(userId, userDto, true);

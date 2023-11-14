@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using OEMAP.Api.ActionFilters;
 using OnlineEducationMarketplace.Entity.DTOs;
 using OnlineEducationMarketplace.Entity.Entities;
 using OnlineEducationMarketplace.Services.Contracts;
@@ -51,14 +52,14 @@ namespace OEMAP.Api.Controllers
 
 
         }
-
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPost("Create")]
         public IActionResult CreateReview([FromBody] ReviewDtoForInsertion reviewDto)
         {
 
 
-            if (reviewDto is null)
-                return BadRequest(); //400
+            //if (reviewDto is null)
+            //    return BadRequest(); //400
 
             _manager.ReviewService.CreateReview(reviewDto);
 
@@ -66,15 +67,15 @@ namespace OEMAP.Api.Controllers
 
 
         }
-
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPut("Update/{reviewId:int}")]
         public IActionResult UpdateReview([FromRoute(Name = "reviewId")] int reviewId,
             [FromBody] ReviewDtoForUpdate reviewDto)
         {
 
 
-            if (reviewDto is null)
-                throw new ReviewBadHttpRequestException(reviewId); //400
+            //if (reviewDto is null)
+            //    throw new ReviewBadHttpRequestException(reviewId); //400
 
 
 

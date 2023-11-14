@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using OEMAP.Api.ActionFilters;
 using OnlineEducationMarketplace.Entity.Entities;
 using OnlineEducationMarketplace.Services.Contracts;
 using System.Diagnostics.Eventing.Reader;
@@ -46,29 +47,29 @@ namespace OEMAP.Api.Controllers
         }
 
 
-
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPost("Create")]
         public IActionResult CreateCategory([FromBody] Category category)
         {
 
 
-            if (category is null)
-                throw new CreateCategoryBadHttpRequestException(category); //400
+            //if (category is null)
+            //    throw new CreateCategoryBadHttpRequestException(category); //400
 
             _manager.CategoryService.CreateCategory(category);
 
             return StatusCode(201, category);
 
         }
-
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPut("Update/{categoryId:int}")]
         public IActionResult UpdateCategory([FromRoute(Name = "categoryId")] int categoryId,
             [FromBody] Category category)
         {
 
 
-            if (category is null)
-                throw new CategoryBadHttpRequestException(categoryId); //400
+            //if (category is null)
+            //    throw new CategoryBadHttpRequestException(categoryId); //400
 
 
 

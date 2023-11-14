@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using OEMAP.Api.ActionFilters;
 using OnlineEducationMarketplace.Entity.DTOs;
 using OnlineEducationMarketplace.Entity.Entities;
 using OnlineEducationMarketplace.Services.Contracts;
@@ -66,7 +67,7 @@ namespace OEMAP.Api.Controllers
 
 
         }
-
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPost("Create")]
         public IActionResult CreateCourseEnrollment([FromBody] CourseEnrollmentDtoForInsertion courseEnrollmentDto)
         {
@@ -80,15 +81,15 @@ namespace OEMAP.Api.Controllers
             return StatusCode(201, courseEnrollmentDto);
 
         }
-
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPut("Update/{courseEnrollmentId:int}")]
         public IActionResult UpdateCourseEnrollment([FromRoute(Name = "courseEnrollmentId")] int courseEnrollmentId,
             [FromBody] CourseEnrollmentDtoForUpdate courseEnrollmentDto)
         {
 
 
-            if (courseEnrollmentDto is null)
-                throw new CourseEnrollmentBadHttpRequestException(courseEnrollmentId); //400
+            //if (courseEnrollmentDto is null)
+            //    throw new CourseEnrollmentBadHttpRequestException(courseEnrollmentId); //400
 
 
             _manager.CourseEnrollmentService.UpdateCourseEnrollment(courseEnrollmentId, courseEnrollmentDto, true);

@@ -2,6 +2,7 @@ using DocumentFormat.OpenXml.Presentation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using NLog;
+using OEMAP.Api.ActionFilters;
 using OEMAP.Api.Extensions;
 using OnlineEducationMarketplace.Data.NewFolder;
 using OnlineEducationMarketplace.Data.Repositories;
@@ -24,8 +25,9 @@ builder.Services.AddControllers(config =>
     
     .AddXmlDataContractSerializerFormatters()
     .AddNewtonsoftJson();
-    
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+builder.Services.AddScoped<ValidationFilterAttribute>();//IoC 
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

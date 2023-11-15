@@ -56,14 +56,14 @@ namespace OnlineEducationMarketplace.Services
             return _mapper.Map<CourseDto>(course);
         }
 
-        public IEnumerable<Course> GetCoursesByCategoryId(int categoryId, bool trackChanges)
+        public IEnumerable<CourseDto> GetCoursesByCategoryId(int categoryId, bool trackChanges)
         {
             var courses = _manager.Course.GetCoursesByCategoryId(categoryId, trackChanges);
             if(courses is null)
             {
                 throw new CourseNotFoundByCategoryIdException(categoryId);
             }
-            return courses;
+            return _mapper.Map<IEnumerable<CourseDto>>(courses);
         }
 
         public IEnumerable<CourseDto> GetAllCourses(bool trackChanges)
@@ -99,9 +99,6 @@ namespace OnlineEducationMarketplace.Services
             _manager.Save();
         }
 
-        IEnumerable<CourseDto> ICourseService.GetCoursesByCategoryId(int categoryId, bool trackChanges)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

@@ -25,6 +25,7 @@ namespace OEMAP.Api.Utilities.AutoMapper
             CreateMap<User, UserDto>();
             CreateMap<UserDtoForUpdate, User>();
             CreateMap<UserDtoForInsertion, User>();
+            CreateMap<UserForRegistrationDto, User>();
 
         }
     }

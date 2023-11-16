@@ -15,7 +15,7 @@ namespace OnlineEducationMarketplace.Entity.Entities
         public int Point { get; set; }
 
         //fk
-        public int UserId { get; set; }
+        public string Id { get; set; }
         public int CourseId { get; set; }
 
         //snp

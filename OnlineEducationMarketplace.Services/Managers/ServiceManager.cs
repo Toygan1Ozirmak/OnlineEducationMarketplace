@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using OnlineEducationMarketplace.Data.Contracts;
 using OnlineEducationMarketplace.Entity.Entities;
 using OnlineEducationMarketplace.Services.Contracts;
+using OnlineEducationMarketplace.Services.Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,15 +20,18 @@ namespace OnlineEducationMarketplace.Services
         private readonly Lazy<IReviewService> _reviewService;
         private readonly Lazy<ICourseEnrollmentService> _courseEnrollmentService;
         private readonly Lazy<ICategoryService> _categoryService;
-        
-        public ServiceManager(IRepositoryManager repositoryManager,IMapper mapper) 
+        private readonly Lazy<IAuthenticationService> _authenticationService;
+
+        public ServiceManager(IRepositoryManager repositoryManager,IMapper mapper, UserManager<User> userManager, IConfiguration configuration) 
         {
             _courseService = new Lazy<ICourseService>(()=> new CourseManager(repositoryManager,mapper));
             _userService = new Lazy<IUserService>(() => new UserManager(repositoryManager, mapper));
             _reviewService = new Lazy<IReviewService>(() => new ReviewManager(repositoryManager, mapper));
             _courseEnrollmentService = new Lazy<ICourseEnrollmentService>(() => new CourseEnrollmentManager(repositoryManager, mapper));
             _categoryService = new Lazy<ICategoryService>(() => new CategoryManager(repositoryManager));
-            
+            _authenticationService = new Lazy<IAuthenticationService>(() => new AuthenticationManager(repositoryManager, mapper, userManager, configuration));
+
+
 
         }
         public ICourseService CourseService => _courseService.Value;
@@ -36,7 +42,9 @@ namespace OnlineEducationMarketplace.Services
         public ICourseEnrollmentService CourseEnrollmentService => _courseEnrollmentService.Value;
 
         public ICategoryService CategoryService => _categoryService.Value;
-        
+
+        public IAuthenticationService AuthenticationService => _authenticationService.Value;
+
     }
 
     

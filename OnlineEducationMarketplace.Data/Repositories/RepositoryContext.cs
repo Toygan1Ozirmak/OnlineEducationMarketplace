@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using OnlineEducationMarketplace.Data.Repositories;
 using OnlineEducationMarketplace.Data.Repositories.Config;
@@ -6,12 +7,13 @@ using OnlineEducationMarketplace.Entity.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace OnlineEducationMarketplace.Data.NewFolder
 {
-    public class RepositoryContext : DbContext
+    public class RepositoryContext : IdentityDbContext<User>
     {
         public RepositoryContext(DbContextOptions options):
             base(options)
@@ -30,11 +32,14 @@ namespace OnlineEducationMarketplace.Data.NewFolder
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new UserConfig());
-            modelBuilder.ApplyConfiguration(new ReviewConfig());
-            modelBuilder.ApplyConfiguration(new CourseConfig());
-            modelBuilder.ApplyConfiguration(new CourseEnrollmentConfig());
-            modelBuilder.ApplyConfiguration(new CategoryConfig());
+            base.OnModelCreating(modelBuilder);
+            //modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            //modelBuilder.ApplyConfiguration(new UserConfig());
+            //modelBuilder.ApplyConfiguration(new ReviewConfig());
+            //modelBuilder.ApplyConfiguration(new CourseConfig());
+            //modelBuilder.ApplyConfiguration(new CourseEnrollmentConfig());
+            //modelBuilder.ApplyConfiguration(new CategoryConfig());
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             
 
         }

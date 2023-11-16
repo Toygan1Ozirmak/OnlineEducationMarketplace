@@ -16,7 +16,7 @@ namespace OnlineEducationMarketplace.Entity.Entities
         public DateTime PaymentDate { get; set; }
 
         //fk
-        public int UserId { get; set; }
+        public String Id { get; set; }
         //snp
         public User User { get; set; }
 

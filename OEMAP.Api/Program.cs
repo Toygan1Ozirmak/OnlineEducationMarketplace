@@ -42,6 +42,8 @@ builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureLoggerService();
 builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddAuthentication();
+builder.Services.ConfigureIdentity();
 
 var app = builder.Build();
 
@@ -63,6 +65,7 @@ if (app.Environment.IsProduction())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

@@ -6,6 +6,7 @@ using OnlineEducationMarketplace.Services.Managers;
 using OnlineEducationMarketplace.Services;
 using OnlineEducationMarketplace.Data.Repositories;
 using OnlineEducationMarketplace.Data.Contracts;
+using Microsoft.AspNetCore.Identity;
 
 namespace OEMAP.Api.Extensions
 {
@@ -20,6 +21,22 @@ namespace OEMAP.Api.Extensions
 
         public static void ConfigureServiceManager(this IServiceCollection services) =>
             services.AddScoped<IServiceManager, ServiceManager>();
+
+        public static void ConfigureIdentity(this IServiceCollection services)
+        {
+            var builder = services.AddIdentity<User, IdentityRole>(opts =>
+            {
+                opts.Password.RequireDigit = true;
+                opts.Password.RequireLowercase = true;
+                opts.Password.RequireUppercase = true;
+                opts.Password.RequireNonAlphanumeric = false;
+                opts.Password.RequiredLength = 10;  
+                opts.User.RequireUniqueEmail = true;
+            })
+
+                .AddEntityFrameworkStores<RepositoryContext>()
+                .AddDefaultTokenProviders();
+        }
 
 
 

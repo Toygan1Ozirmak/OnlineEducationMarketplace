@@ -15,7 +15,7 @@ namespace OnlineEducationMarketplace.Entity.Entities
 
 
         //fk
-        public int UserId { get; set; }
+        public String Id { get; set; }
         public int CourseId { get; set; }
 
         //snp

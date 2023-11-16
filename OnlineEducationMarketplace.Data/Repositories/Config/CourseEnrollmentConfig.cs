@@ -21,7 +21,7 @@ namespace OnlineEducationMarketplace.Data.Repositories.Config
 
             builder.HasOne(ce => ce.User)
                 .WithMany(c => c.CourseEnrollments)
-                .HasForeignKey(ce => ce.UserId);
+                .HasForeignKey(ce => ce.Id);
 
 
         }

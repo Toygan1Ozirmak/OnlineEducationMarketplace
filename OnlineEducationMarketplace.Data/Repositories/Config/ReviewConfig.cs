@@ -22,7 +22,7 @@ namespace OnlineEducationMarketplace.Data.Repositories.Config
 
             builder.HasOne(c => c.User)
                 .WithMany(c => c.Reviews)
-                .HasForeignKey(c => c.UserId)
+                .HasForeignKey(c => c.Id)
                 .OnDelete(DeleteBehavior.Cascade);
 
 

@@ -21,7 +21,7 @@ namespace OnlineEducationMarketplace.Data.Repositories
                 
 
         public IQueryable<CourseEnrollment> GetCourseEnrollmentsByUserId(int userId, bool trackChanges) =>
-            FindByCondition(x => x.UserId.Equals(userId), trackChanges);
+            FindByCondition(x => x.Id.Equals(userId), trackChanges);
 
         public CourseEnrollment GetCourseEnrollmentByCourseEnrollmentId(int courseEnrollmentId, bool trackChanges) =>
             FindByCondition(x => x.CourseEnrollmentId.Equals(courseEnrollmentId), trackChanges)

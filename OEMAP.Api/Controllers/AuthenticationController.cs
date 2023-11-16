@@ -8,6 +8,7 @@ using OnlineEducationMarketplace.Entity.Entities;
 using OnlineEducationMarketplace.Services.Contracts;
 using System.Diagnostics.Eventing.Reader;
 using static OnlineEducationMarketplace.Entity.Exceptions.BadHttpRequestException;
+using OEMAP.Api.ActionFilters;
 
 namespace OEMAP.Api.Controllers
 {
@@ -22,7 +23,7 @@ namespace OEMAP.Api.Controllers
         }
 
         [HttpPost]
-        [ServiceFilter(typeof(AuthenticationFilter))]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
 
         public async Task<IActionResult> RegisterUser([FromBody] UserForRegistrationDto userForRegistrationDto)
         {

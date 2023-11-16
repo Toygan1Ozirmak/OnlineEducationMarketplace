@@ -12,6 +12,7 @@ using static OnlineEducationMarketplace.Entity.Exceptions.NotFoundException;
 
 namespace OEMAP.Api.Controllers
 {
+    [ServiceFilter(typeof(LogFilterAttribute))]
     [Route("api/courseenrollments")]
     [ApiController]
     public class CourseEnrollmentController : ControllerBase

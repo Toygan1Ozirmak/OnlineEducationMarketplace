@@ -9,6 +9,7 @@ using static OnlineEducationMarketplace.Entity.Exceptions.BadHttpRequestExceptio
 
 namespace OEMAP.Api.Controllers
 {
+    [ServiceFilter(typeof(LogFilterAttribute))]
     [Route("api/categories")]
     [ApiController]
     public class CategoryController : ControllerBase

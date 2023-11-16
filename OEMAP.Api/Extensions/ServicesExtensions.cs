@@ -6,6 +6,7 @@ using OnlineEducationMarketplace.Services.Managers;
 using OnlineEducationMarketplace.Services;
 using OnlineEducationMarketplace.Data.Repositories;
 using OnlineEducationMarketplace.Data.Contracts;
+using OEMAP.Api.ActionFilters;
 
 namespace OEMAP.Api.Extensions
 {
@@ -27,5 +28,11 @@ namespace OEMAP.Api.Extensions
         public static void ConfigureLoggerService(this IServiceCollection services) =>
             services.AddSingleton<ILoggerService, LoggerManager>();
 
+
+        public static void ConfigureActionFilters(this IServiceCollection services)
+        {
+            services.AddScoped<ValidationFilterAttribute>();
+            services.AddSingleton<LogFilterAttribute>();
+        }
     }
 }

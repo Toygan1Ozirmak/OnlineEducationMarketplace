@@ -12,6 +12,7 @@ using static OnlineEducationMarketplace.Entity.Exceptions.BadHttpRequestExceptio
 
 namespace OEMAP.Api.Controllers
 {
+    [ServiceFilter(typeof(LogFilterAttribute))]
     [Route("api/users")]
     [ApiController]
     public class UserController : ControllerBase

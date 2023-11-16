@@ -45,8 +45,9 @@ builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureLoggerService();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.ConfigureActionFilters();
-builder.Services.AddAuthentication();
 builder.Services.ConfigureIdentity();
+builder.Services.ConfigureJWT(builder.Configuration);
+
 
 var app = builder.Build();
 

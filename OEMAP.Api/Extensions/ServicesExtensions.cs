@@ -8,6 +8,9 @@ using OnlineEducationMarketplace.Data.Repositories;
 using OnlineEducationMarketplace.Data.Contracts;
 using Microsoft.AspNetCore.Identity;
 using OEMAP.Api.ActionFilters;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace OEMAP.Api.Extensions
 {
@@ -39,6 +42,28 @@ namespace OEMAP.Api.Extensions
                 .AddDefaultTokenProviders();
         }
 
+        public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration)
+        {
+            var jwtSettings = configuration.GetSection("JwtSettings");
+            var secretKey = jwtSettings["secretKey"];
+
+            services.AddAuthentication(opt =>
+            {
+                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options => 
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = jwtSettings["validIssuer"],
+                    ValidAudience = jwtSettings["validAudience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)) 
+                }
+                );
+        }
 
 
         //log

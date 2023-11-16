@@ -21,7 +21,7 @@ namespace OEMAP.Api.ActionFilters
                 return;
             }
 
-            if (!(param is UserForRegistrationDto)) // UserForRegistrationDto yerine doğru DTO tipini ekleyin
+            if (!(param is UserForRegistrationDto)) // UserForRegistrationDto yerine doğru DTO tipini ekle
             {
                 context.Result = new BadRequestObjectResult($"Invalid type for DTO. Controller: {controller}, Action: {action}");
                 return;

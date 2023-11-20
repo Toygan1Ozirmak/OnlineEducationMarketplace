@@ -1,6 +1,7 @@
 ﻿using OnlineEducationMarketplace.Data.Contracts;
 using OnlineEducationMarketplace.Data.NewFolder;
 using OnlineEducationMarketplace.Entity.Entities;
+using OnlineEducationMarketplace.Entity.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace OnlineEducationMarketplace.Data.Repositories
         }
 
         
-        public IQueryable<Course> GetAllCourses(bool trackChanges) =>
+        public IQueryable<Course> GetAllCourses(CourseParameters courseParameters ,bool trackChanges) =>
             FindAll(trackChanges).OrderBy(x => x.CourseId);
 
         public Course GetCourseByCourseId(int courseId, bool trackChanges) =>

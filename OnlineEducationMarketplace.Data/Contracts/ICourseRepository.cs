@@ -1,5 +1,6 @@
 ﻿using OnlineEducationMarketplace.Data.Repositories;
 using OnlineEducationMarketplace.Entity.Entities;
+using OnlineEducationMarketplace.Entity.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace OnlineEducationMarketplace.Data.Contracts
 {
     public interface ICourseRepository : IRepositoryBase<Course>
     {
-        IQueryable<Course> GetAllCourses(bool trackChanges);
+        IQueryable<Course> GetAllCourses(CourseParameters courseParameters, bool trackChanges);
         Course GetCourseByCourseId(int courseId, bool trackChanges);
 
         IQueryable<Course> GetCoursesByCategoryId(int categoryId, bool trackChanges);

@@ -6,6 +6,7 @@ using OEMAP.Api.ActionFilters;
 using OnlineEducationMarketplace.Entity.DTOs;
 using OnlineEducationMarketplace.Entity.Entities;
 using OnlineEducationMarketplace.Entity.Exceptions;
+using OnlineEducationMarketplace.Entity.RequestFeatures;
 using OnlineEducationMarketplace.Services.Contracts;
 using System.Diagnostics.Eventing.Reader;
 using static OnlineEducationMarketplace.Entity.Exceptions.BadHttpRequestException;
@@ -25,10 +26,10 @@ namespace OEMAP.Api.Controllers
         }
 
         [HttpGet("GetAllCourses")]
-        public IActionResult GetAllCourses()
+        public IActionResult GetAllCourses([FromQuery]CourseParameters courseParameters)
         {
 
-            var courses = _manager.CourseService.GetAllCourses(false);
+            var courses = _manager.CourseService.GetAllCourses(courseParameters,false);
             return Ok(courses);
 
 

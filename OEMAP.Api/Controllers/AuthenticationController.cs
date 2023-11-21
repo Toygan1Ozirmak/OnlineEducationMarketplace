@@ -9,9 +9,11 @@ using OnlineEducationMarketplace.Services.Contracts;
 using System.Diagnostics.Eventing.Reader;
 using static OnlineEducationMarketplace.Entity.Exceptions.BadHttpRequestException;
 using OEMAP.Api.ActionFilters;
+using Microsoft.AspNetCore.Authorization;
 
 namespace OEMAP.Api.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/authentication")]
     public class AuthenticationController : ControllerBase
@@ -42,5 +44,21 @@ namespace OEMAP.Api.Controllers
 
             return StatusCode(201);
         }
+
+        [HttpPost("login")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        public async Task<IActionResult> Authenticate([FromBody] UserForAuthenticationDto user)
+        {
+            if (!await _service.AuthenticationService.ValidateUser(user))
+                return Unauthorized(); //401
+            return Ok(new
+            {
+                Token = await _service.AuthenticationService.CreateToken()
+            });
+        }
     }
 }
+
+  
+
+       

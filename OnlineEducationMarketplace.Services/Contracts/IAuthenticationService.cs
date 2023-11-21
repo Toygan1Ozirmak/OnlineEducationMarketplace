@@ -11,5 +11,9 @@ namespace OnlineEducationMarketplace.Services.Contracts
     public interface IAuthenticationService
     {
         Task<IdentityResult> RegisterUser(UserForRegistrationDto userForRegistraitonDto);
+
+        Task<bool> ValidateUser(UserForAuthenticationDto userForAuthDto);
+
+        Task<string> CreateToken();
     }
 }

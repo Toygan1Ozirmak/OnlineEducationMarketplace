@@ -1,4 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Vml.Office;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,7 @@ using static OnlineEducationMarketplace.Entity.Exceptions.BadHttpRequestExceptio
 
 namespace OEMAP.Api.Controllers
 {
+    [Authorize]
     [ServiceFilter(typeof(LogFilterAttribute))]
     [Route("api/users")]
     [ApiController]

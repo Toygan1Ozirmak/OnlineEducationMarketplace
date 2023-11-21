@@ -3,6 +3,7 @@ using OnlineEducationMarketplace.Data.Contracts;
 using OnlineEducationMarketplace.Entity.DTOs;
 using OnlineEducationMarketplace.Entity.Entities;
 using OnlineEducationMarketplace.Entity.Exceptions;
+using OnlineEducationMarketplace.Entity.RequestFeatures;
 using OnlineEducationMarketplace.Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -66,9 +67,9 @@ namespace OnlineEducationMarketplace.Services
             return _mapper.Map<IEnumerable<CourseDto>>(courses);
         }
 
-        public IEnumerable<CourseDto> GetAllCourses(bool trackChanges)
+        public IEnumerable<CourseDto> GetAllCourses(CourseParameters courseParameters, bool trackChanges)
         {
-            var courses = _manager.Course.GetAllCourses(trackChanges);
+            var courses = _manager.Course.GetAllCourses(courseParameters,trackChanges);
             return _mapper.Map<IEnumerable<CourseDto>>(courses);
         }
 

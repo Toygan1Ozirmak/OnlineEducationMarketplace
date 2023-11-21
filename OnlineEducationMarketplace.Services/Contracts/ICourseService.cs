@@ -1,5 +1,6 @@
 ﻿using OnlineEducationMarketplace.Entity.DTOs;
 using OnlineEducationMarketplace.Entity.Entities;
+using OnlineEducationMarketplace.Entity.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace OnlineEducationMarketplace.Services.Contracts
 {
     public interface ICourseService
     {
-        IEnumerable<CourseDto> GetAllCourses(bool trackChanges);
+        IEnumerable<CourseDto> GetAllCourses(CourseParameters courseParameters, bool trackChanges);
 
         CourseDto GetCourseByCourseId(int courseId, bool trackChanges);
 

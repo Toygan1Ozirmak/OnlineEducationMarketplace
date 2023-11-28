@@ -1,0 +1,392 @@
+﻿.MPsubmitrectangle {
+    position: absolute;
+    top: 492.47px;
+    left: 0px;
+    border-radius: 20px;
+    background-color: #f10000;
+    width: 423.44px;
+    height: 52.53px;
+}
+
+.MPsubmit-changes {
+    position: absolute;
+    top: 492.47px;
+    left: 22.22px;
+    font-size: 25px;
+    font-weight: 500;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 380.31px;
+    height: 52.53px;
+}
+
+.bio {
+    position: absolute;
+    top: 350.22px;
+    left: 0px;
+    font-weight: 600;
+    display: inline-block;
+    width: 101.94px;
+    height: 23.35px;
+}
+
+.biorectangle {
+    position: absolute;
+    top: 373.98px;
+    left: 0px;
+    border-radius: 20px;
+    background-color: #fff;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    width: 423px;
+    height: 81.46px;
+}
+
+.MPphoneNumber {
+    position: absolute;
+    top: 262.67px;
+    left: 0px;
+    font-weight: 600;
+    display: inline-block;
+    width: 101.94px;
+    height: 23.35px;
+}
+
+.MPphonerectangle {
+    position: absolute;
+    top: 286.01px;
+    left: 0px;
+    border-radius: 20px;
+    background-color: #fff;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    width: 423.44px;
+    height: 49.03px;
+}
+
+.MPmail {
+    position: absolute;
+    top: 175.11px;
+    left: 0px;
+    font-weight: 600;
+    display: inline-block;
+    width: 101.94px;
+    height: 23.35px;
+}
+
+.MPmailrectangle {
+    position: absolute;
+    top: 198.46px;
+    left: 0px;
+    border-radius: 20px;
+    background-color: #fff;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    width: 423.44px;
+    height: 49.03px;
+}
+
+.surname1 {
+    position: absolute;
+    top: 87.56px;
+    left: 0px;
+    font-weight: 600;
+    display: inline-block;
+    width: 101.94px;
+    height: 23.35px;
+}
+
+.MPsurnamerectangle {
+    position: absolute;
+    top: 110.9px;
+    left: 0px;
+    border-radius: 20px;
+    background-color: #fff;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    width: 423.44px;
+    height: 49.03px;
+}
+
+.name1 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-weight: 600;
+    display: inline-block;
+    width: 101.94px;
+    height: 23.35px;
+}
+
+.MPnamerectangle {
+    position: absolute;
+    top: 23.35px;
+    left: 0px;
+    border-radius: 20px;
+    background-color: #fff;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    width: 423.44px;
+    height: 49.03px;
+}
+
+.MPprofilesection {
+    position: absolute;
+    top: 165px;
+    left: 610px;
+    width: 423.44px;
+    height: 545px;
+    font-size: 15px;
+}
+
+.pp-1-icon {
+    position: absolute;
+    top: 127px;
+    left: 103px;
+    width: 140px;
+    height: 117.8px;
+    object-fit: cover;
+}
+
+.my-profile {
+    position: absolute;
+    top: 127px;
+    left: 746px;
+    font-size: 30px;
+    font-weight: 500;
+    display: inline-block;
+    width: 151px;
+    height: 36px;
+}
+
+.notifications {
+    position: absolute;
+    top: 358px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 204px;
+    height: 59px;
+}
+
+.privacy {
+    position: absolute;
+    top: 299px;
+    left: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 204px;
+    height: 59px;
+}
+
+.payment-method {
+    position: absolute;
+    top: 239px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 204px;
+    height: 59px;
+}
+
+.subscription {
+    position: absolute;
+    top: 180px;
+    left: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 204px;
+    height: 59px;
+}
+
+.security {
+    position: absolute;
+    top: 121px;
+    left: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 204px;
+    height: 59px;
+}
+
+.photo {
+    position: absolute;
+    top: 61px;
+    left: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 204px;
+    height: 59px;
+}
+
+.profile {
+    position: absolute;
+    top: 0px;
+    left: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 204px;
+    height: 59px;
+}
+
+.section {
+    position: absolute;
+    top: 250px;
+    left: 56px;
+    width: 212px;
+    height: 417px;
+    color: #000;
+}
+
+.MPsearchrectangle {
+    position: absolute;
+    top: 32px;
+    left: 237px;
+    border-radius: 20px;
+    background-color: #e5e5e5;
+    width: 371.88px;
+    height: 38.4px;
+}
+
+.basketrectangle1 {
+    position: absolute;
+    top: 30px;
+    left: 1300px;
+    border-radius: 5px;
+    background-color: #f10000;
+    width: 100px;
+    height: 40px;
+}
+
+.basket1 {
+    position: absolute;
+    top: 30px;
+    left: 1280px;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    line-height: 120%;
+    font-family: Allerta;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 136.94px;
+    height: 48px;
+}
+
+.header-child {
+    position: absolute;
+    top: 99.5px;
+    left: -0.5px;
+    border-top: 1px solid #f10000;
+    box-sizing: border-box;
+    width: 1429px;
+    height: 1px;
+}
+
+.header-item {
+    position: absolute;
+    top: -0.5px;
+    left: -0.5px;
+    border-top: 1px solid #f10000;
+    box-sizing: border-box;
+    width: 1429px;
+    height: 1px;
+}
+
+.header-inner {
+    position: absolute;
+    top: -0.5px;
+    left: -0.5px;
+    border-right: 1px solid #f10000;
+    box-sizing: border-box;
+    width: 1px;
+    height: 101px;
+}
+
+.line-div1 {
+    position: absolute;
+    top: 0px;
+    left: 1427.5px;
+    border-right: 1px solid #f10000;
+    box-sizing: border-box;
+    width: 1px;
+    height: 101px;
+}
+
+.MPcourses {
+    position: absolute;
+    top: 38px;
+    left: 883px;
+    letter-spacing: -0.02em;
+    line-height: 120%;
+    display: inline-block;
+    width: 71px;
+    height: 19px;
+}
+
+.search-icon1 {
+    position: absolute;
+    top: 32px;
+    left: 253px;
+    width: 37.78px;
+    height: 37.42px;
+    object-fit: cover;
+}
+
+.MPemapp {
+    position: absolute;
+    top: 32px;
+    left: 77px;
+    font-size: 35px;
+    letter-spacing: -0.02em;
+    line-height: 120%;
+    font-family: Newsreader;
+    color: #f10000;
+    text-align: center;
+    display: inline-block;
+    width: 130px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.icon1 {
+    position: absolute;
+    top: 24px;
+    left: 30px;
+    width: 47.22px;
+    height: 48px;
+    object-fit: cover;
+}
+
+.header1 {
+    position: absolute;
+    top: 5px;
+    left: 26px;
+    width: 1428px;
+    height: 100px;
+    text-align: left;
+    font-family: ABeeZee;
+}
+
+.myprofile {
+    position: relative;
+    background-color: #fff;
+    width: 100%;
+    height: 750px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 20px;
+    color: #6d6d6d;
+    font-family: Inter;
+}

@@ -1,0 +1,498 @@
+﻿.studyrectangle {
+    position: absolute;
+    top: 96px;
+    left: 720px;
+    border-radius: 210.5px 210.5px 50px 50px;
+    background-color: #6d6d6d;
+    width: 650px;
+    height: 291px;
+}
+
+.to {
+    margin: 0;
+}
+
+.welcome-to-oemapp-container {
+    position: relative;
+    font-weight: 500;
+    display: inline-block;
+    width: 310px;
+}
+
+.sign-up-now-container {
+    position: relative;
+    font-size: 15px;
+    font-family: Mulish;
+    color: #363636;
+    display: inline-block;
+    width: 288px;
+    height: 83px;
+    flex-shrink: 0;
+}
+
+.welcome {
+    position: absolute;
+    top: 148px;
+    left: 0px;
+    width: 349px;
+    height: 208px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 15px;
+    text-align: left;
+    font-family: Newsreader;
+}
+
+.our-mission {
+    position: relative;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.hundreds-of-instructors {
+    position: relative;
+    font-size: 15px;
+    font-family: Mulish;
+    color: #363636;
+    text-align: left;
+    display: inline-block;
+    width: 409px;
+}
+
+.ourmission {
+    position: absolute;
+    top: 48px;
+    left: 0px;
+    width: 363px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 6px;
+    font-size: 20px;
+}
+
+.div {
+    align-self: stretch;
+    position: relative;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.years-experience {
+    align-self: stretch;
+    position: relative;
+    font-size: 15px;
+    font-family: Mulish;
+    color: #363636;
+}
+
+.experience {
+    width: 110px;
+    height: 71px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.coursesnumber {
+    width: 110px;
+    height: 67px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.student-active {
+    align-self: stretch;
+    position: relative;
+    font-size: 15px;
+    font-family: Mulish;
+    color: #363636;
+    display: inline-block;
+    height: 37px;
+    flex-shrink: 0;
+}
+
+.studentsnumber {
+    width: 95px;
+    height: 67px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.infoframe {
+    position: absolute;
+    top: 0px;
+    left: 910px;
+    width: 335px;
+    height: 77px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: 25px;
+}
+
+.about-us {
+    position: absolute;
+    top: 122px;
+    left: calc(50% - 686px);
+    width: 1422px;
+    height: 387px;
+    color: #e91c1c;
+    font-family: Ubuntu;
+}
+
+.study-image {
+    position: absolute;
+    top: 270px;
+    left: 865px;
+    width: 500px;
+    height: 233px;
+    object-fit: cover;
+}
+
+.browseButton {
+    position: absolute;
+    top: 150px;
+    left: 675px;
+    border-radius: 5px;
+    background-color: #717171;
+    width: 96px;
+    height: 38px;
+    font-family: Allerta;
+    font-size: 15px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.achieve-success-by {
+    position: absolute;
+    width: calc(100% - 992px);
+    top: 98px;
+    left: 502px;
+    font-size: 25px;
+    letter-spacing: -0.02em;
+    line-height: 120%;
+    color: #6d6d6d;
+    display: inline-block;
+    height: 31px;
+}
+
+.hpheaderrectangle {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: #fff;
+    border: 1px solid #f10000;
+    box-sizing: border-box;
+    width: 1384px;
+    height: 69px;
+}
+
+.homepageemapp {
+    position: absolute;
+    top: 14px;
+    left: 15px;
+    font-size: 35px;
+    letter-spacing: -0.02em;
+    line-height: 120%;
+    font-family: Newsreader;
+    color: #f10000;
+    text-align: center;
+    display: inline-block;
+    width: 235px;
+    height: 46px;
+}
+
+.homepagesearchrectangle {
+    position: absolute;
+    top: 14px;
+    left: 250px;
+    border-radius: 20px;
+    background-color: #e5e5e5;
+    width: 315px;
+    height: 32px;
+}
+
+.HPicon {
+    position: absolute;
+    top: 14px;
+    left: 31px;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.homepagesearchicon {
+    position: absolute;
+    top: 17px;
+    left: 525px;
+    width: 26px;
+    height: 26px;
+    object-fit: cover;
+}
+
+.HPregister {
+    position: absolute;
+    top: 19px;
+    left: 1069px;
+    letter-spacing: -0.02em;
+    line-height: 120%;
+    display: inline-block;
+    width: 81px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.HPlogin {
+    position: absolute;
+    top: 19px;
+    left: 989px;
+    letter-spacing: -0.02em;
+    line-height: 120%;
+    display: inline-block;
+    width: 59px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.HPcourses {
+    position: absolute;
+    top: 19px;
+    left: 887px;
+    letter-spacing: -0.02em;
+    line-height: 120%;
+    display: inline-block;
+    width: 75px;
+    height: 22px;
+}
+
+.homepageheader {
+    position: absolute;
+    top: 9px;
+    left: 64px;
+    width: 1384px;
+    height: 69px;
+    text-align: left;
+    font-size: 20px;
+    color: #6d6d6d;
+    font-family: ABeeZee;
+}
+
+.explore-our-categories {
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 219px);
+    font-size: 25px;
+    line-height: 107.91%;
+    color: #6d6d6d;
+    text-align: center;
+    display: inline-block;
+    width: 469px;
+    height: 27px;
+}
+
+.scirectangle {
+    position: absolute;
+    top: 145px;
+    left: 936px;
+    border-radius: 25px;
+    background-color: #e91c1c;
+    width: 180px;
+    height: 40px;
+}
+
+.science {
+    position: absolute;
+    top: 158px;
+    left: calc(50% + 463px);
+    line-height: 107.91%;
+    display: inline-block;
+    width: 56px;
+    height: 14px;
+}
+
+.sci-icon {
+    position: absolute;
+    top: 152px;
+    left: 952px;
+    width: 30px;
+    height: 26.7px;
+    object-fit: cover;
+}
+
+.accorectangle {
+    position: absolute;
+    top: 145px;
+    left: 512px;
+    border-radius: 25px;
+    background-color: #e91c1c;
+    width: 180px;
+    height: 40px;
+}
+
+.accountancy {
+    position: absolute;
+    top: 157px;
+    left: calc(50% + 21px);
+    line-height: 107.91%;
+    display: inline-block;
+    width: 87px;
+    height: 16px;
+}
+
+.acc-icon {
+    position: absolute;
+    top: 152px;
+    left: 524px;
+    width: 30px;
+    height: 25.48px;
+    object-fit: cover;
+}
+
+.languagerectangle {
+    position: absolute;
+    top: 145px;
+    left: 0px;
+    border-radius: 25px;
+    background-color: #e91c1c;
+    width: 180px;
+    height: 40px;
+}
+
+.language {
+    position: absolute;
+    top: 155px;
+    left: calc(50% - 488px);
+    line-height: 107.91%;
+    display: inline-block;
+    width: 65px;
+    height: 17px;
+}
+
+.lan-icon {
+    position: absolute;
+    top: 153px;
+    left: 15px;
+    width: 30px;
+    height: 23.96px;
+    object-fit: cover;
+}
+
+.fineartrectangle {
+    position: absolute;
+    top: 72px;
+    left: 936px;
+    border-radius: 25px;
+    background-color: #e91c1c;
+    width: 180px;
+    height: 40px;
+}
+
+.fine-arts {
+    position: absolute;
+    top: 83px;
+    left: calc(50% + 458px);
+    line-height: 107.91%;
+    display: inline-block;
+    width: 65px;
+    height: 15px;
+}
+
+.art-icon {
+    position: absolute;
+    top: 78px;
+    left: 952px;
+    width: 35px;
+    height: 26.6px;
+    object-fit: cover;
+}
+
+.psyrectangle {
+    position: absolute;
+    top: 72px;
+    left: 512px;
+    border-radius: 25px;
+    background-color: #e91c1c;
+    width: 180px;
+    height: 40px;
+}
+
+.psychology {
+    position: absolute;
+    top: 82px;
+    left: calc(50% + 29px);
+    line-height: 107.91%;
+    display: inline-block;
+    width: 81px;
+    height: 19px;
+}
+
+.psy-icon {
+    position: absolute;
+    top: 77px;
+    left: 528px;
+    width: 30px;
+    height: 32.3px;
+    object-fit: cover;
+}
+
+.engineeringrectangle {
+    position: absolute;
+    top: 74px;
+    left: 0px;
+    border-radius: 25px;
+    background-color: #e91c1c;
+    width: 180px;
+    height: 40px;
+}
+
+.engineering {
+    position: absolute;
+    top: 85px;
+    left: calc(50% - 499px);
+    line-height: 107.91%;
+    display: inline-block;
+    width: 88px;
+    height: 15px;
+}
+
+.engineeringimage-icon {
+    position: absolute;
+    top: 81px;
+    left: 18px;
+    width: 25px;
+    height: 24px;
+    object-fit: cover;
+}
+
+.ourcourse {
+    position: absolute;
+    top: 540px;
+    left: calc(50% - 602px);
+    width: 1116px;
+    height: 185px;
+    text-align: left;
+    font-size: 15px;
+}
+
+.homepage {
+    position: relative;
+    background-color: #fff;
+    width: 100%;
+    height: 750px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 30px;
+    color: #fff;
+    font-family: Newsreader;
+}

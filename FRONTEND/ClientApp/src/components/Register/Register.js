@@ -11,8 +11,8 @@ const Register = () => {
     }
 
     const [formData, setFormData] = useState({
-        name: "",
-        surname: "",
+        firstName: "",
+        lastName: "",
         password: "",
         mail: "",
         phone: "",
@@ -25,6 +25,7 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log("Form Data:", formData); // Form verisini kontrol et
         try {
             const response = await registerUser(formData);
             console.log("Data saved:", response);
@@ -38,34 +39,34 @@ const Register = () => {
 
     const handleSignupClick = () => {
         console.log("Signup button clicked!");
-        navigate("/myprofile");
+        navigate("/login");
     };
 
     return (
         <div className="register">
             <form onSubmit={handleSubmit}>
                 <div className="input-container">
-                    <label htmlFor="name" id="nameLabel">
-                        Name
+                    <label htmlFor="firstName" id="firstNameLabel">
+                        Firstname
                     </label>
                     <input
                         type="text"
-                        id="name"
-                        className="name"
+                        id="firstName"
+                        className="firstName"
                         value={formData.firstName}
                         onChange={handleChange}
                     />
                 </div>
 
                 <div className="input-container">
-                    <label htmlFor="surname" id="surnameLabel">
-                        Surname
+                    <label htmlFor="lastName" id="lastNameLabel">
+                        Lastname
                     </label>
                     <input
                         type="text"
-                        id="surname"
-                        className="surname"
-                        value={formData.surname}
+                        id="lastName"
+                        className="lastName"
+                        value={formData.lastName}
                         onChange={handleChange}
                     />
                 </div>

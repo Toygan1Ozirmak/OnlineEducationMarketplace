@@ -1,0 +1,463 @@
+﻿.view-all-child {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 60px;
+    background-color: #e91c1c;
+    width: 269px;
+    height: 48px;
+}
+
+.view-all1 {
+    position: absolute;
+    top: 12px;
+    left: calc(50% - 105.5px);
+    line-height: 108.41%;
+    display: inline-block;
+    width: 212px;
+    height: 23px;
+}
+
+.view-all {
+    position: absolute;
+    top: 630px;
+    left: 619px;
+    width: 269px;
+    height: 48px;
+    text-align: center;
+}
+
+.machine-learning {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-weight: 200;
+}
+
+.machine-learning-wrapper {
+    position: absolute;
+    top: 32px;
+    left: 0px;
+    border-radius: 2px;
+    background-color: rgba(13, 64, 89, 0.35);
+    width: 150px;
+    height: 29px;
+    overflow: hidden;
+}
+
+.basic-data-structure-and {
+    position: absolute;
+    top: 16px;
+    left: 8px;
+    font-weight: 200;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.basic-data-structure-and-algor-wrapper {
+    position: absolute;
+    top: 64px;
+    left: 0px;
+    border-radius: 2px;
+    background-color: rgba(45, 156, 219, 0.28);
+    width: 204px;
+    height: 48px;
+    color: #fff;
+}
+
+.logo-icon {
+    position: absolute;
+    top: 123px;
+    left: 0px;
+    width: 134px;
+    height: 77px;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.frame-parent {
+    position: relative;
+    border-radius: 4px 4px 0px 0px;
+    background-color: #6d6d6d;
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.machine-learning-and {
+    position: absolute;
+    top: 18px;
+    left: 16px;
+    font-size: 20px;
+    display: flex;
+    font-weight: 200;
+    color: #000;
+    align-items: center;
+    width: 206px;
+}
+
+.copyright-icon {
+    position: relative;
+    width: 16px;
+    height: 16px;
+}
+
+.shams-tabrez {
+    position: relative;
+    font-weight: 200;
+}
+
+.copyright-parent {
+    position: absolute;
+    top: 53px;
+    left: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 6px;
+}
+
+.lessons-7 {
+    position: absolute;
+    top: 56px;
+    left: 189px;
+    font-weight: 200;
+}
+
+.machine-learning-and-data-anal-parent {
+    position: relative;
+    width: 300px;
+    height: 83px;
+    overflow: hidden;
+    flex-shrink: 0;
+    font-size: 12px;
+    color: #4f4f4f;
+}
+
+.webdevwithc {
+    position: absolute;
+    top: 61px;
+    left: 995px;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
+    width: 298px;
+    height: 286px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+}
+
+.school-icon {
+    position: relative;
+    width: 22px;
+    height: 18px;
+}
+
+.school {
+    position: absolute;
+    top: 16px;
+    left: 24px;
+    border-radius: 1000px;
+    background-color: #56ccf2;
+    height: 38px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.fundamental-to-iot {
+    position: absolute;
+    top: 71px;
+    left: 24px;
+    font-weight: 200;
+}
+
+.overview-of-available {
+    position: absolute;
+    top: 106px;
+    left: 24px;
+    font-size: 16px;
+    display: flex;
+    font-weight: 200;
+    align-items: center;
+    width: 271px;
+}
+
+.i {
+    position: relative;
+    font-size: 12px;
+    font-weight: 200;
+    color: #bdbdbd;
+}
+
+.lessons-parent {
+    position: absolute;
+    top: 22px;
+    right: 13px;
+    width: 148px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 4px 8px;
+    box-sizing: border-box;
+    color: #828282;
+}
+
+.copyright-group {
+    position: absolute;
+    top: 192px;
+    left: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 6px;
+    font-size: 12px;
+}
+
+.fundamentalsiot {
+    position: absolute;
+    top: 0px;
+    left: 478px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    width: 312px;
+    height: 234px;
+    overflow: hidden;
+    font-size: 14px;
+    color: #4f4f4f;
+}
+
+.achine {
+    color: #fff;
+}
+
+.algorithm {
+    margin: 0;
+}
+
+.basic-data-structure-and-container {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-weight: 200;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.machine-learning-and1 {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-size: 20px;
+    display: flex;
+    font-weight: 200;
+    color: #000;
+    align-items: center;
+    width: 206px;
+}
+
+.mlandda {
+    position: absolute;
+    top: 61px;
+    left: 0px;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
+    width: 298px;
+    height: 287px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+}
+
+.shopcourses {
+    position: absolute;
+    top: 218px;
+    left: 107px;
+    width: 1293px;
+    height: 348px;
+    font-size: 16px;
+    color: #05e6f2;
+}
+
+.shopall {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 8px;
+}
+
+.all {
+    border-radius: 16px;
+    background-color: rgba(45, 156, 219, 0.08);
+    border: 1px solid #2d9cdb;
+    box-sizing: border-box;
+    width: 46px;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    color: #2d9cdb;
+}
+
+.machinelearningtext {
+    position: relative;
+    letter-spacing: 0.25px;
+    line-height: 20px;
+}
+
+.machinelearning {
+    border-radius: 16px;
+    border: 1px solid #bdbdbd;
+    box-sizing: border-box;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 4px;
+}
+
+.shopcategoriesframe {
+    position: absolute;
+    top: 128px;
+    left: 88px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.87);
+    font-family: Roboto;
+}
+
+.shopcategories {
+    position: absolute;
+    top: 85px;
+    left: 88px;
+    line-height: 108.41%;
+    color: #56ccf2;
+    display: inline-block;
+    width: 113px;
+    height: 29px;
+}
+
+.changepasswordheaderrectangle {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: #fff;
+    border: 1px solid #f10000;
+    box-sizing: border-box;
+    width: 1384px;
+    height: 69px;
+}
+
+.changePasswordemapp {
+    position: absolute;
+    top: 14px;
+    left: 15px;
+    font-size: 35px;
+    letter-spacing: -0.02em;
+    line-height: 120%;
+    font-family: Newsreader;
+    color: #f10000;
+    text-align: center;
+    display: inline-block;
+    width: 235px;
+    height: 46px;
+    cursor: pointer;
+}
+
+.changepasswordsearchrectangle {
+    position: absolute;
+    top: 14px;
+    left: 250px;
+    border-radius: 20px;
+    background-color: #e5e5e5;
+    width: 315px;
+    height: 32px;
+}
+
+.changepasswordlogo-icon {
+    position: absolute;
+    top: 14px;
+    left: 31px;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.changepasswordsearchicon {
+    position: absolute;
+    top: 17px;
+    left: 525px;
+    width: 27px;
+    height: 27px;
+    object-fit: cover;
+}
+
+.changepasswordcourses {
+    position: absolute;
+    top: 19px;
+    left: 887px;
+    letter-spacing: -0.02em;
+    line-height: 120%;
+    display: inline-block;
+    width: 75px;
+    height: 22px;
+}
+
+.shopbasketrect {
+    position: absolute;
+    top: 15px;
+    left: 1250px;
+    border-radius: 5px;
+    background-color: #f10000;
+    width: 96px;
+    height: 38px;
+    font-family: Allerta;
+    font-size: 15px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.shopheader {
+    position: absolute;
+    top: 9px;
+    left: 64px;
+    width: 1384px;
+    height: 69px;
+    text-align: left;
+    font-size: 20px;
+    color: #6d6d6d;
+    font-family: ABeeZee;
+}
+
+.shop {
+    position: relative;
+    background-color: #fff;
+    width: 100%;
+    height: 750px;
+    overflow: hidden;
+    text-align: left;
+    font-size: 24px;
+    color: #fff;
+    font-family: Newsreader;
+}

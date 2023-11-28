@@ -43,7 +43,7 @@ body {
     left: 580px;
 }
 
-.name {
+.firstName {
     position: absolute;
     top: 370px;
     left: 600px;
@@ -52,7 +52,7 @@ body {
     height: 25px;
 }
 
-#nameLabel {
+#firstNameLabel {
     align-self: flex-start; /* Align label to the start of the container */
     position: absolute;
     top: 350px;
@@ -60,7 +60,7 @@ body {
     font-size: 15px;
 }
 
-.surname {
+.lastName {
     position: absolute;
     top: 430px;
     left: 600px;
@@ -69,7 +69,7 @@ body {
     height: 25px;
 }
 
-#surnameLabel {
+#lastNameLabel {
     align-self: flex-start; /* Align label to the start of the container */
     position: absolute;
     top: 410px;

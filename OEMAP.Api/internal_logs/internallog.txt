@@ -599,3 +599,75 @@
 2023-11-20 09:22:35.7668 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
 2023-11-20 09:22:35.7806 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\toyga\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
 2023-11-20 09:22:35.7933 Info Configuration initialized.
+2023-11-28 14:14:26.6059 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-28 14:14:26.6457 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-11-28 14:14:26.6699 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\toyga\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2023-11-28 14:14:26.6918 Info Configuration initialized.
+2023-11-28 14:15:42.7913 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-28 14:15:42.8192 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-11-28 14:15:42.8379 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\toyga\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2023-11-28 14:15:42.8532 Info Configuration initialized.
+2023-11-28 14:16:03.4507 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-28 14:16:03.4772 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-11-28 14:16:03.4946 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\toyga\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2023-11-28 14:16:03.5108 Info Configuration initialized.
+2023-11-28 14:16:55.4764 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-28 14:16:55.5041 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-11-28 14:16:55.5280 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\toyga\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2023-11-28 14:16:55.5431 Info Configuration initialized.
+2023-11-28 14:18:11.6459 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-28 14:18:11.6751 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-11-28 14:18:11.6962 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\toyga\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2023-11-28 14:18:11.7083 Info Configuration initialized.
+2023-11-28 14:19:06.8087 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-28 14:19:06.8352 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-11-28 14:19:06.8513 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\toyga\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2023-11-28 14:19:06.8667 Info Configuration initialized.
+2023-11-28 14:23:34.2595 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-28 14:23:34.2935 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-11-28 14:23:34.3210 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\toyga\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2023-11-28 14:23:34.3451 Info Configuration initialized.
+2023-11-28 14:24:13.3701 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-28 14:24:13.4190 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-11-28 14:24:13.4498 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\toyga\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2023-11-28 14:24:13.4757 Info Configuration initialized.
+2023-11-28 14:27:04.1860 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-28 14:27:04.2190 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-11-28 14:27:04.2409 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\toyga\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2023-11-28 14:27:04.2568 Info Configuration initialized.
+2023-11-28 14:36:42.9413 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-28 14:36:42.9683 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-11-28 14:36:42.9825 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\toyga\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2023-11-28 14:36:42.9947 Info Configuration initialized.
+2023-11-28 14:43:14.9905 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-28 14:43:15.0222 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-11-28 14:43:15.0534 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\toyga\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2023-11-28 14:43:15.0787 Info Configuration initialized.
+2023-11-28 14:44:02.7765 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-28 14:44:02.8079 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-11-28 14:44:02.8288 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\toyga\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2023-11-28 14:44:02.8527 Info Configuration initialized.
+2023-11-28 15:01:11.3369 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-28 15:01:11.3709 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-11-28 15:01:11.3886 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\toyga\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2023-11-28 15:01:11.4049 Info Configuration initialized.
+2023-11-28 15:02:18.3591 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-28 15:02:18.4096 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-11-28 15:02:18.4435 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\toyga\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2023-11-28 15:02:18.4735 Info Configuration initialized.
+2023-11-28 15:02:51.3905 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-28 15:02:51.4486 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-11-28 15:02:51.4847 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\toyga\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2023-11-28 15:02:51.5166 Info Configuration initialized.
+2023-11-28 15:04:53.2806 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-28 15:04:53.3444 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-11-28 15:04:53.3778 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\toyga\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2023-11-28 15:04:53.4238 Info Configuration initialized.
+2023-11-28 15:08:34.8238 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-28 15:08:34.8549 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-11-28 15:08:34.8735 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\toyga\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2023-11-28 15:08:34.8927 Info Configuration initialized.
+2023-11-28 15:11:21.5279 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-28 15:11:21.5615 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2023-11-28 15:11:21.5799 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\toyga\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2023-11-28 15:11:21.5953 Info Configuration initialized.

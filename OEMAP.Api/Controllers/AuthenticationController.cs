@@ -24,7 +24,7 @@ namespace OEMAP.Api.Controllers
             _service = service;
         }
 
-        [HttpPost]
+        [HttpPost("register")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
 
         public async Task<IActionResult> RegisterUser([FromBody] UserForRegistrationDto userForRegistrationDto)

@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineEducationMarketplace.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineEducationMarketplace.Services", "OnlineEducationMarketplace.Services\OnlineEducationMarketplace.Services.csproj", "{CDAD8FE8-4D5D-45AF-B2D1-253F17091C51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OEMAP.Api", "OEMAP.Api\OEMAP.Api.csproj", "{0CC24350-4E03-459C-855E-DC183B210C4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OEMAP.Api", "OEMAP.Api\OEMAP.Api.csproj", "{0CC24350-4E03-459C-855E-DC183B210C4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FRONTEND", "FRONTEND\FRONTEND.csproj", "{1F5693D7-137D-4DD5-AE03-1597CB75E547}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{0CC24350-4E03-459C-855E-DC183B210C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CC24350-4E03-459C-855E-DC183B210C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CC24350-4E03-459C-855E-DC183B210C4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F5693D7-137D-4DD5-AE03-1597CB75E547}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F5693D7-137D-4DD5-AE03-1597CB75E547}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F5693D7-137D-4DD5-AE03-1597CB75E547}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F5693D7-137D-4DD5-AE03-1597CB75E547}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

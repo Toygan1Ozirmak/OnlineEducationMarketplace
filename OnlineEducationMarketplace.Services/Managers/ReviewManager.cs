@@ -24,31 +24,31 @@ namespace OnlineEducationMarketplace.Services.Contracts
             _mapper = mapper;
         }
 
-        public ReviewDto CreateReview(ReviewDtoForInsertion reviewDto)
+        public async Task <ReviewDto> CreateReviewAsync(ReviewDtoForInsertion reviewDto)
         {
             var entity = _mapper.Map<Review>(reviewDto);
             _manager.Review.CreateReview(entity);
-            _manager.Save();
+            await _manager.SaveAsync();
             return _mapper.Map<ReviewDto>(entity);
             
         }
 
-        public void DeleteReview(int reviewId, bool trackChanges)
+        public async Task DeleteReviewAsync(int reviewId, bool trackChanges)
         {
             //check entity
 
-            var entity = _manager.Review.GetReviewByReviewId(reviewId, trackChanges);
+            var entity = await _manager.Review.GetReviewByReviewIdAsync(reviewId, trackChanges);
             if (entity is null)
             {
                 throw new ReviewNotFoundByReviewIdException(reviewId);
             }
             _manager.Review.DeleteReview(entity);
-            _manager.Save();
+            await _manager.SaveAsync();
         }
 
-        public ReviewDto GetReviewByReviewId(int reviewId, bool trackChanges)
+        public async Task <ReviewDto> GetReviewByReviewIdAsync(int reviewId, bool trackChanges)
         {
-            var review = _manager.Review.GetReviewByReviewId(reviewId, trackChanges);
+            var review = await _manager.Review.GetReviewByReviewIdAsync(reviewId, trackChanges);
             if(review is null)
                 throw new ReviewNotFoundByReviewIdException(reviewId);
 
@@ -56,9 +56,9 @@ namespace OnlineEducationMarketplace.Services.Contracts
         }
 
 
-        public IEnumerable<ReviewDto> GetReviewsByCourseId(int courseId, bool trackChanges)
+        public async Task <IEnumerable<ReviewDto>> GetReviewsByCourseIdAsync(int courseId, bool trackChanges)
         {
-            var reviews = _manager.Review.GetReviewsByCourseId(courseId, trackChanges);
+            var reviews = await _manager.Review.GetReviewsByCourseIdAsync(courseId, trackChanges);
             if(reviews is null)
                 throw new ReviewsNotFoundByCourseIdException(courseId);
 
@@ -66,11 +66,11 @@ namespace OnlineEducationMarketplace.Services.Contracts
         }
 
        
-        public void UpdateReview(int reviewId, ReviewDtoForUpdate reviewDto, bool trackChanges)
+        public async Task UpdateReviewAsync(int reviewId, ReviewDtoForUpdate reviewDto, bool trackChanges)
         {
             //check entity
 
-            var entity = _manager.Review.GetReviewByReviewId(reviewId, trackChanges);
+            var entity = await _manager.Review.GetReviewByReviewIdAsync(reviewId, trackChanges);
             if(entity is null)
                 throw new ReviewNotFoundByReviewIdException(reviewId);
 
@@ -83,7 +83,7 @@ namespace OnlineEducationMarketplace.Services.Contracts
             entity = _mapper.Map<Review>(reviewDto);
 
             _manager.Review.UpdateReview(entity);
-            _manager.Save();
+            await _manager.SaveAsync();
         }
     }
 }

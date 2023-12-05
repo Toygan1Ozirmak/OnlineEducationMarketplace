@@ -9,11 +9,11 @@ namespace OnlineEducationMarketplace.Data.Contracts
 {
     public interface IUserRepository : IRepositoryBase<User>
     {
-        IQueryable<User> GetAllUsers(bool trackChanges);
-        User GetUserByUserId(int userId,bool trackChanges);
+        Task<IEnumerable<User>> GetAllUsersAsync(bool trackChanges);
+        Task<User> GetUserByUserIdAsync(int userId, bool trackChanges);
         void CreateUser(User user);
         void UpdateUser(User user);
         void DeleteUser(User user);
-        
+
     }
 }

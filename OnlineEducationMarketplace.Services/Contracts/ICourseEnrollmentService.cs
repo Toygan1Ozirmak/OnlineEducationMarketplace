@@ -11,16 +11,16 @@ namespace OnlineEducationMarketplace.Services.Contracts
     public interface ICourseEnrollmentService
     {
         
-        IQueryable<CourseEnrollmentDto> GetCourseEnrollmentsByCourseId(int courseId, bool trackChanges);
+        Task <IEnumerable<CourseEnrollmentDto>> GetCourseEnrollmentsByCourseIdAsync(int courseId, bool trackChanges);
 
-        IQueryable<CourseEnrollmentDto> GetCourseEnrollmentsByUserId(int userId, bool trackChanges);
+        Task <IEnumerable<CourseEnrollmentDto>> GetCourseEnrollmentsByUserIdAsync(int userId, bool trackChanges);
 
-        CourseEnrollmentDto GetCourseEnrollmentByCourseEnrollmentId(int courseEnrollmentId, bool trackChanges);
+        Task <CourseEnrollmentDto> GetCourseEnrollmentByCourseEnrollmentIdAsync(int courseEnrollmentId, bool trackChanges);
 
-        CourseEnrollmentDto CreateCourseEnrollment(CourseEnrollmentDtoForInsertion courseEnrollment);
+        Task <CourseEnrollmentDto> CreateCourseEnrollmentAsync(CourseEnrollmentDtoForInsertion courseEnrollment);
 
-        void UpdateCourseEnrollment(int courseEnrollmentId, CourseEnrollmentDtoForUpdate courseEnrollmentDto, bool trackChanges);
+        Task UpdateCourseEnrollmentAsync(int courseEnrollmentId, CourseEnrollmentDtoForUpdate courseEnrollmentDto, bool trackChanges);
 
-        void DeleteCourseEnrollment(int courseEnrollmentId, bool trackChanges);
+        Task DeleteCourseEnrollmentAsync(int courseEnrollmentId, bool trackChanges);
     }
 }

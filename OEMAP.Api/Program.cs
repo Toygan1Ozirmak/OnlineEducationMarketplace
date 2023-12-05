@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NLog;
 using OEMAP.Api.ActionFilters;
@@ -17,6 +18,11 @@ builder.Services.AddControllers(config =>
 })
     .AddXmlDataContractSerializerFormatters()
     .AddNewtonsoftJson();
+
+//builder.Services.Configure<ApiBehaviorOptions>(options =>
+//{
+//    options.SuppressModelStateInvalidFilter = true;
+//});
 
 builder.Services.AddScoped<ValidationFilterAttribute>(); // IoC
 
@@ -40,7 +46,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigin", builder =>
     {
-        builder.WithOrigins("http://localhost:44403") // React uygulamasýnýn çalýþtýðý adres
+        builder.WithOrigins("*") // React uygulamasýnýn çalýþtýðý adres
                .AllowAnyHeader()
                .AllowAnyMethod();
     });
@@ -62,13 +68,14 @@ if (app.Environment.IsDevelopment())
 if (app.Environment.IsProduction())
 {
     app.UseHsts();
+    app.UseExceptionHandler("/Home/Error");
 }
-
-app.UseCors("AllowSpecificOrigin");
 
 app.UseRouting();
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowSpecificOrigin");
 
 app.UseAuthentication();
 app.UseAuthorization();
@@ -76,8 +83,13 @@ app.UseAuthorization();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller}/{action=Index}/{id?}");
 });
 
 app.UseStaticFiles();
+
+app.MapFallbackToFile("index.html");
 
 app.Run();

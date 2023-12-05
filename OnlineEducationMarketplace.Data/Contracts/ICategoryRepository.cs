@@ -9,9 +9,9 @@ namespace OnlineEducationMarketplace.Data.Contracts
 {
     public interface ICategoryRepository : IRepositoryBase<Category>
     {
-        IQueryable<Category> GetAllCategories(bool trackChanges);
+        Task<IEnumerable<Category>> GetAllCategoriesAsync(bool trackChanges);
 
-        Category GetCategoryByCategoryId(int categoryId, bool trackChanges);
+        Task<Category> GetCategoryByCategoryIdAsync(int categoryId, bool trackChanges);
 
         void CreateCategory(Category category);
         void UpdateCategory(Category category);

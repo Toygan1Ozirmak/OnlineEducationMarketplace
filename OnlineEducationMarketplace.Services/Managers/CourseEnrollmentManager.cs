@@ -25,26 +25,26 @@ namespace OnlineEducationMarketplace.Services
         }
 
 
-        public IQueryable<CourseEnrollmentDto> GetCourseEnrollmentsByUserId(int userId, bool trackChanges)
+        public async Task <IEnumerable<CourseEnrollmentDto>> GetCourseEnrollmentsByUserIdAsync(int userId, bool trackChanges)
         {
-            var courseEnrollments = _manager.CourseEnrollment.GetCourseEnrollmentsByUserId(userId, trackChanges);
+            var courseEnrollments = await _manager.CourseEnrollment.GetCourseEnrollmentsByUserIdAsync(userId, trackChanges);
             if (courseEnrollments is null)
                 throw new CourseEnrollmentByUserIdNotFoundException(userId); //404
             return _mapper.Map<IQueryable<CourseEnrollmentDto>>(courseEnrollments); ;
 
         }
 
-        public IQueryable<CourseEnrollmentDto> GetCourseEnrollmentsByCourseId(int courseId, bool trackChanges)
+        public async Task <IEnumerable<CourseEnrollmentDto>> GetCourseEnrollmentsByCourseIdAsync(int courseId, bool trackChanges)
         {
-            var courseEnrollments = _manager.CourseEnrollment.GetCourseEnrollmentsByCourseId(courseId, trackChanges);
+            var courseEnrollments = await _manager.CourseEnrollment.GetCourseEnrollmentsByCourseIdAsync(courseId, trackChanges);
             if (courseEnrollments is null)
                 throw new CourseEnrollmentByCourseIdNotFoundException(courseId); //404
             return _mapper.Map<IQueryable<CourseEnrollmentDto>>(courseEnrollments); ;
         }
 
-        public CourseEnrollmentDto GetCourseEnrollmentByCourseEnrollmentId(int courseEnrollmentId, bool trackChanges)
+        public async Task <CourseEnrollmentDto> GetCourseEnrollmentByCourseEnrollmentIdAsync(int courseEnrollmentId, bool trackChanges)
         {
-            var courseEnrollment = _manager.CourseEnrollment.GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, trackChanges);
+            var courseEnrollment = await _manager.CourseEnrollment.GetCourseEnrollmentByCourseEnrollmentIdAsync(courseEnrollmentId, trackChanges);
             if (courseEnrollment is null)
                 throw new CourseEnrollmentByCourseEnrollmentIdNotFoundException(courseEnrollmentId);
 
@@ -52,32 +52,32 @@ namespace OnlineEducationMarketplace.Services
         }
        
 
-            public CourseEnrollmentDto CreateCourseEnrollment(CourseEnrollmentDtoForInsertion courseEnrollmentDto)
+            public async Task <CourseEnrollmentDto> CreateCourseEnrollmentAsync(CourseEnrollmentDtoForInsertion courseEnrollmentDto)
         {
             var entity = _mapper.Map<CourseEnrollment>(courseEnrollmentDto);
             _manager.CourseEnrollment.CreateCourseEnrollment(entity);
-            _manager.Save();
+            await _manager.SaveAsync();
             return _mapper.Map<CourseEnrollmentDto>(entity);
             
         }
 
-        public void DeleteCourseEnrollment(int courseEnrollmentId, bool trackChanges)
+        public async Task DeleteCourseEnrollmentAsync(int courseEnrollmentId, bool trackChanges)
         {
             //check entity
-            var entity = _manager.CourseEnrollment.GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, trackChanges);
+            var entity = await _manager.CourseEnrollment.GetCourseEnrollmentByCourseEnrollmentIdAsync(courseEnrollmentId, trackChanges);
             if (entity != null)
             {
                 throw new CourseEnrollmentByCourseEnrollmentIdNotFoundException(courseEnrollmentId);
             }
             _manager.CourseEnrollment.DeleteCourseEnrollment(entity);
-            _manager.Save();
+            await _manager.SaveAsync();
         }
 
-        public void UpdateCourseEnrollment(int courseEnrollmentId, CourseEnrollmentDtoForUpdate courseEnrollmentDto, bool trackChanges)
+        public async Task UpdateCourseEnrollmentAsync(int courseEnrollmentId, CourseEnrollmentDtoForUpdate courseEnrollmentDto, bool trackChanges)
         {
             //check entity
 
-            var entity = _manager.CourseEnrollment.GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, trackChanges);
+            var entity = await _manager.CourseEnrollment.GetCourseEnrollmentByCourseEnrollmentIdAsync(courseEnrollmentId, trackChanges);
             if(entity != null)
             {
                 throw new CourseEnrollmentByCourseEnrollmentIdNotFoundException(courseEnrollmentId);
@@ -91,7 +91,7 @@ namespace OnlineEducationMarketplace.Services
             entity = _mapper.Map<CourseEnrollment>(courseEnrollmentDto);
 
             _manager.CourseEnrollment.UpdateCourseEnrollment(entity);
-            _manager.Save();
+            await _manager.SaveAsync();
         }
 
         

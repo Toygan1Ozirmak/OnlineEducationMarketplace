@@ -15,7 +15,7 @@ namespace OnlineEducationMarketplace.Data.Repositories
         protected readonly RepositoryContext _context;
         public RepositoryBase(RepositoryContext context)
         {
-                _context = context;
+            _context = context;
         }
         public void Create(T entity)
         {
@@ -24,7 +24,7 @@ namespace OnlineEducationMarketplace.Data.Repositories
 
         public void Delete(T entity)
         {
-            _context.Set<T>().Remove(entity); 
+            _context.Set<T>().Remove(entity);
         }
 
         public IQueryable<T> FindAll(bool trackChanges) => !trackChanges ?
@@ -35,7 +35,7 @@ namespace OnlineEducationMarketplace.Data.Repositories
             !trackChanges ?
             _context.Set<T>().Where(expression).AsNoTracking() :
             _context.Set<T>().Where(expression);
-       
+
 
         public void Update(T entity)
         {

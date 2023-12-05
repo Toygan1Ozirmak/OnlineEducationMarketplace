@@ -1,4 +1,5 @@
-﻿using OnlineEducationMarketplace.Data.Contracts;
+﻿using Microsoft.EntityFrameworkCore;
+using OnlineEducationMarketplace.Data.Contracts;
 using OnlineEducationMarketplace.Data.NewFolder;
 using OnlineEducationMarketplace.Entity.Entities;
 using System;
@@ -15,17 +16,17 @@ namespace OnlineEducationMarketplace.Data.Repositories
         {
         }
 
-        
-        public IQueryable<CourseEnrollment> GetCourseEnrollmentsByCourseId(int courseId, bool trackChanges) =>
-            FindByCondition(x => x.CourseId.Equals(courseId), trackChanges);
-                
 
-        public IQueryable<CourseEnrollment> GetCourseEnrollmentsByUserId(int userId, bool trackChanges) =>
-            FindByCondition(x => x.Id.Equals(userId), trackChanges);
+        public async Task<IEnumerable<CourseEnrollment>> GetCourseEnrollmentsByCourseIdAsync(int courseId, bool trackChanges) =>
+            await FindByCondition(x => x.CourseId.Equals(courseId), trackChanges).ToListAsync();
 
-        public CourseEnrollment GetCourseEnrollmentByCourseEnrollmentId(int courseEnrollmentId, bool trackChanges) =>
-            FindByCondition(x => x.CourseEnrollmentId.Equals(courseEnrollmentId), trackChanges)
-                .SingleOrDefault();
+
+        public async Task<IEnumerable<CourseEnrollment>> GetCourseEnrollmentsByUserIdAsync(int userId, bool trackChanges) =>
+            await FindByCondition(x => x.Id.Equals(userId), trackChanges).ToListAsync();
+
+        public async Task<CourseEnrollment> GetCourseEnrollmentByCourseEnrollmentIdAsync(int courseEnrollmentId, bool trackChanges) =>
+            await FindByCondition(x => x.CourseEnrollmentId.Equals(courseEnrollmentId), trackChanges)
+                .SingleOrDefaultAsync();
 
 
 
@@ -35,6 +36,6 @@ namespace OnlineEducationMarketplace.Data.Repositories
 
         public void UpdateCourseEnrollment(CourseEnrollment courseEnrollment) => Update(courseEnrollment);
 
-        
+
     }
 }

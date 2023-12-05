@@ -1,4 +1,5 @@
-﻿using OnlineEducationMarketplace.Data.Contracts;
+﻿using Microsoft.EntityFrameworkCore;
+using OnlineEducationMarketplace.Data.Contracts;
 using OnlineEducationMarketplace.Data.NewFolder;
 using OnlineEducationMarketplace.Entity.Entities;
 using System;
@@ -15,13 +16,13 @@ namespace OnlineEducationMarketplace.Data.Repositories
         {
         }
 
-        
-        public IQueryable<Review> GetReviewsByCourseId(int courseId, bool trackChanges) =>
-            FindByCondition(x => x.CourseId.Equals(courseId), trackChanges);
 
-        public Review GetReviewByReviewId(int reviewId, bool trackChanges) =>
-             FindByCondition(x => x.ReviewId.Equals(reviewId), trackChanges)
-                .SingleOrDefault();
+        public async Task<IEnumerable<Review>> GetReviewsByCourseIdAsync(int courseId, bool trackChanges) =>
+            await FindByCondition(x => x.CourseId.Equals(courseId), trackChanges).ToListAsync();
+
+        public async Task<Review> GetReviewByReviewIdAsync(int reviewId, bool trackChanges) =>
+             await FindByCondition(x => x.ReviewId.Equals(reviewId), trackChanges)
+                .SingleOrDefaultAsync();
 
 
         public void CreateReview(Review review) => Create(review);

@@ -29,12 +29,12 @@ namespace OEMAP.Api.Controllers
 
 
         [HttpGet("GetCourseEnrollmentsByCourseId/{courseId:int}")]
-        public IActionResult GetCourseEnrollmentsByCourseId([FromRoute(Name = "courseId")] int courseId)
+        public async Task <IActionResult> GetCourseEnrollmentsByCourseIdAsync([FromRoute(Name = "courseId")] int courseId)
         {
 
-            var courseEnrollments = _manager
+            var courseEnrollments = await _manager
             .CourseEnrollmentService
-            .GetCourseEnrollmentsByCourseId(courseId, false);
+            .GetCourseEnrollmentsByCourseIdAsync(courseId, false);
 
 
             return Ok(courseEnrollments);
@@ -43,12 +43,12 @@ namespace OEMAP.Api.Controllers
         }
 
         [HttpGet("GetCourseEnrollmentsByUserId/{userId:int}")]
-        public IActionResult GetCourseEnrollmentsByUserId([FromRoute(Name = "userId")] int userId)
+        public async Task <IActionResult> GetCourseEnrollmentsByUserIdAsync([FromRoute(Name = "userId")] int userId)
         {
 
-            var courseEnrollments = _manager
+            var courseEnrollments = await _manager
             .CourseEnrollmentService
-            .GetCourseEnrollmentsByUserId(userId, false);
+            .GetCourseEnrollmentsByUserIdAsync(userId, false);
 
 
             return Ok(courseEnrollments);
@@ -57,12 +57,12 @@ namespace OEMAP.Api.Controllers
         }
 
         [HttpGet("GetCourseEnrollmentByCourseEnrollmentId/{courseEnrollmentId:int}")]
-        public IActionResult GetCourseEnrollmentByCourseEnrollmentId([FromRoute(Name = "courseEnrollmentId")] int courseEnrollmentId)
+        public async Task <IActionResult> GetCourseEnrollmentByCourseEnrollmentIdAsync([FromRoute(Name = "courseEnrollmentId")] int courseEnrollmentId)
         {
 
-            var courseEnrollment = _manager
+            var courseEnrollment = await _manager
             .CourseEnrollmentService
-            .GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, false);
+            .GetCourseEnrollmentByCourseEnrollmentIdAsync(courseEnrollmentId, false);
 
 
             return Ok(courseEnrollment);
@@ -70,23 +70,25 @@ namespace OEMAP.Api.Controllers
 
 
         }
+
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPost("Create")]
-        public IActionResult CreateCourseEnrollment([FromBody] CourseEnrollmentDtoForInsertion courseEnrollmentDto)
+        public async Task <IActionResult> CreateCourseEnrollmentAsync([FromBody] CourseEnrollmentDtoForInsertion courseEnrollmentDto)
         {
 
 
             if (courseEnrollmentDto is null)
                 return BadRequest(); //400
 
-            _manager.CourseEnrollmentService.CreateCourseEnrollment(courseEnrollmentDto);
+            await _manager.CourseEnrollmentService.CreateCourseEnrollmentAsync(courseEnrollmentDto);
 
             return StatusCode(201, courseEnrollmentDto);
 
         }
+
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPut("Update/{courseEnrollmentId:int}")]
-        public IActionResult UpdateCourseEnrollment([FromRoute(Name = "courseEnrollmentId")] int courseEnrollmentId,
+        public async Task <IActionResult> UpdateCourseEnrollmentAsync([FromRoute(Name = "courseEnrollmentId")] int courseEnrollmentId,
             [FromBody] CourseEnrollmentDtoForUpdate courseEnrollmentDto)
         {
 
@@ -95,7 +97,7 @@ namespace OEMAP.Api.Controllers
             //    throw new CourseEnrollmentBadHttpRequestException(courseEnrollmentId); //400
 
 
-            _manager.CourseEnrollmentService.UpdateCourseEnrollment(courseEnrollmentId, courseEnrollmentDto, true);
+            await _manager.CourseEnrollmentService.UpdateCourseEnrollmentAsync(courseEnrollmentId, courseEnrollmentDto, true);
             return NoContent(); //204
 
 
@@ -103,30 +105,30 @@ namespace OEMAP.Api.Controllers
         }
 
         [HttpDelete("Delete/{courseEnrollmentId:int}")]
-        public IActionResult DeleteCourseEnrollment([FromRoute(Name = "courseEnrollmentId")] int courseEnrollmentId)
+        public async Task <IActionResult> DeleteCourseEnrollmentAsync([FromRoute(Name = "courseEnrollmentId")] int courseEnrollmentId)
         {
 
 
-            _manager.CourseEnrollmentService.DeleteCourseEnrollment(courseEnrollmentId, false);
+            await _manager.CourseEnrollmentService.DeleteCourseEnrollmentAsync(courseEnrollmentId, false);
             return NoContent();
 
 
         }
 
         [HttpPatch("PartiallyUpdate/{courseEnrollmentId:int}")]
-        public IActionResult PartiallyUpdateCourseEnrollment([FromRoute(Name = "courseEnrollmentId")] int courseEnrollmentId,
+        public async Task <IActionResult> PartiallyUpdateCourseEnrollmentAsync([FromRoute(Name = "courseEnrollmentId")] int courseEnrollmentId,
             [FromBody] JsonPatchDocument<CourseEnrollmentDto> courseEnrollmentPatch)
         {
 
             //check entity
 
-            var courseEnrollmentDto = _manager
+            var courseEnrollmentDto = await _manager
                 .CourseEnrollmentService
-                .GetCourseEnrollmentByCourseEnrollmentId(courseEnrollmentId, true);
+                .GetCourseEnrollmentByCourseEnrollmentIdAsync(courseEnrollmentId, true);
 
 
             courseEnrollmentPatch.ApplyTo(courseEnrollmentDto);
-            _manager.CourseEnrollmentService.UpdateCourseEnrollment(courseEnrollmentId, 
+            await _manager.CourseEnrollmentService.UpdateCourseEnrollmentAsync(courseEnrollmentId, 
                 new CourseEnrollmentDtoForUpdate()
                 {
                     CourseEnrollmentId = courseEnrollmentDto.CourseEnrollmentId, 

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineEducationMarketplace.Data.NewFolder;
 
@@ -11,9 +12,10 @@ using OnlineEducationMarketplace.Data.NewFolder;
 namespace OEMAP.Api.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20231204145202_last")]
+    partial class last
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,22 +53,22 @@ namespace OEMAP.Api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8499013e-e04d-4467-bee2-5e81235c9bab",
-                            ConcurrencyStamp = "85da4d2e-d558-43e6-b899-ab3b2d030b63",
+                            Id = "9946857a-ba3a-47c8-ae45-6c6000318750",
+                            ConcurrencyStamp = "1260aef3-4e85-449b-a35f-d4482106bc67",
                             Name = "user",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "99aad4ed-1e32-41fb-9f2f-f47eb35efbed",
-                            ConcurrencyStamp = "eea6a0dd-fecb-4d4b-b4bc-9ffc7d507a91",
+                            Id = "f98360a7-c0ed-45a8-990c-4b8d18298201",
+                            ConcurrencyStamp = "e1e107a2-84d4-41f4-8747-c604fdec3543",
                             Name = "instructor",
                             NormalizedName = "INSTRUCTOR"
                         },
                         new
                         {
-                            Id = "1708fc0d-67f4-4ec0-ba4b-91abee3f7956",
-                            ConcurrencyStamp = "98c06176-f772-4a55-a0b0-51436205b40c",
+                            Id = "1c5b9184-07e7-49c6-a324-e86b4d524c36",
+                            ConcurrencyStamp = "6b5d8c21-88e9-46e1-a8f5-bac00952bf41",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -453,10 +455,6 @@ namespace OEMAP.Api.Migrations
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
-
-                    b.Property<string>("UserBio")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)

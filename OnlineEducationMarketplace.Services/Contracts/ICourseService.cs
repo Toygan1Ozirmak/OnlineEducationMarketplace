@@ -11,17 +11,17 @@ namespace OnlineEducationMarketplace.Services.Contracts
 {
     public interface ICourseService
     {
-        IEnumerable<CourseDto> GetAllCourses(CourseParameters courseParameters, bool trackChanges);
+        Task <IEnumerable<CourseDto>> GetAllCoursesAsync(CourseParameters courseParameters, bool trackChanges);
 
-        CourseDto GetCourseByCourseId(int courseId, bool trackChanges);
+        Task <CourseDto> GetCourseByCourseIdAsync(int courseId, bool trackChanges);
 
-        IEnumerable<CourseDto> GetCoursesByCategoryId(int categoryId, bool trackChanges);
+        Task <IEnumerable<CourseDto>> GetCoursesByCategoryIdAsync(int categoryId, bool trackChanges);
 
-        CourseDto CreateCourse(CourseDtoForInsertion course);
+        Task <CourseDto> CreateCourseAsync(CourseDtoForInsertion course);
 
-        void UpdateCourse(int courseId, CourseDtoForUpdate courseDto, bool trackChanges);
+        Task UpdateCourseAsync(int courseId, CourseDtoForUpdate courseDto, bool trackChanges);
 
-        void DeleteCourse(int courseId, bool trackChanges);
+        Task DeleteCourseAsync(int courseId, bool trackChanges);
 
     }
 }

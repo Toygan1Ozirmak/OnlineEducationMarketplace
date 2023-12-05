@@ -9,7 +9,7 @@ namespace OnlineEducationMarketplace.Entity.DTOs
 {
     public record UserDtoForUpdate() : UserDtoForManipulation
     {
-        [Required]
+        
         public int UserId { get; init; }
         //public string FirstName { get; init; }
         //public string LastName { get; init; }

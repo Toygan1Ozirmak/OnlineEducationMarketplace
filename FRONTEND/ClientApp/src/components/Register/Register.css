@@ -14,7 +14,7 @@ body {
     background-color: #f10000;
     color: #f10000;
     position: absolute;
-    top: 700px;
+    top: 850px;
     left: 680px;
     padding: 20px 25px;
     font-size: 16px;
@@ -33,13 +33,13 @@ body {
     position: absolute;
     font-family: sans-serif;
     font-size: 15px;
-    top: 670px;
+    top: 790px;
     left: 600px;
 }
 
 .checkBox {
     position: absolute;
-    top: 672px;
+    top: 792px;
     left: 580px;
 }
 
@@ -94,7 +94,7 @@ body {
     font-size: 15px;
 }
 
-.mail {
+.email {
     position: absolute;
     top: 550px;
     left: 600px;
@@ -103,7 +103,7 @@ body {
     height: 25px;
 }
 
-#mailLabel {
+#emailLabel {
     align-self: flex-start; /* Align label to the start of the container */
     position: absolute;
     top: 530px;
@@ -135,6 +135,43 @@ body {
     left: 600px;
     font-size: 15px;
 }
+
+.username {
+    position: absolute;
+    top: 670px;
+    left: 600px;
+    display: inline-block;
+    width: 250px;
+    height: 25px;
+}
+
+#usernameLabel {
+    /* Adjust the position using CSS properties */
+    align-self: flex-start; /* Align label to the start of the container */
+    position: absolute;
+    top: 650px;
+    left: 600px;
+    font-size: 15px;
+}
+
+.userBio {
+    position: absolute;
+    top: 730px;
+    left: 600px;
+    display: inline-block;
+    width: 250px;
+    height: 25px;
+}
+
+#userBioLabel {
+    /* Adjust the position using CSS properties */
+    align-self: flex-start; /* Align label to the start of the container */
+    position: absolute;
+    top: 710px;
+    left: 600px;
+    font-size: 15px;
+}
+
 
 .please-create-a {
     position: absolute;

@@ -14,8 +14,8 @@ using static OnlineEducationMarketplace.Entity.Exceptions.BadHttpRequestExceptio
 
 namespace OEMAP.Api.Controllers
 {
-    [Authorize]
-    [ServiceFilter(typeof(LogFilterAttribute))]
+    //[Authorize]
+    //[ServiceFilter(typeof(LogFilterAttribute))]
     [Route("api/courses")]
     [ApiController]
     public class CourseController : ControllerBase
@@ -28,22 +28,22 @@ namespace OEMAP.Api.Controllers
         }
 
         [HttpGet("GetAllCourses")]
-        public IActionResult GetAllCourses([FromQuery]CourseParameters courseParameters)
+        public async Task <IActionResult> GetAllCoursesAsync([FromQuery]CourseParameters courseParameters)
         {
 
-            var courses = _manager.CourseService.GetAllCourses(courseParameters,false);
+            var courses = await _manager.CourseService.GetAllCoursesAsync(courseParameters,false);
             return Ok(courses);
 
 
         }
 
         [HttpGet("GetCourseByCourseId/{courseId:int}")]
-        public IActionResult GetCourseByCourseId([FromRoute(Name = "courseId")] int courseId)
+        public async Task <IActionResult> GetCourseByCourseIdAsync([FromRoute(Name = "courseId")] int courseId)
         {
 
-            var course = _manager
+            var course = await _manager
             .CourseService
-            .GetCourseByCourseId(courseId, false);
+            .GetCourseByCourseIdAsync(courseId, false);
 
 
             return Ok(course);
@@ -52,67 +52,72 @@ namespace OEMAP.Api.Controllers
         }
 
         [HttpGet("GetCoursesByCategoryId/category/{categoryId:int}")]
-        public IActionResult GetCoursesByCategoryId([FromRoute(Name = "categoryId")] int categoryId)
+        public async Task <IActionResult> GetCoursesByCategoryIdAsync([FromRoute(Name = "categoryId")] int categoryId)
         {
 
-            var courses = _manager
+            var courses = await _manager
             .CourseService
-            .GetCoursesByCategoryId(categoryId, false);
+            .GetCoursesByCategoryIdAsync(categoryId, false);
 
 
             return Ok(courses);
 
 
         }
-        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        //[ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPost("Create")]
-        public IActionResult CreateCourse([FromBody] CourseDtoForInsertion courseDto)
+        public async Task <IActionResult> CreateCourseAsync([FromBody] CourseDtoForInsertion courseDto)
         {
-            //if (courseDto is null)
-            //    return BadRequest(); //400
-            var course =_manager.CourseService.CreateCourse(courseDto);
+            if (courseDto is null)
+                return BadRequest(); //400
+
+            //if (!ModelState.IsValid)
+                //return UnprocessableEntity(ModelState);
+
+            var course =await _manager.CourseService.CreateCourseAsync(courseDto);
 
             return StatusCode(201, courseDto); //CreatedAtRoute()
         }
+
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPut("Update/{courseId:int}")]
-        public IActionResult UpdateCourse([FromRoute(Name = "courseId")] int courseId,
+        public async Task <IActionResult> UpdateCourseAsync([FromRoute(Name = "courseId")] int courseId,
             [FromBody] CourseDtoForUpdate courseDto)
         {
             //if (courseDto is null)
             //    throw new CourseBadHttpRequestException(courseId); //400
 
-            _manager.CourseService.UpdateCourse(courseId, courseDto, false);
+            await _manager.CourseService.UpdateCourseAsync(courseId, courseDto, false);
             return NoContent(); //204
 
 
         }
 
         [HttpDelete("Delete/{courseId:int}")]
-        public IActionResult DeleteCourse([FromRoute(Name = "courseId")] int courseId)
+        public async Task <IActionResult> DeleteCourseAsync([FromRoute(Name = "courseId")] int courseId)
         {
 
 
-            _manager.CourseService.DeleteCourse(courseId, false);
+            await _manager.CourseService.DeleteCourseAsync(courseId, false);
             return NoContent();
 
 
         }
 
         [HttpPatch("PartiallyUpdate/{courseId:int}")]
-        public IActionResult PartiallyUpdateCourse([FromRoute(Name = "courseId")] int courseId,
+        public async Task <IActionResult> PartiallyUpdateCourseAsync([FromRoute(Name = "courseId")] int courseId,
             [FromBody] JsonPatchDocument<CourseDto> coursePatch)
         {
 
 
             //check entity
 
-            var courseDto = _manager
+            var courseDto = await _manager
                 .CourseService
-                .GetCourseByCourseId(courseId, true);
+                .GetCourseByCourseIdAsync(courseId, true);
 
             coursePatch.ApplyTo(courseDto);
-            _manager.CourseService.UpdateCourse(courseId,
+            await _manager.CourseService.UpdateCourseAsync(courseId,
                 new CourseDtoForUpdate()
                 {
                     CourseId = courseDto.CourseId, 

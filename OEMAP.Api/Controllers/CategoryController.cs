@@ -24,10 +24,10 @@ namespace OEMAP.Api.Controllers
         }
 
         [HttpGet("GetAllCategories")]
-        public IActionResult GetAllCategories()
+        public async Task <IActionResult> GetAllCategoriesAsync()
         {
 
-            var categories = _manager.CategoryService.GetAllCategories(false);
+            var categories = await _manager.CategoryService.GetAllCategoriesAsync(false);
             return Ok(categories);
 
 
@@ -35,12 +35,12 @@ namespace OEMAP.Api.Controllers
         }
 
         [HttpGet("GetCategoryByCategoryId/{categoryId:int}")]
-        public IActionResult GetCategoryByCategoryId([FromRoute(Name = "categoryId")] int categoryId)
+        public async Task <IActionResult> GetCategoryByCategoryIdAsync([FromRoute(Name = "categoryId")] int categoryId)
         {
 
-            var category = _manager
+            var category = await _manager
             .CategoryService
-            .GetCategoryByCategoryId(categoryId, false);
+            .GetCategoryByCategoryIdAsync(categoryId, false);
 
 
 
@@ -52,21 +52,21 @@ namespace OEMAP.Api.Controllers
 
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPost("Create")]
-        public IActionResult CreateCategory([FromBody] Category category)
+        public async Task <IActionResult> CreateCategoryAsync([FromBody] Category category)
         {
 
 
             //if (category is null)
             //    throw new CreateCategoryBadHttpRequestException(category); //400
 
-            _manager.CategoryService.CreateCategory(category);
+            await _manager.CategoryService.CreateCategoryAsync(category);
 
             return StatusCode(201, category);
 
         }
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPut("Update/{categoryId:int}")]
-        public IActionResult UpdateCategory([FromRoute(Name = "categoryId")] int categoryId,
+        public async Task <IActionResult> UpdateCategoryAsync([FromRoute(Name = "categoryId")] int categoryId,
             [FromBody] Category category)
         {
 
@@ -76,37 +76,37 @@ namespace OEMAP.Api.Controllers
 
 
 
-            _manager.CategoryService.UpdateCategory(categoryId, category, true);
+            await _manager.CategoryService.UpdateCategoryAsync(categoryId, category, true);
             return NoContent(); //204
 
 
         }
 
         [HttpDelete("Delete/{categoryId:int}")]
-        public IActionResult DeleteCategory([FromRoute(Name = "categoryId")] int categoryId)
+        public async Task <IActionResult> DeleteCategoryAsync([FromRoute(Name = "categoryId")] int categoryId)
         {
 
 
-            _manager.CategoryService.DeleteCategory(categoryId, false);
+            await _manager.CategoryService.DeleteCategoryAsync(categoryId, false);
             return NoContent();
 
 
         }
 
         [HttpPatch("PartiallyUpdate/{categoryId:int}")]
-        public IActionResult PartiallyUpdateCategory([FromRoute(Name = "categoryId")] int categoryId,
+        public async Task <IActionResult> PartiallyUpdateCategoryAsync([FromRoute(Name = "categoryId")] int categoryId,
             [FromBody] JsonPatchDocument<Category> categoryPatch)
         {
 
             //check entity
 
-            var entity = _manager
+            var entity = await _manager
                 .CategoryService
-                .GetCategoryByCategoryId(categoryId, true);
+                .GetCategoryByCategoryIdAsync(categoryId, true);
 
 
             categoryPatch.ApplyTo(entity);
-            _manager.CategoryService.UpdateCategory(categoryId, entity, true);
+            await _manager.CategoryService.UpdateCategoryAsync(categoryId, entity, true);
 
             return NoContent(); //204
 

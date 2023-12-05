@@ -13,7 +13,7 @@ using static OnlineEducationMarketplace.Entity.Exceptions.BadHttpRequestExceptio
 
 namespace OEMAP.Api.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ServiceFilter(typeof(LogFilterAttribute))]
     [Route("api/reviews")]
     [ApiController]
@@ -28,12 +28,12 @@ namespace OEMAP.Api.Controllers
 
 
         [HttpGet("GetReviewsByCourseId/{courseId:int}")]
-        public IActionResult GetReviewsByCourseId([FromRoute(Name = "courseId")] int courseId)
+        public async Task <IActionResult> GetReviewsByCourseIdAsync([FromRoute(Name = "courseId")] int courseId)
         {
 
-            var review = _manager
+            var review = await _manager
             .ReviewService
-            .GetReviewsByCourseId(courseId, false);
+            .GetReviewsByCourseIdAsync(courseId, false);
 
 
             return Ok(review);
@@ -42,12 +42,12 @@ namespace OEMAP.Api.Controllers
         }
 
         [HttpGet("GetReviewByReviewId/{reviewId:int}")]
-        public IActionResult GetReviewByReviewId([FromRoute(Name = "reviewId")] int reviewId)
+        public async Task <IActionResult> GetReviewByReviewIdAsync([FromRoute(Name = "reviewId")] int reviewId)
         {
 
-            var review = _manager
+            var review = await _manager
             .ReviewService
-            .GetReviewByReviewId(reviewId, false);
+            .GetReviewByReviewIdAsync(reviewId, false);
 
 
 
@@ -55,24 +55,26 @@ namespace OEMAP.Api.Controllers
 
 
         }
+
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPost("Create")]
-        public IActionResult CreateReview([FromBody] ReviewDtoForInsertion reviewDto)
+        public async Task <IActionResult> CreateReviewAsync([FromBody] ReviewDtoForInsertion reviewDto)
         {
 
 
             //if (reviewDto is null)
             //    return BadRequest(); //400
 
-            _manager.ReviewService.CreateReview(reviewDto);
+            await _manager.ReviewService.CreateReviewAsync(reviewDto);
 
             return StatusCode(201, reviewDto);
 
 
         }
+
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPut("Update/{reviewId:int}")]
-        public IActionResult UpdateReview([FromRoute(Name = "reviewId")] int reviewId,
+        public async Task <IActionResult> UpdateReviewAsync([FromRoute(Name = "reviewId")] int reviewId,
             [FromBody] ReviewDtoForUpdate reviewDto)
         {
 
@@ -82,7 +84,7 @@ namespace OEMAP.Api.Controllers
 
 
 
-            _manager.ReviewService.UpdateReview(reviewId, reviewDto, true);
+            await _manager.ReviewService.UpdateReviewAsync(reviewId, reviewDto, true);
             return NoContent(); //204
 
 
@@ -90,31 +92,31 @@ namespace OEMAP.Api.Controllers
         }
 
         [HttpDelete("Delete/{reviewId:int}")]
-        public IActionResult DeleteReview([FromRoute(Name = "reviewId")] int reviewId)
+        public async Task <IActionResult> DeleteReviewAsync([FromRoute(Name = "reviewId")] int reviewId)
         {
 
 
 
-            _manager.ReviewService.DeleteReview(reviewId, false);
+            await _manager.ReviewService.DeleteReviewAsync(reviewId, false);
             return NoContent();
 
 
         }
 
         [HttpPatch("PartiallyUpdate/{reviewId:int}")]
-        public IActionResult PartiallyUpdateReview([FromRoute(Name = "reviewId")] int reviewId,
+        public async Task <IActionResult> PartiallyUpdateReviewAsync([FromRoute(Name = "reviewId")] int reviewId,
             [FromBody] JsonPatchDocument<ReviewDto> reviewPatch)
         {
 
             //check entity
 
-            var reviewDto = _manager
+            var reviewDto = await _manager
                 .ReviewService
-                .GetReviewByReviewId(reviewId, true);
+                .GetReviewByReviewIdAsync(reviewId, true);
 
 
             reviewPatch.ApplyTo(reviewDto);
-            _manager.ReviewService.UpdateReview(reviewId, 
+            await _manager.ReviewService.UpdateReviewAsync(reviewId, 
                 new ReviewDtoForUpdate()
                 {
                     ReviewId = reviewDto.ReviewId, 

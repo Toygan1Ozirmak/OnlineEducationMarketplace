@@ -10,14 +10,14 @@ namespace OnlineEducationMarketplace.Services.Contracts
 {
     public interface IUserService
     {
-        IEnumerable<UserDto>GetAllUsers(bool trackChanges);
+        Task <IEnumerable<UserDto>>GetAllUsersAsync(bool trackChanges);
 
-        UserDto GetUserByUserId(int userId,bool trackChanges);
+        Task <UserDto> GetUserByUserIdAsync(int userId,bool trackChanges);
 
-        UserDto CreateUser(UserDtoForInsertion user);
+        Task <UserDto> CreateUserAsync(UserDtoForInsertion user);
 
-        void UpdateUser(int userId, UserDtoForUpdate userDto, bool trackChanges);
+        Task UpdateUserAsync(int userId, UserDtoForUpdate userDto, bool trackChanges);
 
-        void DeleteUser(int userId, bool trackChanges);
+        Task DeleteUserAsync(int userId, bool trackChanges);
     }
 }

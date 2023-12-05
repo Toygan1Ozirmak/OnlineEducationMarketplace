@@ -4,6 +4,8 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.18",
     "@mui/material": "^5.14.18",
-    "axios": "^1.6.2"
+    "axios": "^1.6.2",
+    "cors": "^2.8.5",
+    "jquery": "^3.7.1"
   }
 }

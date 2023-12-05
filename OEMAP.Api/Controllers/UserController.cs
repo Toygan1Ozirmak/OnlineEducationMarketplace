@@ -27,10 +27,10 @@ namespace OEMAP.Api.Controllers
         }
 
         [HttpGet("GetAllUsers")]
-        public IActionResult GetAllUsers()
+        public async Task <IActionResult> GetAllUsersAsync()
         {
 
-            var users = _manager.UserService.GetAllUsers(false);
+            var users = await _manager.UserService.GetAllUsersAsync(false);
             return Ok(users);
 
 
@@ -38,12 +38,12 @@ namespace OEMAP.Api.Controllers
         }
 
         [HttpGet("GetUserByUserId/{userId:int}")]
-        public IActionResult GetUserByUserId([FromRoute(Name = "userId")] int userId)
+        public async Task <IActionResult> GetUserByUserIdAsync([FromRoute(Name = "userId")] int userId)
         {
 
-            var user = _manager
+            var user = await _manager
             .UserService
-            .GetUserByUserId(userId, false);
+            .GetUserByUserIdAsync(userId, false);
 
 
 
@@ -53,24 +53,25 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        //[ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPost("Create")]
-        public IActionResult CreateUser([FromBody] UserDtoForInsertion userDto)
+        public async Task <IActionResult> CreateUserAsync([FromBody] UserDtoForInsertion userDto)
         {
 
 
             //if (userDto is null)
             //    return BadRequest(); //400
 
-            _manager.UserService.CreateUser(userDto);
+            await _manager.UserService.CreateUserAsync(userDto);
 
             return StatusCode(201, userDto);
 
 
         }
+
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPut("Update/{userId:int}")]
-        public IActionResult UpdateUser([FromRoute(Name = "userId")] int userId,
+        public async Task <IActionResult> UpdateUserAsync([FromRoute(Name = "userId")] int userId,
             [FromBody] UserDtoForUpdate userDto)
         {
 
@@ -79,36 +80,36 @@ namespace OEMAP.Api.Controllers
             //    throw new UserBadHttpRequestException(userId); //400
 
 
-            _manager.UserService.UpdateUser(userId, userDto, true);
+            await _manager.UserService.UpdateUserAsync(userId, userDto, true);
             return NoContent(); //204
 
 
         }
 
         [HttpDelete("Delete/{userId:int}")]
-        public IActionResult DeleteUser([FromRoute(Name = "userId")] int userId)
+        public async Task <IActionResult> DeleteUserAsync([FromRoute(Name = "userId")] int userId)
         {
 
 
-            _manager.UserService.DeleteUser(userId, false);
+            await _manager.UserService.DeleteUserAsync(userId, false);
             return NoContent();
 
 
         }
 
         [HttpPatch("PartiallyUpdate/{userId:int}")]
-        public IActionResult PartiallyUpdateUser([FromRoute(Name = "userId")] int userId,
+        public async Task <IActionResult> PartiallyUpdateUserAsync([FromRoute(Name = "userId")] int userId,
             [FromBody] JsonPatchDocument<UserDto> userPatch)
         {
 
             //check entity
 
-            var userDto = _manager
+            var userDto = await _manager
                 .UserService
-                .GetUserByUserId(userId, true);
+                .GetUserByUserIdAsync(userId, true);
 
             userPatch.ApplyTo(userDto);
-            _manager.UserService.UpdateUser(userId, 
+            await _manager.UserService.UpdateUserAsync(userId, 
                 new UserDtoForUpdate()
                 {
                     UserId = userDto.UserId, 

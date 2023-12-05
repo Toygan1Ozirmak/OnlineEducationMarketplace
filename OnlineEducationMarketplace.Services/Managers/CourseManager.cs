@@ -25,30 +25,30 @@ namespace OnlineEducationMarketplace.Services
             _mapper = mapper;
         }
 
-        public CourseDto CreateCourse(CourseDtoForInsertion courseDto)
+        public async Task<CourseDto> CreateCourseAsync(CourseDtoForInsertion courseDto)
         {
             var entity = _mapper.Map<Course>(courseDto);
             _manager.Course.CreateCourse(entity);
-            _manager.Save();
+            await _manager.SaveAsync();
             return _mapper.Map<CourseDto>(entity);
         }
 
-        public void DeleteCourse(int courseId, bool trackChanges)
+        public async Task DeleteCourseAsync(int courseId, bool trackChanges)
         {
             //check entity
 
-            var entity = _manager.Course.GetCourseByCourseId(courseId, trackChanges);
-            if(entity is null)
+            var entity = await _manager.Course.GetCourseByCourseIdAsync(courseId, trackChanges);
+            if (entity is null)
             {
                 throw new CourseNotFoundByCourseIdException(courseId);
             }
             _manager.Course.DeleteCourse(entity);
-            _manager.Save();
+            await _manager.SaveAsync();
         }
 
-        public CourseDto GetCourseByCourseId(int courseId, bool trackChanges)
+        public async Task<CourseDto> GetCourseByCourseIdAsync(int courseId, bool trackChanges)
         {
-            var course = _manager.Course.GetCourseByCourseId(courseId, trackChanges);
+            var course = await _manager.Course.GetCourseByCourseIdAsync(courseId, trackChanges);
             if (course is null)
             {
                 throw new CourseNotFoundByCourseIdException(courseId);
@@ -57,27 +57,27 @@ namespace OnlineEducationMarketplace.Services
             return _mapper.Map<CourseDto>(course);
         }
 
-        public IEnumerable<CourseDto> GetCoursesByCategoryId(int categoryId, bool trackChanges)
+        public async Task<IEnumerable<CourseDto>> GetCoursesByCategoryIdAsync(int categoryId, bool trackChanges)
         {
-            var courses = _manager.Course.GetCoursesByCategoryId(categoryId, trackChanges);
-            if(courses is null)
+            var courses = await _manager.Course.GetCoursesByCategoryIdAsync(categoryId, trackChanges);
+            if (courses is null)
             {
                 throw new CourseNotFoundByCategoryIdException(categoryId);
             }
             return _mapper.Map<IEnumerable<CourseDto>>(courses);
         }
 
-        public IEnumerable<CourseDto> GetAllCourses(CourseParameters courseParameters, bool trackChanges)
+        public async Task<IEnumerable<CourseDto>> GetAllCoursesAsync(CourseParameters courseParameters, bool trackChanges)
         {
-            var courses = _manager.Course.GetAllCourses(courseParameters,trackChanges);
+            var courses = await _manager.Course.GetAllCoursesAsync(courseParameters, trackChanges);
             return _mapper.Map<IEnumerable<CourseDto>>(courses);
         }
 
-        public void UpdateCourse(int courseId, CourseDtoForUpdate courseDto, bool trackChanges)
+        public async Task UpdateCourseAsync(int courseId, CourseDtoForUpdate courseDto, bool trackChanges)
         {
             //check entity
-            var entity = _manager.Course.GetCourseByCourseId(courseId, trackChanges);
-            if(entity is null )
+            var entity = await _manager.Course.GetCourseByCourseIdAsync(courseId, trackChanges);
+            if (entity is null)
             {
                 throw new CourseNotFoundByCourseIdException(courseId);
             }
@@ -96,10 +96,10 @@ namespace OnlineEducationMarketplace.Services
 
             entity = _mapper.Map<Course>(courseDto);
 
-            _manager.Course.UpdateCourse(entity);
-            _manager.Save();
+            _manager.Course.Update(entity);//updatecourse- update
+            await _manager.SaveAsync();
         }
 
-        
+
     }
 }

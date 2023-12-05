@@ -9,14 +9,14 @@ namespace OnlineEducationMarketplace.Services.Contracts
 {
     public interface ICategoryService
     {
-        IEnumerable<Category> GetAllCategories(bool trackChanges);
+        Task <IEnumerable<Category>> GetAllCategoriesAsync(bool trackChanges);
 
-        Category GetCategoryByCategoryId(int categoryId, bool trackChanges);
+        Task <Category> GetCategoryByCategoryIdAsync(int categoryId, bool trackChanges);
 
-        Category CreateCategory(Category category);
+        Task <Category> CreateCategoryAsync(Category category);
 
-        void UpdateCategory(int categoryId, Category category, bool trackChanges);
+        Task UpdateCategoryAsync(int categoryId, Category category, bool trackChanges);
 
-        void DeleteCategory(int categoryId, bool trackChanges);
+        Task DeleteCategoryAsync(int categoryId, bool trackChanges);
     }
 }

@@ -1,10 +1,10 @@
-﻿import "./LoginPage.css";
-import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
-// import search from "./images/search.jpg";
+﻿// import search from "./images/search.jpg";
 // import logo from "./images/logo.jpg";
-import { loginUser } from "../../apiServices";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button"; // Import the API service function
+import "./LoginPage.css";
+import { loginUser } from "../../apiServices";
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -14,8 +14,8 @@ const LoginPage = () => {
         setChecked(e.target.checked);
     }
     const [formData, setFormData] = useState({
-        loginmail: "",
-        loginpassword: "",
+        UserName: "",
+        Password: "",
     });
 
     const handleChange = (e) => {
@@ -25,8 +25,14 @@ const LoginPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!formData.UserName || !formData.Password) {
+            console.error("Form data is incomplete. All fields are required.");
+            return;
+        }
+
         try {
-            const response = await loginUser(formData); // Call the API service function
+            const response = await loginUser(formData);
             console.log("Data saved:", response);
             // Handle success or further actions upon successful API call
         } catch (error) {
@@ -34,10 +40,24 @@ const LoginPage = () => {
         }
     };
 
-    const handleSigninClick = () => {
+   
+    const handleSigninClick = async () => {
         console.log("Signin button clicked!");
-        // Redirect to MyProfile page
-        navigate("/");
+        try {
+            const response = await loginUser(formData);
+            console.log("Data saved:", response);
+
+            // Assuming a successful response contains a token
+            if (response && response.token) {
+                navigate("/shop");
+            } else {
+                // Optional: Show an error message for invalid credentials
+                console.error("Invalid credentials. Please try again.");
+            }
+        } catch (error) {
+            console.error("Error saving data:", error);
+            // Handle error, show a message, etc.
+        }
     };
 
     return (
@@ -56,26 +76,26 @@ const LoginPage = () => {
                 </div>
 
                 <div className="LoginInput-container">
-                    <label htmlFor="loginmail" id="loginmaillabel">
-                        Mail
+                    <label htmlFor="UserName" id="UserNamelabel">
+                        Username
                     </label>
                     <input
                         type="text"
-                        id="loginmail"
-                        className="loginmail"
-                        value={formData.loginmail}
+                        id="UserName"
+                        className="UserName"
+                        value={formData.UserName}
                         onChange={handleChange}
                     />
                 </div>
                 <div className="LoginInput-container">
-                    <label htmlFor="loginpassword" id="loginpasswordlabel">
+                    <label htmlFor="Password" id="Passwordlabel">
                         Password
                     </label>
                     <input
-                        type="text"
-                        id="loginpassword"
-                        className="loginpassword"
-                        value={formData.loginpassword}
+                        type="Password"
+                        id="Password"
+                        className="Password"
+                        value={formData.Password}
                         onChange={handleChange}
                     />
                 </div>

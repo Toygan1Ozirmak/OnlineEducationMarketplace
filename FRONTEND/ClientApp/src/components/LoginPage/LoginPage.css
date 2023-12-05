@@ -38,7 +38,7 @@
     gap: 8px;
 }
 
-.loginmail {
+.UserName {
     position: absolute;
     top: 150px;
     left: 20px;
@@ -51,7 +51,7 @@
     height: 40px;
 }
 
-#loginmaillabel {
+#UserNamelabel {
     align-self: flex-start;
     position: absolute;
     top: 120px;
@@ -59,7 +59,7 @@
     font-size: 20px;
 }
 
-.loginpassword {
+.Password {
     position: absolute;
     top: 250px;
     left: 20px;
@@ -72,7 +72,7 @@
     height: 40px;
 }
 
-#loginpasswordlabel {
+#Passwordlabel {
     align-self: flex-start;
     position: absolute;
     top: 220px;

@@ -1,4 +1,5 @@
-﻿using OnlineEducationMarketplace.Data.Contracts;
+﻿using Microsoft.EntityFrameworkCore;
+using OnlineEducationMarketplace.Data.Contracts;
 using OnlineEducationMarketplace.Data.NewFolder;
 using OnlineEducationMarketplace.Entity.Entities;
 using System;
@@ -15,13 +16,13 @@ namespace OnlineEducationMarketplace.Data.Repositories
         {
         }
 
-        
-        public IQueryable<User> GetAllUsers(bool trackChanges) => 
-            FindAll(trackChanges).OrderBy(x => x.Id);
 
-        public User GetUserByUserId(int userId, bool trackChanges) =>
-            FindByCondition(x => x.Id.Equals(userId), (trackChanges))
-                .SingleOrDefault();
+        public async Task<IEnumerable<User>> GetAllUsersAsync(bool trackChanges) =>
+            await FindAll(trackChanges).OrderBy(x => x.Id).ToListAsync();
+
+        public async Task<User> GetUserByUserIdAsync(int userId, bool trackChanges) =>
+            await FindByCondition(x => x.Id.Equals(userId), (trackChanges))
+                .SingleOrDefaultAsync();
 
         public void CreateUser(User user) => Create(user);
 

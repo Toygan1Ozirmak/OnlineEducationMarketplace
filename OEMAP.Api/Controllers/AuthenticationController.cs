@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace OEMAP.Api.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/authentication")]
     public class AuthenticationController : ControllerBase
@@ -46,19 +46,36 @@ namespace OEMAP.Api.Controllers
         }
 
         [HttpPost("login")]
-        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        //[ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> Authenticate([FromBody] UserForAuthenticationDto user)
         {
-            if (!await _service.AuthenticationService.ValidateUser(user))
-                return Unauthorized(); //401
-            return Ok(new
+            try
             {
-                Token = await _service.AuthenticationService.CreateToken()
-            });
-        }
-    }
-}
+                // Uncomment the next line if you want to use the ValidationFilterAttribute
+                // This assumes the ValidateUser method throws an exception on validation failure
+                await _service.AuthenticationService.ValidateUser(user);
 
-  
+                if (!await _service.AuthenticationService.ValidateUser(user))
+                {
+                    return Unauthorized("Invalid username or password"); //401
+                }
+
+                return Ok(new
+                {
+                    Token = await _service.AuthenticationService.CreateToken()
+                });
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception as needed
+                Console.Error.WriteLine($"Authentication error: {ex.Message}");
+                return BadRequest("Authentication failed"); // You might want to return a different status code here
+            }
+        }
+
+    }
+
+
+}
 
        

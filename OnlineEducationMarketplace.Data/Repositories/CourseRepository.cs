@@ -1,4 +1,5 @@
-﻿using OnlineEducationMarketplace.Data.Contracts;
+﻿using Microsoft.EntityFrameworkCore;
+using OnlineEducationMarketplace.Data.Contracts;
 using OnlineEducationMarketplace.Data.NewFolder;
 using OnlineEducationMarketplace.Entity.Entities;
 using OnlineEducationMarketplace.Entity.RequestFeatures;
@@ -17,20 +18,17 @@ namespace OnlineEducationMarketplace.Data.Repositories
         }
 
 
-        public IQueryable<Course> GetAllCourses(CourseParameters courseParameters, bool trackChanges) =>
-            FindAll(trackChanges)
-            .OrderBy(x => x.CourseId)
-            .Skip((courseParameters.PageNumber - 1) * courseParameters.PageSize)
-            .Take(courseParameters.PageSize);
-            
+        public async Task<IEnumerable<Course>> GetAllCoursesAsync(CourseParameters courseParameters, bool trackChanges) =>
+            await FindAll(trackChanges).OrderBy(x => x.CourseId).ToListAsync();
 
-        public Course GetCourseByCourseId(int courseId, bool trackChanges) =>
-            FindByCondition(x => x.CourseId.Equals(courseId), trackChanges)
-                .SingleOrDefault();
+        public async Task<Course> GetCourseByCourseIdAsync(int courseId, bool trackChanges) =>
+            await FindByCondition(x => x.CourseId.Equals(courseId), trackChanges)
+                .SingleOrDefaultAsync();
 
-        public IQueryable<Course> GetCoursesByCategoryId(int categoryId, bool trackChanges) =>
-            FindByCondition(x => x.CategoryId.Equals(categoryId), trackChanges);
-                
+        public async Task<IEnumerable<Course>> GetCoursesByCategoryIdAsync(int categoryId, bool trackChanges) =>
+            await FindByCondition(x => x.CategoryId.Equals(categoryId), trackChanges)
+                .ToListAsync();
+
 
 
 
@@ -40,6 +38,6 @@ namespace OnlineEducationMarketplace.Data.Repositories
 
         public void DeleteCourse(Course course) => Delete(course);
 
-
+        
     }
 }

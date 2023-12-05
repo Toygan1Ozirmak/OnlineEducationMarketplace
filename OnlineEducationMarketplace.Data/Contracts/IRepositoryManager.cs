@@ -17,8 +17,8 @@ namespace OnlineEducationMarketplace.Data.Contracts
 
         ICourseEnrollmentRepository CourseEnrollment { get; }
 
-        
 
-        void Save();
+
+        Task SaveAsync();
     }
 }

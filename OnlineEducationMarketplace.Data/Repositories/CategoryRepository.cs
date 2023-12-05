@@ -1,4 +1,5 @@
-﻿using OnlineEducationMarketplace.Data.Contracts;
+﻿using Microsoft.EntityFrameworkCore;
+using OnlineEducationMarketplace.Data.Contracts;
 using OnlineEducationMarketplace.Data.NewFolder;
 using OnlineEducationMarketplace.Entity.Entities;
 using System;
@@ -9,18 +10,18 @@ using System.Threading.Tasks;
 
 namespace OnlineEducationMarketplace.Data.Repositories
 {
-    public class CategoryRepository : RepositoryBase<Category> , ICategoryRepository
+    public class CategoryRepository : RepositoryBase<Category>, ICategoryRepository
     {
         public CategoryRepository(RepositoryContext context) : base(context)
         {
         }
 
-        public IQueryable<Category> GetAllCategories(bool trackChanges) =>
-            FindAll(trackChanges).OrderBy(x => x.CategoryId);
+        public async Task<IEnumerable<Category>> GetAllCategoriesAsync(bool trackChanges) =>
+            await FindAll(trackChanges).OrderBy(x => x.CategoryId).ToListAsync();
 
-        public Category GetCategoryByCategoryId(int categoryId, bool trackChanges) =>
-            FindByCondition(x => x.CategoryId.Equals(categoryId), trackChanges)
-                .SingleOrDefault();
+        public async Task<Category> GetCategoryByCategoryIdAsync(int categoryId, bool trackChanges) =>
+            await FindByCondition(x => x.CategoryId.Equals(categoryId), trackChanges)
+                .SingleOrDefaultAsync();
 
         public void CreateCategory(Category category) => Create(category);
 

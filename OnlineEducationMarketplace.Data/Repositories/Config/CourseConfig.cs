@@ -22,9 +22,6 @@ namespace OnlineEducationMarketplace.Data.Repositories.Config
             //bire çok
 
 
-            builder.Property(c => c.Title).IsRequired();
-            builder.Property(c => c.Description).IsRequired();
-
         }
     }
 }

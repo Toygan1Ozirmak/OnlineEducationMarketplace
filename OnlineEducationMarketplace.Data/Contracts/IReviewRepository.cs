@@ -9,11 +9,11 @@ namespace OnlineEducationMarketplace.Data.Contracts
 {
     public interface IReviewRepository : IRepositoryBase<Review>
     {
-        
-       
-        IQueryable<Review> GetReviewsByCourseId(int courseId, bool trackChanges);
 
-        Review GetReviewByReviewId(int reviewId, bool trackChanges);
+
+        Task<IEnumerable<Review>> GetReviewsByCourseIdAsync(int courseId, bool trackChanges);
+
+        Task<Review> GetReviewByReviewIdAsync(int reviewId, bool trackChanges);
 
 
 

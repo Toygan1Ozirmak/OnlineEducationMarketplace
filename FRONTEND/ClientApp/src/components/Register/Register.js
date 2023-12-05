@@ -14,8 +14,12 @@ const Register = () => {
         firstName: "",
         lastName: "",
         password: "",
-        mail: "",
+        email: "",
         phone: "",
+        username: "",
+        userBio: "",
+        roles: ["Instructor"],
+
     });
 
     const handleChange = (e) => {
@@ -25,7 +29,12 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Form Data:", formData); // Form verisini kontrol et
+
+        if (!formData.firstName || !formData.lastName || !formData.password || !formData.email || !formData.phone || !formData.username || !formData.userBio) {
+            console.error("Form data is incomplete. All fields are required.");
+            return;
+        }
+        
         try {
             const response = await registerUser(formData);
             console.log("Data saved:", response);
@@ -37,9 +46,20 @@ const Register = () => {
 
     const navigate = useNavigate(); // Uncommented navigation component
 
-    const handleSignupClick = () => {
+    const handleSignupClick = async () => {
         console.log("Signup button clicked!");
-        navigate("/login");
+
+        
+
+        try {
+            const response = await registerUser(formData);
+            console.log("Data saved:", response);
+            // Handle success or further actions upon successful API call
+            navigate("/login");
+        } catch (error) {
+            console.error("Error saving data:", error);
+            // Handle error, show a message, etc.
+        }
     };
 
     return (
@@ -84,14 +104,14 @@ const Register = () => {
                 </div>
 
                 <div className="input-container">
-                    <label htmlFor="mail" id="mailLabel">
-                        Mail
+                    <label htmlFor="email" id="emailLabel">
+                        EMail
                     </label>
                     <input
                         type="text"
-                        id="mail"
-                        className="mail"
-                        value={formData.mail}
+                        id="email"
+                        className="email"
+                        value={formData.email}
                         onChange={handleChange}
                     />
                 </div>
@@ -104,6 +124,30 @@ const Register = () => {
                         id="phone"
                         className="phone"
                         value={formData.phone}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="input-container">
+                    <label htmlFor="username" id="usernameLabel">
+                        Username
+                    </label>
+                    <input
+                        type="text"
+                        id="username"
+                        className="username"
+                        value={formData.username}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="input-container">
+                    <label htmlFor="userBio" id="userBioLabel">
+                        UserBio
+                    </label>
+                    <input
+                        type="text"
+                        id="userBio"
+                        className="userBio"
+                        value={formData.userBio}
                         onChange={handleChange}
                     />
                 </div>

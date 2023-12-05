@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineEducationMarketplace.Data.NewFolder;
 
@@ -11,9 +12,10 @@ using OnlineEducationMarketplace.Data.NewFolder;
 namespace OEMAP.Api.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20231201071155_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,22 +53,22 @@ namespace OEMAP.Api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8499013e-e04d-4467-bee2-5e81235c9bab",
-                            ConcurrencyStamp = "85da4d2e-d558-43e6-b899-ab3b2d030b63",
+                            Id = "8cf22395-792c-4880-a7e2-afcc5c18757f",
+                            ConcurrencyStamp = "8f15c635-96ec-4d99-8a05-d902419af4db",
                             Name = "user",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "99aad4ed-1e32-41fb-9f2f-f47eb35efbed",
-                            ConcurrencyStamp = "eea6a0dd-fecb-4d4b-b4bc-9ffc7d507a91",
+                            Id = "52b48d84-b063-4091-8175-09731a12addb",
+                            ConcurrencyStamp = "7b5e2ea9-fd64-4044-8d04-0195e57399ec",
                             Name = "instructor",
                             NormalizedName = "INSTRUCTOR"
                         },
                         new
                         {
-                            Id = "1708fc0d-67f4-4ec0-ba4b-91abee3f7956",
-                            ConcurrencyStamp = "98c06176-f772-4a55-a0b0-51436205b40c",
+                            Id = "d7cd6f9e-459c-4b92-8d54-c50ac8527652",
+                            ConcurrencyStamp = "7ea85866-ba53-43ad-97e3-ba95254fce5a",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -248,22 +250,25 @@ namespace OEMAP.Api.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<TimeSpan?>("CourseLength")
+                    b.Property<TimeSpan>("CourseLength")
                         .HasColumnType("time");
 
-                    b.Property<bool?>("CourseStatus")
+                    b.Property<bool>("CourseStatus")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime?>("CreatedDate")
+                    b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CourseId");

@@ -13,7 +13,7 @@ using static OnlineEducationMarketplace.Entity.Exceptions.NotFoundException;
 
 namespace OnlineEducationMarketplace.Services
 {
-    public class UserManager : IUserService 
+    public class UserManager : IUserService
     {
         private readonly IRepositoryManager _manager;
         private readonly IMapper _mapper;
@@ -24,64 +24,59 @@ namespace OnlineEducationMarketplace.Services
             _mapper = mapper;
         }
 
-        public UserDto CreateUser(UserDtoForInsertion userDto)
+        public async Task <UserDto> CreateUserAsync(UserDtoForInsertion userDto)
         {
             var entity = _mapper.Map<User>(userDto);
             _manager.User.CreateUser(entity);
-            _manager.Save();
+            await _manager.SaveAsync();
             return _mapper.Map<UserDto>(entity);
-            
+
         }
 
-        public void DeleteUser(int userId, bool trackChanges)
+        public async Task DeleteUserAsync(int userId, bool trackChanges)
         {
             //check entity
-            var entity = _manager.User.GetUserByUserId(userId, trackChanges);
+            var entity = await _manager.User.GetUserByUserIdAsync(userId, trackChanges);
             if (entity is null)
             {
                 throw new UserNotFoundException(userId);
             }
             _manager.User.DeleteUser(entity);
-            _manager.Save();
+            await _manager.SaveAsync();
         }
 
-        public UserDto GetUserByUserId(int userId, bool trackChanges)
+        public async Task <UserDto> GetUserByUserIdAsync(int userId, bool trackChanges)
         {
-            var user  = _manager.User.GetUserByUserId(userId, trackChanges);
+            var user = await _manager.User.GetUserByUserIdAsync(userId, trackChanges);
             if (user is null)
             {
                 throw new UserNotFoundException(userId);
             }
             return _mapper.Map<UserDto>(user);
-            
+
         }
 
-        public IEnumerable<UserDto> GetAllUsers(bool trackChanges)
+        public async Task <IEnumerable<UserDto>> GetAllUsersAsync(bool trackChanges)
         {
-            var users = _manager.User.GetAllUsers(trackChanges);
+            var users = await _manager.User.GetAllUsersAsync(trackChanges);
             return _mapper.Map<IEnumerable<UserDto>>(users);
 
         }
 
-            public void UpdateUser(int userId, UserDtoForUpdate userDto, bool trackChanges)
+        public async Task UpdateUserAsync(int userId, UserDtoForUpdate userDto, bool trackChanges)
         {
             //check entity
-            var entity = _manager.User.GetUserByUserId(userId, trackChanges);
-            if(entity is null)
+            var entity = await _manager.User.GetUserByUserIdAsync(userId, trackChanges);
+            if (entity is null)
+            {
                 throw new UserNotFoundException(userId);
+            }
 
-            //entity.FirstName = user.FirstName;
-            //entity.LastName = user.LastName;
-            //entity.Email = user.Email;
-            //entity.Password = user.Password;
-            //entity.UserName = user.UserName;
-            //entity.RoleId = user.RoleId;
-            //entity.UserBio = user.UserBio;
-            //entity.Reviews = user.Reviews;
-            //entity.CourseEnrollments = user.CourseEnrollments;
+
+
             entity = _mapper.Map<User>(userDto);
-            _manager.User.UpdateUser(entity);
-            _manager.Save();
+            _manager.User.Update(entity);//updateuser-update
+            await _manager.SaveAsync();
 
         }
     }

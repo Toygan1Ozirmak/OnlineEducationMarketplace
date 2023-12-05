@@ -20,29 +20,29 @@ namespace OnlineEducationMarketplace.Services
             _manager = manager;
         }
 
-        public Category CreateCategory(Category category)
+        public async Task <Category> CreateCategoryAsync(Category category)
         {
             _manager.Category.CreateCategory(category);
-            _manager.Save();
+            await _manager.SaveAsync();
             return category;
         }
 
-        public void DeleteCategory(int categoryId, bool trackChanges)
+        public async Task DeleteCategoryAsync(int categoryId, bool trackChanges)
         {
             //check entity
 
-            var entity = _manager.Category.GetCategoryByCategoryId(categoryId, trackChanges);
+            var entity = await _manager.Category.GetCategoryByCategoryIdAsync(categoryId, trackChanges);
             if (entity != null)
             {
                 throw new CategoryNotFoundException(categoryId);
             }
             _manager.Category.DeleteCategory(entity);
-            _manager.Save();
+            await _manager.SaveAsync();
         }
 
-        public Category GetCategoryByCategoryId(int categoryId, bool trackChanges)
+        public async Task <Category> GetCategoryByCategoryIdAsync(int categoryId, bool trackChanges)
         {
-            var category = _manager.Category.GetCategoryByCategoryId(categoryId, trackChanges);
+            var category = await _manager.Category.GetCategoryByCategoryIdAsync(categoryId, trackChanges);
             if(category is null)
                 throw new CategoryNotFoundException(categoryId);
 
@@ -50,16 +50,16 @@ namespace OnlineEducationMarketplace.Services
         }
 
         
-        public IEnumerable<Category> GetAllCategories(bool trackChanges)
+        public async Task <IEnumerable<Category>> GetAllCategoriesAsync(bool trackChanges)
         {
-            return _manager.Category.GetAllCategories(trackChanges);
+            return await _manager.Category.GetAllCategoriesAsync(trackChanges);
         }
 
-        public void UpdateCategory(int categoryId, Category category, bool trackChanges)
+        public async Task UpdateCategoryAsync(int categoryId, Category category, bool trackChanges)
         {
             //check entity
 
-            var entity = _manager.Category.GetCategoryByCategoryId(categoryId, trackChanges);
+            var entity = await _manager.Category.GetCategoryByCategoryIdAsync(categoryId, trackChanges);
             if(entity is null)
                 throw new CategoryNotFoundException(categoryId);
 
@@ -69,7 +69,7 @@ namespace OnlineEducationMarketplace.Services
 
 
             _manager.Category.UpdateCategory(entity);
-            _manager.Save();
+            await _manager.SaveAsync();
         }
     }
 }

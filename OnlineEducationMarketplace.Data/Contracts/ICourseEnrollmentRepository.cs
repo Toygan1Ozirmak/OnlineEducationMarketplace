@@ -9,19 +9,19 @@ namespace OnlineEducationMarketplace.Data.Contracts
 {
     public interface ICourseEnrollmentRepository : IRepositoryBase<CourseEnrollment>
     {
-        
+
         //kullanıcının kendi kurs kayıtlarını görüntülemesi için
-        IQueryable<CourseEnrollment> GetCourseEnrollmentsByUserId(int userId, bool trackChanges);
+        Task<IEnumerable<CourseEnrollment>> GetCourseEnrollmentsByUserIdAsync(int userId, bool trackChanges);
 
         //bir kursa katılanların görüntülenmesi için
-        IQueryable<CourseEnrollment> GetCourseEnrollmentsByCourseId(int courseId, bool trackChanges);
+        Task<IEnumerable<CourseEnrollment>> GetCourseEnrollmentsByCourseIdAsync(int courseId, bool trackChanges);
 
-        CourseEnrollment GetCourseEnrollmentByCourseEnrollmentId(int courseEnrollmentId, bool trackChanges);
+        Task<CourseEnrollment> GetCourseEnrollmentByCourseEnrollmentIdAsync(int courseEnrollmentId, bool trackChanges);
 
-        
+
         void CreateCourseEnrollment(CourseEnrollment courseEnrollment);
         void UpdateCourseEnrollment(CourseEnrollment courseEnrollment);
         void DeleteCourseEnrollment(CourseEnrollment courseEnrollment);
-        
+
     }
 }

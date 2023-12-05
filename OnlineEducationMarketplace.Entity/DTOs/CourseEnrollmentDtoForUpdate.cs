@@ -9,7 +9,7 @@ namespace OnlineEducationMarketplace.Entity.DTOs
 {
     public record CourseEnrollmentDtoForUpdate() : CourseEnrollmentDtoForManipulation
     {
-        [Required]
+        
         public int CourseEnrollmentId { get; init; }
 
         //public DateTime EnrollmentDate { get; init; }

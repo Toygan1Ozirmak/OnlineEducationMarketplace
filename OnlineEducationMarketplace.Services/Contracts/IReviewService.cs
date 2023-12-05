@@ -10,14 +10,14 @@ namespace OnlineEducationMarketplace.Services.Contracts
 {
     public interface IReviewService
     {
-        IEnumerable<ReviewDto> GetReviewsByCourseId(int courseId, bool trackChanges);
+        Task <IEnumerable<ReviewDto>> GetReviewsByCourseIdAsync(int courseId, bool trackChanges);
 
-        ReviewDto GetReviewByReviewId(int reviewId, bool trackChanges);
+        Task <ReviewDto> GetReviewByReviewIdAsync(int reviewId, bool trackChanges);
 
-        ReviewDto CreateReview(ReviewDtoForInsertion review);
+        Task <ReviewDto> CreateReviewAsync(ReviewDtoForInsertion review);
 
-        void UpdateReview(int reviewId, ReviewDtoForUpdate reviewDto, bool trackChanges);
+        Task UpdateReviewAsync(int reviewId, ReviewDtoForUpdate reviewDto, bool trackChanges);
 
-        void DeleteReview(int reviewId, bool trackChanges);
+        Task DeleteReviewAsync(int reviewId, bool trackChanges);
     }
 }

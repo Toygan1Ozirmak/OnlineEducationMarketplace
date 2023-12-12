@@ -23,5 +23,6 @@ namespace OnlineEducationMarketplace.Entity.DTOs
 
 
         public int CategoryId { get; init; }
+
     }
 }

@@ -58,6 +58,42 @@ export const loginUser = async (formData) => {
     });
 };
 
+//export const logoutUser = async () => {
+//    try {
+//        const xhr = new XMLHttpRequest();
+//        xhr.open("POST", `https://localhost:7280/api/authentication/logout`, true);
+//        xhr.setRequestHeader("Content-Type", "application/json");
+
+//        xhr.onreadystatechange = function () {
+//            if (xhr.readyState === 4) {
+//                if (xhr.status === 200) {
+//                    console.log("API Response:", xhr.responseText);
+//                    // Handle the response data if needed
+
+                    
+//                } else {
+//                    console.error("Logout Error:", xhr.statusText);
+//                    console.error("Error response:", xhr.responseText);
+//                    // Throw an error or handle the error in components
+//                }
+//            }
+//        };
+
+//        xhr.send();
+//    } catch (error) {
+//        console.error("Logout Error:", error);
+//        throw error;
+//    }
+//};
+
+export const getAllCourses = async () => {
+    try {
+        const response = await axios.get(`${BASE_URL}/api/courses/GetAllCourses`);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
 
 
 

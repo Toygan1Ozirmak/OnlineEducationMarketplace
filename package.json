@@ -6,6 +6,8 @@
     "@mui/material": "^5.14.18",
     "axios": "^1.6.2",
     "cors": "^2.8.5",
-    "jquery": "^3.7.1"
+    "jquery": "^3.7.1",
+    "react-auth-kit": "^3.0.0-alpha.44",
+    "win-ca": "^3.5.1"
   }
 }

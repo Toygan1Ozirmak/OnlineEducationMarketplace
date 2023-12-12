@@ -1,43 +1,68 @@
-
-import { Home } from "./components/Home";
-import Register from "./components/Register/Register";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import LoginPage from "./components/LoginPage/LoginPage";
+import Register from "./components/Register/Register";
 import HomePage from "./components/HomePage/HomePage";
-import ChangePassword from "./components/ChangePassword/ChangePassword";
 import Shop from "./components/Shop/Shop";
-import MyProfile from "./components/MyProfile/MyProfile";
-import Basket from "./components/Basket/Basket";
+import { isAuthenticated } from "./auth";
 
+const PrivateRouteHomePage = () => {
+    const navigate = useNavigate();
+    const [authenticated, setAuthenticated] = useState(isAuthenticated());
+
+    useEffect(() => {
+        if (!authenticated) {
+            // Kullanýcý authenticated deðilse, login sayfasýna yönlendir
+            navigate('/');
+        }
+    }, [authenticated, navigate]);
+
+    return authenticated ? <HomePage /> : null;
+}
+
+const PrivateRouteShop = () => {
+    const navigate = useNavigate();
+    const [authenticated, setAuthenticated] = useState(isAuthenticated());
+
+    useEffect(() => {
+        if (!authenticated) {
+            // Kullanýcý authenticated deðilse, login sayfasýna yönlendir
+            navigate('/');
+        }
+    }, [authenticated, navigate]);
+
+    return authenticated ? <Shop /> : null;
+}
 const AppRoutes = [
-  {
-    index: true,
-    element: <HomePage />
-  },
- 
     {
-        path: '/register',
-        element: <Register />
+        path: "/",
+        index: true,
+        element: <LoginPage />,
     },
     {
-        path: '/login',
-        element: <LoginPage />
+        path: "/register",
+        element: <Register />,
     },
     {
-        path: '/changepassword',
-        element: <ChangePassword />
+        path: "/homepage",
+        element: <PrivateRouteHomePage />,
     },
     {
-        path: '/shop',
-        element: <Shop />
+        path: "/shop",
+        element: <PrivateRouteShop />,
     },
-    {
-        path: '/myprofile',
-        element: <MyProfile />
-    },
-    {
-        path: '/basket',
-        element: <Basket />
-    }
+    //{
+    //    path: '/changepassword',
+    //    element: <ChangePassword />
+    //},
+    //{
+    //    path: '/myprofile',
+    //    element: <MyProfile />
+    //},
+    //{
+    //    path: '/basket',
+    //    element: <Basket />
+    //}
 ];
 
 export default AppRoutes;

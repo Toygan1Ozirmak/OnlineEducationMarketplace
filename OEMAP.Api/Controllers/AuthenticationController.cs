@@ -10,10 +10,11 @@ using System.Diagnostics.Eventing.Reader;
 using static OnlineEducationMarketplace.Entity.Exceptions.BadHttpRequestException;
 using OEMAP.Api.ActionFilters;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace OEMAP.Api.Controllers
 {
-    //[Authorize]
+
     [ApiController]
     [Route("api/authentication")]
     public class AuthenticationController : ControllerBase
@@ -45,6 +46,7 @@ namespace OEMAP.Api.Controllers
             return StatusCode(201);
         }
 
+        [AllowAnonymous]
         [HttpPost("login")]
         //[ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> Authenticate([FromBody] UserForAuthenticationDto user)
@@ -73,9 +75,21 @@ namespace OEMAP.Api.Controllers
             }
         }
 
+        //[Authorize]
+        //[HttpGet("logout")]
+        //public async Task<IActionResult> LogOut()
+        //{
+        //    string rawUserId = HttpContext.User.FindFirstValue("id");
+
+        //    if (!Guid.TryParse(rawUserId, out Guid userId))
+        //        return Unauthorized();
+
+        //    await _service.AuthenticationService.LogoutAsync(userId);
+
+        //    return Ok(new { Message = "Logout successful" });
+        //}
+
+
     }
 
-
-}
-
-       
+}      

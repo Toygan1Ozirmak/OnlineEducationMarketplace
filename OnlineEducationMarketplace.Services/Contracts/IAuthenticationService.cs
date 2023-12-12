@@ -15,5 +15,7 @@ namespace OnlineEducationMarketplace.Services.Contracts
         Task<bool> ValidateUser(UserForAuthenticationDto userForAuthDto);
 
         Task<string> CreateToken();
+
+        //Task LogoutAsync(Guid userId);
     }
 }

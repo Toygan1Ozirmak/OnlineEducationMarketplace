@@ -1,73 +1,56 @@
-﻿// import search from "./images/search.jpg";
-// import logo from "./images/logo.jpg";
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "@mui/material/Button"; // Import the API service function
-import "./LoginPage.css";
+import Button from "@mui/material/Button";
 import { loginUser } from "../../apiServices";
+import "./LoginPage.css";
 
 const LoginPage = () => {
     const navigate = useNavigate();
 
-    const [checked, setChecked] = React.useState(false);
-    function checkChange(e) {
-        setChecked(e.target.checked);
-    }
     const [formData, setFormData] = useState({
         UserName: "",
         Password: "",
     });
 
+    const [loginError, setLoginError] = useState(false);
+
     const handleChange = (e) => {
         const { id, value } = e.target;
         setFormData({ ...formData, [id]: value });
+        setLoginError(false); // Her değişiklikte login hatasını sıfırla
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        if (!formData.UserName || !formData.Password) {
-            console.error("Form data is incomplete. All fields are required.");
-            return;
-        }
-
-        try {
-            const response = await loginUser(formData);
-            console.log("Data saved:", response);
-            // Handle success or further actions upon successful API call
-        } catch (error) {
-            console.error("Error saving data:", error);
-        }
-    };
-
-   
     const handleSigninClick = async () => {
-        console.log("Signin button clicked!");
         try {
             const response = await loginUser(formData);
-            console.log("Data saved:", response);
 
-            // Assuming a successful response contains a token
             if (response && response.token) {
-                navigate("/shop");
+                // Token varsa
+                localStorage.setItem("isLoggedIn", "true");
+                console.log("Giriş Başarılı");
+                console.log(response.token);
+                navigate("/homepage");
+                
+                
             } else {
-                // Optional: Show an error message for invalid credentials
-                console.error("Invalid credentials. Please try again.");
+                console.error("Token not found in the response.");
+                setLoginError(true);
             }
         } catch (error) {
-            console.error("Error saving data:", error);
-            // Handle error, show a message, etc.
+            console.error("Error during login:", error);
+            
         }
     };
+
+
 
     return (
         <div className="loginpage">
             <div className="loginbody">
-                <div>
-                    <Button className="Loginsignin" onClick={handleSigninClick}>
-                        Signin
-                    </Button>
-                </div>
+                <Button className="Loginsignin" onClick={handleSigninClick}>
+                    Signin
+                </Button>
+
                 <div
                     className="forgot-password"
                     onClick={() => navigate("/changepassword")}
@@ -92,27 +75,27 @@ const LoginPage = () => {
                         Password
                     </label>
                     <input
-                        type="Password"
+                        type="password"
                         id="Password"
                         className="Password"
                         value={formData.Password}
                         onChange={handleChange}
                     />
                 </div>
+                {loginError && (
+                    <div className="login-error">Invalid credentials. Please try again.</div>
+                )}
                 <div className="please-log-in">Please log in into your account</div>
                 <b className="Loginsign-in">Sign in</b>
             </div>
             <div className="header">
-                <div className="loginemapp" onClick={() => navigate("/")}
-                >
+                <div className="loginemapp" onClick={() => navigate("/")}>
                     EMAPP
                 </div>
                 <div className="loginsearchrectangle" />
-                {/* <img className="Loginicon" alt="" src={logo} />
-        <img className="loginsearchimage-icon" alt="" src={search} /> */}
-                <div className="loginregister">{`Courses `}</div>
+                <div className="loginregister">Courses</div>
                 <div className="logincourses">Login</div>
-                <div className="logincourses1">{`Courses `}</div>
+                <div className="logincourses1">Courses</div>
             </div>
         </div>
     );

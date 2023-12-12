@@ -109,5 +109,15 @@ namespace OnlineEducationMarketplace.Services.Managers
                 signingCredentials: signingCredentials);
             return tokenOptions;
         }
+
+        //public async Task LogoutAsync(Guid userId)
+        //{
+        //    var user = await _userManager.FindByIdAsync(userId.ToString());
+
+        //    if (user != null)
+        //    {
+        //        await _userManager.UpdateSecurityStampAsync(user);
+        //    }
+        //}
     }
 }

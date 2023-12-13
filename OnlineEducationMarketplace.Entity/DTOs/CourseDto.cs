@@ -15,7 +15,7 @@ namespace OnlineEducationMarketplace.Entity.DTOs
 
         public TimeSpan CourseLength { get; init; }
         public DateTime CreatedDate { get; init; }
-        public string Image { get; init; }
+        public string Image { get; init; } = "C:\\Users\\toyga\\source\\repos\\OnlineEducationMarketplace\\OEMAP.Api\\Uploads\\cover.jpg";
         public bool CourseStatus { get; init; }
 
 

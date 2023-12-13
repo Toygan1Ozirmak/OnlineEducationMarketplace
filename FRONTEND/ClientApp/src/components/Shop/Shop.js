@@ -29,7 +29,8 @@ const Shop = () => {
             <div className="shopcourses">
                 {courses.map(course => (
                     <div key={course.courseId} className="course-card">
-                        <img src={course.image} alt={course.title} className="course-image" />
+                        <img src={course.Image} alt={course.title} className="course-image" />
+                        {/* Diğer bilgileri göstermek için gerekli HTML ve stil ekleyebilirsiniz */}
                         <div className="course-details">
                             <h3>{course.title}</h3>
                             <p>{course.description}</p>

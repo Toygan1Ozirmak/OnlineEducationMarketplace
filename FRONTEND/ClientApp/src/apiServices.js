@@ -97,11 +97,11 @@ export const getAllCourses = async () => {
 
 
 
-export const changePasswordUser = async (formData) => {
-    try {
-        const response = await axios.post(`${BASE_URL}/api/users/Create`, formData);
-        return response.data; // Return the response data for further handling in components
-    } catch (error) {
-        throw error; // Throw an error to handle it in components
-    }
-};
+//export const changePasswordUser = async (formData) => {
+//    try {
+//        const response = await axios.post(`${BASE_URL}/api/users/Create`, formData);
+//        return response.data; // Return the response data for further handling in components
+//    } catch (error) {
+//        throw error; // Throw an error to handle it in components
+//    }
+//};

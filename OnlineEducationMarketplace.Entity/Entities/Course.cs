@@ -21,7 +21,7 @@ namespace OnlineEducationMarketplace.Entity.Entities
 
         //fk
 
-        
+
         public int CategoryId { get; set; }
 
         //snp

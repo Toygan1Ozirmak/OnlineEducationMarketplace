@@ -56,14 +56,15 @@ namespace OEMAP.Api.Controllers
 
         }
 
-        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        //[ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPost("Create")]
         public async Task <IActionResult> CreateReviewAsync([FromBody] ReviewDtoForInsertion reviewDto)
         {
 
 
-            //if (reviewDto is null)
-            //    return BadRequest(); //400
+            if (reviewDto is null)
+                return BadRequest(); //400
+
 
             await _manager.ReviewService.CreateReviewAsync(reviewDto);
 

@@ -152,9 +152,7 @@ const Register = () => {
                     />
                 </div>
 
-                {/* Commented out button component */}
-                <button type="submit">Register</button>
-
+             
                 <div>
                     {/* Uncommented Button component with navigation function */}
                     <Button className="signup" onClick={handleSignupClick}>
@@ -176,21 +174,7 @@ const Register = () => {
                 <b className="sign-up1">
                     <p className="sign-up2">Sign up</p>
                 </b>
-                <div className="Registeremapp" onClick={() => { navigate("/") }}>
-                    EMAPP
-                </div>
-                <input type="text" className="searchrectangle" onChange={handleChange} />
-                {/* Commented out logo component */}
-                {/* <img src={logo} className="icon" alt="" /> */}
-                {/* Commented out search icon component */}
-                {/* <img src={search} className="searchIcon" alt="" /> */}
-
-                <div className="register-child" />
-                <div className="register-item" />
-                <div className="register-inner" />
-                <div className="courses" onClick={() => { navigate("/courses") }}>
-                    <h2>Courses</h2>
-                </div>
+                
             </form>
         </div>
     );

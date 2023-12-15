@@ -34,8 +34,4 @@
     <ProjectReference Include="..\OnlineEducationMarketplace.Services\OnlineEducationMarketplace.Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Uploads\" />
-  </ItemGroup>
-
 </Project>

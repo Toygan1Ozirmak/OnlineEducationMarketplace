@@ -95,6 +95,25 @@ export const getAllCourses = async () => {
     }
 };
 
+export const GetCoursesByCategoryId = async (categoryId) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/api/courses/GetCoursesByCategoryId/category/${categoryId}`);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const GetCourseByCourseId = async (courseId) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/api/courses/GetCourseByCourseId/${courseId}`);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+
 
 
 //export const changePasswordUser = async (formData) => {

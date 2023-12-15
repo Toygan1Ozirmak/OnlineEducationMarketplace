@@ -71,21 +71,7 @@ const HomePage = () => {
             <div className="achieve-success-by">
                 Achieve success by learning the latest competencies
             </div>
-            <header className="homepageheader" id="Header">
-                <div className="hpheaderrectangle" />
-                <div className="homepageemapp">EMAPP</div>
-                <input className="homepagesearchrectangle" type="text" />
-
-                {/*<img className="HPicon" alt="" src={logo} />*/}
-                {/*<img className="homepagesearchicon" alt="" src={search} />*/}
-                <div className="HPregister" onClick={() => navigate("/register")}>
-                    Register
-                </div>
-                <div className="HPlogin" onClick={() => navigate("/login")}>
-                    Login
-                </div>
-                <div className="HPcourses">Courses</div>
-            </header>
+            
             <div className="ourcourse">
                 <div className="explore-our-categories">
                     Explore Our Categories Your Path to Success

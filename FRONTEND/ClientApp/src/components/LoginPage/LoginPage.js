@@ -88,15 +88,7 @@ const LoginPage = () => {
                 <div className="please-log-in">Please log in into your account</div>
                 <b className="Loginsign-in">Sign in</b>
             </div>
-            <div className="header">
-                <div className="loginemapp" onClick={() => navigate("/")}>
-                    EMAPP
-                </div>
-                <div className="loginsearchrectangle" />
-                <div className="loginregister">Courses</div>
-                <div className="logincourses">Login</div>
-                <div className="logincourses1">Courses</div>
-            </div>
+            
         </div>
     );
 };

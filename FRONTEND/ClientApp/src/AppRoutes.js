@@ -5,6 +5,8 @@ import Register from "./components/Register/Register";
 import HomePage from "./components/HomePage/HomePage";
 import Shop from "./components/Shop/Shop";
 import { isAuthenticated } from "./auth";
+import MachineLearningPage from "./components/MachineLearning";
+import CourseDetail from "./components/CourseDetail/CourseDetail";
 
 const PrivateRouteHomePage = () => {
     const navigate = useNavigate();
@@ -33,6 +35,35 @@ const PrivateRouteShop = () => {
 
     return authenticated ? <Shop /> : null;
 }
+
+const PrivateRouteMachineLearningPage = () => {
+    const navigate = useNavigate();
+    const [authenticated, setAuthenticated] = useState(isAuthenticated());
+
+    useEffect(() => {
+        if (!authenticated) {
+            // Kullanýcý authenticated deðilse, login sayfasýna yönlendir
+            navigate('/');
+        }
+    }, [authenticated, navigate]);
+
+    return authenticated ? <MachineLearningPage /> : null;
+}
+
+const PrivateRouteCourseDetail = () => {
+    const navigate = useNavigate();
+    const [authenticated, setAuthenticated] = useState(isAuthenticated());
+
+    useEffect(() => {
+        if (!authenticated) {
+            // Kullanýcý authenticated deðilse, login sayfasýna yönlendir
+            navigate('/');
+        }
+    }, [authenticated, navigate]);
+
+    return authenticated ? <CourseDetail /> : null;
+}
+
 const AppRoutes = [
     {
         path: "/",
@@ -50,6 +81,14 @@ const AppRoutes = [
     {
         path: "/shop",
         element: <PrivateRouteShop />,
+    },
+    {
+        path: "/shop/machine-learning",
+        element: <PrivateRouteMachineLearningPage />,
+    },
+    {
+        path: "/course/:courseId",
+        element: <PrivateRouteCourseDetail />,
     },
     //{
     //    path: '/changepassword',

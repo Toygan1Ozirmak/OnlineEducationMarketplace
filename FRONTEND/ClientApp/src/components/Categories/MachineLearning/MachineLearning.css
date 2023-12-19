@@ -1,6 +1,10 @@
-﻿
-.machine-learning-page {
+﻿.machine-learning-page {
     padding: 20px;
+}
+
+.category {
+    display: inline-block; /* Kategori butonlarını yan yana yerleştir */
+    margin-right: 10px; /* Butonlar arasında bir miktar boşluk bırak */
 }
 
 .machine-learning-courses {
@@ -33,9 +37,9 @@
 }
 
 h1 {
-    color: #666; /* Gri renk */
-    font-size: 24px; /* Font boyutu */
-    margin-bottom: 20px; /* Alt boşluk */
+    color: #666;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
 h3 {
@@ -54,3 +58,12 @@ p {
     .button-container button {
         margin-top: 10px;
     }
+.course-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    margin-bottom: 40px;
+}

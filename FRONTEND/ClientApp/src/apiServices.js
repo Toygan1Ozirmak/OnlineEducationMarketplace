@@ -113,6 +113,16 @@ export const GetCourseByCourseId = async (courseId) => {
     }
 };
 
+export const GetReviewsByCourseId = async (courseId) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/api/reviews/GetReviewsByCourseId/${courseId}`);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+
 
 
 

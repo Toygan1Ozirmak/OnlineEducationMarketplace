@@ -4,8 +4,10 @@ import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import { getAllCourses } from '../../apiServices';
 import coverImage from '../../Uploads/cover.jpg';
 import "./Shop.css";
-import MachineLearningPage from "../MachineLearning";
+import MachineLearningPage from "../Categories/MachineLearning/MachineLearning";
 import CourseDetail from "../CourseDetail/CourseDetail";
+import UIUXPage from "../Categories/UI-UX/UI-UX";
+import SoftwareTestingPage from "../Categories/SoftwareTesting/SoftwareTesting";
 
 const Shop = () => {
     const navigate = useNavigate();
@@ -27,10 +29,11 @@ const Shop = () => {
     return (
         <div className="shop">
             <div className="shopcategoriesframe">
-                {/* Kategori seçeneklerini ekleyebilirsiniz */}
-                
+                {/* Kategori seçenekleri */}
+                <div className="category"><Link to="/shop">All</Link></div>
                 <div className="category"><Link to="/shop/machine-learning">Machine Learning</Link></div>
                 <div className="category"><Link to="/shop/ui-ux">UI/UX</Link></div>
+                <div className="category"><Link to="/shop/software-testing">Software Testing</Link></div>
                 {/* ... Diğer kategoriler */}
             </div>
             
@@ -58,6 +61,8 @@ const Shop = () => {
             <Routes>
                 
                 <Route path="/courses/machine-learning/:categoryId/:courseId/*" element={<MachineLearningPage />} />
+                <Route path="/courses/ui-ux/:categoryId/:courseId/*" element={<UIUXPage />} />
+                <Route path="/courses/software-testing/:categoryId/:courseId/*" element={<SoftwareTestingPage />} />
                 <Route path="/course/:courseId" element={<CourseDetail />} />
                 {/* Diğer sayfalar için benzer Route tanımlamaları... */}
             </Routes>

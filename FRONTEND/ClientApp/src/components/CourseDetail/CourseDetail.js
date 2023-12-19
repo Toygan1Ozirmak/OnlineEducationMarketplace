@@ -1,7 +1,10 @@
-﻿import React, { useState, useEffect } from "react";
+﻿// CourseDetail.jsx
+import React, { useState, useEffect } from "react";
 import { GetCourseByCourseId } from '../../apiServices';
 import { useParams } from 'react-router-dom';
+import Reviews from '../Reviews/Reviews';
 import coverImage from '../../Uploads/cover.jpg';
+import './CourseDetail.css';
 
 const CourseDetail = () => {
     const { courseId } = useParams();
@@ -35,8 +38,11 @@ const CourseDetail = () => {
                 <p>{`Course Length: ${course.courseLength}`}</p>
                 <p>{`Created Date: ${course.createdDate}`}</p>
                 <p>{`Status: ${course.courseStatus ? 'Active' : 'Inactive'}`}</p>
-                <p>{`Category ID: ${course.categoryId}`}</p>
+                
             </div>
+
+            {/* Reviews bileşenini kullanarak yorumları göster */}
+            <Reviews courseId={courseId} />
         </div>
     );
 };

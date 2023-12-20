@@ -4,6 +4,7 @@ import LoginPage from "./components/LoginPage/LoginPage";
 import Register from "./components/Register/Register";
 import HomePage from "./components/HomePage/HomePage";
 import Shop from "./components/Shop/Shop";
+import Basket from "./components/Basket/Basket";
 import { isAuthenticated } from "./auth";
 import MachineLearningPage from "./components/Categories/MachineLearning/MachineLearning";
 import CourseDetail from "./components/CourseDetail/CourseDetail";
@@ -94,6 +95,20 @@ const PrivateRouteSoftwareTestingPage = () => {
     return authenticated ? <SoftwareTestingPage /> : null;
 }
 
+const PrivateRouteBasket = () => {
+    const navigate = useNavigate();
+    const [authenticated, setAuthenticated] = useState(isAuthenticated());
+
+    useEffect(() => {
+        if (!authenticated) {
+            // Kullanýcý authenticated deðilse, login sayfasýna yönlendir
+            navigate('/');
+        }
+    }, [authenticated, navigate]);
+
+    return authenticated ? <Basket /> : null;
+}
+
 const AppRoutes = [
     {
         path: "/",
@@ -138,10 +153,10 @@ const AppRoutes = [
     //    path: '/myprofile',
     //    element: <MyProfile />
     //},
-    //{
-    //    path: '/basket',
-    //    element: <Basket />
-    //}
+    {
+        path: '/basket',
+        element: <PrivateRouteBasket />
+    }
 ];
 
 export default AppRoutes;

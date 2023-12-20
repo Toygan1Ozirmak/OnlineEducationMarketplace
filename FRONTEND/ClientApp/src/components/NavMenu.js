@@ -31,6 +31,10 @@ export class NavMenu extends Component {
                 const isLogoutSuccessful = await logoutInstance.logoutUser();
 
                 if (isLogoutSuccessful) {
+                    // Clear the basket data from localStorage on logout
+                    localStorage.removeItem("basket");
+
+                    // Redirect to the homepage after logout
                     window.location.href = '/';
                     console.log("User logged out successfully.");
                 }

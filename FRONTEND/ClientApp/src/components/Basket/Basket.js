@@ -1,4 +1,5 @@
 ﻿import React, { useEffect, useState } from "react";
+import './Basket.css';
 
 const Basket = ({ location }) => {
     const { state } = location || {};
@@ -27,15 +28,24 @@ const Basket = ({ location }) => {
                 <div className="basketSummary">
                     <div className="orderSummary">Order summary</div>
                     {courses.map((course, index) => (
-                        <div key={index} className="basketCourse">
-                            <h1>{course.courseId}</h1>
-                            {/* Other course information */}
+                        <div key={index} className="myBasket">
+                            <div className="basketCourse">
+                                <div className="courseImage">
+                                    <img src={course.courseImage} alt={course.courseName} />
+                                </div>
+                                <div className="courseInfo">
+                                    {/*<h1>{course.courseId}</h1>*/}
+                                    <p>{course.courseName}</p>
+                                    {/* Other course information */}
+                                </div>
+                            </div>
                         </div>
                     ))}
                 </div>
             </div>
         </div>
     );
+
 };
 
 export default Basket;

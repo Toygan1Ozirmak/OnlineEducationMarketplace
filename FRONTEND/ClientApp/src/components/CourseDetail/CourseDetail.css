@@ -1,34 +1,67 @@
-﻿/* Kurs görseli */
-.course-image {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-    margin-bottom: 40px;
+﻿/* Kurs detayları bölümü */
+.course-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-/* Kurs detayları bölümü */
+/* Tüm sayfadaki yazıları gri yap */
+body {
+    color: #555;
+}
+
+/* Başlıkları kalın yap */
+h1, h2 {
+    font-weight: bold;
+}
+
+/* Kartlara kırmızı çerçeve ekle */
 .course-details {
-    max-width: 800px;
-    margin: 0 auto;
+    border: 2px solid red; /* Çerçevenin kalınlığını ayarlayın */
+}
+
+.review-card {
+    border: 2px solid red;
+}
+
+
+/* Fotoğraf bölümü */
+.course-image-container {
+    flex: 0 0 40%; /* Adjust the width as needed */
+}
+
+.course-image {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Kurs bilgileri kartı */
+.course-details-card {
+    flex: 0 0 50%; /* Adjust the width as needed */
+    margin-left: 20px; /* Add space between the photo and course details */
+    margin-bottom: 20px; /* Add space between the photo and review section */
+}
+
+.course-details {
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 60px;
 }
 
-    /* Başlık */
     .course-details h1 {
         font-size: 36px;
         font-weight: bold;
         color: #333;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
         font-family: 'Jakarta Plus', sans-serif;
+        background-color: #f7f7f7;
+        padding: 20px;
+        border-radius: 12px;
     }
 
-    /* Açıklama ve diğer bilgiler */
     .course-details p {
         font-size: 18px;
         line-height: 1.5;
@@ -36,73 +69,50 @@
         color: #555;
     }
 
-        /* Kurs uzunluğu, oluşturma tarihi vb. için kırmızı vurgu */
         .course-details p span {
             color: #c00;
             font-weight: bold;
         }
 
-/* Yorumlar bölümü */
-.reviews-section {
-    margin-top: 60px;
+.add-to-basket {
+    margin-top: 20px;
 }
 
 /* Yorum kartı */
+.review-card-container {
+    flex: 1 0 100%; /* Genişliği tüm kullanılabilir alanı kaplayacak şekilde ayarla */
+    display: flex; /* Yorum kartını da flex-box yap */
+    justify-content: center; /* Review kartını yatay olarak ortala */
+}
+
+
 .review-card {
-    border: 1px solid #ddd;
+    width: 100%;
+    max-width: 600px;
+    border: 2px solid red; /* Kırmızı çerçeve ekle */
     margin-bottom: 40px;
     padding: 16px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f0f0f0; /* Gri arka plan */
+    color: #000; /* Beyaz yazı rengi */
 }
 
-/* Yorum detayları */
-.review-details {
-    font-size: 18px;
-    color: #333;
-    font-family: 'Jakarta Plus', sans-serif;
-}
-
-/* Yorum kartı hover efekti */
-.review-card:hover {
-    background-color: #f8f8f8;
-}
-
-/* Ek tasarım öğeleri */
-
-/* Başlık için bir arka plan rengi ekleyin */
-.course-details h1 {
-    background-color: #f7f7f7;
-}
-
-/* Açıklama ve diğer bilgiler için bir satır aralığı ekleyin */
-.course-details p {
-    margin-bottom: 40px;
-}
-
-/* Yorum kartı için bir kenar boşluğu ekleyin */
-.review-card {
-    margin-bottom: 60px;
-}
-
-    /* Yorum kartı için bir başlık ekleyin */
     .review-card h2 {
         font-size: 24px;
         font-weight: bold;
         margin-bottom: 20px;
+        color: #333;
     }
 
-    /* Yorum kartı için bir yıldız derecelendirmesi ekleyin */
     .review-card .star-rating {
         margin-bottom: 20px;
     }
 
-    /* Yorum kartı için bir yazar adı ekleyin */
     .review-card .author-name {
         margin-bottom: 10px;
     }
 
-    /* Yorum kartı için bir tarih ekleyin */
     .review-card .date {
         font-size: 16px;
         color: #999;

@@ -3,7 +3,7 @@ import { GetCoursesByCategoryId } from '../../../apiServices';
 import Button from "@mui/material/Button";
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import coverImage from '../../../Uploads/cover.jpg';
-/*import "./UIUX.css"; */
+import "./UI-UX.css"; 
 import SoftwareTestingPage from "../SoftwareTesting/SoftwareTesting";
 import MachineLearningPage from "../MachineLearning/MachineLearning";
 import CourseDetail from "../../CourseDetail/CourseDetail";
@@ -33,7 +33,7 @@ const UIUXPage = ({ match }) => {
             <div className="category"><Link to="/shop/machine-learning">Machine Learning</Link></div>
             <div className="category"><Link to="/shop/software-testing">Software Testing</Link></div>
 
-            <h1>Machine Learning Courses</h1>
+            <h1>UI/UX Courses</h1>
                 <div className="ui-ux-courses">
                     {courses.map(course => (
                         <div key={course.courseId} className="course-card">

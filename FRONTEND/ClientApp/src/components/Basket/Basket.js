@@ -22,6 +22,16 @@ const Basket = ({ location }) => {
         fetchBasketContent();
     }, []); // Run only once when the component mounts
 
+    const handleRemoveFromBasket = (courseId) => {
+        try {
+            const updatedBasket = courses.filter(course => course.courseId !== courseId);
+            localStorage.setItem("basket", JSON.stringify(updatedBasket));
+            setCourses(updatedBasket);
+        } catch (error) {
+            console.error("Error removing course from basket:", error);
+        }
+    };
+
     return (
         <div className="basketPage">
             <div className="basketContent">
@@ -34,8 +44,8 @@ const Basket = ({ location }) => {
                                     <img src={course.courseImage} alt={course.courseName} />
                                 </div>
                                 <div className="courseInfo">
-                                    {/*<h1>{course.courseId}</h1>*/}
                                     <p>{course.courseName}</p>
+                                    <button onClick={() => handleRemoveFromBasket(course.courseId)}>Remove from Basket</button>
                                     {/* Other course information */}
                                 </div>
                             </div>
@@ -45,7 +55,6 @@ const Basket = ({ location }) => {
             </div>
         </div>
     );
-
 };
 
 export default Basket;

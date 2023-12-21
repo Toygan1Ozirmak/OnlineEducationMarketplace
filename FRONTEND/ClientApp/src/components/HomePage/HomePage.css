@@ -13,7 +13,8 @@
 }
 
 .welcome-to-oemapp-container {
-    position: relative;
+    margin-top: 20px;
+    text-align: center;
     font-weight: 500;
     display: inline-block;
     width: 310px;
@@ -28,6 +29,7 @@
     width: 288px;
     height: 83px;
     flex-shrink: 0;
+    left: 45px;
 }
 
 .welcome {
@@ -49,6 +51,8 @@
     position: relative;
     text-transform: capitalize;
     font-weight: 500;
+    margin-top: 20px;
+    text-align: center;
 }
 
 .hundreds-of-instructors {
@@ -63,8 +67,8 @@
 
 .ourmission {
     position: absolute;
-    top: 48px;
-    left: 0px;
+    top: 30px;
+    left: 45px;
     width: 363px;
     height: 70px;
     display: flex;
@@ -73,6 +77,7 @@
     justify-content: flex-start;
     gap: 6px;
     font-size: 20px;
+   text-align: center;
 }
 
 .div {
@@ -80,6 +85,7 @@
     position: relative;
     text-transform: capitalize;
     font-weight: 500;
+
 }
 
 .years-experience {
@@ -162,8 +168,8 @@
 
 .browseButton {
     position: absolute;
-    top: 150px;
-    left: 675px;
+    top: 175px;
+    left: 620px;
     border-radius: 5px;
     background-color: #717171;
     width: 96px;
@@ -388,24 +394,22 @@
     object-fit: cover;
 }
 
-.fineartrectangle {
-    position: absolute;
-    top: 72px;
-    left: 936px;
-    border-radius: 25px;
-    background-color: #e91c1c;
-    width: 180px;
-    height: 40px;
-}
 
-.fine-arts {
+.machinelearning {
     position: absolute;
-    top: 83px;
-    left: calc(50% + 458px);
+    top: 70px;
+    border-radius: 25px;
+    left: calc(50% + 440px);
     line-height: 107.91%;
     display: inline-block;
-    width: 65px;
-    height: 15px;
+    width: 180px;
+    height: 40px;
+    background-color: red; /* Set the background color to red */
+    color: #fff; /* Set the text color to black */
+    border: 1px solid #000; /* Add a black border */
+    text-align: center; /* Center the text */
+    padding: 5px; /* Add padding for better appearance */
+    cursor: pointer;
 }
 
 .art-icon {
@@ -417,24 +421,23 @@
     object-fit: cover;
 }
 
-.psyrectangle {
-    position: absolute;
-    top: 72px;
-    left: 512px;
-    border-radius: 25px;
-    background-color: #e91c1c;
-    width: 180px;
-    height: 40px;
-}
 
-.psychology {
+.ui-ux {
     position: absolute;
-    top: 82px;
-    left: calc(50% + 29px);
+    top: 70px;
+    border-radius: 25px;
+    left: calc(50% + 10px);
     line-height: 107.91%;
     display: inline-block;
-    width: 81px;
-    height: 19px;
+    width: 180px;
+    height: 40px;
+    background-color: red;
+    cursor: pointer;
+    color: #fff;
+    border: 1px solid #000;
+    text-align: center; /* Center the text */
+    padding: 5px; /* Add padding for better appearance */
+    cursor: pointer;
 }
 
 .psy-icon {
@@ -446,24 +449,23 @@
     object-fit: cover;
 }
 
-.engineeringrectangle {
-    position: absolute;
-    top: 74px;
-    left: 0px;
-    border-radius: 25px;
-    background-color: #e91c1c;
-    width: 180px;
-    height: 40px;
-}
 
-.engineering {
+.softwaretesting {
     position: absolute;
-    top: 85px;
-    left: calc(50% - 499px);
+    top: 70px;
+    border-radius: 25px;
+    left: calc(50% - 510px);
     line-height: 107.91%;
     display: inline-block;
-    width: 88px;
-    height: 15px;
+    width: 180px;
+    height: 40px;
+    background-color: red;
+    cursor: pointer;
+    color: #fff;
+    border: 1px solid #000;
+    text-align: center; /* Center the text */
+    padding: 5px; /* Add padding for better appearance */
+    cursor: pointer;
 }
 
 .engineeringimage-icon {

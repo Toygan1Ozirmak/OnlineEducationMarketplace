@@ -3,7 +3,7 @@ import { GetCoursesByCategoryId } from '../../../apiServices';
 import Button from "@mui/material/Button";
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import coverImage from '../../../Uploads/cover.jpg';
-/*import "./SoftwareTesting.css"; */
+import "./SoftwareTesting.css"; 
 import MachineLearningPage from "../MachineLearning/MachineLearning";
 import UIUXPage from "../UI-UX/UI-UX";
 import CourseDetail from "../../CourseDetail/CourseDetail";

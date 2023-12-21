@@ -27,19 +27,22 @@
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
+    color: grey; /* Change text color to grey */
+}
+
+.basketCourse {
+    display: flex;
+    background-color: #fff;
+    border: 2px solid #f10000; /* Set border color to red */
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
 .myBasket {
     margin-bottom: 20px;
 }
 
-.basketCourse {
-    display: flex;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
 
 .courseImage {
     flex: 1;
@@ -67,4 +70,19 @@
         color: #666;
     }
 
-/* Add any other styling you need */
+    .courseInfo button {
+        margin-top: 10px; /* Add space above the button */
+        font-size: 16px; /* Adjust font size */
+        color: grey; /* Change text color to grey */
+        border: 2px solid #f10000; /* Set border color to red */
+        border-radius: 5px; /* Add border-radius for rounded corners */
+        background-color: #fff; /* Set background color to white */
+        cursor: pointer; /* Add pointer cursor */
+        padding: 5px 10px; /* Add padding for better appearance */
+        transition: color 0.3s, background-color 0.3s; /* Add transition for smoother hover effect */
+    }
+
+        .courseInfo button:hover {
+            color: #fff; /* Change text color on hover */
+            background-color: #f10000; /* Change background color on hover */
+        }

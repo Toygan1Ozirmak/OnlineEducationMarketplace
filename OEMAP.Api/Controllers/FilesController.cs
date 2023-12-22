@@ -34,6 +34,11 @@ namespace OEMAP.Api.Controllers
                 path = path,
                 size = file.Length
             });
+
+
+
         }
+
+
     }
 }

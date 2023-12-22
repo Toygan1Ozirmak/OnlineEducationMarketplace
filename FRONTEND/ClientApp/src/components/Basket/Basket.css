@@ -1,422 +1,88 @@
-﻿.machine-learning-and {
-    position: absolute;
-    top: 24px;
-    left: 312px;
-    line-height: 130%;
-    font-weight: 600;
-}
-
-.Basketdiv {
-    position: absolute;
-    top: 74px;
-    left: 318px;
-    line-height: 130%;
-    font-weight: 600;
-    color: #426b1f;
-}
-
-.achine {
-    color: #fff;
-}
-
-.machine-learning {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    font-weight: 200;
-}
-
-.machine-learning-wrapper {
-    position: absolute;
-    top: 32px;
-    left: 0px;
-    border-radius: 2px;
-    background-color: rgba(13, 64, 89, 0.35);
-    width: 150px;
-    height: 29px;
-    overflow: hidden;
-}
-
-.basic-data-structure-and {
-    margin: 0;
-}
-
-.basic-data-structure-and-container {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    font-weight: 200;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.basic-data-structure-and-algor-wrapper {
-    position: absolute;
-    top: 64px;
-    left: 0px;
-    border-radius: 2px;
-    background-color: rgba(45, 156, 219, 0.28);
-    width: 204px;
-    height: 48px;
-    color: #fff;
-}
-
-.logo-icon {
-    position: absolute;
-    top: 123px;
-    left: 0px;
-    width: 134px;
-    height: 77px;
-    overflow: hidden;
-    object-fit: cover;
-}
-
-.illustrator-card {
-    position: absolute;
-    top: 64px;
-    left: 210px;
-    width: 90px;
-    height: 136px;
-    display: none;
-}
-
-.basketmlframe {
-    position: absolute;
-    top: 2px;
-    left: 0px;
-    border-radius: 4px 4px 0px 0px;
-    background-color: #6d6d6d;
-    width: 289px;
-    height: 202px;
-    overflow: hidden;
-    font-size: 16px;
-    color: #05e6f2;
-    font-family: Newsreader;
-}
-
-.basketmlandda {
-    position: absolute;
-    width: calc(100% - 679px);
-    top: 246px;
-    right: 514px;
-    left: 165px;
-    border-radius: 24px;
-    background-color: #fafaf5;
-    border: 2px solid #e6e6e6;
-    box-sizing: border-box;
-    height: 204px;
-    overflow: hidden;
-}
-
-.webdevelopment {
-    position: absolute;
-    top: 18px;
-    left: 324px;
-    line-height: 130%;
-    font-weight: 600;
-}
-
-.div1 {
-    position: absolute;
-    top: 76px;
-    left: 324px;
-    line-height: 130%;
-    font-weight: 600;
-    color: #426b1f;
-}
-
-.basic-data-structure-and1 {
-    position: absolute;
-    top: 16px;
-    left: 8px;
-    font-weight: 200;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.illustrator-card1 {
-    position: absolute;
-    top: 72px;
-    left: 210px;
-    width: 90px;
-    height: 128px;
-    display: none;
-}
-
-.basketwebframe {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    border-radius: 4px 4px 0px 0px;
-    background-color: #6d6d6d;
-    width: 289px;
-    height: 202px;
-    overflow: hidden;
-    font-size: 16px;
-    color: #05e6f2;
-    font-family: Newsreader;
-}
-
-.basketwebdev {
-    position: absolute;
-    width: calc(100% - 679px);
-    top: 491px;
-    right: 514px;
-    left: 165px;
-    border-radius: 24px;
-    background-color: #fafaf5;
-    border: 2px solid #e6e6e6;
-    box-sizing: border-box;
-    height: 202px;
-    overflow: hidden;
-}
-
-.ordersummary {
-    position: absolute;
-    top: 24px;
-    left: 24px;
-    font-size: 20px;
-    line-height: 130%;
-    font-weight: 600;
-}
-
-.subtotal {
-    position: absolute;
-    top: 82px;
-    left: 24px;
-    line-height: 130%;
-}
-
-.div2 {
-    position: absolute;
-    top: 82px;
-    right: 24px;
-    line-height: 130%;
-    text-align: right;
-}
-
-.shipping {
-    position: absolute;
-    top: 119px;
-    left: 24px;
-    line-height: 130%;
-}
-
-.div3 {
-    position: absolute;
-    top: 119px;
-    right: 24px;
-    line-height: 130%;
-    text-align: right;
-}
-
-.tax {
-    position: absolute;
-    top: 156px;
-    left: 24px;
-    line-height: 130%;
-}
-
-.div4 {
-    position: absolute;
-    top: 156px;
-    right: 24px;
-    line-height: 130%;
-    text-align: right;
-}
-
-.total {
-    position: absolute;
-    top: 193px;
-    left: 24px;
-    line-height: 130%;
-    font-weight: 600;
-}
-
-.div5 {
-    position: absolute;
-    top: 190px;
-    right: 24px;
-    line-height: 130%;
-    font-weight: 600;
-    text-align: right;
-}
-
-.continue-to-payment {
-    position: absolute;
-    top: calc(50% - 10px);
-    left: 24px;
-    line-height: 130%;
-    font-weight: 600;
-}
-
-.basketicon {
-    position: absolute;
-    top: calc(50% - 16px);
-    right: 16px;
-    width: 32px;
-    height: 32px;
-    overflow: hidden;
-}
-
-.paymentbutton {
-    position: absolute;
-    width: calc(100% - 48px);
-    right: 24px;
-    bottom: 24px;
-    left: 24px;
-    border-radius: 8px;
-    background-color: #e91c1c;
-    height: 48px;
-    overflow: hidden;
-    color: #fff;
-}
-
-.basketsummary {
-    position: absolute;
-    width: calc(100% - 1105px);
-    top: 321px;
-    right: 70px;
-    left: 1035px;
-    border-radius: 24px;
-    background-color: #fafaf5;
-    border: 2px solid #e6e6e6;
-    box-sizing: border-box;
-    height: 318px;
-    overflow: hidden;
-    font-size: 16px;
-}
-
-.Basketitems {
-    position: absolute;
-    bottom: 28px;
-    left: 150px;
-    line-height: 130%;
-    font-weight: 300;
-}
-
-.basketPageText {
-    position: absolute;
-    bottom: 39px;
-    left: 42px;
-    font-size: 40px;
-    letter-spacing: -0.02em;
-    line-height: 120%;
-    font-family: Newsreader;
-}
-
-.divider {
-    position: absolute;
-    width: calc(100% - 40px);
-    right: 18px;
-    bottom: 27px;
-    left: 22px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-top: 2px solid #e6e6e6;
-    box-sizing: border-box;
-    height: 2px;
-}
-
-.basketpageheading {
-    position: absolute;
-    width: calc(100% - 1266px);
-    top: 118px;
-    right: 1180px;
-    left: 86px;
-    background-color: #fff;
-    height: 82px;
-    overflow: hidden;
-    color: #6d6d6d;
-}
-
-.basketheaderrectangle {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background-color: #fff;
-    border: 1px solid #f10000;
-    box-sizing: border-box;
-    width: 1384px;
-    height: 69px;
-}
-
-.basketemapp {
-    position: absolute;
-    top: 15px;
-    left: 30px;
-    font-size: 35px;
-    letter-spacing: -0.02em;
-    line-height: 120%;
-    font-family: Newsreader;
-    color: #f10000;
-    text-align: center;
-    display: inline-block;
-    width: 200px;
-    height: 50px;
-    cursor: pointer;
-}
-
-.basketsearchrectangle {
-    position: absolute;
-    top: 14px;
-    left: 250px;
-    border-radius: 20px;
-    background-color: #e5e5e5;
-    width: 315px;
-    height: 32px;
-}
-
-.basketlogo-icon {
-    position: absolute;
-    top: 14px;
-    left: 31px;
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-}
-
-.basketsearchicon {
-    position: absolute;
-    top: 17px;
-    left: 525px;
-    width: 27px;
-    height: 27px;
-    object-fit: cover;
-}
-
-.basketcourses {
-    position: absolute;
-    top: 19px;
-    left: 887px;
-    font-size: 20px;
-    letter-spacing: -0.02em;
-    line-height: 120%;
-    font-family: ABeeZee;
-    color: #6d6d6d;
-    display: inline-block;
-    width: 75px;
-    height: 22px;
-    cursor: pointer;
-}
-
-.basketheader {
-    position: absolute;
-    top: 9px;
-    left: 64px;
-    width: 1384px;
-    height: 69px;
-    text-align: left;
-    font-size: 35px;
-    color: #f10000;
-    font-family: Newsreader;
-}
+﻿/* Basket.css */
 
 .basketPage {
     position: relative;
     background-color: #fff;
     width: 100%;
-    height: 750px;
+    height: 100%;
     overflow: hidden;
     text-align: left;
     font-size: 20px;
     color: #000;
     font-family: Inter;
 }
+
+.basketContent {
+    margin: 20px;
+}
+
+.basketSummary {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.orderSummary {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: grey; /* Change text color to grey */
+}
+
+.basketCourse {
+    display: flex;
+    background-color: #fff;
+    border: 2px solid #f10000; /* Set border color to red */
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.myBasket {
+    margin-bottom: 20px;
+}
+
+
+.courseImage {
+    flex: 1;
+}
+
+    .courseImage img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.courseInfo {
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+    .courseInfo h1 {
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+
+    .courseInfo p {
+        margin: 0;
+        color: #666;
+    }
+
+    .courseInfo button {
+        margin-top: 10px; /* Add space above the button */
+        font-size: 16px; /* Adjust font size */
+        color: grey; /* Change text color to grey */
+        border: 2px solid #f10000; /* Set border color to red */
+        border-radius: 5px; /* Add border-radius for rounded corners */
+        background-color: #fff; /* Set background color to white */
+        cursor: pointer; /* Add pointer cursor */
+        padding: 5px 10px; /* Add padding for better appearance */
+        transition: color 0.3s, background-color 0.3s; /* Add transition for smoother hover effect */
+    }
+
+        .courseInfo button:hover {
+            color: #fff; /* Change text color on hover */
+            background-color: #f10000; /* Change background color on hover */
+        }

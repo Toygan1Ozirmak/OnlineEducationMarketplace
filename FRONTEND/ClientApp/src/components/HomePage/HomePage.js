@@ -16,6 +16,18 @@ import Button from "@mui/material/Button"; // Import the API service function
 const HomePage = () => {
     const navigate = useNavigate();
 
+    const handleSoftwareTestingButtonClick = () => {
+        navigate("/shop/software-testing");
+    };
+
+    const handleMachineLearningButtonClick = () => {
+        navigate("/shop/machine-learning");
+    };
+
+    const handleUIUXButtonClick = () => {
+        navigate("/shop/ui-ux");
+    };
+
     return (
         <div className="homepage">
             <div className="about-us">
@@ -76,23 +88,33 @@ const HomePage = () => {
                 <div className="explore-our-categories">
                     Explore Our Categories Your Path to Success
                 </div>
-                <div className="scirectangle" />
-                <div className="science">Science</div>
+                {/*<div className="scirectangle" />*/}
+                {/*<div className="science">Science</div>*/}
                 {/*<img className="sci-icon" alt="" src={sci} />*/}
-                <div className="accorectangle" />
-                <div className="accountancy">Accountancy</div>
+                {/*<div className="accorectangle" />*/}
+                {/*<div className="accountancy">Accountancy</div>*/}
                 {/*<img className="acc-icon" alt="" src={acc} />*/}
-                <div className="languagerectangle" />
-                <div className="language">Language</div>
+                {/*<div className="languagerectangle" />*/}
+                {/*<div className="language">Language</div>*/}
                 {/*<img className="lan-icon" alt="" src={lan} />*/}
-                <div className="fineartrectangle" />
-                <div className="fine-arts">Fine Arts</div>
+                
+                <button className="machinelearning" onClick={handleMachineLearningButtonClick}>
+                    Machine Learning
+                </button>
                 {/*<img className="art-icon" alt="" src={art} />*/}
-                <div className="psyrectangle" />
-                <div className="psychology">Psychology</div>
+                
+                
+                <button className="ui-ux" onClick={handleUIUXButtonClick}>
+                    UI/UX
+                </button>
                 {/*<img className="psy-icon" alt="" src={psy} />*/}
-                <div className="engineeringrectangle" />
-                <div className="engineering">Engineering</div>
+                
+                
+                <button className="softwaretesting" onClick={handleSoftwareTestingButtonClick}>
+                    Software Testing
+                </button>
+                
+
                 {/*<img className="engineeringimage-icon" alt="" src={eng} />*/}
             </div>
         </div>

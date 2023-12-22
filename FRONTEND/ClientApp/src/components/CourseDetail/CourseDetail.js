@@ -41,7 +41,7 @@ const CourseDetail = () => {
         } else {
             try {
                 // Add the course to the basket
-                const updatedBasket = [...existingBasketArray, { courseId }];
+                const updatedBasket = [...existingBasketArray, { courseId, courseName: course.title, courseImage: coverImage }];
                 localStorage.setItem(basketKey, JSON.stringify(updatedBasket));
 
                 // Display alert after successful addition
@@ -60,22 +60,30 @@ const CourseDetail = () => {
 
 
 
-    return (
-        <div>
-            <div>
-                <img src={coverImage} alt={course.title} className="course-image" />
+
+        return (
+            <div className="course-detail-container">
+                <div className="course-image-container">
+                    <img src={coverImage} alt={course.title} className="course-image" />
+                </div>
+                <div className="course-details-card">
+                    <div className="course-details">
+                        <h1>{course.title}</h1>
+                        <p>{course.description}</p>
+                        <p>{`Course Length: ${course.courseLength}`}</p>
+                        <p>{`Created Date: ${course.createdDate}`}</p>
+                        <p>{`Status: ${course.courseStatus ? 'Active' : 'Inactive'}`}</p>
+                        <div className="add-to-basket">
+                            <button onClick={handleAddToBasket}>Add to Basket</button>
+                        </div>
+                    </div>
+                </div>
+                <div className="review-card-container">
+                    <Reviews courseId={courseId} />
+                </div>
             </div>
-            <div>
-                <h1>{course.title}</h1>
-                <p>{course.description}</p>
-                <p>{`Course Length: ${course.courseLength}`}</p>
-                <p>{`Created Date: ${course.createdDate}`}</p>
-                <p>{`Status: ${course.courseStatus ? 'Active' : 'Inactive'}`}</p>
-            </div>
-            <button onClick={handleAddToBasket}>Add to Basket</button>
-            <Reviews courseId={courseId} />
-        </div>
-    );
+        );
+
 };
 
 export default CourseDetail;

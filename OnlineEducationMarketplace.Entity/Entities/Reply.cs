@@ -6,22 +6,20 @@ using System.Threading.Tasks;
 
 namespace OnlineEducationMarketplace.Entity.Entities
 {
-    public class Review
+    public class Reply
     {
-        public int ReviewId { get; set; }
-        
-        
+        public int ReplyId { get; set; }
+
+
         public string Comment { get; set; }
-        public int Point { get; set; }
+        
 
         //fk
         public string Id { get; set; }
-        public int CourseId { get; set; }
+        public int ReviewId { get; set; }
 
         //snp
-        public Course Course { get; set; }
+        public Review Review { get; set; }
         public User User { get; set; }
-        public ICollection<Reply> Replies { get; set; }
-
     }
 }

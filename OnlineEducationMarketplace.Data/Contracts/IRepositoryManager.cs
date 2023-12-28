@@ -16,6 +16,7 @@ namespace OnlineEducationMarketplace.Data.Contracts
         ICategoryRepository Category { get; }
 
         ICourseEnrollmentRepository CourseEnrollment { get; }
+        IReplyRepository Reply { get; }
 
 
 

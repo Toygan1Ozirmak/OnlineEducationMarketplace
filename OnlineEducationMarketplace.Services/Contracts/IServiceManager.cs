@@ -19,6 +19,7 @@ namespace OnlineEducationMarketplace.Services.Contracts
         ICategoryService CategoryService { get; }
 
         IAuthenticationService AuthenticationService { get; }
+        IReplyService ReplyService { get; }
         
 
         

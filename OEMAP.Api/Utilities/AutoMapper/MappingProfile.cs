@@ -30,6 +30,11 @@ namespace OEMAP.Api.Utilities.AutoMapper
             CreateMap<UserDtoForInsertion, User>();
             CreateMap<UserForRegistrationDto, User>();
 
+            CreateMap<ReplyDtoForUpdate, Reply>().ReverseMap();
+            CreateMap<Reply, ReplyDto>();
+            CreateMap<ReplyDtoForUpdate, Reply>();
+            CreateMap<ReplyDtoForInsertion, Reply>();
+            
         }
     }
 }

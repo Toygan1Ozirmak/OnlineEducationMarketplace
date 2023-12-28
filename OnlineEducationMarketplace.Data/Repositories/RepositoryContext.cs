@@ -28,6 +28,8 @@ namespace OnlineEducationMarketplace.Data.NewFolder
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Session> Sessions { get; set; }
         public DbSet<CourseEnrollment> CourseEnrollments { get; set; }
+        public DbSet<Reply> Replies { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Reviews from '../Reviews/Reviews';
 import coverImage from '../../Uploads/cover.jpg';
 import './CourseDetail.css';
+import video from '../../Uploads/machine-learning.mp4';
 
 const CourseDetail = () => {
     const { courseId } = useParams();
@@ -65,6 +66,10 @@ const CourseDetail = () => {
             <div className="course-detail-container">
                 <div className="course-image-container">
                     <img src={coverImage} alt={course.title} className="course-image" />
+                    <video controls className="course-video">
+                        <source src={video} type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
                 <div className="course-details-card">
                     <div className="course-details">

@@ -30,10 +30,10 @@ namespace OnlineEducationMarketplace.Services.Contracts
         public async Task DeleteReplyAsync(int replyId, bool trackChanges)
         {
             var entity = await _manager.Reply.GetReplyByReplyIdAsync(replyId, trackChanges);
-            if (entity is null)
-            {
-                throw new ReplyNotFoundByReplyIdException(replyId);
-            }
+            //if (entity is null)
+            //{
+            //    throw new NotFoundException(replyId);
+            //}
             _manager.Reply.DeleteReply(entity);
             await _manager.SaveAsync();
         }
@@ -41,8 +41,8 @@ namespace OnlineEducationMarketplace.Services.Contracts
         public async Task<ReplyDto> GetReplyByReplyIdAsync(int replyId, bool trackChanges)
         {
             var reply = await _manager.Reply.GetReplyByReplyIdAsync(replyId, trackChanges);
-            if (reply is null)
-                throw new ReplyNotFoundByReplyIdException(replyId);
+            //if (reply is null)
+            //    throw new NotFoundException(replyId);
 
             return _mapper.Map<ReplyDto>(reply);
         }
@@ -50,8 +50,8 @@ namespace OnlineEducationMarketplace.Services.Contracts
         public async Task<IEnumerable<ReplyDto>> GetRepliesByReviewIdAsync(int reviewId, bool trackChanges)
         {
             var replies = await _manager.Reply.GetRepliesByReviewIdAsync(reviewId, trackChanges);
-            if (replies is null)
-                throw new RepliesNotFoundByReviewIdException(reviewId);
+            //if (replies is null)
+            //    throw new RepliesNotFoundByReviewIdException(reviewId);
 
             return _mapper.Map<IEnumerable<ReplyDto>>(replies);
         }
@@ -59,8 +59,8 @@ namespace OnlineEducationMarketplace.Services.Contracts
         public async Task UpdateReplyAsync(int replyId, ReplyDtoForUpdate replyDto, bool trackChanges)
         {
             var entity = await _manager.Reply.GetReplyByReplyIdAsync(replyId, trackChanges);
-            if (entity is null)
-                throw new ReplyNotFoundByReplyIdException(replyId);
+            //if (entity is null)
+            //    throw new ReplyNotFoundByReplyIdException(replyId);
 
             entity = _mapper.Map<Reply>(replyDto);
 

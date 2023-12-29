@@ -16,9 +16,9 @@ namespace OnlineEducationMarketplace.Data.Repositories
         {
         }
 
-        public void CreateReview(Reply reply) => Create(reply);
+        public void CreateReply(Reply reply) => Create(reply);
 
-        public void DeleteReview(Reply reply) => Delete(reply);
+        public void DeleteReply(Reply reply) => Delete(reply);
 
         public async Task<IEnumerable<Reply>> GetRepliesByReviewIdAsync(int reviewId, bool trackChanges) =>
             await FindByCondition(x => x.ReviewId.Equals(reviewId), trackChanges).ToListAsync();
@@ -28,6 +28,6 @@ namespace OnlineEducationMarketplace.Data.Repositories
                 .SingleOrDefaultAsync();
 
 
-        public async void UpdateReview(Reply reply) => Update(reply);
+        public async void UpdateReply(Reply reply) => Update(reply);
     }
 }

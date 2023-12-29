@@ -21,12 +21,14 @@ namespace OnlineEducationMarketplace.Services
         private readonly Lazy<ICourseEnrollmentService> _courseEnrollmentService;
         private readonly Lazy<ICategoryService> _categoryService;
         private readonly Lazy<IAuthenticationService> _authenticationService;
+        private readonly Lazy<IReplyService> _replyService;
 
         public ServiceManager(IRepositoryManager repositoryManager,IMapper mapper, UserManager<User> userManager, IConfiguration configuration) 
         {
             _courseService = new Lazy<ICourseService>(()=> new CourseManager(repositoryManager,mapper));
             _userService = new Lazy<IUserService>(() => new UserManager(repositoryManager, mapper));
             _reviewService = new Lazy<IReviewService>(() => new ReviewManager(repositoryManager, mapper));
+            _replyService = new Lazy<IReplyService>(() => new ReplyManager(repositoryManager, mapper));
             _courseEnrollmentService = new Lazy<ICourseEnrollmentService>(() => new CourseEnrollmentManager(repositoryManager, mapper));
             _categoryService = new Lazy<ICategoryService>(() => new CategoryManager(repositoryManager));
             _authenticationService = new Lazy<IAuthenticationService>(() => new AuthenticationManager(repositoryManager, mapper, userManager, configuration));
@@ -38,6 +40,7 @@ namespace OnlineEducationMarketplace.Services
         public IUserService UserService => _userService.Value;
 
         public IReviewService ReviewService => _reviewService.Value;
+        public IReplyService ReplyService => _replyService.Value;
 
         public ICourseEnrollmentService CourseEnrollmentService => _courseEnrollmentService.Value;
 

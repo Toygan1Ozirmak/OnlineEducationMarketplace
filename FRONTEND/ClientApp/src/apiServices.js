@@ -122,6 +122,14 @@ export const GetReviewsByCourseId = async (courseId) => {
     }
 };
 
+export const GetVideo = async () => {
+    try {
+        const response = await axios.get(`${BASE_URL}/api/S3/GetVideo`);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
 
 
 

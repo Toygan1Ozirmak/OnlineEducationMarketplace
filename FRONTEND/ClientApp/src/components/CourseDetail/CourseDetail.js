@@ -1,23 +1,27 @@
 ﻿import React, { useState, useEffect } from "react";
-import { GetCourseByCourseId } from '../../apiServices';
+import { GetCourseByCourseId, GetVideo } from '../../apiServices';
 import { useParams, useNavigate } from 'react-router-dom';
 import Reviews from '../Reviews/Reviews';
 import coverImage from '../../Uploads/cover.jpg';
 import './CourseDetail.css';
-import video from '../../Uploads/machine-learning.mp4';
 
 const CourseDetail = () => {
     const { courseId } = useParams();
     const navigate = useNavigate();
     const [course, setCourse] = useState(null);
+    const [videoUrl, setVideoUrl] = useState(null);
 
     useEffect(() => {
         const fetchCourse = async () => {
             try {
                 const response = await GetCourseByCourseId(courseId);
                 setCourse(response);
+
+                // Video URL'i al ve state'e ata
+                const videoResponse = await GetVideo();
+                setVideoUrl(videoResponse);
             } catch (error) {
-                console.error('Error fetching course:', error);
+                console.error('Error fetching course or video:', error);
             }
         };
 
@@ -62,33 +66,34 @@ const CourseDetail = () => {
 
 
 
-        return (
-            <div className="course-detail-container">
-                <div className="course-image-container">
-                    <img src={coverImage} alt={course.title} className="course-image" />
-                    <video controls className="course-video">
-                        <source src={video} type="video/mp4" />
+    return (
+        <div className="course-detail-container">
+            <div className="course-image-container">
+                <img src={coverImage} alt={course.title} className="course-image" />
+                {videoUrl && (
+                    <video width="500" controls>
+                        <source src={videoUrl} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
-                </div>
-                <div className="course-details-card">
-                    <div className="course-details">
-                        <h1>{course.title}</h1>
-                        <p>{course.description}</p>
-                        <p>{`Course Length: ${course.courseLength}`}</p>
-                        <p>{`Created Date: ${course.createdDate}`}</p>
-                        <p>{`Status: ${course.courseStatus ? 'Active' : 'Inactive'}`}</p>
-                        <div className="add-to-basket">
-                            <button onClick={handleAddToBasket}>Add to Basket</button>
-                        </div>
+                )}
+            </div>
+            <div className="course-details-card">
+                <div className="course-details">
+                    <h1>{course.title}</h1>
+                    <p>{course.description}</p>
+                    <p>{`Course Length: ${course.courseLength}`}</p>
+                    <p>{`Created Date: ${course.createdDate}`}</p>
+                    <p>{`Status: ${course.courseStatus ? 'Active' : 'Inactive'}`}</p>
+                    <div className="add-to-basket">
+                        <button onClick={handleAddToBasket}>Add to Basket</button>
                     </div>
                 </div>
-                <div className="review-card-container">
-                    <Reviews courseId={courseId} />
-                </div>
             </div>
-        );
-
+            <div className="review-card-container">
+                <Reviews courseId={courseId} />
+            </div>
+        </div>
+    );
 };
 
 export default CourseDetail;

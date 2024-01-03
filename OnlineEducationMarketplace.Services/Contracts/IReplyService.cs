@@ -13,9 +13,9 @@ namespace OnlineEducationMarketplace.Services.Contracts
 
         Task<ReplyDto> GetReplyByReplyIdAsync(int replyId, bool trackChanges);
 
-        Task<ReplyDto> CreateReplyAsync(ReplyDtoForInsertion review);
+        Task<ReplyDto> CreateReplyAsync(ReplyDtoForInsertion reply);
 
-        Task UpdateReplyAsync(int reviewId, ReplyDtoForUpdate replyDto, bool trackChanges);
+        Task UpdateReplyAsync(int replyId, ReplyDtoForUpdate replyDto, bool trackChanges);
 
         Task DeleteReplyAsync(int replyId, bool trackChanges);
     }

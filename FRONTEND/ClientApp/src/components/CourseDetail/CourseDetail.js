@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect, useRef } from "react";
 import { GetCourseByCourseId, GetVideo } from '../../apiServices';
 import { useParams, useNavigate } from 'react-router-dom';
 import Reviews from '../Reviews/Reviews';
@@ -10,14 +10,18 @@ const CourseDetail = () => {
     const navigate = useNavigate();
     const [course, setCourse] = useState(null);
     const [videoUrl, setVideoUrl] = useState(null);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [currentTime, setCurrentTime] = useState(0);
+    const videoRef = useRef(null);
+    const [updateProgress, setUpdateProgress] = useState(false);
+
 
     useEffect(() => {
-        const fetchCourse = async () => {
+        const fetchData = async () => {
             try {
-                const response = await GetCourseByCourseId(courseId);
-                setCourse(response);
+                const courseResponse = await GetCourseByCourseId(courseId);
+                setCourse(courseResponse);
 
-                // Video URL'i al ve state'e ata
                 const videoResponse = await GetVideo();
                 setVideoUrl(videoResponse);
             } catch (error) {
@@ -25,12 +29,83 @@ const CourseDetail = () => {
             }
         };
 
-        fetchCourse();
+        fetchData();
     }, [courseId]);
+
+    useEffect(() => {
+        const savedTime = localStorage.getItem(`videoTime_${courseId}`);
+        if (savedTime !== null) {
+            setCurrentTime(parseFloat(savedTime));
+            setUpdateProgress(true);
+        } else {
+            setUpdateProgress(false);
+        }
+    }, [courseId]);
+
+    useEffect(() => {
+        const video = videoRef.current;
+
+        if (video) {
+            // Video yüklenip oynatıldığında
+            video.addEventListener("loadeddata", () => {
+                video.addEventListener("play", () => {
+                    setIsPlaying(true);
+                    setUpdateProgress(true);
+                });
+                video.addEventListener("pause", () => {
+                    setIsPlaying(false);
+                    setUpdateProgress(false);
+                    localStorage.setItem(`videoTime_${courseId}`, video.currentTime.toString());
+                });
+
+                const intervalId = setInterval(() => {
+                    if (updateProgress && video.currentTime !== currentTime) {
+                        setCurrentTime(video.currentTime);
+                    }
+                }, 1000);
+
+                return () => {
+                    video.removeEventListener("play", () => {
+                        setIsPlaying(true);
+                        setUpdateProgress(true);
+                    });
+                    video.removeEventListener("pause", () => {
+                        setIsPlaying(false);
+                        setUpdateProgress(false);
+                        localStorage.setItem(`videoTime_${courseId}`, video.currentTime.toString());
+                    });
+                    clearInterval(intervalId);
+                };
+            });
+        }
+    }, [videoRef, setIsPlaying, setCurrentTime, updateProgress, currentTime, courseId]);
+
+    const handlePlayPause = () => {
+        const video = videoRef.current;
+        if (video) {
+            if (video.paused) {
+                video.play();
+                setIsPlaying(true);
+            } else {
+                video.pause();
+                setIsPlaying(false);
+                // Save the current time when the video is paused
+                localStorage.setItem(`videoTime_${courseId}`, video.currentTime.toString());
+            }
+        }
+    };
+
+    const handleTimeUpdate = () => {
+        const video = videoRef.current;
+        if (video && isPlaying) {
+            setCurrentTime(video.currentTime);
+        }
+    };
 
     if (!course) {
         return <div>Loading...</div>;
     }
+
 
     const handleAddToBasket = () => {
         const basketKey = "basket";
@@ -71,10 +146,21 @@ const CourseDetail = () => {
             <div className="course-image-container">
                 <img src={coverImage} alt={course.title} className="course-image" />
                 {videoUrl && (
-                    <video width="500" controls>
-                        <source src={videoUrl} type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
+                    <div>
+                        <video
+                            ref={videoRef}
+                            width="500"
+                            controls
+                            onPlay={() => setIsPlaying(true)}
+                            onPause={() => setIsPlaying(false)}
+                            onTimeUpdate={handleTimeUpdate}
+                        >
+                            <source src={videoUrl} type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                        <progress max={videoRef.current && videoRef.current.duration} value={currentTime}></progress>
+                        <button onClick={handlePlayPause}>{isPlaying ? "Pause" : "Play"}</button>
+                    </div>
                 )}
             </div>
             <div className="course-details-card">
@@ -95,5 +181,4 @@ const CourseDetail = () => {
         </div>
     );
 };
-
 export default CourseDetail;

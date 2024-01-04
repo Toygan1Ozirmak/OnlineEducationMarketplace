@@ -1,224 +1,111 @@
-﻿.loginrectangle {
-    position: absolute;
-    top: 400px;
-    left: 20px;
-    border-radius: 10px;
-    background-color: #f10000;
-    color: #fff;
-    width: 300px;
-    height: 40px;
-    cursor: pointer;
+﻿/* LoginPage.css */
+body {
+    margin: 0;
 }
+
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+}
+
+.login-body {
+    width: 600px;
+    padding: 30px;
+    border: 1px solid #ced4da;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.login-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #495057; /* Change the color to grey */
+}
+
+.login-signin {
+    background-color: #ced4da; /* Change the background color to grey */
+    color: #fff;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+    .login-signin:hover {
+        background-color: #adb5bd; /* Change the hover background color to a slightly darker grey */
+    }
+.form-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+/*.login-signin {
+    background-color: #e91c1c;
+    color: #fff;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}*/
 
 .forgot-password {
-    position: absolute;
-    top: 310px;
-    left: 170px;
-    font-weight: 600;
+    text-align: right;
     color: #e91c1c;
-    text-align: left;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
-.Loginsign-in {
-    position: absolute;
-    top: 0px;
-    left: 15px;
-    font-size: 30px;
-    display: inline-block;
-    color: #f10000;
-    width: 330px;
-    height: 53px;
-}
-
-.LoginInput-container {
-    display: flex;
-    flex-direction: column;
-    /* Adjust spacing between label and input if needed */
-    gap: 8px;
-}
-
-.UserName {
-    position: absolute;
-    top: 150px;
-    left: 20px;
-    display: inline-block;
-    border-radius: 20px;
-    background-color: #fff;
-    border: 2px solid #6d6d6d;
-    box-sizing: border-box;
-    width: 300px;
-    height: 40px;
-}
-
-#UserNamelabel {
-    align-self: flex-start;
-    position: absolute;
-    top: 120px;
-    left: 30px;
-    font-size: 20px;
-}
-
-.Password {
-    position: absolute;
-    top: 250px;
-    left: 20px;
-    display: inline-block;
-    border-radius: 20px;
-    background-color: #fff;
-    border: 2px solid #6d6d6d;
-    box-sizing: border-box;
-    width: 300px;
-    height: 40px;
-}
-
-#Passwordlabel {
-    align-self: flex-start;
-    position: absolute;
-    top: 220px;
-    left: 30px;
-    font-size: 20px;
+.login-error {
+    color: #e91c1c;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 .please-log-in {
-    position: absolute;
-    top: 51px;
-    left: 16px;
-    font-size: 25px;
-    font-weight: 600;
-    display: inline-block;
-    width: 330px;
-    height: 65px;
-}
-
-.Loginsignin {
-    position: absolute;
-    top: 350px;
-    left: -30px;
-    font-size: 30px;
-    display: inline-block;
-    background-color: #e91c1c;
-    width: 150;
-    height: 53px;
-}
-
-.loginbody {
-    position: absolute;
-    top: 132px;
-    left: 555px;
-    width: 367px;
-    height: 545px;
-}
-
-.loginemapp {
-    position: absolute;
-    top: 7px;
-    left: 0px;
-    font-size: 35px;
-    letter-spacing: -0.02em;
-    line-height: 120%;
-    font-family: Newsreader;
-    color: #f10000;
     text-align: center;
-    display: inline-block;
-    width: 235px;
-    height: 46px;
-    cursor: pointer;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: #495057;
 }
 
-.loginsearchrectangle {
-    position: absolute;
-    top: 8px;
-    left: 235px;
-    border-radius: 20px;
-    background-color: #e5e5e5;
-    width: 315px;
-    height: 32px;
-}
-
-.Loginicon {
-    position: absolute;
-    top: 7px;
-    left: 16px;
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-}
-
-.loginsearchimage-icon {
-    position: absolute;
-    top: 7px;
-    left: 249px;
-    width: 32px;
-    height: 31.18px;
-    object-fit: cover;
-}
-
-.loginregister {
-    position: absolute;
-    top: 12px;
-    left: 951px;
-    letter-spacing: -0.02em;
-    line-height: 120%;
-    display: inline-block;
-    width: 72px;
-    height: 22px;
-}
-
-.logincourses {
-    position: absolute;
-    top: 12px;
-    left: 879px;
-    letter-spacing: -0.02em;
-    line-height: 120%;
-    display: inline-block;
-    width: 72px;
-    height: 22px;
-}
-
-.logincourses1 {
-    position: absolute;
-    top: 12px;
-    left: 790px;
-    letter-spacing: -0.02em;
-    line-height: 120%;
-    display: inline-block;
-    width: 72px;
-    height: 22px;
-}
-
-.loginsearch {
-    position: absolute;
-    top: 7px;
-    left: 291px;
-    font-size: 30px;
-    letter-spacing: -0.02em;
-    line-height: 120%;
-    font-family: Newsreader;
-    color: #fff;
-    display: inline-block;
-    width: 123px;
-    height: 32px;
-}
-
-.header {
-    position: absolute;
-    top: 25px;
-    left: 105px;
-    width: 1262px;
-    height: 53px;
-    text-align: left;
-    font-family: ABeeZee;
-}
-
-.loginpage {
-    position: relative;
-    background-color: #fff;
-    width: 100%;
-    height: 750px;
-    overflow: hidden;
+.register-link {
     text-align: center;
-    font-size: 20px;
-    color: #6d6d6d;
-    font-family: "Plus Jakarta Sans";
+    margin-top: 20px;
+    font-weight: bold;
 }
+
+    .register-link Button {
+        background-color: #e91c1c;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 12px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Include color transition */
+        text-decoration: none; /* Remove underline */
+    }
+
+        .register-link Button:hover {
+            background-color: #dc3545;
+            color: #fff; /* Set the color to white on hover */
+            text-decoration: none; /* Remove underline on hover */
+        }
+
+        
+

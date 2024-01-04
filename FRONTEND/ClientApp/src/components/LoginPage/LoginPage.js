@@ -1,6 +1,7 @@
 ﻿import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "@mui/material/Button";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 import { loginUser } from "../../apiServices";
 import "./LoginPage.css";
 
@@ -42,53 +43,57 @@ const LoginPage = () => {
         }
     };
 
+    const handleRegisterClick = () => {
+        // /register sayfasına yönlendirme
+        navigate("/register");
+    };
 
 
     return (
-        <div className="loginpage">
-            <div className="loginbody">
-                <Button className="Loginsignin" onClick={handleSigninClick}>
-                    Signin
-                </Button>
+        <div className="login-container">
+            <div className="login-body">
+                 <img
+                    src="https://toygantestbucket.s3.eu-central-1.amazonaws.com/monovi-logo-grey.png"
+                    alt="Monovi Logo"
+                    className="logo-image"
+                />
+                <h2 className="login-title">Please log in to your account</h2>
+                <Form>
+                    <Form.Group className="mb-4" controlId="UserName">
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control
+                            type="text"
+                            value={formData.UserName}
+                            onChange={handleChange}
+                            placeholder="Enter your username"
+                        />
+                    </Form.Group>
 
-                <div
-                    className="forgot-password"
-                    onClick={() => navigate("/changepassword")}
-                >
-                    Forgot password?
-                </div>
+                    <Form.Group className="mb-4" controlId="Password">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control
+                            type="password"
+                            value={formData.Password}
+                            onChange={handleChange}
+                            placeholder="Enter your password"
+                        />
+                    </Form.Group>
 
-                <div className="LoginInput-container">
-                    <label htmlFor="UserName" id="UserNamelabel">
-                        Username
-                    </label>
-                    <input
-                        type="text"
-                        id="UserName"
-                        className="UserName"
-                        value={formData.UserName}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="LoginInput-container">
-                    <label htmlFor="Password" id="Passwordlabel">
-                        Password
-                    </label>
-                    <input
-                        type="password"
-                        id="Password"
-                        className="Password"
-                        value={formData.Password}
-                        onChange={handleChange}
-                    />
-                </div>
-                {loginError && (
-                    <div className="login-error">Invalid credentials. Please try again.</div>
-                )}
-                <div className="please-log-in">Please log in into your account</div>
-                <b className="Loginsign-in">Sign in</b>
+                    <Button variant="danger" onClick={handleSigninClick} className="login-signin">
+                        Sign In
+                    </Button>
+
+                    <div className="register-link">
+                        <p>Don't have an account?</p>
+                        <Button variant="link" onClick={handleRegisterClick}>
+                            Register
+                        </Button>
+                    </div>
+                </Form>
+
+                {loginError && <div className="login-error">Invalid credentials. Please try again.</div>}
+                
             </div>
-            
         </div>
     );
 };

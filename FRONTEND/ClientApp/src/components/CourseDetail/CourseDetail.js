@@ -4,6 +4,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Reviews from '../Reviews/Reviews';
 import coverImage from '../../Uploads/cover.jpg';
 import './CourseDetail.css';
+import Swal from 'sweetalert2';
+
 
 const CourseDetail = () => {
     const { courseId } = useParams();
@@ -24,61 +26,46 @@ const CourseDetail = () => {
 
                 const videoResponse = await GetVideo();
                 setVideoUrl(videoResponse);
+
+                // Check if there's a saved time in localStorage
+                const savedTime = localStorage.getItem(`videoTime_${courseId}`);
+                if (savedTime !== null) {
+                    // Display a prompt to resume from the saved time
+                    Swal.fire({
+                        title: "Resume from where you left off?",
+                        showDenyButton: true,
+                        confirmButtonText: "Yes",
+                        denyButtonText: "No",
+                        confirmButtonColor: "green",
+                        denyButtonColor: "black",
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Set the current time of the video to the saved time
+                            videoRef.current.currentTime = parseFloat(savedTime);
+                        }
+                        // Start playing the video
+                        videoRef.current.play();
+                    });
+                }
             } catch (error) {
-                console.error('Error fetching course or video:', error);
+                console.error("Error fetching course or video:", error);
             }
         };
 
         fetchData();
     }, [courseId]);
 
-    useEffect(() => {
-        const savedTime = localStorage.getItem(`videoTime_${courseId}`);
-        if (savedTime !== null) {
-            setCurrentTime(parseFloat(savedTime));
-            setUpdateProgress(true);
-        } else {
-            setUpdateProgress(false);
-        }
-    }, [courseId]);
+   
+    if (!course) {
+        return <div>Loading...</div>;
+    }
 
-    useEffect(() => {
+    const handleTimeUpdate = () => {
         const video = videoRef.current;
-
-        if (video) {
-            // Video yüklenip oynatıldığında
-            video.addEventListener("loadeddata", () => {
-                video.addEventListener("play", () => {
-                    setIsPlaying(true);
-                    setUpdateProgress(true);
-                });
-                video.addEventListener("pause", () => {
-                    setIsPlaying(false);
-                    setUpdateProgress(false);
-                    localStorage.setItem(`videoTime_${courseId}`, video.currentTime.toString());
-                });
-
-                const intervalId = setInterval(() => {
-                    if (updateProgress && video.currentTime !== currentTime) {
-                        setCurrentTime(video.currentTime);
-                    }
-                }, 1000);
-
-                return () => {
-                    video.removeEventListener("play", () => {
-                        setIsPlaying(true);
-                        setUpdateProgress(true);
-                    });
-                    video.removeEventListener("pause", () => {
-                        setIsPlaying(false);
-                        setUpdateProgress(false);
-                        localStorage.setItem(`videoTime_${courseId}`, video.currentTime.toString());
-                    });
-                    clearInterval(intervalId);
-                };
-            });
+        if (video && isPlaying) {
+            setCurrentTime(video.currentTime);
         }
-    }, [videoRef, setIsPlaying, setCurrentTime, updateProgress, currentTime, courseId]);
+    };
 
     const handlePlayPause = () => {
         const video = videoRef.current;
@@ -95,16 +82,6 @@ const CourseDetail = () => {
         }
     };
 
-    const handleTimeUpdate = () => {
-        const video = videoRef.current;
-        if (video && isPlaying) {
-            setCurrentTime(video.currentTime);
-        }
-    };
-
-    if (!course) {
-        return <div>Loading...</div>;
-    }
 
 
     const handleAddToBasket = () => {
@@ -152,14 +129,26 @@ const CourseDetail = () => {
                             width="500"
                             controls
                             onPlay={() => setIsPlaying(true)}
-                            onPause={() => setIsPlaying(false)}
+                            onPause={() => {
+                                setIsPlaying(false);
+                                // Save the current time when the video is paused
+                                localStorage.setItem(
+                                    `videoTime_${courseId}`,
+                                    videoRef.current.currentTime.toString()
+                                );
+                            }}
                             onTimeUpdate={handleTimeUpdate}
                         >
                             <source src={videoUrl} type="video/mp4" />
                             Your browser does not support the video tag.
                         </video>
-                        <progress max={videoRef.current && videoRef.current.duration} value={currentTime}></progress>
-                        <button onClick={handlePlayPause}>{isPlaying ? "Pause" : "Play"}</button>
+                        <progress
+                            max={videoRef.current && videoRef.current.duration}
+                            value={currentTime}
+                        ></progress>
+                        <button onClick={handlePlayPause}>
+                            {isPlaying ? "Pause" : "Play"}
+                        </button>
                     </div>
                 )}
             </div>

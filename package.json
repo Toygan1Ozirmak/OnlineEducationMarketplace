@@ -9,6 +9,7 @@
     "jquery": "^3.7.1",
     "react-auth-kit": "^3.0.0-alpha.44",
     "react-player": "^2.14.1",
+    "sweetalert2": "^11.10.2",
     "win-ca": "^3.5.1"
   }
 }

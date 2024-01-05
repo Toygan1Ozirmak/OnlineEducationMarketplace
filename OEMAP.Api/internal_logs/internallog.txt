@@ -3697,3 +3697,15 @@
 2024-01-04 20:04:24.9374 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
 2024-01-04 20:04:24.9700 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\toyga\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
 2024-01-04 20:04:24.9892 Info Configuration initialized.
+2024-01-05 02:12:49.7065 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-05 02:12:49.7754 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2024-01-05 02:12:49.7925 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\toyga\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2024-01-05 02:12:49.8095 Info Configuration initialized.
+2024-01-05 03:09:53.9219 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-05 03:09:53.9566 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2024-01-05 03:09:53.9876 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\toyga\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2024-01-05 03:09:54.0205 Info Configuration initialized.
+2024-01-05 08:54:16.7593 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-05 08:54:17.0164 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2024-01-05 08:54:17.0529 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\toyga\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2024-01-05 08:54:17.0852 Info Configuration initialized.

@@ -1,32 +1,59 @@
-﻿.navbar {
-    background-color: #fff;
-    color: #555; /* Jakarta Plus grey color */
-    font-family: 'Plus Jakarta Sans', sans-serif;
+﻿/* NavMenu.css */
+header {
+    background-color: #35424a; /* Dark blue background color */
+}
+
+.navbar {
+    background-color: #495057; /* Grey background color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light box shadow */
 }
 
 .navbar-brand {
     font-weight: bold;
+    color: #ff5e5e; /* Dark red color for brand text */
+    margin-right: auto; /* Sağa hizala */
+    transition: color 0.3s ease-in-out; /* Renk değişimine geçiş efekti */
 }
 
-.navbar-nav .nav-link {
-    font-weight: normal;
+.navbar-nav {
+    margin-left: auto; /* Sağa hizala */
 }
+
+    .navbar-nav .nav-link {
+        font-weight: normal;
+        color: #495057; /* Dark grey color for link text */
+        margin-left: 15px; /* Linkler arasında boşluk bırak */
+        transition: color 0.3s ease-in-out; /* Renk değişimine geçiş efekti */
+    }
+
+        .navbar-nav .nav-link:hover {
+            color: #000; /* Siyah renk hover efekti */
+        }
 
 .navbar-toggler-icon {
-    background-color: #555; /* Jakarta Plus grey color */
+    background-color: #ff5e5e; /* Dark red color for toggler icon */
+    transition: background-color 0.3s ease-in-out; /* Renk değişimine geçiş efekti */
 }
 
 /* Logout button specific styles */
-.navbar-nav .logout-button {
+.navbar-nav .nav-link.logout-button {
     font-weight: bold;
-    color: #555; /* Jakarta Plus grey color */
+    color: #ff5e5e; /* Dark red color for logout button text */
+    background-color: #f10000; /* Red background color */
     border: 2px solid #f10000; /* Red border */
     border-radius: 5px;
     padding: 5px 10px;
     cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Renk değişimine geçiş efekti */
 }
 
-    .navbar-nav .logout-button:hover {
+    .navbar-nav .nav-link.logout-button:hover {
         color: #fff;
-        background-color: #f10000; /* Red background on hover */
+        background-color: #dc3545; /* Darker red background color on hover */
+        border-color: #dc3545; /* Darker red border color on hover */
     }
+
+/* Active link styles */
+.navbar-nav .nav-link.active {
+    color: #e91c1c; /* Red color for active link */
+}

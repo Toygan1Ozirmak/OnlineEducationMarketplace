@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { loginUser } from "../../apiServices";
 import "./LoginPage.css";
+import Swal from 'sweetalert2';
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -22,26 +23,33 @@ const LoginPage = () => {
     };
 
     const handleSigninClick = async () => {
-        try {
-            const response = await loginUser(formData);
+    try {
+        const response = await loginUser(formData);
 
-            if (response && response.token) {
-                // Token varsa
-                localStorage.setItem("isLoggedIn", "true");
-                console.log("Giriş Başarılı");
-                console.log(response.token);
-                navigate("/homepage");
-                
-                
-            } else {
-                console.error("Token not found in the response.");
-                setLoginError(true);
-            }
-        } catch (error) {
-            console.error("Error during login:", error);
+        if (response && response.token) {
+            // Token varsa
+            localStorage.setItem("isLoggedIn", "true");
+            console.log("Giriş Başarılı");
+            console.log(response.token);
             
+            // Display success alert
+            Swal.fire({
+                title: 'Login Successful!',
+                text: 'You have successfully logged in.',
+                icon: 'success',
+                confirmButtonText: 'Continue',
+            });
+
+            navigate("/homepage");
+        } else {
+            console.error("Token not found in the response.");
+            setLoginError(true);
         }
-    };
+    } catch (error) {
+        console.error("Error during login:", error);
+    }
+};
+
 
     const handleRegisterClick = () => {
         // /register sayfasına yönlendirme

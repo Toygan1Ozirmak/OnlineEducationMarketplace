@@ -12,13 +12,13 @@ namespace OnlineEducationMarketplace.Entity.DTOs
         public int ReplyId { get; init; }
 
 
-        public string Comment { get; init; }
+        public string ReplyText { get; init; }
 
 
         //fk
-        public string Id { get; init; }
+        public string UserId { get; init; }
         public int ReviewId { get; init; }
 
-        
+
     }
 }

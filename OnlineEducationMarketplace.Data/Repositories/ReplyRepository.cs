@@ -16,18 +16,18 @@ namespace OnlineEducationMarketplace.Data.Repositories
         {
         }
 
-        public void CreateReview(Reply reply) => Create(reply);
+        public void CreateReply(Reply reply) => Create(reply);
 
-        public void DeleteReview(Reply reply) => Delete(reply);
+        public void DeleteReply(Reply reply) => Delete(reply);
+
+        
+        public void UpdateReply(Reply reply) => Update(reply);
 
         public async Task<IEnumerable<Reply>> GetRepliesByReviewIdAsync(int reviewId, bool trackChanges) =>
             await FindByCondition(x => x.ReviewId.Equals(reviewId), trackChanges).ToListAsync();
 
         public async Task<Reply> GetReplyByReplyIdAsync(int replyId, bool trackChanges) =>
-             await FindByCondition(x => x.ReviewId.Equals(replyId), trackChanges)
+             await FindByCondition(x => x.ReplyId.Equals(replyId), trackChanges)
                 .SingleOrDefaultAsync();
-
-
-        public async void UpdateReview(Reply reply) => Update(reply);
     }
 }

@@ -11,11 +11,11 @@ namespace OnlineEducationMarketplace.Entity.Entities
         public int ReplyId { get; set; }
 
 
-        public string Comment { get; set; }
+        public string ReplyText { get; set; }
         
 
         //fk
-        public string Id { get; set; }
+        public string UserId { get; set; }
         public int ReviewId { get; set; }
 
         //snp

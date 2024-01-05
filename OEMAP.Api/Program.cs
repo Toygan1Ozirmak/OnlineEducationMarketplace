@@ -54,7 +54,7 @@ builder.Services.AddCors(options =>
     });
 });
 
-builder.Services.UseCors("AllowAnyOrigin");
+//builder.Services.UseCors("AllowAnyOrigin");
 
 
 

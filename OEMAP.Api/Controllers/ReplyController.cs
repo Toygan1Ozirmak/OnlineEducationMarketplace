@@ -15,7 +15,7 @@ namespace OEMAP.Api.Controllers
 {
     //[Authorize]
     [ServiceFilter(typeof(LogFilterAttribute))]
-    [Route("api/reviews")]
+    [Route("api/replies")]
     [ApiController]
     public class ReplyController : ControllerBase
     {
@@ -74,24 +74,24 @@ namespace OEMAP.Api.Controllers
             return NoContent();
         }
 
-        [HttpPatch("PartiallyUpdate/{replyId:int}")]
-        public async Task<IActionResult> PartiallyUpdateReplyAsync([FromRoute(Name = "replyId")] int replyId,
-            [FromBody] JsonPatchDocument<ReplyDto> replyPatch)
-        {
-            var replyDto = await _manager
-                .ReplyService
-                .GetReplyByReplyIdAsync(replyId, true);
+        //[HttpPatch("PartiallyUpdate/{replyId:int}")]
+        //public async Task<IActionResult> PartiallyUpdateReplyAsync([FromRoute(Name = "replyId")] int replyId,
+        //    [FromBody] JsonPatchDocument<ReplyDto> replyPatch)
+        //{
+        //    var replyDto = await _manager
+        //        .ReplyService
+        //        .GetReplyByReplyIdAsync(replyId, true);
 
-            replyPatch.ApplyTo(replyDto);
-            await _manager.ReplyService.UpdateReplyAsync(replyId,
-                new ReplyDtoForUpdate()
-                {
-                    ReplyId = replyDto.ReplyId,
-                    Comment = replyDto.Comment,                    
-                    Id = replyDto.Id,
-                    ReviewId = replyDto.ReviewId
-                }, true);
-            return NoContent(); //204
-        }
+        //    replyPatch.ApplyTo(replyDto);
+        //    await _manager.ReplyService.UpdateReplyAsync(replyId,
+        //        new ReplyDtoForUpdate()
+        //        {
+        //            ReplyId = replyDto.ReplyId,
+        //            ReplyText = replyDto.ReplyText,                    
+        //            UserId = replyDto.UserId,
+        //            ReviewId = replyDto.ReviewId
+        //        }, true);
+        //    return NoContent(); //204
+        //}
     }
 }

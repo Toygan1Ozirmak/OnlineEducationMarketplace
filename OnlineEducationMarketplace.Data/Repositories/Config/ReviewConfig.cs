@@ -17,13 +17,11 @@ namespace OnlineEducationMarketplace.Data.Repositories.Config
 
             builder.HasOne(c => c.Course)
                .WithMany(c => c.Reviews)
-               .HasForeignKey(c => c.CourseId)
-               .OnDelete(DeleteBehavior.Cascade);
+               .HasForeignKey(c => c.CourseId);
 
             builder.HasOne(c => c.User)
                 .WithMany(c => c.Reviews)
-                .HasForeignKey(c => c.Id)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(c => c.Id);
 
 
         }

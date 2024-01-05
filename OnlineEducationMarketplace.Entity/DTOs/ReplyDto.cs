@@ -16,7 +16,7 @@ namespace OnlineEducationMarketplace.Entity.DTOs
 
 
         //fk
-        public string UserId { get; init; }
+        public string Id { get; init; }
         public int ReviewId { get; init; }
 
 

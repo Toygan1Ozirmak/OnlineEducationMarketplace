@@ -3441,3 +3441,33 @@
 2024-01-05 08:59:35.0179 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
 2024-01-05 08:59:35.0325 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\GOD\Source\Repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
 2024-01-05 08:59:35.0450 Info Configuration initialized.
+2024-01-05 09:08:01.4671 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-05 09:08:01.5335 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2024-01-05 09:08:01.5510 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\GOD\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2024-01-05 09:08:01.5656 Info Configuration initialized.
+2024-01-05 09:10:41.9906 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-05 09:10:42.0237 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2024-01-05 09:10:42.0430 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\GOD\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2024-01-05 09:10:42.0583 Info Configuration initialized.
+2024-01-05 09:13:11.2951 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-05 09:13:11.3072 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2024-01-05 09:13:11.3072 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\GOD\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2024-01-05 09:13:11.3248 Info Configuration initialized.
+2024-01-05 09:13:12.3734 Info AppDomain Shutting down. LogFactory closing...
+2024-01-05 09:13:12.3734 Info LogFactory has been closed.
+2024-01-05 09:13:22.6692 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-05 09:13:22.6833 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2024-01-05 09:13:22.6833 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\GOD\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2024-01-05 09:13:22.7009 Info Configuration initialized.
+2024-01-05 09:13:31.0438 Info AppDomain Shutting down. LogFactory closing...
+2024-01-05 09:13:31.0438 Info LogFactory has been closed.
+2024-01-05 09:16:06.7993 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-05 09:16:06.8171 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2024-01-05 09:16:06.8291 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\GOD\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2024-01-05 09:16:06.8388 Info Configuration initialized.
+2024-01-05 09:16:09.1749 Info AppDomain Shutting down. LogFactory closing...
+2024-01-05 09:16:09.1832 Info LogFactory has been closed.
+2024-01-05 09:30:10.6914 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-05 09:30:10.7908 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.5.2160. Product version: 5.2.5+7c014325443d65541200b698a50b9dd4ec30c7f0. GlobalAssemblyCache: False
+2024-01-05 09:30:10.8073 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\GOD\source\repos\OnlineEducationMarketplace\OEMAP.Api\nlog.config
+2024-01-05 09:30:10.8234 Info Configuration initialized.

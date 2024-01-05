@@ -51,22 +51,22 @@ namespace OEMAP.Api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "cf135080-d000-497f-9088-25fa2dbdc3ae",
-                            ConcurrencyStamp = "bdd8c637-6bd3-41cd-9352-cb634d753a78",
+                            Id = "5f68b666-9d66-43f5-9a68-67fc490d2398",
+                            ConcurrencyStamp = "b403b680-f544-4dcc-8dc1-97bae20a59ea",
                             Name = "user",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "e707cb23-5005-464b-a39d-0d57dfb56c61",
-                            ConcurrencyStamp = "b4821cd3-66b0-4e2c-afb1-167a4332304e",
+                            Id = "cfe4a676-3497-4efe-8ccf-ae05f7b12877",
+                            ConcurrencyStamp = "1e522168-7977-4737-a4b2-22d92de16461",
                             Name = "instructor",
                             NormalizedName = "INSTRUCTOR"
                         },
                         new
                         {
-                            Id = "34551344-1bf6-4912-b4b7-c64ba6d89e83",
-                            ConcurrencyStamp = "76b9801d-e333-4ca6-98c3-7293c47986ac",
+                            Id = "ea88f41a-0700-404d-ad1f-e3459c6b74fb",
+                            ConcurrencyStamp = "f9c7cf06-5dec-4348-913a-8aa1e028a39a",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -360,6 +360,34 @@ namespace OEMAP.Api.Migrations
                     b.ToTable("Payments");
                 });
 
+            modelBuilder.Entity("OnlineEducationMarketplace.Entity.Entities.Reply", b =>
+                {
+                    b.Property<int>("ReplyId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReplyId"), 1L, 1);
+
+                    b.Property<string>("ReplyText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ReviewId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("ReplyId");
+
+                    b.HasIndex("ReviewId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Replies");
+                });
+
             modelBuilder.Entity("OnlineEducationMarketplace.Entity.Entities.Review", b =>
                 {
                     b.Property<int>("ReviewId")
@@ -566,6 +594,25 @@ namespace OEMAP.Api.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("OnlineEducationMarketplace.Entity.Entities.Reply", b =>
+                {
+                    b.HasOne("OnlineEducationMarketplace.Entity.Entities.Review", "Review")
+                        .WithMany("Replies")
+                        .HasForeignKey("ReviewId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("OnlineEducationMarketplace.Entity.Entities.User", "User")
+                        .WithMany("Replies")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Review");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("OnlineEducationMarketplace.Entity.Entities.Review", b =>
                 {
                     b.HasOne("OnlineEducationMarketplace.Entity.Entities.Course", "Course")
@@ -576,8 +623,7 @@ namespace OEMAP.Api.Migrations
 
                     b.HasOne("OnlineEducationMarketplace.Entity.Entities.User", "User")
                         .WithMany("Reviews")
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("Id");
 
                     b.Navigation("Course");
 
@@ -596,11 +642,18 @@ namespace OEMAP.Api.Migrations
                     b.Navigation("Reviews");
                 });
 
+            modelBuilder.Entity("OnlineEducationMarketplace.Entity.Entities.Review", b =>
+                {
+                    b.Navigation("Replies");
+                });
+
             modelBuilder.Entity("OnlineEducationMarketplace.Entity.Entities.User", b =>
                 {
                     b.Navigation("CourseEnrollments");
 
                     b.Navigation("Payments");
+
+                    b.Navigation("Replies");
 
                     b.Navigation("Reviews");
                 });

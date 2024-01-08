@@ -16,18 +16,18 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    margin-top: 80px; /* Artırılan margin değeri */
+    min-height: 100vh;
+    margin-top: 80px;
+    margin-bottom: 150px; /* Increased margin-bottom */
 }
 
 .register-body {
     width: 600px;
-    padding: 20px; /* Artırılan padding değeri */
+    padding: 20px;
     border: 1px solid #ced4da;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #fff;
-    margin: 20px 0; /* Hem üst hem de alt tarafında 20px boşluk */
 }
 
 .register-title {
@@ -53,7 +53,7 @@ body {
     }
 
 .signup {
-    background-color: #dc3545; /* Kırmızı renk */
+    background-color: #dc3545;
     color: #fff;
     width: 100%;
     padding: 12px;
@@ -64,7 +64,7 @@ body {
 }
 
     .signup:hover {
-        background-color: #c82333; /* Koyu kırmızı renk */
+        background-color: #c82333;
     }
 
 .policy {
@@ -74,12 +74,12 @@ body {
 }
 
 .checkBox {
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .please-create-a {
     text-align: center;
-    margin-top: 20px; /* Güncellenen margin değeri */
+    margin-top: 20px;
     margin-bottom: 30px;
     font-size: 20px;
     font-weight: 600;

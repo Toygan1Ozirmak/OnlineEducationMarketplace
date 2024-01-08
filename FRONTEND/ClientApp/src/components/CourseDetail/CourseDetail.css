@@ -1,4 +1,6 @@
-﻿/* Kurs detayları bölümü */
+﻿/* Update existing styles */
+
+/* Kurs detayları bölümü */
 .course-detail-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -24,7 +26,6 @@ h1, h2 {
 .review-card {
     border: 2px solid red;
 }
-
 
 /* Fotoğraf bölümü */
 .course-image-container {
@@ -74,9 +75,18 @@ h1, h2 {
             font-weight: bold;
         }
 
-.add-to-basket {
-    margin-top: 20px;
+.add-to-basket button {
+    background-color: #d9534f; /* Bootstrap's danger color */
+    color: #fff; /* White text */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
 }
+
+    .add-to-basket button:hover {
+        background-color: #c9302c; /* Darker shade on hover */
+    }
 
 /* Yorum kartı */
 .review-card-container {
@@ -84,7 +94,6 @@ h1, h2 {
     display: flex; /* Yorum kartını da flex-box yap */
     justify-content: center; /* Review kartını yatay olarak ortala */
 }
-
 
 .review-card {
     width: 100%;

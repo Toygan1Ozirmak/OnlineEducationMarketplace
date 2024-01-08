@@ -1,11 +1,14 @@
 ﻿.studyrectangle {
-    position: absolute;
+    
     top: 96px;
-    left: 720px;
+    left: 680px;
     border-radius: 210.5px 210.5px 50px 50px;
     background-color: #6d6d6d;
     width: 650px;
     height: 291px;
+    position: absolute;
+    z-index: 1; /* Ensure it has a higher z-index */
+    /* ... other styles */
 }
 
 .to {
@@ -158,13 +161,17 @@
 }
 
 .study-image {
-    position: absolute;
+    
     top: 270px;
     left: 865px;
     width: 500px;
     height: 233px;
     object-fit: cover;
+    position: absolute;
+    z-index: 2; /* Ensure it has a higher z-index than .studyrectangle */
+    /* ... other styles */
 }
+
 
 .browseButton {
     position: absolute;

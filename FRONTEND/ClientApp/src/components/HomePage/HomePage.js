@@ -1,17 +1,7 @@
-﻿import "./HomePage.css";
+﻿import React from "react";
 import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
-import axios from "axios";
-import Button from "@mui/material/Button"; // Import the API service function
-//import study from "./images/study.PNG";
-//import eng from "./images/Eng.jpg";
-//import psy from "./images/psy.jpg";
-//import art from "./images/art.jpg";
-//import lan from "./images/lan.jpg";
-//import acc from "./images/acc.jpg";
-//import sci from "./images/sci.jpg";
-//import search from "./images/search.jpg";
-//import logo from "./images/logo.jpg";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const HomePage = () => {
     const navigate = useNavigate();
@@ -29,95 +19,126 @@ const HomePage = () => {
     };
 
     return (
-        <div className="homepage">
-            <div className="about-us">
-                <div className="studyrectangle" />
-                <div className="welcome">
-                    <div className="welcome-to-oemapp-container">
-                        <p className="to">{`Welcome `}</p>
-                        <p className="to">{`to `}</p>
-                        <p className="to">OEMAPP</p>
-                    </div>
-                    <div className="sign-up-now-container">
-                        <p className="to">
-                            Sign up now for the most suitable training among thousands of
-                            trainings with OEAMPP, and take yourself one step further with
-                            live lessons and courses!
-                        </p>
-                        <p className="to">&nbsp;</p>
-                    </div>
-                </div>
-                <div className="ourmission">
-                    <div className="our-mission">our mission</div>
-                    <div className="hundreds-of-instructors">
-                        Hundreds of instructors and students were brought together on the
-                        same platform. Take your place now!
-                    </div>
-                </div>
-                <div className="infoframe">
-                    <div className="experience">
-                        <div className="div">10+</div>
-                        <div className="years-experience">Years Experience</div>
-                    </div>
-                    <div className="coursesnumber">
-                        <div className="div">29+</div>
-                        <div className="years-experience">
-                            <p className="to">{`Total `}</p>
-                            <p className="to">Course</p>
-                        </div>
-                    </div>
-                    <div className="studentsnumber">
-                        <div className="div">50K+</div>
-                        <div className="student-active">
-                            <p className="to">{`Student `}</p>
-                            <p className="to">Active</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {/*<img src={study} className="study-image" alt="" />*/}
+        <Container fluid className="mt-4" style={{ backgroundColor: "#f2f2f2", minHeight: "90vh" }}>
+            <Card bg="light" text="dark">
+                <Card.Body>
+                    <Row>
+                        <Col md={6}>
+                            <img
+                                src="https://toygantestbucket.s3.eu-central-1.amazonaws.com/homepage.jpg"
+                                alt="Study"
+                                className="img-fluid rounded"
+                            />
+                        </Col>
+                        <Col md={6}>
+                            <h1 className="display-4 text-danger">Welcome to OEMAPP</h1>
+                            <p className="lead text-dark">
+                                Sign up now for the most suitable training among thousands of
+                                trainings with OEAMPP, and take yourself one step further with
+                                live lessons and courses!
+                            </p>
+                            <hr className="my-4" />
+                            <p className="text-dark">
+                                Achieve success by learning the latest competencies. Hundreds
+                                of instructors and students were brought together on the same
+                                platform. Take your place now!
+                            </p>
+                            <div className="text-center mt-4">
+                                <Button
+                                    variant="danger"
+                                    size="lg"
+                                    onClick={() => navigate("/shop")}
+                                    style={{ backgroundColor: "#ff4d4d", border: "none" }}
+                                >
+                                    Explore Courses
+                                </Button>
+                            </div>
+                        </Col>
+                    </Row>
 
-            <button className="browseButton" onClick={() => navigate("/shop")}>
-                Browse
-            </button>
-            <div className="achieve-success-by">
-                Achieve success by learning the latest competencies
-            </div>
-            
-            <div className="ourcourse">
-                <div className="explore-our-categories">
-                    Explore Our Categories Your Path to Success
-                </div>
-                {/*<div className="scirectangle" />*/}
-                {/*<div className="science">Science</div>*/}
-                {/*<img className="sci-icon" alt="" src={sci} />*/}
-                {/*<div className="accorectangle" />*/}
-                {/*<div className="accountancy">Accountancy</div>*/}
-                {/*<img className="acc-icon" alt="" src={acc} />*/}
-                {/*<div className="languagerectangle" />*/}
-                {/*<div className="language">Language</div>*/}
-                {/*<img className="lan-icon" alt="" src={lan} />*/}
-                
-                <button className="machinelearning" onClick={handleMachineLearningButtonClick}>
-                    Machine Learning
-                </button>
-                {/*<img className="art-icon" alt="" src={art} />*/}
-                
-                
-                <button className="ui-ux" onClick={handleUIUXButtonClick}>
-                    UI/UX
-                </button>
-                {/*<img className="psy-icon" alt="" src={psy} />*/}
-                
-                
-                <button className="softwaretesting" onClick={handleSoftwareTestingButtonClick}>
-                    Software Testing
-                </button>
-                
+                    <Row className="mt-4">
+                        <Col md={4}>
+                            <Card bg="danger" text="white" className="mb-3">
+                                <Card.Body>
+                                    <h2 className="card-title">10+</h2>
+                                    <p className="card-text">Years Experience</p>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                        <Col md={4}>
+                            <Card bg="danger" text="white" className="mb-3">
+                                <Card.Body>
+                                    <h2 className="card-title">29+</h2>
+                                    <p className="card-text">Total Courses</p>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                        <Col md={4}>
+                            <Card bg="danger" text="white" className="mb-3">
+                                <Card.Body>
+                                    <h2 className="card-title">50K+</h2>
+                                    <p className="card-text">Student Active</p>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    </Row>
+                </Card.Body>
+            </Card>
 
-                {/*<img className="engineeringimage-icon" alt="" src={eng} />*/}
+            <div className="text-center mt-4">
+                <h2 className="text-danger mb-4">Explore Our Categories - Your Path to Success</h2>
+                <Row className="mt-3">
+                    <Col md={4}>
+                        <Card bg="danger" text="white" className="mb-3">
+                            <Card.Body>
+                                <h2 className="card-title">Machine Learning</h2>
+                                <Button
+                                    variant="danger"
+                                    size="lg"
+                                    block
+                                    onClick={handleMachineLearningButtonClick}
+                                    style={{ backgroundColor: "#ff4d4d", border: "none" }}
+                                >
+                                    Explore
+                                </Button>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                    <Col md={4}>
+                        <Card bg="danger" text="white" className="mb-3">
+                            <Card.Body>
+                                <h2 className="card-title">UI/UX</h2>
+                                <Button
+                                    variant="danger"
+                                    size="lg"
+                                    block
+                                    onClick={handleUIUXButtonClick}
+                                    style={{ backgroundColor: "#ff4d4d", border: "none" }}
+                                >
+                                    Explore
+                                </Button>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                    <Col md={4}>
+                        <Card bg="danger" text="white" className="mb-3">
+                            <Card.Body>
+                                <h2 className="card-title">Software Testing</h2>
+                                <Button
+                                    variant="danger"
+                                    size="lg"
+                                    block
+                                    onClick={handleSoftwareTestingButtonClick}
+                                    style={{ backgroundColor: "#ff4d4d", border: "none" }}
+                                >
+                                    Explore
+                                </Button>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
             </div>
-        </div>
+        </Container>
     );
 };
 

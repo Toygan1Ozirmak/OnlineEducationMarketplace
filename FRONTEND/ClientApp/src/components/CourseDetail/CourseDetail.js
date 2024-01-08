@@ -3,8 +3,11 @@ import { GetCourseByCourseId, GetVideo } from '../../apiServices';
 import { useParams, useNavigate } from 'react-router-dom';
 import Reviews from '../Reviews/Reviews';
 import coverImage from '../../Uploads/cover.jpg';
-import './CourseDetail.css';
 import Swal from 'sweetalert2';
+import { Container, Row, Col, Button, Progress, Card } from 'reactstrap';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './CourseDetail.css';
 
 
 const CourseDetail = () => {
@@ -55,7 +58,7 @@ const CourseDetail = () => {
         fetchData();
     }, [courseId]);
 
-   
+
     if (!course) {
         return <div>Loading...</div>;
     }
@@ -119,55 +122,77 @@ const CourseDetail = () => {
 
 
     return (
-        <div className="course-detail-container">
-            <div className="course-image-container">
-                <img src={coverImage} alt={course.title} className="course-image" />
-                {videoUrl && (
-                    <div>
-                        <video
-                            ref={videoRef}
-                            width="500"
-                            controls
-                            onPlay={() => setIsPlaying(true)}
-                            onPause={() => {
-                                setIsPlaying(false);
-                                // Save the current time when the video is paused
-                                localStorage.setItem(
-                                    `videoTime_${courseId}`,
-                                    videoRef.current.currentTime.toString()
-                                );
-                            }}
-                            onTimeUpdate={handleTimeUpdate}
-                        >
-                            <source src={videoUrl} type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
-                        <progress
-                            max={videoRef.current && videoRef.current.duration}
-                            value={currentTime}
-                        ></progress>
-                        <button onClick={handlePlayPause}>
-                            {isPlaying ? "Pause" : "Play"}
-                        </button>
-                    </div>
-                )}
-            </div>
-            <div className="course-details-card">
-                <div className="course-details">
-                    <h1>{course.title}</h1>
-                    <p>{course.description}</p>
-                    <p>{`Course Length: ${course.courseLength}`}</p>
-                    <p>{`Created Date: ${course.createdDate}`}</p>
-                    <p>{`Status: ${course.courseStatus ? 'Active' : 'Inactive'}`}</p>
-                    <div className="add-to-basket">
-                        <button onClick={handleAddToBasket}>Add to Basket</button>
-                    </div>
-                </div>
-            </div>
-            <div className="review-card-container">
-                <Reviews courseId={courseId} />
-            </div>
-        </div>
+        <Container className="mt-4">
+            <Row>
+                <Col lg="6" className="d-flex">
+                    <Card className="course-card flex-grow-1">
+                        <div className="course-image-container">
+                            <img src={coverImage} alt={course.title} className="img-fluid rounded mb-3" />
+                            {videoUrl && (
+                                <div className="mt-3">
+                                    <video
+                                        ref={videoRef}
+                                        width="100%"
+                                        controls
+                                        onPlay={() => setIsPlaying(true)}
+                                        onPause={() => {
+                                            setIsPlaying(false);
+                                            localStorage.setItem(
+                                                `videoTime_${courseId}`,
+                                                videoRef.current.currentTime.toString()
+                                            );
+                                        }}
+                                        onTimeUpdate={handleTimeUpdate}
+                                    >
+                                        <source src={videoUrl} type="video/mp4" />
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div className="d-flex justify-content-between align-items-center mt-3">
+                                        <Progress
+                                            max={videoRef.current && videoRef.current.duration}
+                                            value={currentTime}
+                                            className="w-75"
+                                        ></Progress>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </Card>
+                </Col>
+                <Col lg="6" className="d-flex">
+                    <Card className="course-details-card flex-grow-1 p-4 d-flex flex-column justify-content-between">
+                        <div className="course-details">
+                            <h1 className="display-4 mb-3">{course.title}</h1>
+                            <p className="lead">{course.description}</p>
+                            <div className="text-muted">
+                                <p>{`Course Length: ${course.courseLength}`}</p>
+                                <p>{`Created Date: ${course.createdDate}`}</p>
+                                <p>{`Status: ${course.courseStatus ? 'Active' : 'Inactive'}`}</p>
+                            </div>
+                        </div>
+                        <div className="add-to-basket mt-3">
+                            <Button
+                                onClick={handleAddToBasket}
+                                color="danger"
+                                block
+                            >
+                                Add to Basket
+                            </Button>
+                        </div>
+                    </Card>
+                </Col>
+            </Row>
+            <Row className="mt-4">
+                <Col lg="12">
+                    <Card className="review-card-container p-4">
+                        <h2 className="mb-4">Student Reviews</h2>
+                        <Reviews courseId={courseId} />
+                    </Card>
+                </Col>
+            </Row>
+        </Container>
     );
+
+
 };
 export default CourseDetail;

@@ -20,8 +20,10 @@ namespace OnlineEducationMarketplace.Entity.DTOs
         public TimeSpan CourseLength { get; init; }
         public DateTime CreatedDate { get; init; }
         
-        public string Image { get; init; }
+        public string VideoURL { get; init; }
         public bool CourseStatus { get; init; }
+
+        public string ImageURL { get; init; }
 
 
         //fk

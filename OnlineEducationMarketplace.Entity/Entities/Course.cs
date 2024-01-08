@@ -15,8 +15,11 @@ namespace OnlineEducationMarketplace.Entity.Entities
 
         public TimeSpan CourseLength { get; set; }
         public DateTime CreatedDate { get; set; }
-        public string Image { get; set; }
         public bool CourseStatus { get; set; }
+
+        public string VideoURL { get; set; }
+
+        public string ImageURL { get; set; }
 
 
         //fk

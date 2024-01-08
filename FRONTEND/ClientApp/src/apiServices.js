@@ -122,9 +122,18 @@ export const GetReviewsByCourseId = async (courseId) => {
     }
 };
 
-export const GetVideo = async () => {
+export const GetVideo = async (courseId) => {
     try {
-        const response = await axios.get(`${BASE_URL}/api/S3/GetVideo`);
+        const response = await axios.get(`${BASE_URL}/api/S3/GetVideo/${courseId}`);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const GetImage = async (courseId) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/api/S3/GetImage/${courseId}`);
         return response.data;
     } catch (error) {
         throw error;

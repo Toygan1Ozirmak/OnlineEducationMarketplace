@@ -1,5 +1,5 @@
 ﻿import React, { useState, useEffect, useRef } from "react";
-import { GetCourseByCourseId, GetVideo } from '../../apiServices';
+import { GetCourseByCourseId, GetVideo, GetImage } from '../../apiServices';
 import { useParams, useNavigate } from 'react-router-dom';
 import Reviews from '../Reviews/Reviews';
 import coverImage from '../../Uploads/cover.jpg';
@@ -15,20 +15,28 @@ const CourseDetail = () => {
     const navigate = useNavigate();
     const [course, setCourse] = useState(null);
     const [videoUrl, setVideoUrl] = useState(null);
+    const [imageUrl, setImageUrl] = useState(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
     const videoRef = useRef(null);
     const [updateProgress, setUpdateProgress] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const courseResponse = await GetCourseByCourseId(courseId);
-                setCourse(courseResponse);
+                const [courseResponse, videoResponse, imageResponse] = await Promise.all([
+                    GetCourseByCourseId(courseId),
+                    GetVideo(courseId),
+                    GetImage(courseId)
+                ]);
 
-                const videoResponse = await GetVideo();
-                setVideoUrl(videoResponse);
+                setCourse(courseResponse);
+                setVideoUrl(videoResponse.videoUrl);
+                setImageUrl(imageResponse.imageUrl);
+
 
                 // Check if there's a saved time in localStorage
                 const savedTime = localStorage.getItem(`videoTime_${courseId}`);
@@ -57,6 +65,9 @@ const CourseDetail = () => {
 
         fetchData();
     }, [courseId]);
+
+
+
 
 
     if (!course) {
@@ -127,7 +138,7 @@ const CourseDetail = () => {
                 <Col lg="6" className="d-flex">
                     <Card className="course-card flex-grow-1">
                         <div className="course-image-container">
-                            <img src={coverImage} alt={course.title} className="img-fluid rounded mb-3" />
+                            <img src={`https://toygantestbucket.s3.eu-central-1.amazonaws.com/${imageUrl}`} alt={course.title} className="img-fluid rounded mb-3" />
                             {videoUrl && (
                                 <div className="mt-3">
                                     <video
@@ -144,9 +155,12 @@ const CourseDetail = () => {
                                         }}
                                         onTimeUpdate={handleTimeUpdate}
                                     >
-                                        <source src={videoUrl} type="video/mp4" />
+                                        <source src={`https://toygantestbucket.s3.eu-central-1.amazonaws.com/${videoUrl}`} type="video/mp4" />
+
                                         Your browser does not support the video tag.
                                     </video>
+
+
                                     <div className="d-flex justify-content-between align-items-center mt-3">
                                         <Progress
                                             max={videoRef.current && videoRef.current.duration}

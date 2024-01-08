@@ -1,8 +1,7 @@
 ﻿import React, { useState, useEffect } from "react";
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
-import { getAllCourses } from '../../apiServices';
+import { getAllCourses, GetCourseByCourseId, GetImage } from '../../apiServices';
 import { Card, Button } from "react-bootstrap";
-import coverImage from '../../Uploads/cover.jpg';
 import MachineLearningPage from "../Categories/MachineLearning/MachineLearning";
 import CourseDetail from "../CourseDetail/CourseDetail";
 import UIUXPage from "../Categories/UI-UX/UI-UX";
@@ -12,12 +11,22 @@ import "./Shop.css";
 const Shop = () => {
     const navigate = useNavigate();
     const [courses, setCourses] = useState([]);
-
+    
     useEffect(() => {
         const fetchCourses = async () => {
             try {
-                const response = await getAllCourses();
-                setCourses(response);
+                const coursesResponse = await getAllCourses();
+
+                // Fetch image URLs for each course
+                const coursesWithImages = await Promise.all(
+                    coursesResponse.map(async (course) => {
+                        const imageResponse = await GetImage(course.courseId);
+                        return { ...course, imageUrl: imageResponse.imageUrl };
+                    })
+                );
+
+                console.log(coursesWithImages); // Log the updated courses to the console
+                setCourses(coursesWithImages);
             } catch (error) {
                 console.error('Error fetching courses:', error);
             }
@@ -25,6 +34,7 @@ const Shop = () => {
 
         fetchCourses();
     }, []);
+
 
     return (
         <div className="shop">
@@ -39,7 +49,11 @@ const Shop = () => {
             <div className="shopcourses">
                 {courses.map(course => (
                     <Card key={course.courseId} className="course-card">
-                        <Card.Img variant="top" src={coverImage} alt={course.title} className="course-image" />
+                        <img
+                            src={`https://toygantestbucket.s3.eu-central-1.amazonaws.com/${course.imageUrl}`}
+                            alt={course.title}
+                            className="course-image"
+                        />
                         <Card.Body>
                             <Card.Title>{course.title}</Card.Title>
                             <Card.Text>{course.description}</Card.Text>

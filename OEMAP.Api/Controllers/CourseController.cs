@@ -124,7 +124,8 @@ namespace OEMAP.Api.Controllers
                     Title = courseDto.Title, 
                     Description = courseDto.Description, 
                     CourseLength = courseDto.CourseLength, 
-                    Image = courseDto.Image, 
+                    ImageURL = courseDto.ImageURL,
+                    VideoURL = courseDto.VideoURL,
                     CourseStatus = courseDto.CourseStatus, 
                     CategoryId = courseDto.CategoryId
                 }, true);

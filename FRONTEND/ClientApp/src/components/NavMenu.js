@@ -48,6 +48,7 @@ export class NavMenu extends Component {
                             <Nav.Link as={Link} to="/shop">Shop</Nav.Link>
                             <Nav.Link as={Link} to="/register">Register</Nav.Link>
                             <Nav.Link as={Link} to="/basket">Basket</Nav.Link>
+                            <Nav.Link as={Link} to="/mycourses">MyCourses</Nav.Link>
                             <Nav.Link className="text-danger" onClick={this.handleLogout}>Logout</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>

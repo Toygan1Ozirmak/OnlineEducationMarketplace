@@ -7,10 +7,10 @@ import Swal from 'sweetalert2';
 import { Container, Row, Col, Button, Progress, Card } from 'reactstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './CourseDetail.css';
+import './MyCourseDetail.css';
 
 
-const CourseDetail = () => {
+const MyCourseDetail = () => {
     const { courseId } = useParams();
     const navigate = useNavigate();
     const [course, setCourse] = useState(null);
@@ -27,14 +27,14 @@ const CourseDetail = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const [courseResponse/*, videoResponse*/, imageResponse] = await Promise.all([
+                const [courseResponse, videoResponse, imageResponse] = await Promise.all([
                     GetCourseByCourseId(courseId),
-                    /*GetVideo(courseId),*/
+                    GetVideo(courseId),
                     GetImage(courseId)
                 ]);
 
                 setCourse(courseResponse);
-                /*setVideoUrl(videoResponse.videoUrl);*/
+                setVideoUrl(videoResponse.videoUrl);
                 setImageUrl(imageResponse.imageUrl);
 
 
@@ -42,21 +42,21 @@ const CourseDetail = () => {
                 const savedTime = localStorage.getItem(`videoTime_${courseId}`);
                 if (savedTime !== null) {
                     // Display a prompt to resume from the saved time
-                    //Swal.fire({
-                    //    title: "Resume from where you left off?",
-                    //    showDenyButton: true,
-                    //    confirmButtonText: "Yes",
-                    //    denyButtonText: "No",
-                    //    confirmButtonColor: "green",
-                    //    denyButtonColor: "black",
-                    //}).then((result) => {
-                    //    if (result.isConfirmed) {
-                    //        // Set the current time of the video to the saved time
-                    //        videoRef.current.currentTime = parseFloat(savedTime);
-                    //    }
-                    //    // Start playing the video
-                    //    videoRef.current.play();
-                //    }/*);*/
+                    Swal.fire({
+                        title: "Resume from where you left off?",
+                        showDenyButton: true,
+                        confirmButtonText: "Yes",
+                        denyButtonText: "No",
+                        confirmButtonColor: "green",
+                        denyButtonColor: "black",
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Set the current time of the video to the saved time
+                            videoRef.current.currentTime = parseFloat(savedTime);
+                        }
+                        // Start playing the video
+                        videoRef.current.play();
+                    });
                 }
             } catch (error) {
                 console.error("Error fetching course or video:", error);
@@ -74,27 +74,27 @@ const CourseDetail = () => {
         return <div>Loading...</div>;
     }
 
-    //const handleTimeUpdate = () => {
-    //    const video = videoRef.current;
-    //    if (video && isPlaying) {
-    //        setCurrentTime(video.currentTime);
-    //    }
-    //};
+    const handleTimeUpdate = () => {
+        const video = videoRef.current;
+        if (video && isPlaying) {
+            setCurrentTime(video.currentTime);
+        }
+    };
 
-    //const handlePlayPause = () => {
-    //    const video = videoRef.current;
-    //    if (video) {
-    //        if (video.paused) {
-    //            video.play();
-    //            setIsPlaying(true);
-    //        } else {
-    //            video.pause();
-    //            setIsPlaying(false);
-    //            // Save the current time when the video is paused
-    //            localStorage.setItem(`videoTime_${courseId}`, video.currentTime.toString());
-    //        }
-    //    }
-    //};
+    const handlePlayPause = () => {
+        const video = videoRef.current;
+        if (video) {
+            if (video.paused) {
+                video.play();
+                setIsPlaying(true);
+            } else {
+                video.pause();
+                setIsPlaying(false);
+                // Save the current time when the video is paused
+                localStorage.setItem(`videoTime_${courseId}`, video.currentTime.toString());
+            }
+        }
+    };
 
 
 
@@ -130,8 +130,6 @@ const CourseDetail = () => {
     };
 
 
-
-
     return (
         <Container className="mt-4">
             <Row>
@@ -141,24 +139,24 @@ const CourseDetail = () => {
                             <img src={`https://toygantestbucket.s3.eu-central-1.amazonaws.com/${imageUrl}`} alt={course.title} className="img-fluid rounded mb-3" />
                             {videoUrl && (
                                 <div className="mt-3">
-                                    {/*<video*/}
-                                    {/*    ref={videoRef}*/}
-                                    {/*    width="100%"*/}
-                                    {/*    controls*/}
-                                    {/*    onPlay={() => setIsPlaying(true)}*/}
-                                    {/*    onPause={() => {*/}
-                                    {/*        setIsPlaying(false);*/}
-                                    {/*        localStorage.setItem(*/}
-                                    {/*            `videoTime_${courseId}`,*/}
-                                    {/*            videoRef.current.currentTime.toString()*/}
-                                    {/*        );*/}
-                                    {/*    }}*/}
-                                    {/*    onTimeUpdate={handleTimeUpdate}*/}
-                                    {/*>*/}
-                                    {/*    <source src={`https://toygantestbucket.s3.eu-central-1.amazonaws.com/${videoUrl}`} type="video/mp4" />*/}
+                                    <video
+                                        ref={videoRef}
+                                        width="100%"
+                                        controls
+                                        onPlay={() => setIsPlaying(true)}
+                                        onPause={() => {
+                                            setIsPlaying(false);
+                                            localStorage.setItem(
+                                                `videoTime_${courseId}`,
+                                                videoRef.current.currentTime.toString()
+                                            );
+                                        }}
+                                        onTimeUpdate={handleTimeUpdate}
+                                    >
+                                        <source src={`https://toygantestbucket.s3.eu-central-1.amazonaws.com/${videoUrl}`} type="video/mp4" />
 
-                                    {/*    Your browser does not support the video tag.*/}
-                                    {/*</video>*/}
+                                        Your browser does not support the video tag.
+                                    </video>
 
 
                                     <div className="d-flex justify-content-between align-items-center mt-3">
@@ -209,4 +207,4 @@ const CourseDetail = () => {
 
 
 };
-export default CourseDetail;
+export default MyCourseDetail;

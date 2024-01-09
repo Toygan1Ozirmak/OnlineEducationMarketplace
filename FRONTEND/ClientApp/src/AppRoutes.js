@@ -11,6 +11,7 @@ import CourseDetail from "./components/CourseDetail/CourseDetail";
 import UIUXPage from "./components/Categories/UI-UX/UI-UX";
 import SoftwareTestingPage from "./components/Categories/SoftwareTesting/SoftwareTesting";
 import MyCourses from "./components/MyCourses/MyCourses";
+import MyCourseDetail from "./components/MyCourseDetail/MyCourseDetail";
 
 const PrivateRouteHomePage = () => {
     const navigate = useNavigate();
@@ -124,6 +125,20 @@ const PrivateRouteMyCourses = () => {
     return authenticated ? <MyCourses /> : null;
 }
 
+const PrivateRouteMyCourseDetail = () => {
+    const navigate = useNavigate();
+    const [authenticated, setAuthenticated] = useState(isAuthenticated());
+
+    useEffect(() => {
+        if (!authenticated) {
+            // Kullanýcý authenticated deðilse, login sayfasýna yönlendir
+            navigate('/');
+        }
+    }, [authenticated, navigate]);
+
+    return authenticated ? <MyCourseDetail /> : null;
+}
+
 const AppRoutes = [
     {
         path: "/",
@@ -175,7 +190,12 @@ const AppRoutes = [
     {
         path: '/mycourses',
         element: <PrivateRouteMyCourses />
-    }
+    },
+    {
+        path: "/mycourses/:courseId",
+        index: true,
+        element: <MyCourseDetail />,
+    },
 ];
 
 export default AppRoutes;

@@ -29,7 +29,7 @@ const MyCourses = () => {
 
                                     {/* Other course information */}
                                 </div>
-                                <Button onClick={() => navigate(`/course/${course.courseId}`)} variant="danger">
+                                <Button onClick={() => navigate(`/mycourses/${course.courseId}`)} variant="danger">
                                     View Details
                                 </Button>
                             </div>

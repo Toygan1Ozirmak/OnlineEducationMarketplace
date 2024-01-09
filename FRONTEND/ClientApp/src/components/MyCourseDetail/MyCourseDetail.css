@@ -1,0 +1,128 @@
+﻿/* Update existing styles */
+
+/* Kurs detayları bölümü */
+.course-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Tüm sayfadaki yazıları gri yap */
+body {
+    color: #555;
+}
+
+/* Başlıkları kalın yap */
+h1, h2 {
+    font-weight: bold;
+}
+
+/* Kartlara kırmızı çerçeve ekle */
+.course-details {
+    border: 2px solid red; /* Çerçevenin kalınlığını ayarlayın */
+}
+
+.review-card {
+    border: 2px solid red;
+}
+
+/* Fotoğraf bölümü */
+.course-image-container {
+    flex: 0 0 40%; /* Adjust the width as needed */
+}
+
+.course-image {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Kurs bilgileri kartı */
+.course-details-card {
+    flex: 0 0 50%; /* Adjust the width as needed */
+    margin-left: 20px; /* Add space between the photo and course details */
+    margin-bottom: 20px; /* Add space between the photo and review section */
+}
+
+.course-details {
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 60px;
+}
+
+    .course-details h1 {
+        font-size: 36px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+        font-family: 'Jakarta Plus', sans-serif;
+        background-color: #f7f7f7;
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    .course-details p {
+        font-size: 18px;
+        line-height: 1.5;
+        margin-bottom: 32px;
+        color: #555;
+    }
+
+        .course-details p span {
+            color: #c00;
+            font-weight: bold;
+        }
+
+.add-to-basket button {
+    background-color: #d9534f; /* Bootstrap's danger color */
+    color: #fff; /* White text */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .add-to-basket button:hover {
+        background-color: #c9302c; /* Darker shade on hover */
+    }
+
+/* Yorum kartı */
+.review-card-container {
+    flex: 1 0 100%; /* Genişliği tüm kullanılabilir alanı kaplayacak şekilde ayarla */
+    display: flex; /* Yorum kartını da flex-box yap */
+    justify-content: center; /* Review kartını yatay olarak ortala */
+}
+
+.review-card {
+    width: 100%;
+    max-width: 600px;
+    border: 2px solid red; /* Kırmızı çerçeve ekle */
+    margin-bottom: 40px;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f0f0f0; /* Gri arka plan */
+    color: #000; /* Beyaz yazı rengi */
+}
+
+    .review-card h2 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .review-card .star-rating {
+        margin-bottom: 20px;
+    }
+
+    .review-card .author-name {
+        margin-bottom: 10px;
+    }
+
+    .review-card .date {
+        font-size: 16px;
+        color: #999;
+    }

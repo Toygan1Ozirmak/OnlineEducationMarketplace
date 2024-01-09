@@ -1,9 +1,13 @@
 ﻿import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import './Basket.css';
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 const Basket = ({ location }) => {
     const { state } = location || {};
-    const { selectedCourses } = state || [];
+    const { selectedCourses } = state || {};
+    const navigate = useNavigate();
 
     const [courses, setCourses] = useState([]);
 
@@ -32,6 +36,47 @@ const Basket = ({ location }) => {
         }
     };
 
+    const handleCompleteOrder = () => {
+        try {
+            // Ödeme işlemleri burada gerçekleştirilebilir
+            console.log("Payment details:", cardInfo);
+
+            // Kursları "myCourses" olarak adlandırılan bir anahtar altında localStorage'de kaydet
+            const myCourses = localStorage.getItem("myCourses") || "[]";
+            const myCoursesArray = JSON.parse(myCourses);
+
+            // Ödeme yapılan kursları ekleyerek güncelle
+            courses.forEach(course => {
+                if (!myCoursesArray.some(item => item.courseId === course.courseId)) {
+                    myCoursesArray.push(course);
+                }
+            });
+
+            localStorage.setItem("myCourses", JSON.stringify(myCoursesArray));
+
+            // Ödeme tamamlandıktan sonra basket'i temizle
+            localStorage.removeItem("basket");
+            setCourses([]);
+
+            alert("Order completed!");
+            navigate("/mycourses");
+        } catch (error) {
+            console.error("Error completing order:", error);
+        }
+    };
+
+    const [cardInfo, setCardInfo] = useState({
+        cardNumber: "",
+        cardHolder: "",
+        expiryDate: "",
+        cvv: "",
+    });
+
+    const handleChange = (e) => {
+        const { id, value } = e.target;
+        setCardInfo({ ...cardInfo, [id]: value });
+    };
+
     return (
         <div className="basketPage">
             <div className="basketContent">
@@ -51,6 +96,58 @@ const Basket = ({ location }) => {
                             </div>
                         </div>
                     ))}
+                </div>
+                {/* Payment form */}
+                <div className="payment-container">
+                    <div className="payment-body">
+                        <h2 className="payment-title">Enter Your Payment Details</h2>
+                        <Form>
+                            <Form.Group className="mb-4" controlId="cardNumber">
+                                <Form.Label>Card Number</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    value={cardInfo.cardNumber}
+                                    onChange={handleChange}
+                                    placeholder="Enter your card number"
+                                />
+                            </Form.Group>
+
+                            <Form.Group className="mb-4" controlId="cardHolder">
+                                <Form.Label>Card Holder</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    value={cardInfo.cardHolder}
+                                    onChange={handleChange}
+                                    placeholder="Enter the card holder's name"
+                                />
+                            </Form.Group>
+
+                            <Form.Group className="mb-4" controlId="expiryDate">
+                                <Form.Label>Expiry Date</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    value={cardInfo.expiryDate}
+                                    onChange={handleChange}
+                                    placeholder="MM/YYYY"
+                                />
+                            </Form.Group>
+
+                            <Form.Group className="mb-4" controlId="cvv">
+                                <Form.Label>CVV</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    value={cardInfo.cvv}
+                                    onChange={handleChange}
+                                    placeholder="Enter the CVV"
+                                />
+                            </Form.Group>
+                        </Form>
+                    </div>
+                </div>
+                <div className="completeOrderButton">
+                    <Button variant="danger" onClick={handleCompleteOrder}>
+                        Complete Order
+                    </Button>
                 </div>
             </div>
         </div>

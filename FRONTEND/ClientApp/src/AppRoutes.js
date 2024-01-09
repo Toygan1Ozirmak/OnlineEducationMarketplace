@@ -10,7 +10,7 @@ import MachineLearningPage from "./components/Categories/MachineLearning/Machine
 import CourseDetail from "./components/CourseDetail/CourseDetail";
 import UIUXPage from "./components/Categories/UI-UX/UI-UX";
 import SoftwareTestingPage from "./components/Categories/SoftwareTesting/SoftwareTesting";
-import PaymentPage from "./components/PaymentPage/PaymentPage";
+import MyCourses from "./components/MyCourses/MyCourses";
 
 const PrivateRouteHomePage = () => {
     const navigate = useNavigate();
@@ -110,7 +110,7 @@ const PrivateRouteBasket = () => {
     return authenticated ? <Basket /> : null;
 }
 
-const PrivateRoutePaymentPage = () => {
+const PrivateRouteMyCourses = () => {
     const navigate = useNavigate();
     const [authenticated, setAuthenticated] = useState(isAuthenticated());
 
@@ -121,7 +121,7 @@ const PrivateRoutePaymentPage = () => {
         }
     }, [authenticated, navigate]);
 
-    return authenticated ? <PaymentPage /> : null;
+    return authenticated ? <MyCourses /> : null;
 }
 
 const AppRoutes = [
@@ -173,8 +173,8 @@ const AppRoutes = [
         element: <PrivateRouteBasket />
     },
     {
-        path: '/payment',
-        element: <PrivateRoutePaymentPage />
+        path: '/mycourses',
+        element: <PrivateRouteMyCourses />
     }
 ];
 

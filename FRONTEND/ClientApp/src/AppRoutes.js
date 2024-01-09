@@ -10,6 +10,7 @@ import MachineLearningPage from "./components/Categories/MachineLearning/Machine
 import CourseDetail from "./components/CourseDetail/CourseDetail";
 import UIUXPage from "./components/Categories/UI-UX/UI-UX";
 import SoftwareTestingPage from "./components/Categories/SoftwareTesting/SoftwareTesting";
+import PaymentPage from "./components/PaymentPage/PaymentPage";
 
 const PrivateRouteHomePage = () => {
     const navigate = useNavigate();
@@ -109,6 +110,20 @@ const PrivateRouteBasket = () => {
     return authenticated ? <Basket /> : null;
 }
 
+const PrivateRoutePaymentPage = () => {
+    const navigate = useNavigate();
+    const [authenticated, setAuthenticated] = useState(isAuthenticated());
+
+    useEffect(() => {
+        if (!authenticated) {
+            // Kullanýcý authenticated deðilse, login sayfasýna yönlendir
+            navigate('/');
+        }
+    }, [authenticated, navigate]);
+
+    return authenticated ? <PaymentPage /> : null;
+}
+
 const AppRoutes = [
     {
         path: "/",
@@ -156,6 +171,10 @@ const AppRoutes = [
     {
         path: '/basket',
         element: <PrivateRouteBasket />
+    },
+    {
+        path: '/payment',
+        element: <PrivateRoutePaymentPage />
     }
 ];
 

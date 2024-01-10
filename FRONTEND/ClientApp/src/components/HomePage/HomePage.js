@@ -18,6 +18,12 @@ const HomePage = () => {
         navigate("/shop/ui-ux");
     };
 
+    const iconStyle = {
+        width: "50px", // Adjust the size as needed
+        height: "50px",
+        marginRight: "10px", // Add some space between the icon and text
+    };
+
     return (
         <Container fluid className="mt-4" style={{ backgroundColor: "#f2f2f2", minHeight: "90vh" }}>
             <Card bg="light" text="dark">
@@ -56,32 +62,33 @@ const HomePage = () => {
                         </Col>
                     </Row>
 
-                    <Row className="mt-4">
-                        <Col md={4}>
-                            <Card bg="danger" text="white" className="mb-3">
-                                <Card.Body>
-                                    <h2 className="card-title">10+</h2>
-                                    <p className="card-text">Years Experience</p>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col md={4}>
-                            <Card bg="danger" text="white" className="mb-3">
-                                <Card.Body>
-                                    <h2 className="card-title">29+</h2>
-                                    <p className="card-text">Total Courses</p>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col md={4}>
-                            <Card bg="danger" text="white" className="mb-3">
-                                <Card.Body>
-                                    <h2 className="card-title">50K+</h2>
-                                    <p className="card-text">Student Active</p>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    </Row>
+                    <div className="text-center mt-4">
+                        {/*<h2 className="text-danger mb-4">Explore Our Categories - Your Path to Success</h2>*/}
+                        <Row className="mt-3">
+                            <Col md={4}>
+                                <Card style={{ backgroundColor: "#001f3f", color: "#ccc" }} className="mb-3 custom-card">
+                                    <Card.Body>
+                                        <h2 className="card-title custom-card-title">10+ Years Experience</h2>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                            <Col md={4}>
+                                <Card style={{ backgroundColor: "#001f3f", color: "#ccc" }} className="mb-3 custom-card">
+                                    <Card.Body>
+                                        <h2 className="card-title custom-card-title">29+ Total Courses</h2>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                            <Col md={4}>
+                                <Card style={{ backgroundColor: "#001f3f", color: "#ccc" }} className="mb-3 custom-card">
+                                    <Card.Body>
+                                        <h2 className="card-title custom-card-title">50K+ Student Active</h2>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        </Row>
+                    </div>
+                    
                 </Card.Body>
             </Card>
 
@@ -89,9 +96,10 @@ const HomePage = () => {
                 <h2 className="text-danger mb-4">Explore Our Categories - Your Path to Success</h2>
                 <Row className="mt-3">
                     <Col md={4}>
-                        <Card bg="danger" text="white" className="mb-3">
+                        <Card bg="white" text="gray" className="mb-3 custom-card">
                             <Card.Body>
-                                <h2 className="card-title">Machine Learning</h2>
+                                <img src="https://toygantestbucket.s3.eu-central-1.amazonaws.com/machine-learning_icon.png" alt="Machine Learning" style={iconStyle} />
+                                <h2 className="card-title custom-card-title">Machine Learning</h2>
                                 <Button
                                     variant="danger"
                                     size="lg"
@@ -105,9 +113,10 @@ const HomePage = () => {
                         </Card>
                     </Col>
                     <Col md={4}>
-                        <Card bg="danger" text="white" className="mb-3">
+                        <Card bg="white" text="gray" className="mb-3 custom-card">
                             <Card.Body>
-                                <h2 className="card-title">UI/UX</h2>
+                                <img src="https://toygantestbucket.s3.eu-central-1.amazonaws.com/ui-ux_icon.png" alt="UI/UX" style={iconStyle} />
+                                <h2 className="card-title custom-card-title">UI/UX</h2>
                                 <Button
                                     variant="danger"
                                     size="lg"
@@ -121,9 +130,10 @@ const HomePage = () => {
                         </Card>
                     </Col>
                     <Col md={4}>
-                        <Card bg="danger" text="white" className="mb-3">
+                        <Card bg="white" text="gray" className="mb-3 custom-card">
                             <Card.Body>
-                                <h2 className="card-title">Software Testing</h2>
+                                <img src="https://toygantestbucket.s3.eu-central-1.amazonaws.com/qa_icon.png" alt="Software Testing" style={iconStyle} />
+                                <h2 className="card-title custom-card-title">Software Testing</h2>
                                 <Button
                                     variant="danger"
                                     size="lg"

@@ -40,10 +40,10 @@ const Shop = () => {
         <div className="shop">
             <div className="shopcategoriesframe">
                 {/* Kategori seçenekleri */}
-                <div className="category"><Link to="/shop">All</Link></div>
-                <div className="category"><Link to="/shop/machine-learning">Machine Learning</Link></div>
-                <div className="category"><Link to="/shop/ui-ux">UI/UX</Link></div>
-                <div className="category"><Link to="/shop/software-testing">Software Testing</Link></div>
+                <div className="category" style={{ backgroundColor: "#001f3f" }}><Link to="/shop" style={{ color: "#ccc" }}>All</Link></div>
+                <div className="category" style={{ backgroundColor: "#001f3f" }}><Link to="/shop/machine-learning" style={{ color: "#ccc" }}>Machine Learning</Link></div>
+                <div className="category" style={{ backgroundColor: "#001f3f" }}><Link to="/shop/ui-ux" style={{ color: "#ccc" }}>UI/UX</Link></div>
+                <div className="category" style={{ backgroundColor: "#001f3f" }}><Link to="/shop/software-testing" style={{ color: "#ccc" }}>Software Testing</Link></div>
             </div>
 
             <div className="shopcourses">
@@ -58,12 +58,13 @@ const Shop = () => {
                             <Card.Title>{course.title}</Card.Title>
                             <Card.Text>{course.description}</Card.Text>
                             <Card.Text>{`Course Length: ${course.courseLength}`}</Card.Text>
-                            <Card.Text>{`Created Date: ${course.createdDate}`}</Card.Text>
                             <Card.Text>{`Status: ${course.courseStatus ? 'Active' : 'Inactive'}`}</Card.Text>
                             <Card.Text>{`Category ID: ${course.categoryId}`}</Card.Text>
-                            <Button onClick={() => navigate(`/course/${course.courseId}`)} variant="danger">
-                                View Details
-                            </Button>
+                            <div style={{ marginBottom: "10px" }}> {/* Adjust the margin as needed */}
+                                <Button onClick={() => navigate(`/course/${course.courseId}`)} variant="danger">
+                                    View Details
+                                </Button>
+                            </div>
                         </Card.Body>
                     </Card>
                 ))}

@@ -23,39 +23,74 @@ const LoginPage = () => {
     };
 
     const handleSigninClick = async () => {
-    try {
-        const response = await loginUser(formData);
+        try {
+            const response = await loginUser(formData);
 
-        if (response && response.token) {
-            // Token varsa
-            localStorage.setItem("isLoggedIn", "true");
-            console.log("Giriş Başarılı");
-            console.log(response.token);
-            
-            // Display success alert
+            if (response && response.token) {
+                // Token varsa
+                localStorage.setItem("isLoggedIn", "true");
+                console.log("Giriş Başarılı");
+                console.log(response.token);
+
+                // Display success alert with custom styles
+                Swal.fire({
+                    title: 'Login Successful!',
+                    text: 'You have successfully logged in.',
+                    icon: 'success',
+                    confirmButtonText: 'Continue',
+                    customClass: {
+                        popup: 'custom-popup',
+                        title: 'custom-title',
+                        content: 'custom-content',
+                        confirmButton: 'custom-confirm-button',
+                    },
+                });
+
+                // Navigate to homepage after successful login
+                navigate("/homepage");
+            } else {
+                console.error("Token not found in the response.");
+                setLoginError(true);
+
+                // Display error alert for unsuccessful login with custom styles
+                Swal.fire({
+                    title: 'Login Failed!',
+                    text: 'Invalid credentials. Please try again.',
+                    icon: 'error',
+                    confirmButtonText: 'OK',
+                    customClass: {
+                        popup: 'custom-popup',
+                        title: 'custom-title',
+                        content: 'custom-content',
+                        confirmButton: 'custom-confirm-button',
+                    },
+                });
+            }
+        } catch (error) {
+            console.error("Error during login:", error);
+
+            // Display error alert for any other login error with custom styles
             Swal.fire({
-                title: 'Login Successful!',
-                text: 'You have successfully logged in.',
-                icon: 'success',
-                confirmButtonText: 'Continue',
+                title: 'Login Error!',
+                text: 'An error occurred during login. Please try again later.',
+                icon: 'error',
+                confirmButtonText: 'OK',
+                customClass: {
+                    popup: 'custom-popup',
+                    title: 'custom-title',
+                    content: 'custom-content',
+                    confirmButton: 'custom-confirm-button',
+                },
             });
-
-            navigate("/homepage");
-        } else {
-            console.error("Token not found in the response.");
-            setLoginError(true);
         }
-    } catch (error) {
-        console.error("Error during login:", error);
-    }
-};
+    };
+
 
 
     const handleRegisterClick = () => {
         // /register sayfasına yönlendirme
         navigate("/register");
     };
-
 
     return (
         <div className="login-container">
@@ -87,9 +122,10 @@ const LoginPage = () => {
                         />
                     </Form.Group>
 
-                    <Button variant="danger" onClick={handleSigninClick} className="login-signin">
+                    <Button variant="secondary" onClick={handleSigninClick} className="login-signin">
                         Sign In
                     </Button>
+
 
                     <div className="register-link">
                         <p>Don't have an account?</p>

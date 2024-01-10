@@ -18,10 +18,14 @@ const MyCourseDetail = () => {
     const [imageUrl, setImageUrl] = useState(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
+    const [courseProgress, setCourseProgress] = useState({ [courseId]: 0 }); // Initialize progress for the current course
     const videoRef = useRef(null);
     const [updateProgress, setUpdateProgress] = useState(false);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [progressPercentage, setProgressPercentage] = useState(0);
+
+
 
 
     useEffect(() => {
@@ -36,7 +40,6 @@ const MyCourseDetail = () => {
                 setCourse(courseResponse);
                 setVideoUrl(videoResponse.videoUrl);
                 setImageUrl(imageResponse.imageUrl);
-
 
                 // Check if there's a saved time in localStorage
                 const savedTime = localStorage.getItem(`videoTime_${courseId}`);
@@ -58,6 +61,9 @@ const MyCourseDetail = () => {
                         videoRef.current.play();
                     });
                 }
+
+                // Set the duration based on the courseLength value
+                setDuration(courseResponse.courseLength || 1);
             } catch (error) {
                 console.error("Error fetching course or video:", error);
             }
@@ -67,19 +73,79 @@ const MyCourseDetail = () => {
     }, [courseId]);
 
 
+    const [duration, setDuration] = useState(0);
+    useEffect(() => {
+        const video = videoRef.current;
 
+        if (video) {
+            const handlePlayStateChange = () => {
+                if (video.paused) {
+                    console.log(`Course ${courseId} paused at:`, video.currentTime);
+                }
+            };
+
+            video.addEventListener('play', handlePlayStateChange);
+            video.addEventListener('pause', handlePlayStateChange);
+
+            // Cleanup function
+            return () => {
+                video.removeEventListener('play', handlePlayStateChange);
+                video.removeEventListener('pause', handlePlayStateChange);
+            };
+        }
+    }, [courseId, videoRef.current]);
+
+    useEffect(() => {
+        const video = videoRef.current;
+
+        if (video) {
+            video.addEventListener('loadedmetadata', () => {
+                const duration = video.duration;
+                setCourseProgress((prevProgress) => ({ ...prevProgress, [courseId]: video.currentTime }));
+                setDuration(duration);
+            });
+        }
+
+        return () => {
+            if (video) {
+                video.removeEventListener('loadedmetadata', () => { });
+            }
+        };
+    }, [courseId, videoRef.current, setCourseProgress, setDuration]);
+
+
+
+
+    useEffect(() => {
+        // Update progress in localStorage whenever it changes
+        localStorage.setItem(`courseProgress_${courseId}`, courseProgress[courseId].toString());
+    }, [courseProgress, courseId]);
 
 
     if (!course) {
         return <div>Loading...</div>;
     }
 
+
+
     const handleTimeUpdate = () => {
         const video = videoRef.current;
         if (video && isPlaying) {
-            setCurrentTime(video.currentTime);
+            const percentage = (video.currentTime / duration) * 100;
+            setProgressPercentage(percentage);
+
+            // Calculate the ratio of watched time to total duration
+            const watchedRatio = video.currentTime / duration;
+            console.log(`Watched ratio for Course ${courseId}:`, watchedRatio);
+
+            // Update progress for the current course
+            setCourseProgress((prevProgress) => ({ ...prevProgress, [courseId]: watchedRatio }));
         }
     };
+
+
+
+
 
     const handlePlayPause = () => {
         const video = videoRef.current;
@@ -92,9 +158,12 @@ const MyCourseDetail = () => {
                 setIsPlaying(false);
                 // Save the current time when the video is paused
                 localStorage.setItem(`videoTime_${courseId}`, video.currentTime.toString());
+                // Log the video's current time when paused
+                console.log(`Course ${courseId} paused at:`, video.currentTime);
             }
         }
     };
+
 
 
 
@@ -130,6 +199,7 @@ const MyCourseDetail = () => {
     };
 
 
+
     return (
         <Container className="mt-4">
             <Row>
@@ -152,6 +222,11 @@ const MyCourseDetail = () => {
                                             );
                                         }}
                                         onTimeUpdate={handleTimeUpdate}
+                                        onLoadedMetadata={() => {
+                                            const duration = videoRef.current.duration;
+                                            setCourseProgress((prevProgress) => ({ ...prevProgress, [courseId]: videoRef.current.currentTime }));
+                                            setDuration(duration);
+                                        }}
                                     >
                                         <source src={`https://toygantestbucket.s3.eu-central-1.amazonaws.com/${videoUrl}`} type="video/mp4" />
 
@@ -161,10 +236,11 @@ const MyCourseDetail = () => {
 
                                     <div className="d-flex justify-content-between align-items-center mt-3">
                                         <Progress
-                                            max={videoRef.current && videoRef.current.duration}
-                                            value={currentTime}
+                                            max={100}
+                                            value={progressPercentage}
                                             className="w-75"
                                         ></Progress>
+
                                     </div>
                                 </div>
                             )}
@@ -204,7 +280,6 @@ const MyCourseDetail = () => {
             </Row>
         </Container>
     );
-
 
 };
 export default MyCourseDetail;

@@ -56,7 +56,7 @@ const CourseDetail = () => {
                     //    }
                     //    // Start playing the video
                     //    videoRef.current.play();
-                //    }/*);*/
+                    //    }/*);*/
                 }
             } catch (error) {
                 console.error("Error fetching course or video:", error);
@@ -136,9 +136,13 @@ const CourseDetail = () => {
         <Container className="mt-4">
             <Row>
                 <Col lg="6" className="d-flex">
-                    <Card className="course-card flex-grow-1">
+                    <Card className="course-card flex-grow-1 h-100"> {/* Added h-100 class */}
                         <div className="course-image-container">
-                            <img src={`https://toygantestbucket.s3.eu-central-1.amazonaws.com/${imageUrl}`} alt={course.title} className="img-fluid rounded mb-3" />
+                            <img
+                                src={`https://toygantestbucket.s3.eu-central-1.amazonaws.com/${imageUrl}`}
+                                alt={course.title}
+                                className="img-fluid rounded mb-3 h-100"
+                            />
                             {videoUrl && (
                                 <div className="mt-3">
                                     {/*<video*/}
@@ -174,13 +178,12 @@ const CourseDetail = () => {
                     </Card>
                 </Col>
                 <Col lg="6" className="d-flex">
-                    <Card className="course-details-card flex-grow-1 p-4 d-flex flex-column justify-content-between">
+                    <Card className="course-details-card flex-grow-1 p-4 d-flex flex-column justify-content-between h-100"> {/* Added h-100 class */}
                         <div className="course-details">
                             <h1 className="display-4 mb-3">{course.title}</h1>
                             <p className="lead">{course.description}</p>
                             <div className="text-muted">
                                 <p>{`Course Length: ${course.courseLength}`}</p>
-                                <p>{`Created Date: ${course.createdDate}`}</p>
                                 <p>{`Status: ${course.courseStatus ? 'Active' : 'Inactive'}`}</p>
                             </div>
                         </div>
@@ -206,7 +209,6 @@ const CourseDetail = () => {
             </Row>
         </Container>
     );
-
-
 };
+
 export default CourseDetail;

@@ -505,3 +505,16 @@
     color: #fff;
     font-family: Newsreader;
 }
+
+.custom-card {
+    background-color: #001f3f; /* Dark blue */
+    color: white;
+    border: 1px solid #ddd;
+    // Add more styles as needed
+}
+
+.custom-card-title {
+    font-size: 24px;
+    // Add more styles as needed
+}
+

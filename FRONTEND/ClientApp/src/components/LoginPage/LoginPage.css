@@ -107,6 +107,23 @@ body {
             text-decoration: none; /* Remove underline on hover */
         }
 
+/* Custom styles for SweetAlert2 */
+.swal2-popup {
+    background-color: white;
+    color: black;
+}
 
-        
+.swal2-title {
+    color: black;
+}
 
+.swal2-content {
+    color: black;
+}
+
+/* Kırmızı renk için SweetAlert2'nin kendi stil özellikleri */
+.swal2-confirm {
+    background-color: red !important;
+    color: white !important;
+    border-color: red !important; /* Ekstra: Kenarlık rengini de belirtmek için */
+}

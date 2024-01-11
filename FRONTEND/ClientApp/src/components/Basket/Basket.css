@@ -32,12 +32,13 @@
 
 .basketCourse {
     display: flex;
-    background-color: #fff;
-    border: 2px solid #f10000; /* Set border color to red */
+    background-color: #f5f5f5; /* Kart rengini gri yapabilirsiniz */
+    border: 2px solid transparent; /* Kırmızı çerçeveyi kaldırın */
     border-radius: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     margin-bottom: 20px; /* Add margin to separate courses */
+    height: 200px; /* Set a fixed height for all course cards */
 }
 
 .myBasket {
@@ -46,18 +47,28 @@
 
 .courseImage {
     flex: 1;
+    height: 100%; /* Set height to 100% for course image */
+    border-top-left-radius: 10px; /* Yuvarlak kenarlı çerçeve */
+    border-bottom-left-radius: 10px; /* Yuvarlak kenarlı çerçeve */
 }
 
     .courseImage img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        border-top-left-radius: 10px; /* Yuvarlak kenarlı çerçeve */
+        border-bottom-left-radius: 10px; /* Yuvarlak kenarlı çerçeve */
     }
 
 .courseInfo {
     flex: 1;
     padding: 10px;
     box-sizing: border-box;
+    height: 100%; /* Set height to 100% for course info */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Dikeyde ortala */
+    align-items: center; /* Yatayda ortala */
 }
 
     .courseInfo h1 {
@@ -74,9 +85,9 @@
         margin-top: 10px;
         font-size: 16px;
         color: grey; /* Change text color to grey */
-        border: 2px solid #f10000; /* Set border color to red */
+        border: 2px solid #f5f5f5; /* Set border color to grey */
         border-radius: 5px;
-        background-color: #fff;
+        background-color: #f5f5f5; /* Kart rengini gri yapabilirsiniz */
         cursor: pointer;
         padding: 5px 10px;
         transition: color 0.3s, background-color 0.3s;
@@ -92,6 +103,21 @@
     text-align: center;
 }
 
+    .toggle-payment-button button {
+        color: #f0f0f0; /* Yazı rengini gri yapın */
+        background-color: #001f3f; /* Arka plan rengini lacivert yapın */
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: color 0.3s, background-color 0.3s;
+    }
+
+        .toggle-payment-button button:hover {
+            color: #fff; /* Hover durumunda yazı rengini beyaz yapın */
+            background-color: #0074cc; /* Hover durumunda arka plan rengini değiştirin */
+        }
+
 :root {
     --payment-display: block; /* Varsayılan değeri "block" */
 }
@@ -99,15 +125,16 @@
 .payment-container {
     display: var(--payment-display);
     margin-top: 20px;
+    text-align: center;
 }
 
 .payment-body {
     width: 600px;
     padding: 20px;
-    border: 2px solid #f10000; /* Set border color to red */
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    background-color: #f5f5f5; /* Kart rengini gri yapabilirsiniz */
+    margin: 0 auto; /* Sayfayı ortala */
 }
 
 .payment-title {
@@ -124,8 +151,10 @@
 .form-control {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ced4da;
+    border: none; /* Kartın çerçevesini kaldırın */
     border-radius: 5px;
+    background-color: #fff; /* Arka plan rengini beyaz yapabilirsiniz */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Yumuşak gölge efekti ekleyebilirsiniz */
 }
 
 .completeOrderButton {

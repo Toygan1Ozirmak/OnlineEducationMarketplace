@@ -75,20 +75,6 @@ namespace OEMAP.Api.Controllers
             }
         }
 
-        //[Authorize]
-        //[HttpGet("logout")]
-        //public async Task<IActionResult> LogOut()
-        //{
-        //    string rawUserId = HttpContext.User.FindFirstValue("id");
-
-        //    if (!Guid.TryParse(rawUserId, out Guid userId))
-        //        return Unauthorized();
-
-        //    await _service.AuthenticationService.LogoutAsync(userId);
-
-        //    return Ok(new { Message = "Logout successful" });
-        //}
-
 
     }
 

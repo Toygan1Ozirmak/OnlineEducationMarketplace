@@ -58,34 +58,6 @@ export const loginUser = async (formData) => {
     });
 };
 
-//export const logoutUser = async () => {
-//    try {
-//        const xhr = new XMLHttpRequest();
-//        xhr.open("POST", `https://localhost:7280/api/authentication/logout`, true);
-//        xhr.setRequestHeader("Content-Type", "application/json");
-
-//        xhr.onreadystatechange = function () {
-//            if (xhr.readyState === 4) {
-//                if (xhr.status === 200) {
-//                    console.log("API Response:", xhr.responseText);
-//                    // Handle the response data if needed
-
-                    
-//                } else {
-//                    console.error("Logout Error:", xhr.statusText);
-//                    console.error("Error response:", xhr.responseText);
-//                    // Throw an error or handle the error in components
-//                }
-//            }
-//        };
-
-//        xhr.send();
-//    } catch (error) {
-//        console.error("Logout Error:", error);
-//        throw error;
-//    }
-//};
-
 export const getAllCourses = async () => {
     try {
         const response = await axios.get(`${BASE_URL}/api/courses/GetAllCourses`);
@@ -122,6 +94,19 @@ export const GetReviewsByCourseId = async (courseId) => {
     }
 };
 
+export const CreateReview = async (reviewDto) => {
+    try {
+        const response = await axios.post(`${BASE_URL}/api/reviews/Create`, reviewDto, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
 export const GetVideo = async (courseId) => {
     try {
         const response = await axios.get(`${BASE_URL}/api/S3/GetVideo/${courseId}`);
@@ -139,15 +124,3 @@ export const GetImage = async (courseId) => {
         throw error;
     }
 };
-
-
-
-
-//export const changePasswordUser = async (formData) => {
-//    try {
-//        const response = await axios.post(`${BASE_URL}/api/users/Create`, formData);
-//        return response.data; // Return the response data for further handling in components
-//    } catch (error) {
-//        throw error; // Throw an error to handle it in components
-//    }
-//};

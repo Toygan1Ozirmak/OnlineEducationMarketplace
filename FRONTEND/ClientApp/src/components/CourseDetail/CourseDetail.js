@@ -107,27 +107,43 @@ const CourseDetail = () => {
         const isCourseInBasket = existingBasketArray.some(item => item.courseId === courseId);
 
         if (isCourseInBasket) {
+            // Display an error alert if the course is already in the basket
             alert("This course is already in your basket!");
             console.log("Course not added to basket: Already exists");
-        } else {
-            try {
-                // Add the course to the basket
-                const updatedBasket = [...existingBasketArray, { courseId, courseName: course.title, courseImage: coverImage }];
-                localStorage.setItem(basketKey, JSON.stringify(updatedBasket));
+            return; // Hata durumu için fonksiyonu burada sonlandır
+        }
 
-                // Display alert after successful addition
-                alert("Course added to basket!");
-                console.log("Course added to basket:", updatedBasket);
+        // Check if the course is already in myCourses array
+        const myCourses = localStorage.getItem("myCourses") || "[]";
+        const myCoursesArray = JSON.parse(myCourses);
 
-                // Redirect to the basket page after successful addition
-                navigate("/basket", { state: { selectedCourses: updatedBasket } });
-            } catch (error) {
-                // Handle errors, e.g., display an error alert
-                alert("Error adding course to basket. Please try again.");
-                console.error("Error adding course to basket:", error);
-            }
+        const isCourseInMyCourses = myCoursesArray.some(item => item.courseId === courseId);
+
+        if (isCourseInMyCourses) {
+            // Display an error alert if the course is already in myCourses array
+            alert("This course is already in your courses!");
+            console.log("Course not added to basket: Already in myCourses");
+            return; // Hata durumu için fonksiyonu burada sonlandır
+        }
+
+        try {
+            // Add the course to the basket
+            const updatedBasket = [...existingBasketArray, { courseId, courseName: course.title, courseImage: coverImage }];
+            localStorage.setItem(basketKey, JSON.stringify(updatedBasket));
+
+            // Display alert after successful addition
+            alert("Course added to basket!");
+            console.log("Course added to basket:", updatedBasket);
+
+            // Redirect to the basket page after successful addition
+            navigate("/basket", { state: { selectedCourses: updatedBasket } });
+        } catch (error) {
+            // Handle errors, e.g., display an error alert
+            alert("Error adding course to basket. Please try again.");
+            console.error("Error adding course to basket:", error);
         }
     };
+
 
 
 

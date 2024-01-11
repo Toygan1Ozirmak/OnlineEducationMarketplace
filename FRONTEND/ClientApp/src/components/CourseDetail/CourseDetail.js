@@ -22,6 +22,10 @@ const CourseDetail = () => {
     const [updateProgress, setUpdateProgress] = useState(false);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [reviewInput, setReviewInput] = useState({
+        comment: '',
+        point: 0,
+    });
 
 
     useEffect(() => {
@@ -66,6 +70,28 @@ const CourseDetail = () => {
         fetchData();
     }, [courseId]);
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const [courseResponse, imageResponse] = await Promise.all([
+                    GetCourseByCourseId(courseId),
+                    GetImage(courseId)
+                ]);
+
+                setCourse(courseResponse);
+                setImageUrl(imageResponse.imageUrl);
+
+                const savedTime = localStorage.getItem(`videoTime_${courseId}`);
+                if (savedTime !== null) {
+                    // You can add your resume video logic here if needed
+                }
+            } catch (error) {
+                console.error("Error fetching course or video:", error);
+            }
+        };
+
+        fetchData();
+    }, [courseId]);
 
 
 
@@ -129,8 +155,50 @@ const CourseDetail = () => {
         }
     };
 
+    const handleReviewInputChange = (e) => {
+        const { name, value } = e.target;
+        setReviewInput((prevInput) => ({
+            ...prevInput,
+            [name]: value,
+        }));
+    };
 
-
+    const submitReview = async () => {
+        try {
+            // You might want to add validation here before submitting
+            await fetch('your_review_api_endpoint', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    courseId: courseId,
+                    comment: reviewInput.comment,
+                    point: reviewInput.point,
+                }),
+            });
+            // Optionally, you can refresh the reviews after submitting the new one
+            // refetchReviews();
+            // Clear the review input
+            setReviewInput({
+                comment: '',
+                point: 0,
+            });
+            // Display a success message or redirect to a thank you page
+            Swal.fire({
+                title: 'Review Submitted!',
+                icon: 'success',
+            });
+        } catch (error) {
+            console.error('Error submitting review:', error);
+            // Display an error message
+            Swal.fire({
+                title: 'Error',
+                text: 'An error occurred while submitting your review. Please try again.',
+                icon: 'error',
+            });
+        }
+    };
 
     return (
         <Container className="mt-4">

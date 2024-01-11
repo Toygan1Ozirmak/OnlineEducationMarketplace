@@ -6,6 +6,7 @@ import coverImage from '../../Uploads/cover.jpg';
 import Swal from 'sweetalert2';
 import { Container, Row, Col, Button, Progress, Card } from 'reactstrap';
 
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './CourseDetail.css';
 
@@ -41,22 +42,7 @@ const CourseDetail = () => {
                 // Check if there's a saved time in localStorage
                 const savedTime = localStorage.getItem(`videoTime_${courseId}`);
                 if (savedTime !== null) {
-                    // Display a prompt to resume from the saved time
-                    //Swal.fire({
-                    //    title: "Resume from where you left off?",
-                    //    showDenyButton: true,
-                    //    confirmButtonText: "Yes",
-                    //    denyButtonText: "No",
-                    //    confirmButtonColor: "green",
-                    //    denyButtonColor: "black",
-                    //}).then((result) => {
-                    //    if (result.isConfirmed) {
-                    //        // Set the current time of the video to the saved time
-                    //        videoRef.current.currentTime = parseFloat(savedTime);
-                    //    }
-                    //    // Start playing the video
-                    //    videoRef.current.play();
-                    //    }/*);*/
+                   
                 }
             } catch (error) {
                 console.error("Error fetching course or video:", error);
@@ -68,35 +54,11 @@ const CourseDetail = () => {
 
 
 
-
-
     if (!course) {
         return <div>Loading...</div>;
     }
 
-    //const handleTimeUpdate = () => {
-    //    const video = videoRef.current;
-    //    if (video && isPlaying) {
-    //        setCurrentTime(video.currentTime);
-    //    }
-    //};
-
-    //const handlePlayPause = () => {
-    //    const video = videoRef.current;
-    //    if (video) {
-    //        if (video.paused) {
-    //            video.play();
-    //            setIsPlaying(true);
-    //        } else {
-    //            video.pause();
-    //            setIsPlaying(false);
-    //            // Save the current time when the video is paused
-    //            localStorage.setItem(`videoTime_${courseId}`, video.currentTime.toString());
-    //        }
-    //    }
-    //};
-
-
+  
 
     const handleAddToBasket = () => {
         const basketKey = "basket";
@@ -108,7 +70,12 @@ const CourseDetail = () => {
 
         if (isCourseInBasket) {
             // Display an error alert if the course is already in the basket
-            alert("This course is already in your basket!");
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'This course is already in your basket!',
+                confirmButtonColor: '#d9534f',
+            });
             console.log("Course not added to basket: Already exists");
             return; // Hata durumu için fonksiyonu burada sonlandır
         }
@@ -121,7 +88,12 @@ const CourseDetail = () => {
 
         if (isCourseInMyCourses) {
             // Display an error alert if the course is already in myCourses array
-            alert("This course is already in your courses!");
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'This course is already in your courses!',
+                confirmButtonColor: '#d9534f',
+            });
             console.log("Course not added to basket: Already in myCourses");
             return; // Hata durumu için fonksiyonu burada sonlandır
         }
@@ -131,21 +103,28 @@ const CourseDetail = () => {
             const updatedBasket = [...existingBasketArray, { courseId, courseName: course.title, courseImage: coverImage }];
             localStorage.setItem(basketKey, JSON.stringify(updatedBasket));
 
-            // Display alert after successful addition
-            alert("Course added to basket!");
+            // Display success alert after successful addition
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'Course added to basket!',
+                confirmButtonColor: '#5bc0de',
+            });
             console.log("Course added to basket:", updatedBasket);
 
             // Redirect to the basket page after successful addition
             navigate("/basket", { state: { selectedCourses: updatedBasket } });
         } catch (error) {
             // Handle errors, e.g., display an error alert
-            alert("Error adding course to basket. Please try again.");
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Error adding course to basket. Please try again.',
+                confirmButtonColor: '#d9534f',
+            });
             console.error("Error adding course to basket:", error);
         }
     };
-
-
-
 
 
     return (
@@ -161,25 +140,7 @@ const CourseDetail = () => {
                             />
                             {videoUrl && (
                                 <div className="mt-3">
-                                    {/*<video*/}
-                                    {/*    ref={videoRef}*/}
-                                    {/*    width="100%"*/}
-                                    {/*    controls*/}
-                                    {/*    onPlay={() => setIsPlaying(true)}*/}
-                                    {/*    onPause={() => {*/}
-                                    {/*        setIsPlaying(false);*/}
-                                    {/*        localStorage.setItem(*/}
-                                    {/*            `videoTime_${courseId}`,*/}
-                                    {/*            videoRef.current.currentTime.toString()*/}
-                                    {/*        );*/}
-                                    {/*    }}*/}
-                                    {/*    onTimeUpdate={handleTimeUpdate}*/}
-                                    {/*>*/}
-                                    {/*    <source src={`https://toygantestbucket.s3.eu-central-1.amazonaws.com/${videoUrl}`} type="video/mp4" />*/}
-
-                                    {/*    Your browser does not support the video tag.*/}
-                                    {/*</video>*/}
-
+                                    
 
                                     <div className="d-flex justify-content-between align-items-center mt-3">
                                         <Progress

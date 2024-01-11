@@ -12,6 +12,12 @@ const Basket = ({ location }) => {
 
     const [courses, setCourses] = useState([]);
 
+    const [showPaymentForm, setShowPaymentForm] = useState(true);
+
+    const handleTogglePaymentForm = () => {
+        setShowPaymentForm(!showPaymentForm);
+    };
+
     useEffect(() => {
         const fetchBasketContent = async () => {
             try {
@@ -33,7 +39,10 @@ const Basket = ({ location }) => {
         };
 
         fetchBasketContent();
-    }, []); // Run only once when the component mounts
+        document.documentElement.style.setProperty('--payment-display', showPaymentForm ? 'block' : 'none');
+    }, [showPaymentForm]);  // Buradaki courses'u kaldırdım
+
+
 
     const handleRemoveFromBasket = (courseId) => {
         try {
@@ -105,6 +114,11 @@ const Basket = ({ location }) => {
                             </div>
                         </div>
                     ))}
+                </div>
+                <div className="toggle-payment-button">
+                    <Button variant="primary" onClick={handleTogglePaymentForm}>
+                        {showPaymentForm ? "Go to Payment" : "Back to Basket"}
+                    </Button>
                 </div>
                 {/* Payment form */}
                 <div className="payment-container">

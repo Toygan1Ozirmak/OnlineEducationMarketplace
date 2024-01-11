@@ -69,7 +69,7 @@ const MyCourses = () => {
                         <div key={index} className="mycourses">
                             <div className="basketCourse">
                                 <div className="courseImage">
-                                    <img src={course.courseImage} alt={course.courseName} />
+                                    <img src={`https://toygantestbucket.s3.eu-central-1.amazonaws.com/${course.imageUrl}`} alt={course.courseName} />
                                 </div>
                                 <div className="courseInfo">
                                     <p>{course.courseName}</p>

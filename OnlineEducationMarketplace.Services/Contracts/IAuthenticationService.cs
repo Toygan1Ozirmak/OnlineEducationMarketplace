@@ -16,6 +16,5 @@ namespace OnlineEducationMarketplace.Services.Contracts
 
         Task<string> CreateToken();
 
-        //Task LogoutAsync(Guid userId);
     }
 }

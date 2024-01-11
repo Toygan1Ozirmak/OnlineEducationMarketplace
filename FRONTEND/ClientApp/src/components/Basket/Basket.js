@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import './Basket.css';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { GetImage } from '../../apiServices';
 
 const Basket = ({ location }) => {
     const { state } = location || {};
@@ -12,12 +13,20 @@ const Basket = ({ location }) => {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
-        // Fetch basket content from localStorage
-        const fetchBasketContent = () => {
+        const fetchBasketContent = async () => {
             try {
                 const existingBasket = localStorage.getItem("basket");
                 const existingBasketArray = existingBasket ? JSON.parse(existingBasket) : [];
-                setCourses(existingBasketArray);
+
+                // Fetch image URLs for each course in the basket
+                const coursesWithImages = await Promise.all(
+                    existingBasketArray.map(async (course) => {
+                        const imageResponse = await GetImage(course.courseId);
+                        return { ...course, imageUrl: imageResponse.imageUrl };
+                    })
+                );
+
+                setCourses(coursesWithImages);
             } catch (error) {
                 console.error("Error fetching basket content:", error);
             }
@@ -86,7 +95,7 @@ const Basket = ({ location }) => {
                         <div key={index} className="myBasket">
                             <div className="basketCourse">
                                 <div className="courseImage">
-                                    <img src={course.courseImage} alt={course.courseName} />
+                                    <img src={`https://toygantestbucket.s3.eu-central-1.amazonaws.com/${course.imageUrl}`} alt={course.courseName} />
                                 </div>
                                 <div className="courseInfo">
                                     <p>{course.courseName}</p>

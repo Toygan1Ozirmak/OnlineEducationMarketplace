@@ -1,16 +1,15 @@
 ﻿import React, { useState, useEffect } from "react";
-import { GetCoursesByCategoryId } from '../../../apiServices';
-import Button from "@mui/material/Button";
+import { GetCoursesByCategoryId, GetImage } from '../../../apiServices';
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
-import coverImage from '../../../Uploads/cover.jpg';
-import "./SoftwareTesting.css"; 
+import "./SoftwareTesting.css";
 import MachineLearningPage from "../MachineLearning/MachineLearning";
 import UIUXPage from "../UI-UX/UI-UX";
 import CourseDetail from "../../CourseDetail/CourseDetail";
 import Shop from "../../Shop/Shop";
+import { Card, Button } from "react-bootstrap";
 
 const SoftwareTestingPage = ({ match }) => {
-    const categoryId = 3; // Belirli bir kategori ID'si
+    const categoryId = 3; // Belirli bir kategori ID'si, örneğin 1
     const [courses, setCourses] = useState([]);
     const navigate = useNavigate();
 
@@ -18,7 +17,16 @@ const SoftwareTestingPage = ({ match }) => {
         const fetchCoursesByCategory = async () => {
             try {
                 const response = await GetCoursesByCategoryId(categoryId);
-                setCourses(response);
+
+                // Fetch image URLs for each course
+                const coursesWithImages = await Promise.all(
+                    response.map(async (course) => {
+                        const imageResponse = await GetImage(course.courseId);
+                        return { ...course, imageUrl: imageResponse.imageUrl };
+                    })
+                );
+
+                setCourses(coursesWithImages);
             } catch (error) {
                 console.error('Error fetching courses by category:', error);
             }
@@ -29,25 +37,41 @@ const SoftwareTestingPage = ({ match }) => {
 
     return (
         <div className="software-testing-page">
-            <div className="category"><Link to="/shop">All</Link></div>
-            <div className="category"><Link to="/shop/machine-learning">Machine Learning</Link></div>
-            <div className="category"><Link to="/shop/ui-ux">UI/UX</Link></div>
+            <div className="category" style={{ backgroundColor: "#001f3f" }} ><Link to="/shop" style={{ color: "#ccc" }} >All</Link></div>
+            <div className="category" style={{ backgroundColor: "#001f3f" }} ><Link to="/shop/machine-learning" style={{ color: "#ccc" }} >Machine Learning</Link></div>
+            <div className="category" style={{ backgroundColor: "#001f3f" }} ><Link to="/shop/ui-ux" style={{ color: "#ccc" }} >UI/UX</Link></div>
+            <div style={{ textAlign: 'left' }}>
+                <img
+                    src="https://toygantestbucket.s3.eu-central-1.amazonaws.com/qa_icon.png"
+                    alt="Software Testing Icon"
+                    style={{ width: "250px", height: "200px" }}
+                />
+            </div>
+
             <h1>Software Testing Courses</h1>
+
             <div className="software-testing-courses">
                 {courses.map(course => (
                     <div key={course.courseId} className="course-card">
-                        <img src={coverImage} alt={course.title} className="course-image" />
-                        <div className="course-details">
-                            <h3>{course.title}</h3>
-                            <p>{course.description}</p>
-                            <p>{`Course Length: ${course.courseLength}`}</p>
-                            <p>{`Created Date: ${course.createdDate}`}</p>
-                            <p>{`Status: ${course.courseStatus ? 'Active' : 'Inactive'}`}</p>
-                            <p>{`Category ID: ${course.categoryId}`}</p>
-                            <Button onClick={() => navigate(`/course/${course.courseId}`)} variant="contained">
-                                View Details
-                            </Button>
-                        </div>
+                        <img
+                            src={`https://toygantestbucket.s3.eu-central-1.amazonaws.com/${course.imageUrl}`}
+                            alt={course.title}
+                            className="course-image"
+                        />
+                        <Card.Body>
+                            <Card.Title>{course.title}</Card.Title>
+                            <Card.Text>{course.description}</Card.Text>
+                            <Card.Text>{`Course Length: ${course.courseLength}`}</Card.Text>
+                            <Card.Text>{`Created Date: ${course.createdDate}`}</Card.Text>
+                            <Card.Text>{`Status: ${course.courseStatus ? 'Active' : 'Inactive'}`}</Card.Text>
+                            <Card.Text>{`Category ID: ${course.categoryId}`}</Card.Text>
+                            <div style={{ marginBottom: "10px" }}> {/* Adjust the margin as needed */}
+                                <Button onClick={() => navigate(`/course/${course.courseId}`)} variant="danger">
+                                    View Details
+                                </Button>
+                            </div>
+                        </Card.Body>
+
                     </div>
                 ))}
             </div>

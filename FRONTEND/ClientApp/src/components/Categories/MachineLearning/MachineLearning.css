@@ -3,9 +3,19 @@
 }
 
 .category {
-    display: inline-block; /* Kategori butonlarını yan yana yerleştir */
-    margin-right: 10px; /* Butonlar arasında bir miktar boşluk bırak */
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px 16px;
+    background-color: #001f3f;
+    color: #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
+
+    .category:hover {
+        background-color: #555;
+    }
 
 .machine-learning-courses {
     display: grid;
@@ -14,11 +24,14 @@
 }
 
 .course-card {
-    border: 1px solid #ddd;
+    border: 2px solid #ccc; /* Çerçeve gri renkte */
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
+    width: 300px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    background-color: #fff; /* Beyaz arka plan */
+    text-align: center;
 }
 
     .course-card:hover {
@@ -27,14 +40,44 @@
 
 .course-image {
     width: 100%;
-    height: 200px;
+    height: 400px;
     object-fit: cover;
-    border-bottom: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    margin-bottom: 40px;
 }
 
 .course-details {
     padding: 15px;
 }
+
+    .course-details h3 {
+        margin-bottom: 8px;
+        font-size: 18px;
+        color: #333;
+    }
+
+    .course-details p {
+        margin-bottom: 8px;
+        font-size: 14px;
+        color: #777;
+    }
+
+    .course-details button {
+        background-color: #e91c1c;
+        color: #fff;
+        border: 2px solid #e91c1c;
+        border-radius: 6px;
+        padding: 10px 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        
+    }
+
+        .course-details button:hover {
+            background-color: #333;
+        }
 
 h1 {
     color: #666;
@@ -58,12 +101,3 @@ p {
     .button-container button {
         margin-top: 10px;
     }
-.course-image {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-    margin-bottom: 40px;
-}

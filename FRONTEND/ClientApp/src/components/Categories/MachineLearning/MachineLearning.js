@@ -1,6 +1,5 @@
 ﻿import React, { useState, useEffect } from "react";
-import { GetCoursesByCategoryId } from '../../../apiServices';
-import Button from "@mui/material/Button";
+import { GetCoursesByCategoryId, GetImage } from '../../../apiServices';
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import coverImage from '../../../Uploads/cover.jpg';
 import "./MachineLearning.css"; 
@@ -8,6 +7,7 @@ import  SoftwareTestingPage from "../SoftwareTesting/SoftwareTesting";
 import  UIUXPage  from "../UI-UX/UI-UX";
 import CourseDetail from "../../CourseDetail/CourseDetail";
 import Shop from "../../Shop/Shop";
+import { Card, Button } from "react-bootstrap";
 
 
 const MachineLearningPage = ({ match }) => {
@@ -19,7 +19,16 @@ const MachineLearningPage = ({ match }) => {
         const fetchCoursesByCategory = async () => {
             try {
                 const response = await GetCoursesByCategoryId(categoryId);
-                setCourses(response);
+
+                // Fetch image URLs for each course
+                const coursesWithImages = await Promise.all(
+                    response.map(async (course) => {
+                        const imageResponse = await GetImage(course.courseId);
+                        return { ...course, imageUrl: imageResponse.imageUrl };
+                    })
+                );
+
+                setCourses(coursesWithImages);
             } catch (error) {
                 console.error('Error fetching courses by category:', error);
             }
@@ -30,27 +39,42 @@ const MachineLearningPage = ({ match }) => {
 
     return (
         <div className="machine-learning-page">
-            <div className="category"><Link to="/shop">All</Link></div>
-            <div className="category"><Link to="/shop/ui-ux">UI/UX</Link></div>
-            <div className="category"><Link to="/shop/software-testing">Software Testing</Link></div>
+            <div className="category" style={{ backgroundColor: "#001f3f" }} ><Link to="/shop" style={{ color: "#ccc" }} >All</Link></div>
+            <div className="category" style={{ backgroundColor: "#001f3f" }} ><Link to="/shop/ui-ux" style={{ color: "#ccc" }} >UI/UX</Link></div>
+            <div className="category" style={{ backgroundColor: "#001f3f" }} ><Link to="/shop/software-testing" style={{ color: "#ccc" }} >Software Testing</Link></div>
+            <div style={{ textAlign: 'left' }}>
+                <img
+                    src="https://toygantestbucket.s3.eu-central-1.amazonaws.com/machine-learning_icon.png"
+                    alt="Machine Learning Icon"
+                    style={{ width: "200px", height: "200px" }}
+                />
+            </div>
 
             <h1>Machine Learning Courses</h1>
+            
 
             <div className="machine-learning-courses">
                 {courses.map(course => (
                     <div key={course.courseId} className="course-card">
-                        <img src={coverImage} alt={course.title} className="course-image" />
-                        <div className="course-details">
-                            <h3>{course.title}</h3>
-                            <p>{course.description}</p>
-                            <p>{`Course Length: ${course.courseLength}`}</p>
-                            <p>{`Created Date: ${course.createdDate}`}</p>
-                            <p>{`Status: ${course.courseStatus ? 'Active' : 'Inactive'}`}</p>
-                            <p>{`Category ID: ${course.categoryId}`}</p>
-                            <Button onClick={() => navigate(`/course/${course.courseId}`)} variant="contained">
+                        <img
+                            src={`https://toygantestbucket.s3.eu-central-1.amazonaws.com/${course.imageUrl}`}
+                            alt={course.title}
+                            className="course-image"
+                        />
+                        <Card.Body>
+                            <Card.Title>{course.title}</Card.Title>
+                            <Card.Text>{course.description}</Card.Text>
+                            <Card.Text>{`Course Length: ${course.courseLength}`}</Card.Text>
+                            <Card.Text>{`Created Date: ${course.createdDate}`}</Card.Text>
+                            <Card.Text>{`Status: ${course.courseStatus ? 'Active' : 'Inactive'}`}</Card.Text>
+                            <Card.Text>{`Category ID: ${course.categoryId}`}</Card.Text>
+                            <div style={{ marginBottom: "10px" }}> {/* Adjust the margin as needed */}
+                            <Button onClick={() => navigate(`/course/${course.courseId}`)} variant="danger">
                                 View Details
-                            </Button>
-                        </div>
+                                </Button>
+                            </div>
+                        </Card.Body>
+                        
                     </div>
                 ))}
             </div>

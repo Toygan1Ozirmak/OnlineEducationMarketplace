@@ -130,18 +130,22 @@ const CourseDetail = () => {
     return (
         <Container className="mt-4">
             <Row>
-                <Col lg="6" className="d-flex">
-                    <Card className="course-card flex-grow-1 h-100"> {/* Added h-100 class */}
+                <Col lg="8" className="d-flex">
+                    <Card className="course-card flex-grow-1 h-100">
                         <div className="course-image-container">
                             <img
                                 src={`https://toygantestbucket.s3.eu-central-1.amazonaws.com/${imageUrl}`}
                                 alt={course.title}
                                 className="img-fluid rounded mb-3 h-100"
+                                style={{
+                                    objectFit: 'cover',
+                                    width: '100%',
+                                    height: '100%',
+                                    objectPosition: '50% 0%', // Centered horizontally, aligned to the top vertically
+                                }}
                             />
                             {videoUrl && (
                                 <div className="mt-3">
-                                    
-
                                     <div className="d-flex justify-content-between align-items-center mt-3">
                                         <Progress
                                             max={videoRef.current && videoRef.current.duration}
@@ -154,8 +158,8 @@ const CourseDetail = () => {
                         </div>
                     </Card>
                 </Col>
-                <Col lg="6" className="d-flex">
-                    <Card className="course-details-card flex-grow-1 p-4 d-flex flex-column justify-content-between h-100"> {/* Added h-100 class */}
+                <Col lg="4" className="d-flex">
+                    <Card className="course-details-card flex-grow-1 p-4 d-flex flex-column justify-content-between h-100">
                         <div className="course-details">
                             <h1 className="display-4 mb-3">{course.title}</h1>
                             <p className="lead">{course.description}</p>
@@ -165,11 +169,7 @@ const CourseDetail = () => {
                             </div>
                         </div>
                         <div className="add-to-basket mt-3">
-                            <Button
-                                onClick={handleAddToBasket}
-                                color="danger"
-                                block
-                            >
+                            <Button onClick={handleAddToBasket} color="primary" block>
                                 Add to Basket
                             </Button>
                         </div>
@@ -179,7 +179,6 @@ const CourseDetail = () => {
             <Row className="mt-4">
                 <Col lg="12">
                     <Card className="review-card-container p-4">
-                        <h2 className="mb-4">Student Reviews</h2>
                         <Reviews courseId={courseId} />
                     </Card>
                 </Col>

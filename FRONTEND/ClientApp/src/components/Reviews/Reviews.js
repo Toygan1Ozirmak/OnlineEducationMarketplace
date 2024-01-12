@@ -1,5 +1,4 @@
-﻿// Reviews.jsx
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import { GetReviewsByCourseId } from '../../apiServices';
 
 const Reviews = ({ courseId }) => {

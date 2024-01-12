@@ -258,15 +258,7 @@ const MyCourseDetail = () => {
                                 <p>{`Status: ${course.courseStatus ? 'Active' : 'Inactive'}`}</p>
                             </div>
                         </div>
-                        <div className="add-to-basket mt-3">
-                            <Button
-                                onClick={handleAddToBasket}
-                                color="danger"
-                                block
-                            >
-                                Add to Basket
-                            </Button>
-                        </div>
+                        
                     </Card>
                 </Col>
             </Row>

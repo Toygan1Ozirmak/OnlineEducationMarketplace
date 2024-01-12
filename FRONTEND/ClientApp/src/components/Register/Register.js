@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { registerUser } from "../../apiServices";
 import "./Register.css";
+import Swal from "sweetalert2"; 
 
 const Register = () => {
     const [checked, setChecked] = useState(false); // Burada setChecked fonksiyonunu ekledik.
@@ -17,6 +18,7 @@ const Register = () => {
         phone: "",
         username: "",
         userBio: "",
+        roles: ["User"]
     });
 
     const handleChange = (e) => {
@@ -49,13 +51,40 @@ const Register = () => {
         try {
             const response = await registerUser(formData);
             console.log("Data saved:", response);
-            // Handle success or further actions upon successful API call
-            navigate("/login");
+
+            // Check if registration was successful
+            if (!response.error) {
+                Swal.fire({
+                    icon: "success",
+                    title: "Registration Successful!",
+                    text: "You have successfully registered.",
+                }).then(() => {
+                    // Navigate to the desired location upon successful registration
+                    navigate('/'); // Update the path as needed
+                });
+            } else {
+                // Handle unsuccessful registration
+                Swal.fire({
+                    icon: "error",
+                    title: "Registration Failed",
+                    text: response.message || "An error occurred during registration. Please try again.",
+                });
+            }
         } catch (error) {
             console.error("Error saving data:", error);
+            // Log the specific error message returned by the API call
+            console.error("API Error:", error.message);
+
             // Handle error, show a message, etc.
+            Swal.fire({
+                icon: "error",
+                title: "Registration Failed",
+                text: "An error occurred during registration. Please try again.",
+            });
         }
     };
+
+
 
     return (
         <div className="register-container">

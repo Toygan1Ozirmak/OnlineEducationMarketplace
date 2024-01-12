@@ -3,32 +3,18 @@
 const BASE_URL = "https://localhost:7280";
 
 export const registerUser = async (formData) => {
-   
     try {
-        const jsonData = JSON.stringify(formData);
+        const response = await axios.post('https://localhost:7280/api/authentication/register', formData);
 
-        const xhr = new XMLHttpRequest();
-        xhr.open("POST", `https://localhost:7280/api/authentication/register`, true);
-        xhr.setRequestHeader("Content-Type", "application/json");
+        console.log('API Response:', response.data);
 
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    console.log("API Response:", xhr.responseText);
-                    // Handle the response data if needed
-                } else {
-                    console.error("Register Error:", xhr.statusText);
-                    console.error("Error response:", xhr.responseText);
-                    // Throw an error or handle the error in components
-                }
-            }
-        };
-
-        xhr.send(jsonData);
-
+        // You can directly return the response data if needed
+        return response.data;
     } catch (error) {
-        console.error("Register Error:", error);
-        throw error; // Throw an error to handle it in components
+        console.error('Register Error:', error);
+
+        // Rethrow the error to handle it in components
+        throw error;
     }
 };
 

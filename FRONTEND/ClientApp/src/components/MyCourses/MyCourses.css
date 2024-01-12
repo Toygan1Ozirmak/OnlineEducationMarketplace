@@ -1,0 +1,39 @@
+﻿.mycoursesPage {
+    padding: 20px;
+}
+
+.mycoursesContent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.courseCard {
+    width: 300px;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Kart içeriğini altlı üstlü sırala */
+    align-items: center; /* İçeriği merkeze hizala */
+}
+
+    .courseCard img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .courseCard video {
+        width: 100%;
+        height: auto;
+        margin-top: 10px; /* Videoyu resimden ayır */
+    }
+
+.cardBody {
+    padding: 10px;
+    text-align: center;
+}
+
+.totalProgress {
+    margin-top: 20px;
+    text-align: center;
+}

@@ -4,6 +4,8 @@ import './Basket.css';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { GetImage } from '../../apiServices';
+import Swal from 'sweetalert2';
+
 
 const Basket = ({ location }) => {
     const { state } = location || {};
@@ -12,7 +14,7 @@ const Basket = ({ location }) => {
 
     const [courses, setCourses] = useState([]);
 
-    const [showPaymentForm, setShowPaymentForm] = useState(true);
+    const [showPaymentForm, setShowPaymentForm] = useState(false);
 
     const handleTogglePaymentForm = () => {
         setShowPaymentForm(!showPaymentForm);
@@ -56,6 +58,26 @@ const Basket = ({ location }) => {
 
     const handleCompleteOrder = () => {
         try {
+            // Check if the basket is empty
+            if (courses.length === 0) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Empty Basket',
+                    text: 'Your basket is empty. Add courses before completing the order.'
+                });
+                return;
+            }
+
+            // Check if card information is incomplete
+            if (!cardInfo.cardNumber || !cardInfo.cardHolder || !cardInfo.expiryDate || !cardInfo.cvv) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Incomplete Card Information',
+                    text: 'Please enter valid card information before completing the order.'
+                });
+                return;
+            }
+
             // Ödeme işlemleri burada gerçekleştirilebilir
             console.log("Payment details:", cardInfo);
 
@@ -76,12 +98,26 @@ const Basket = ({ location }) => {
             localStorage.removeItem("basket");
             setCourses([]);
 
-            alert("Order completed!");
+            Swal.fire({
+                icon: 'success',
+                title: 'Order completed!',
+                showConfirmButton: false,
+                timer: 1500 // Close after 1.5 seconds
+            });
+
             navigate("/mycourses");
         } catch (error) {
             console.error("Error completing order:", error);
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'An error occurred while completing the order.'
+            });
         }
     };
+
+
 
     const [cardInfo, setCardInfo] = useState({
         cardNumber: "",
@@ -117,56 +153,58 @@ const Basket = ({ location }) => {
                 </div>
                 <div className="toggle-payment-button">
                     <Button variant="primary" onClick={handleTogglePaymentForm}>
-                        {showPaymentForm ? "Go to Payment" : "Back to Basket"}
+                        {showPaymentForm ? "Back to Basket" : "Go to Payment"}
                     </Button>
                 </div>
                 {/* Payment form */}
-                <div className="payment-container">
-                    <div className="payment-body">
-                        <h2 className="payment-title">Enter Your Payment Details</h2>
-                        <Form>
-                            <Form.Group className="mb-4" controlId="cardNumber">
-                                <Form.Label>Card Number</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    value={cardInfo.cardNumber}
-                                    onChange={handleChange}
-                                    placeholder="Enter your card number"
-                                />
-                            </Form.Group>
+                {showPaymentForm && (
+                    <div className="payment-container">
+                        <div className="payment-body">
+                            <h2 className="payment-title">Enter Your Payment Details</h2>
+                            <Form>
+                                <Form.Group className="mb-4" controlId="cardNumber">
+                                    <Form.Label>Card Number</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        value={cardInfo.cardNumber}
+                                        onChange={handleChange}
+                                        placeholder="Enter your card number"
+                                    />
+                                </Form.Group>
 
-                            <Form.Group className="mb-4" controlId="cardHolder">
-                                <Form.Label>Card Holder</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    value={cardInfo.cardHolder}
-                                    onChange={handleChange}
-                                    placeholder="Enter the card holder's name"
-                                />
-                            </Form.Group>
+                                <Form.Group className="mb-4" controlId="cardHolder">
+                                    <Form.Label>Card Holder</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        value={cardInfo.cardHolder}
+                                        onChange={handleChange}
+                                        placeholder="Enter the card holder's name"
+                                    />
+                                </Form.Group>
 
-                            <Form.Group className="mb-4" controlId="expiryDate">
-                                <Form.Label>Expiry Date</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    value={cardInfo.expiryDate}
-                                    onChange={handleChange}
-                                    placeholder="MM/YYYY"
-                                />
-                            </Form.Group>
+                                <Form.Group className="mb-4" controlId="expiryDate">
+                                    <Form.Label>Expiry Date</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        value={cardInfo.expiryDate}
+                                        onChange={handleChange}
+                                        placeholder="MM/YYYY"
+                                    />
+                                </Form.Group>
 
-                            <Form.Group className="mb-4" controlId="cvv">
-                                <Form.Label>CVV</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    value={cardInfo.cvv}
-                                    onChange={handleChange}
-                                    placeholder="Enter the CVV"
-                                />
-                            </Form.Group>
-                        </Form>
+                                <Form.Group className="mb-4" controlId="cvv">
+                                    <Form.Label>CVV</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        value={cardInfo.cvv}
+                                        onChange={handleChange}
+                                        placeholder="Enter the CVV"
+                                    />
+                                </Form.Group>
+                            </Form>
+                        </div>
                     </div>
-                </div>
+                )}
                 <div className="completeOrderButton">
                     <Button variant="danger" onClick={handleCompleteOrder}>
                         Complete Order
